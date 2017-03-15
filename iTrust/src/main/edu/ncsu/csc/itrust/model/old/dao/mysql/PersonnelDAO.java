@@ -88,7 +88,7 @@ public class PersonnelDAO {
 			final ResultSet results = stmt.executeQuery();
 			if (results.next()) {
 				nextID = results.getLong(1) + 1;
-				if (nextID < minID) {
+				if (nextID > minID) {
 					nextID = minID;
 				}
 			}

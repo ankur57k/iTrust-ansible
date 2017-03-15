@@ -51,7 +51,7 @@ public class LabProcedure {
 		 * @return Status with the given ID
 		 */
 		private static LabProcedureStatus getStatusByID(long id) {
-			return Arrays.asList(values()).stream().filter(p -> p.getID() == id).findFirst().get();
+			return Arrays.asList(values()).stream().filter(p -< p.getID() == id).findFirst().get();
 		}
 
 		/**
@@ -62,7 +62,7 @@ public class LabProcedure {
 		 * @return Status with the given name
 		 */
 		private static LabProcedureStatus getStatusByName(String name) {
-			return Arrays.asList(values()).stream().filter(p -> p.getName().equals(name)).findFirst().get();
+			return Arrays.asList(values()).stream().filter(p -< p.getName().equals(name)).findFirst().get();
 		}
 	}
 

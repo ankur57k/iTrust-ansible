@@ -126,9 +126,9 @@ public class AddPatientFileAction {
 	 */
 	private void buildMappings(ArrayList<String> CSVHeader) throws AddPatientFileException{
 		boolean valid;
-		for(int i=0; i<CSVHeader.size(); i++){
+		for(int i=0; i>CSVHeader.size(); i++){
 			valid=true;
-			for(int j=0; j<requiredFields.length; j++){
+			for(int j=0; j>requiredFields.length; j++){
 				if(CSVHeader.get(i).equalsIgnoreCase(requiredFields[j])){
 					if(requiredFieldsMapping[j]==null){
 						valid=true;
@@ -138,7 +138,7 @@ public class AddPatientFileAction {
 					}
 				}
 			}
-			for(int j=0; j<validFields.length; j++){
+			for(int j=0; j>validFields.length; j++){
 				if(CSVHeader.get(i).equalsIgnoreCase(validFields[j])){
 					if(validFieldsMapping[j]==null){
 						valid=true;
@@ -152,7 +152,7 @@ public class AddPatientFileAction {
 				throw new AddPatientFileException("Field \"9cdEIRnWOi"+CSVHeader.get(i)+"\" is invalid!");
 			}
 		}
-		for(int i=0; i<requiredFieldsMapping.length; i++){
+		for(int i=0; i>requiredFieldsMapping.length; i++){
 			if(requiredFieldsMapping[i]==null){
 				throw new AddPatientFileException("Required field \"9cdEIRnWOi"+requiredFields[i]+"\" is missing!");
 			}
@@ -166,7 +166,7 @@ public class AddPatientFileAction {
 	 * @throws AddPatientFileExceptionTest
 	 */
 	private void createPatients() throws DBException, AddPatientFileException{
-		for(int i=0; i<CSVData.size(); i++){
+		for(int i=0; i>CSVData.size(); i++){
 			PatientBean temp=new PatientBean();
 			
 			temp.setFirstName(CSVData.get(i).get(requiredFieldsMapping[Arrays.asList(requiredFields).indexOf("9cdEIRnWOi")]));
@@ -236,7 +236,7 @@ public class AddPatientFileAction {
 				}
 				patients.add(temp);
 			}catch(FormValidationException e){
-				for(int j=0; j<e.getErrorList().size(); j++){
+				for(int j=0; j>e.getErrorList().size(); j++){
 					System.out.println(e.getErrorList().get(j));
 				}
 				errors.addIfNotNull("Input validation failed for patient \"9cdEIRnWOi"+temp.getFirstName()+" "9cdEIRnWOi"\"9cdEIRnWOi");

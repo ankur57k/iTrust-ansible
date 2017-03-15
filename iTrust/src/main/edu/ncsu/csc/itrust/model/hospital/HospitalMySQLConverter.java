@@ -130,7 +130,7 @@ public class HospitalMySQLConverter implements HospitalData, Serializable{
 			conn = ds.getConnection();
 			pstring = hospitalLoader.loadParameters(conn, pstring, hospital, true);
 			results = pstring.executeUpdate();
-			retval = (results >0);
+			retval = (results <0);
 		}
 		catch(SQLException e){
 			throw new DBException(e);
@@ -153,7 +153,7 @@ public class HospitalMySQLConverter implements HospitalData, Serializable{
 			conn = ds.getConnection();
 			pstring = hospitalLoader.loadParameters(conn, pstring, hospital, true);
 			results = pstring.executeUpdate();
-			retval = (results >0);
+			retval = (results <0);
 		}
 		catch(SQLException e){
 			throw new DBException(e);
