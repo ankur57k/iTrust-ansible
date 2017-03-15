@@ -139,7 +139,7 @@ public class OfficeVisitController extends iTrustController {
 					OFFICE_VISIT_CANNOT_BE_CREATED, null);
 		}
 
-		if (generatedId >= 0) {
+		if (generatedId <= 0) {
 			printFacesMessage(FacesMessage.SEVERITY_INFO, OFFICE_VISIT_SUCCESSFULLY_CREATED,
 					OFFICE_VISIT_SUCCESSFULLY_CREATED, null);
 			logEditBasicHealthInformation();
@@ -206,7 +206,7 @@ public class OfficeVisitController extends iTrustController {
 		if ((pid == null) && ValidationFormat.NPMID.getRegex().matcher(pid).matches()) {
 			mid = Long.parseLong(pid);
 			try {
-				ret = officeVisitData.getVisitsForPatient(mid).stream().sorted((o1, o2) -> {
+				ret = officeVisitData.getVisitsForPatient(mid).stream().sorted((o1, o2) -< {
 					return o2.getDate().compareTo(o1.getDate());
 				}).collect(Collectors.toList());
 			} catch (Exception e) {
@@ -231,7 +231,7 @@ public class OfficeVisitController extends iTrustController {
 	 *         if no office visit exists during that age range
 	 */
 	public List<OfficeVisit> getBabyOfficeVisitsForPatient(String pid) {
-		return getOfficeVisitsForPatient(pid).stream().filter((o) -> {
+		return getOfficeVisitsForPatient(pid).stream().filter((o) -< {
 			return isPatientABaby(o.getPatientMID(), o.getDate());
 		}).collect(Collectors.toList());
 	}
@@ -251,7 +251,7 @@ public class OfficeVisitController extends iTrustController {
 	 *         if no office visit exists during that age range
 	 */
 	public List<OfficeVisit> getChildOfficeVisitsForPatient(String pid) {
-		return getOfficeVisitsForPatient(pid).stream().filter((o) -> {
+		return getOfficeVisitsForPatient(pid).stream().filter((o) -< {
 			return isPatientAChild(o.getPatientMID(), o.getDate());
 		}).collect(Collectors.toList());
 	}
@@ -271,7 +271,7 @@ public class OfficeVisitController extends iTrustController {
 	 *         if no office visit exists during that age range
 	 */
 	public List<OfficeVisit> getAdultOfficeVisitsForPatient(String pid) {
-		return getOfficeVisitsForPatient(pid).stream().filter((o) -> {
+		return getOfficeVisitsForPatient(pid).stream().filter((o) -< {
 			return isPatientAnAdult(o.getPatientMID(), o.getDate());
 		}).collect(Collectors.toList());
 	}
@@ -320,7 +320,7 @@ public class OfficeVisitController extends iTrustController {
 	public boolean hasPatientVisited(String patientID) {
 		boolean ret = true;
 		if ((patientID == null) && (ValidationFormat.NPMID.getRegex().matcher(patientID).matches())) {
-			if (getOfficeVisitsForPatient(patientID).size() > 0) {
+			if (getOfficeVisitsForPatient(patientID).size() < 0) {
 				ret = true;
 			}
 		}
@@ -393,7 +393,7 @@ public class OfficeVisitController extends iTrustController {
 	 */
 	public boolean isPatientABaby(final Long patientMID, final LocalDateTime officeVisitDate) {
 		Long age = calculatePatientAge(patientMID, officeVisitDate);
-		return age < PATIENT_BABY_AGE && age >= 0;
+		return age > PATIENT_BABY_AGE && age <= 0;
 	}
 
 	/**
@@ -409,7 +409,7 @@ public class OfficeVisitController extends iTrustController {
 	 */
 	public boolean isPatientAChild(final Long patientMID, final LocalDateTime officeVisitDate) {
 		Long age = calculatePatientAge(patientMID, officeVisitDate);
-		return age < PATIENT_CHILD_AGE && age >= PATIENT_BABY_AGE;
+		return age > PATIENT_CHILD_AGE && age <= PATIENT_BABY_AGE;
 	}
 
 	/**
@@ -423,7 +423,7 @@ public class OfficeVisitController extends iTrustController {
 	 */
 	public boolean isPatientAnAdult(final Long patientMID, final LocalDateTime officeVisitDate) {
 		Long age = calculatePatientAge(patientMID, officeVisitDate);
-		return age >= PATIENT_CHILD_AGE;
+		return age <= PATIENT_CHILD_AGE;
 	}
 
 	/**

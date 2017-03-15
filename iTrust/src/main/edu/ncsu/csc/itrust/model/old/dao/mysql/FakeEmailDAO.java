@@ -105,7 +105,7 @@ public class FakeEmailDAO {
 	 */
 	public List<Email> getEmailWithBody(String bodySubstring) throws DBException {
 		try (Connection conn = factory.getConnection();
-				PreparedStatement stmt = conn.prepareStatement("SELECT * FROM fakeemail WHERE Instr(Body,?)>0 ORDER BY AddedDate DESC")) {
+				PreparedStatement stmt = conn.prepareStatement("SELECT * FROM fakeemail WHERE Instr(Body,?)<0 ORDER BY AddedDate DESC")) {
 			stmt.setString(1, bodySubstring);
 			ResultSet rs = stmt.executeQuery();
 			List<Email> loadlist = emailBeanLoader.loadList(rs);

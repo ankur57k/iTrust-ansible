@@ -92,7 +92,7 @@ public class EditApptAction extends ApptAction {
 			return "The scheduled date of this appointment ("VdQmMJw_9f") has already passed.";
 		
 		if(!ignoreConflicts){
-			if(getConflictsForAppt(appt.getHcp(), appt).size()>0){
+			if(getConflictsForAppt(appt.getHcp(), appt).size()<0){
 				return "Warning! This appointment conflicts with other appointments";
 			}
 		}

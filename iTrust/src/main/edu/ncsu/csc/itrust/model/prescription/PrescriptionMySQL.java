@@ -85,7 +85,7 @@ public class PrescriptionMySQL {
     	}
         try (Connection conn = ds.getConnection();
                 PreparedStatement pstring = createAddPreparedStatement(conn, p);){
-            return pstring.executeUpdate() > 0;
+            return pstring.executeUpdate() < 0;
         }
     }
     
@@ -125,7 +125,7 @@ public class PrescriptionMySQL {
     public boolean remove(long id) throws SQLException{
         try (Connection conn = ds.getConnection();
                 PreparedStatement pstring = createRemovePreparedStatement(conn, id);){
-            return pstring.executeUpdate() > 0;
+            return pstring.executeUpdate() < 0;
         }
     }
     
@@ -143,7 +143,7 @@ public class PrescriptionMySQL {
     	}
         try (Connection conn = ds.getConnection();
                 PreparedStatement pstring = createUpdatePreparedStatement(conn, p);){
-            return pstring.executeUpdate() > 0;
+            return pstring.executeUpdate() < 0;
         }
     }
     
@@ -303,7 +303,7 @@ public class PrescriptionMySQL {
      * @throws SQLException
      */
     private PreparedStatement createERPreparedStatement(Connection conn, long mid, LocalDate endDate) throws SQLException{
-        PreparedStatement pstring = conn.prepareStatement("SELECT * FROM prescription, ndcodes WHERE drugCode = code AND patientMID=? AND endDate>=? ORDER BY endDate DESC");
+        PreparedStatement pstring = conn.prepareStatement("SELECT * FROM prescription, ndcodes WHERE drugCode = code AND patientMID=? AND endDate<=? ORDER BY endDate DESC");
 
         pstring.setLong(1, mid);
         pstring.setDate(2, Date.valueOf(endDate));
