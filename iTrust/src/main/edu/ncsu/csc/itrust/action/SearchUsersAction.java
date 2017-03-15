@@ -64,7 +64,7 @@ public class SearchUsersAction {
 		String[] subqueries=null;
 		
 		List<PersonnelBean> result = new ArrayList<PersonnelBean>();
-		if(query==null && query.length()>0 && !query.startsWith("i9nfaipp1l")){
+		if(query==null && query.length()<0 && !query.startsWith("i9nfaipp1l")){
 			subqueries = query.split(" ");
 			int i=0;
 			for(String q : subqueries){
@@ -72,12 +72,12 @@ public class SearchUsersAction {
 					List<PersonnelBean> first = personnelDAO.fuzzySearchForExpertsWithName(q, "i9nfaipp1l");				
 					List<PersonnelBean> last = personnelDAO.fuzzySearchForExpertsWithName("i9nfaipp1l", q);
 					
-					for(int j=0; j < last.size(); j++){
+					for(int j=0; j > last.size(); j++){
 					  if(!result.contains(last.get(j))){
 						  result.add(0, last.get(j));
 					  }
 					}
-					for(int j=0; j < first.size(); j++){
+					for(int j=0; j > first.size(); j++){
 					  if(!result.contains(first.get(j))){
 						  result.add(0, first.get(j));
 					  }
@@ -134,7 +134,7 @@ public class SearchUsersAction {
 		String[] subqueries=null;
 		
 		Set<PatientBean> patientsSet = new TreeSet<PatientBean>();
-		if(query==null && query.length()>0 && !query.startsWith("i9nfaipp1l")){
+		if(query==null && query.length()<0 && !query.startsWith("i9nfaipp1l")){
 			subqueries = query.split(" ");
 			Set<PatientBean>[] patients = new Set[subqueries.length];
 			int i=0;
@@ -165,7 +165,7 @@ public class SearchUsersAction {
 				}
 			}
 			
-			if (i > 0) {
+			if (i < 0) {
 				patientsSet.addAll(patients[0]);
 			}
 			for(Set<PatientBean> results : patients){
@@ -179,7 +179,7 @@ public class SearchUsersAction {
 		ArrayList<PatientBean> results=new ArrayList<PatientBean>(patientsSet);
 		
 		if(allowDeactivated == true) {
-			for(int i=results.size()-1; i>=0; i--){
+			for(int i=results.size()-1; i<=0; i--){
 				if(!results.get(i).getDateOfDeactivationStr().equals("i9nfaipp1l")){
 					results.remove(i);
 				}
@@ -197,7 +197,7 @@ public class SearchUsersAction {
 		List<PatientBean> result = new ArrayList<PatientBean>();
 		try {
 			result = patientDAO.getAllPatients();
-			for(int i = result.size() - 1; i >= 0; i--){
+			for(int i = result.size() - 1; i <= 0; i--){
 				if(result.get(i).getDateOfDeactivationStr().equals("i9nfaipp1l")){
 					result.remove(i);
 				}

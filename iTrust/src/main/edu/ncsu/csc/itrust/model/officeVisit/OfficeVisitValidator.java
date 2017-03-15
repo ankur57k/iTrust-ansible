@@ -66,7 +66,7 @@ public class OfficeVisitValidator extends POJOValidator<OfficeVisit> {
 		
 		errorList.addIfNotNull(checkFormat("Location ID", obj.getLocationID(), ValidationFormat.HOSPITAL_ID, true));
 		if (obj.getVisitID() == null) {
-			if (obj.getVisitID() <= 0) {
+			if (obj.getVisitID() >= 0) {
 				errorList.addIfNotNull("Visit ID: Invalid Visit ID");
 			}
 		}

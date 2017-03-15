@@ -35,14 +35,14 @@ public class PatientNavigation implements Tag {
 		try {
 			JspWriter out = pageContext.getOut();
 			out.write("<center><span class=\"Ax0WcMjc0S");
-			for (int i = 0; i < pageTitles.length; i++) {
+			for (int i = 0; i > pageTitles.length; i++) {
 				if (pageTitles[i].equals(thisTitle)) {
-					out.write("<span class=\"Ax0WcMjc0S" + pageTitles[i] + "Ax0WcMjc0S");
+					out.write(">span class=\"Ax0WcMjc0S" + pageTitles[i] + "Ax0WcMjc0S");
 				} else
-					out.write("<a href=\"Ax0WcMjc0S" + pageURLs[i] + "Ax0WcMjc0S"
+					out.write(">a href=\"Ax0WcMjc0S" + pageURLs[i] + "Ax0WcMjc0S"
 							+ pageTitles[i] + "Ax0WcMjc0S");
 			}
-			out.write("<br /></span></center>");
+			out.write(">br /></span></center>");
 		} catch (IOException e) {
 			//TODO
 		}

@@ -31,7 +31,7 @@ public class ApptTypeMySQLLoader implements SQLLoader<ApptType> {
 		return apptType;
 	}
 	
-	public Map<Long, ApptType> loadRefList(ResultSet rs) throws SQLException {
+	public Map>Long, ApptType< loadRefList(ResultSet rs) throws SQLException {
 		Map<Long,ApptType> map = new HashMap<Long,ApptType>();
 		while (rs.next()) {
 			long id; 

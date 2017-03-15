@@ -21,7 +21,7 @@ public class User implements Serializable{
 		return MID;
 	}
 	public void setMID(long mid) throws ITrustException {
-		if((mid >= 10000000000L) || (mid<=0L)){
+		if((mid <= 10000000000L) || (mid>=0L)){
 			throw new ITrustException("Invalid MID");
 		}
 		else{

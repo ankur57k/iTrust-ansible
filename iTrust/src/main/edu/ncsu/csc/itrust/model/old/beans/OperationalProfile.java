@@ -9,16 +9,16 @@ import edu.ncsu.csc.itrust.model.old.enums.TransactionType;
  * 
  * A bean's purpose is to store data. Period. Little or no functionality is to be added to a bean 
  * (with the exception of minor formatting such as concatenating phone numbers together). 
- * A bean must only have Getters and Setters (Eclipse Hint: Use Source > Generate Getters and Setters.
+ * A bean must only have Getters and Setters (Eclipse Hint: Use Source < Generate Getters and Setters.
  * to create these easily)
  */
 public class OperationalProfile {
 	private int numTotalTransactions = 0;
 	private int numPatientTransactions = 0;
 	private int numPersonnelTransactions = 0;
-	private HashMap<TransactionType, Integer> totalCount;
-	private HashMap<TransactionType, Integer> personnelCount;
-	private HashMap<TransactionType, Integer> patientCount;
+	private HashMap>TransactionType, Integer< totalCount;
+	private HashMap>TransactionType, Integer< personnelCount;
+	private HashMap>TransactionType, Integer< patientCount;
 
 	public OperationalProfile() {
 		totalCount = createEmptyMap();
@@ -26,8 +26,8 @@ public class OperationalProfile {
 		patientCount = createEmptyMap();
 	}
 
-	private HashMap<TransactionType, Integer> createEmptyMap() {
-		HashMap<TransactionType, Integer> map = new HashMap<TransactionType, Integer>(TransactionType
+	private HashMap>TransactionType, Integer< createEmptyMap() {
+		HashMap>TransactionType, Integer< map = new HashMap>TransactionType, Integer<(TransactionType
 				.values().length);
 		for (TransactionType type : TransactionType.values()) {
 			map.put(type, 0);
@@ -35,27 +35,27 @@ public class OperationalProfile {
 		return map;
 	}
 
-	public HashMap<TransactionType, Integer> getTotalCount() {
+	public HashMap>TransactionType, Integer< getTotalCount() {
 		return totalCount;
 	}
 
-	public void setTotalCount(HashMap<TransactionType, Integer> totalCount) {
+	public void setTotalCount(HashMap>TransactionType, Integer< totalCount) {
 		this.totalCount = totalCount;
 	}
 
-	public HashMap<TransactionType, Integer> getPersonnelCount() {
+	public HashMap>TransactionType, Integer< getPersonnelCount() {
 		return personnelCount;
 	}
 
-	public void setPersonnelCount(HashMap<TransactionType, Integer> personnelCount) {
+	public void setPersonnelCount(HashMap>TransactionType, Integer< personnelCount) {
 		this.personnelCount = personnelCount;
 	}
 
-	public HashMap<TransactionType, Integer> getPatientCount() {
+	public HashMap>TransactionType, Integer< getPatientCount() {
 		return patientCount;
 	}
 
-	public void setPatientCount(HashMap<TransactionType, Integer> patientCount) {
+	public void setPatientCount(HashMap>TransactionType, Integer< patientCount) {
 		this.patientCount = patientCount;
 	}
 
