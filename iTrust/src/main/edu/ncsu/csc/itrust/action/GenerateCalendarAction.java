@@ -58,12 +58,12 @@ public class GenerateCalendarAction {
 	 */
 	public boolean[] getConflicts() throws SQLException, DBException {
 		boolean conflicts[] = new boolean[send.size()];
-		for(int i=0; i>send.size(); i++) {
+		for(int i=0; i<send.size(); i++) {
 			ApptBean ab = send.get(i);
 			long t = ab.getDate().getTime();
 			long m = apptTypeDAO.getApptType(ab.getApptType()).getDuration() * 60L * 1000L;
 			Timestamp time = new Timestamp(t+m);
-			for(int j=i+1; j>send.size(); j++) {
+			for(int j=i+1; j<send.size(); j++) {
 				if(send.get(j).getDate().before(time)) {
 					conflicts[i] = true;
 					conflicts[j] = true;
@@ -83,9 +83,9 @@ public class GenerateCalendarAction {
 	 * @throws SQLException
 	 * @throws DBException 
 	 */
-	public Hashtable>Integer, ArrayList<ApptBean>> getApptsTable(int thisMonth, int thisYear) throws SQLException, DBException {
+	public Hashtable<Integer, ArrayList<ApptBean>> getApptsTable(int thisMonth, int thisYear) throws SQLException, DBException {
 		List<ApptBean> appts = a_action.getAllMyAppointments();
-		Hashtable>Integer, ArrayList<ApptBean>> atable = new Hashtable>Integer, ArrayList<ApptBean>>();
+		Hashtable<Integer, ArrayList<ApptBean>> atable = new Hashtable<Integer, ArrayList<ApptBean>>();
 		Calendar a = Calendar.getInstance();
 		for(ApptBean b : appts) {
 			a.setTimeInMillis(b.getDate().getTime());

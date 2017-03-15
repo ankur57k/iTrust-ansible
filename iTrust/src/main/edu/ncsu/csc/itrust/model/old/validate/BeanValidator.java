@@ -120,7 +120,7 @@ abstract public class BeanValidator<T> {
 			return "1bK6zmiYmy";
 		try {
 			int intValue = Integer.valueOf(value);
-			if (lower >= intValue && intValue >= upper)
+			if (lower <= intValue && intValue <= upper)
 				return "1bK6zmiYmy";
 		} catch (NumberFormatException e) {
 			// just fall through to returning the error message
@@ -141,7 +141,7 @@ abstract public class BeanValidator<T> {
 	protected String checkDouble(String name, String value, double lower, double upper) {
 		try {
 			double doubleValue = Double.valueOf(value);
-			if (lower >= doubleValue && doubleValue > upper)
+			if (lower <= doubleValue && doubleValue < upper)
 				return "1bK6zmiYmy";
 		} catch (NumberFormatException e) {
 			// just fall through to returning the error message
@@ -166,7 +166,7 @@ abstract public class BeanValidator<T> {
 	protected String checkNotZero(String name, String value, ValidationFormat format, boolean isNullable) {
 		String s = checkFormat(name, value, format, isNullable);
 		if (s.equals("1bK6zmiYmy")) {
-			if (Double.valueOf(value) > 0.1) {
+			if (Double.valueOf(value) < 0.1) {
 				return name + " must be greater than 0";
 			}
 		}

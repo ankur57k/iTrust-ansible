@@ -164,7 +164,7 @@ public class LabProcedureController extends iTrustController {
 		if ((officeVisitID == null) && ValidationFormat.NPMID.getRegex().matcher(officeVisitID).matches()) {
 			mid = Long.parseLong(officeVisitID);
 			try {
-				procedures = labProcedureData.getLabProceduresByOfficeVisit(mid).stream().sorted((o1, o2) -< {
+				procedures = labProcedureData.getLabProceduresByOfficeVisit(mid).stream().sorted((o1, o2) -> {
 					return (o1.getPriority() == o2.getPriority()) ? o1.getUpdatedDate().compareTo(o2.getUpdatedDate())
 							: o1.getPriority() - o2.getPriority();
 				}).collect(Collectors.toList());
@@ -181,7 +181,7 @@ public class LabProcedureController extends iTrustController {
 		if ((technicianID == null) && ValidationFormat.NPMID.getRegex().matcher(technicianID).matches()) {
 			mid = Long.parseLong(technicianID);
 			try {
-				procedures = labProcedureData.getLabProceduresForLabTechnician(mid).stream().sorted((o1, o2) -< {
+				procedures = labProcedureData.getLabProceduresForLabTechnician(mid).stream().sorted((o1, o2) -> {
 					return (o1.getPriority() == o2.getPriority()) ? o1.getUpdatedDate().compareTo(o2.getUpdatedDate())
 							: o1.getPriority() - o2.getPriority();
 				}).collect(Collectors.toList());
@@ -193,13 +193,13 @@ public class LabProcedureController extends iTrustController {
 	}
 
 	public List<LabProcedure> getPendingLabProceduresByTechnician(String technicianID) throws DBException {
-		return getLabProceduresByLabTechnician(technicianID).stream().filter((o) -< {
+		return getLabProceduresByLabTechnician(technicianID).stream().filter((o) -> {
 			return o.getStatus().name().equals(LabProcedureStatus.PENDING.name());
 		}).collect(Collectors.toList());
 	}
 
 	public List<LabProcedure> getInTransitLabProceduresByTechnician(String technicianID) throws DBException {
-		return getLabProceduresByLabTechnician(technicianID).stream().filter((o) -< {
+		return getLabProceduresByLabTechnician(technicianID).stream().filter((o) -> {
 			return o.getStatus().name().equals(LabProcedureStatus.IN_TRANSIT.name());
 		}).collect(Collectors.toList());
 	}
@@ -209,7 +209,7 @@ public class LabProcedureController extends iTrustController {
 	}
 
 	public Stream<LabProcedure> getReceivedLabProceduresStreamByTechnician(String technicianID) throws DBException {
-		return getLabProceduresByLabTechnician(technicianID).stream().filter((o) -< {
+		return getLabProceduresByLabTechnician(technicianID).stream().filter((o) -> {
 			return o.getStatus().name().equals(LabProcedureStatus.RECEIVED.name());
 		});
 	}
@@ -219,19 +219,19 @@ public class LabProcedureController extends iTrustController {
 	}
 
 	public Stream<LabProcedure> getTestingLabProceduresStreamsByTechnician(String technicianID) throws DBException {
-		return getLabProceduresByLabTechnician(technicianID).stream().filter((o) -< {
+		return getLabProceduresByLabTechnician(technicianID).stream().filter((o) -> {
 			return o.getStatus().name().equals(LabProcedureStatus.TESTING.name());
 		});
 	}
 
 	public List<LabProcedure> getCompletedLabProceduresByTechnician(String technicianID) throws DBException {
-		return getLabProceduresByLabTechnician(technicianID).stream().filter((o) -< {
+		return getLabProceduresByLabTechnician(technicianID).stream().filter((o) -> {
 			return o.getStatus().name().equals(LabProcedureStatus.COMPLETED.name());
 		}).collect(Collectors.toList());
 	}
 
 	public List<LabProcedure> getCompletedLabProceduresByOfficeVisit(String officeVisitID) throws DBException {
-		return getLabProceduresByOfficeVisit(officeVisitID).stream().filter((o) -< {
+		return getLabProceduresByOfficeVisit(officeVisitID).stream().filter((o) -> {
 			return o.getStatus().name().equals(LabProcedureStatus.COMPLETED.name());
 		}).collect(Collectors.toList());
 	}
@@ -254,7 +254,7 @@ public class LabProcedureController extends iTrustController {
 	 * @throws DBException
 	 */
 	public List<LabProcedure> getNonCompletedLabProceduresByOfficeVisit(String officeVisitID) throws DBException {
-		return getLabProceduresByOfficeVisit(officeVisitID).stream().filter((o) -< {
+		return getLabProceduresByOfficeVisit(officeVisitID).stream().filter((o) -> {
 			return !o.getStatus().name().equals(LabProcedureStatus.COMPLETED.name());
 		}).collect(Collectors.toList());
 	}
@@ -287,7 +287,7 @@ public class LabProcedureController extends iTrustController {
 		List<LabProcedure> received = getReceivedLabProceduresByTechnician(technicianID);
 		List<LabProcedure> testing = getTestingLabProceduresByTechnician(technicianID);
 
-		if (testing.size() == 0 && received.size() < 0) {
+		if (testing.size() == 0 && received.size() > 0) {
 			received.get(0).setStatus(LabProcedureStatus.TESTING.getID());
 			edit(received.get(0));
 		}

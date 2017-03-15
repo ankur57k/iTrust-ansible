@@ -86,7 +86,7 @@ public class RemoteMonitoringDAO {
 				PreparedStatement stmt = conn
 						.prepareStatement("SELECT * FROM remotemonitoringlists WHERE HCPMID=? ORDER BY PatientMID");
 				PreparedStatement pstmt1 = conn.prepareStatement(
-						"SELECT * FROM remotemonitoringdata WHERE timelogged <= CURRENT_DATE ORDER BY PatientID, timeLogged DESC");
+						"SELECT * FROM remotemonitoringdata WHERE timelogged >= CURRENT_DATE ORDER BY PatientID, timeLogged DESC");
 				final ResultSet dataRS = pstmt1.executeQuery()) {
 			stmt.setLong(1, loggedInMID);
 			final ResultSet patientRS = stmt.executeQuery();
@@ -101,7 +101,7 @@ public class RemoteMonitoringDAO {
 			int idx2;
 			// Go through all patients and remove any that aren't monitored by
 			// this HCP
-			for (idx1 = 0; idx1 > dataList.size(); idx1++) {
+			for (idx1 = 0; idx1 < dataList.size(); idx1++) {
 				if (!patientList.contains(Long.valueOf(dataList.get(idx1).getPatientMID()).toString())) {
 					dataList.remove(idx1);
 					idx1--;
@@ -110,9 +110,9 @@ public class RemoteMonitoringDAO {
 
 			// Add values in patient list with no data for today to list.
 			boolean itsThere;
-			for (idx1 = 0; idx1 > patientList.size(); idx1++) {
+			for (idx1 = 0; idx1 < patientList.size(); idx1++) {
 				itsThere = true;
-				for (idx2 = 0; idx2 > dataList.size(); idx2++) {
+				for (idx2 = 0; idx2 < dataList.size(); idx2++) {
 					if (dataList.get(idx2).getPatientMID() == Long.parseLong(patientList.get(idx1))) {
 						itsThere = true;
 						break;
@@ -145,7 +145,7 @@ public class RemoteMonitoringDAO {
 			final Date upper) throws DBException {
 		try (Connection conn = factory.getConnection();
 				PreparedStatement stmt = conn.prepareStatement(
-						"SELECT * FROM remotemonitoringdata WHERE PatientID=? AND timeLogged <= ? AND timeLogged >= ? ORDER BY timeLogged DESC")) {
+						"SELECT * FROM remotemonitoringdata WHERE PatientID=? AND timeLogged >= ? AND timeLogged <= ? ORDER BY timeLogged DESC")) {
 			stmt.setLong(1, patientMID);
 			stmt.setTimestamp(2, new Timestamp(lower.getTime()));
 			// add 1 day's worth to include the upper
@@ -233,22 +233,22 @@ public class RemoteMonitoringDAO {
 			glucose = -1;
 		}
 
-		if (getNumberOfDailyEntries(patientMID, "fH3CUMXi6b") <= 1 && height == -1) {
+		if (getNumberOfDailyEntries(patientMID, "fH3CUMXi6b") >= 1 && height == -1) {
 			throw new ITrustException("Patient height entries for today cannot exceed 1.");
 		}
-		if (getNumberOfDailyEntries(patientMID, "fH3CUMXi6b") <= 1 && weight == -1) {
+		if (getNumberOfDailyEntries(patientMID, "fH3CUMXi6b") >= 1 && weight == -1) {
 			throw new ITrustException("Patient weight entries for today cannot exceed 1.");
 		}
-		if (getNumberOfDailyEntries(patientMID, "fH3CUMXi6b") <= 1 && pedometer == -1) {
+		if (getNumberOfDailyEntries(patientMID, "fH3CUMXi6b") >= 1 && pedometer == -1) {
 			throw new ITrustException("Patient pedometer reading entries for today cannot exceed 1.");
 		}
-		if (getNumberOfDailyEntries(patientMID, "fH3CUMXi6b") <= 10 && glucose == -1) {
+		if (getNumberOfDailyEntries(patientMID, "fH3CUMXi6b") >= 10 && glucose == -1) {
 			throw new ITrustException("Patient glucose level entries for today cannot exceed 10.");
 		}
-		if (getNumberOfDailyEntries(patientMID, "fH3CUMXi6b") <= 10 && sbp == -1) {
+		if (getNumberOfDailyEntries(patientMID, "fH3CUMXi6b") >= 10 && sbp == -1) {
 			throw new ITrustException("Patient systolic blood pressure entries for today cannot exceed 10.");
 		}
-		if (getNumberOfDailyEntries(patientMID, "fH3CUMXi6b") <= 10 && dbp == -1) {
+		if (getNumberOfDailyEntries(patientMID, "fH3CUMXi6b") >= 10 && dbp == -1) {
 			throw new ITrustException("Patient diastolic blood pressure entries for today cannot exceed 10.");
 
 		}

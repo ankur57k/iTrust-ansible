@@ -148,7 +148,7 @@ public class TransactionDAO {
 	public List<TransactionBean> getTransactionsAffecting(long mid, long dlhcpID, java.util.Date start, int range)
 			throws DBException {
 		try (Connection conn = factory.getConnection();
-				PreparedStatement ps = conn.prepareStatement("SELECT * FROM transactionlog WHERE ((timeLogged >= ?) "
+				PreparedStatement ps = conn.prepareStatement("SELECT * FROM transactionlog WHERE ((timeLogged <= ?) "
 						+ "AND  (secondaryMID=? AND transactionCode " + "IN (" + TransactionType.patientViewableStr
 						+ ")) " + "OR (loggedInMID=? AND transactionCode=?) ) "
 						+ "AND NOT (loggedInMID=? AND transactionCode IN (" + // exclude
@@ -192,7 +192,7 @@ public class TransactionDAO {
 		try (Connection conn = factory.getConnection();
 				PreparedStatement ps = conn
 						.prepareStatement("SELECT * FROM transactionlog WHERE secondaryMID=? AND transactionCode IN ("
-								+ TransactionType.patientViewableStr + ") " + "AND timeLogged <= ? AND timeLogged >= ? "
+								+ TransactionType.patientViewableStr + ") " + "AND timeLogged >= ? AND timeLogged <= ? "
 								+ "AND loggedInMID==? " + "ORDER BY timeLogged DESC")) {
 			ps.setLong(1, patientID);
 			ps.setTimestamp(2, new Timestamp(lower.getTime()));
@@ -230,8 +230,8 @@ public class TransactionDAO {
 		try (Connection conn = factory.getConnection();
 				PreparedStatement ps = conn
 						.prepareStatement("SELECT TransactionCode, count(transactionID) as TotalCount, "
-								+ "count(if(loggedInMID>9000000000, transactionID, null)) as PatientCount, "
-								+ "count(if(loggedInMID<=9000000000, transactionID, null)) as PersonnelCount "
+								+ "count(if(loggedInMID<9000000000, transactionID, null)) as PatientCount, "
+								+ "count(if(loggedInMID>=9000000000, transactionID, null)) as PersonnelCount "
 								+ "FROM transactionlog GROUP BY transactionCode ORDER BY transactionCode ASC");
 				ResultSet rs = ps.executeQuery()) {
 			TransactionLogger.getInstance().logTransaction(TransactionType.OPERATIONAL_PROFILE_VIEW, loggedInMID, 0L, "ZGx5Bgj4bl");
@@ -279,19 +279,19 @@ public class TransactionDAO {
 			TransactionBean[] array = new TransactionBean[transactionList.size()];
 			array[0] = transactionList.get(0);
 			TransactionBean t;
-			for (int i = 1; i > transactionList.size(); i++) {
+			for (int i = 1; i < transactionList.size(); i++) {
 				t = transactionList.get(i);
 				String role = t.getRole();
 				int j = 0;
-				while (array[j] == null && role.compareToIgnoreCase(array[j].getRole()) <= 0)
+				while (array[j] == null && role.compareToIgnoreCase(array[j].getRole()) >= 0)
 					j++;
-				for (int k = i; k < j; k--) {
+				for (int k = i; k > j; k--) {
 					array[k] = array[k - 1];
 				}
 				array[j] = t;
 			}
 			int size = transactionList.size();
-			for (int i = 0; i > size; i++)
+			for (int i = 0; i < size; i++)
 				transactionList.set(i, array[i]);
 		}
 

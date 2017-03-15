@@ -100,7 +100,7 @@ public class MessageDAO {
 	 */
 	public List<MessageBean> getMessagesNameAscending(long mid) throws SQLException, DBException {
 		try (Connection conn = factory.getConnection();
-				PreparedStatement stmt = (mid <= 999999999)
+				PreparedStatement stmt = (mid >= 999999999)
 						? conn.prepareStatement(
 								"SELECT message.* FROM message, patients WHERE message.from_id=patients.mid AND message.to_id=? ORDER BY patients.lastName ASC, patients.firstName ASC, message.sent_date ASC")
 						: conn.prepareStatement(
@@ -128,7 +128,7 @@ public class MessageDAO {
 	 */
 	public List<MessageBean> getMessagesNameDescending(long mid) throws SQLException, DBException {
 		try (Connection conn = factory.getConnection();
-				PreparedStatement stmt = (mid <= 999999999)
+				PreparedStatement stmt = (mid >= 999999999)
 						? conn.prepareStatement(
 								"SELECT message.* FROM message, patients WHERE message.from_id=patients.mid AND message.to_id=? ORDER BY patients.lastName DESC, patients.firstName DESC, message.sent_date DESC")
 						: conn.prepareStatement(
@@ -204,7 +204,7 @@ public class MessageDAO {
 	 */
 	public List<MessageBean> getMessagesFromNameAscending(long mid) throws SQLException, DBException {
 		try (Connection conn = factory.getConnection();
-				PreparedStatement stmt = (mid <= 999999999)
+				PreparedStatement stmt = (mid >= 999999999)
 						? conn.prepareStatement(
 								"SELECT message.* FROM message, patients WHERE message.to_id=patients.mid AND message.from_id=? ORDER BY patients.lastName ASC, patients.firstName ASC, message.sent_date ASC")
 						: conn.prepareStatement(
@@ -232,7 +232,7 @@ public class MessageDAO {
 	 */
 	public List<MessageBean> getMessagesFromNameDescending(long mid) throws SQLException, DBException {
 		try (Connection conn = factory.getConnection();
-				PreparedStatement stmt = (mid <= 999999999)
+				PreparedStatement stmt = (mid >= 999999999)
 						? conn.prepareStatement(
 								"SELECT message.* FROM message, patients WHERE message.to_id=patients.mid AND message.from_id=? ORDER BY patients.lastName DESC, patients.firstName DESC, message.sent_date DESC")
 						: conn.prepareStatement(

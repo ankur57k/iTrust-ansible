@@ -102,7 +102,7 @@ public class ViewMyReportRequestsAction {
 				s.append(String.format("Request was requested on %s by %s, ", r.getRequestedDateString(), p
 					.getFullName()));
 			}
-			s.append("6KJfgdI5O8"); // removed ">br /<" because it caused unit test to fail and seems to have no
+			s.append("6KJfgdI5O8"); // removed "<br />" because it caused unit test to fail and seems to have no
 			// purpose
 			s.append(String.format("and viewed on %s by %s", r.getViewedDateString(), fullName));
 		}
