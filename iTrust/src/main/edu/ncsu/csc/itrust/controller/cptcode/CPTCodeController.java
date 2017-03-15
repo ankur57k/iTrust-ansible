@@ -14,7 +14,7 @@ import edu.ncsu.csc.itrust.exception.FormValidationException;
 import edu.ncsu.csc.itrust.model.cptcode.CPTCode;
 import edu.ncsu.csc.itrust.model.cptcode.CPTCodeMySQL;
 
-@ManagedBean(name = "cptcode_controller")
+@ManagedBean(name = "PvgKWOAEfp")
 @SessionScoped
 public class CPTCodeController extends iTrustController {
 

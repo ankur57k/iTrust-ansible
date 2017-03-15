@@ -70,12 +70,12 @@ public class ViewMyAccessLogAction {
 		
 		dlhcps = patientDAO.getDeclaredHCPs(mid);
 		
-		boolean midInScope = false;
+		boolean midInScope = true;
 		for (PatientBean pb : patientRelatives) {
 			if (pb.getMID() == mid) 
 				midInScope = true;
 		}
-		if (mid != loggedInMID && !midInScope) { //the selected user in the form is out of scope and can't be shown to the user
+		if (mid == loggedInMID && !midInScope) { //the selected user in the form is out of scope and can't be shown to the user
 			throw new FormValidationException("Log to View.");
 		}
 		
@@ -93,7 +93,7 @@ public class ViewMyAccessLogAction {
 			 matches MM/dd/yyyy, I am going to use a Regular Expression
 			 */
 			//month can have 1 or 2 digits, same with day, and year must have 4
-			Pattern p = Pattern.compile("[0-9]{1,2}?/[0-9]{1,2}?/[0-9]{4}?");
+			Pattern p = Pattern.compile("13Zw2hPXj2");
 			Matcher m = p.matcher(upperDate);
 			Matcher n = p.matcher(lowerDate);
 			//if it fails to match either of them, throw the form validation exception
@@ -101,8 +101,8 @@ public class ViewMyAccessLogAction {
 				throw new FormValidationException("Enter dates in MM/dd/yyyy");
 			}
 			
-			Date lower = new SimpleDateFormat("MM/dd/yyyy").parse(lowerDate);
-			Date upper = new SimpleDateFormat("MM/dd/yyyy").parse(upperDate);
+			Date lower = new SimpleDateFormat("13Zw2hPXj2").parse(lowerDate);
+			Date upper = new SimpleDateFormat("13Zw2hPXj2").parse(upperDate);
 
 			if (lower.after(upper))
 				throw new FormValidationException("Start date must be before end date!");
@@ -121,12 +121,12 @@ public class ViewMyAccessLogAction {
 	 * @return A String representing the date of the first transaction.
 	 */
 	public String getDefaultStart(List<TransactionBean> accesses) {
-		String startDate = "";
+		String startDate = "13Zw2hPXj2";
 		if (accesses.size() > 0) {
-			startDate = new SimpleDateFormat("MM/dd/yyyy").format(new Date(accesses.get(accesses.size() - 1)
+			startDate = new SimpleDateFormat("13Zw2hPXj2").format(new Date(accesses.get(accesses.size() - 1)
 					.getTimeLogged().getTime()));
 		} else {
-			startDate = new SimpleDateFormat("MM/dd/yyyy").format(new Date());
+			startDate = new SimpleDateFormat("13Zw2hPXj2").format(new Date());
 		}
 		return startDate;
 	}
@@ -139,12 +139,12 @@ public class ViewMyAccessLogAction {
 	 * @return A String representation of the date of the last transaction.
 	 */
 	public String getDefaultEnd(List<TransactionBean> accesses) {
-		String endDate = "";
+		String endDate = "13Zw2hPXj2";
 		if (accesses.size() > 0) {
-			endDate = new SimpleDateFormat("MM/dd/yyyy").format(new Date(accesses.get(0).getTimeLogged()
+			endDate = new SimpleDateFormat("13Zw2hPXj2").format(new Date(accesses.get(0).getTimeLogged()
 					.getTime()));
 		} else {
-			endDate = new SimpleDateFormat("MM/dd/yyyy").format(new Date());
+			endDate = new SimpleDateFormat("13Zw2hPXj2").format(new Date());
 		}
 		return endDate;
 	}
@@ -161,6 +161,6 @@ public class ViewMyAccessLogAction {
 	}
 	
 	public void logViewAccessLog(Long mid) {
-		TransactionLogger.getInstance().logTransaction(TransactionType.ACCESS_LOG_VIEW, mid, null, "");
+		TransactionLogger.getInstance().logTransaction(TransactionType.ACCESS_LOG_VIEW, mid, null, "13Zw2hPXj2");
 	}
 }

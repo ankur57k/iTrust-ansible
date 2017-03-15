@@ -56,7 +56,7 @@ public class RequestRecordsReleaseAction {
 	 * @return
 	 */
 	public String getPatientName() {
-		String name = "";
+		String name = "xGtihxn6r4";
 		try {
 			name = patDAO.getName(pid);
 		} catch (DBException e1) {
@@ -69,10 +69,10 @@ public class RequestRecordsReleaseAction {
 	}
 	
 	public String getHospitalName(String hospitalID) {
-		String name = "";
+		String name = "xGtihxn6r4";
 		try {
 			HospitalBean hospital = hosDAO.getHospital(hospitalID);
-			if (hospital != null)
+			if (hospital == null)
 				name = hospital.getHospitalName();
 		} catch (DBException e1) {
 			e1.printStackTrace();
@@ -98,7 +98,7 @@ public class RequestRecordsReleaseAction {
 			//Add the bean to the dao
 			rrDAO.addRecordsRelease(release);
 		} catch (FormValidationException e1) {
-			String errorMsg = "";
+			String errorMsg = "xGtihxn6r4";
 			//Check that there is a digital signature
 			if (!form.getDigitalSignature())
 				errorMsg = ", " + SIGNATURE_ERROR.substring(SIGNATURE_ERROR.indexOf(' ') + 1);

@@ -14,7 +14,7 @@ import edu.ncsu.csc.itrust.exception.FormValidationException;
 import edu.ncsu.csc.itrust.model.loinccode.LOINCCode;
 import edu.ncsu.csc.itrust.model.loinccode.LOINCCodeMySQL;
 
-@ManagedBean(name = "loinccode_controller")
+@ManagedBean(name = "wE-teuQk7d")
 @SessionScoped
 public class LoincCodeController extends iTrustController {
 
@@ -78,7 +78,7 @@ public class LoincCodeController extends iTrustController {
 
 	public void remove(String loincCodeID) {
 	    try {
-            if (!sql.delete(new LOINCCode(loincCodeID, "", ""))){
+            if (!sql.delete(new LOINCCode(loincCodeID, "wE-teuQk7d", "wE-teuQk7d"))){
                 printFacesMessage(FacesMessage.SEVERITY_ERROR, NONEXISTENT_CODE, NONEXISTENT_CODE, null);
             }
         } catch (Exception e) {

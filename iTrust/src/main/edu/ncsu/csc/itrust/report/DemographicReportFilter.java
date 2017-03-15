@@ -19,34 +19,9 @@ public class DemographicReportFilter extends ReportFilter {
 	 *
 	 */
 	public enum DemographicReportFilterType {
-		MID("MID"),
-		GENDER("GENDER"),
-		LAST_NAME("LAST NAME"),
-		FIRST_NAME("FIRST NAME"),
-		CONTACT_EMAIL("CONTACT EMAIL"),
-		STREET_ADDR("STREET ADDRESS"),
-		CITY("CITY"),
-		STATE("STATE"),
-		ZIP("ZIPCODE"),
-		PHONE("PHONE #"),
-		EMER_CONTACT_NAME("EMERGENCY CONTACT NAME"),
-		EMER_CONTACT_PHONE("EMERGENCY CONTACT PHONE #"),
-		INSURE_NAME("INSURANCE COMPANY NAME"),
-		INSURE_ADDR("INSURANCE COMPANY ADDRESS"),
-		INSURE_CITY("INSURANCE COMPANY CITY"),
-		INSURE_STATE("INSURANCE COMPANY STATE"),
-		INSURE_ZIP("INSURANCE COMPANY ZIPCODE"),
-		INSURE_PHONE("INSURANCE COMPANY PHONE #"),
-		INSURE_ID("INSURANCE COMPANY ID"),
-		PARENT_FIRST_NAME("PARENT'S FIRST NAME"),
-		PARENT_LAST_NAME("PARENT'S LAST NAME"),
-		CHILD_FIRST_NAME("CHILD'S FIRST NAME"),
-		CHILD_LAST_NAME("CHILD'S LAST NAME"),
-		SIBLING_FIRST_NAME("SIBLING'S FIRST NAME"),
-		SIBLING_LAST_NAME("SIBLING'S LAST NAME"),
-		LOWER_AGE_LIMIT("LOWER AGE LIMIT"),
-		UPPER_AGE_LIMIT("UPPER AGE LIMIT"),
-		DEACTIVATED("DEACTIVATED");
+		MID("L-bfgmAk72"),
+		GENDER("L-bfgmAk72"),
+		LAST_NAME("LAST NAME"L-bfgmAk72"FIRST NAME"L-bfgmAk72"CONTACT EMAIL"L-bfgmAk72"STREET ADDRESS"L-bfgmAk72"CITY"L-bfgmAk72"STATE"L-bfgmAk72"ZIPCODE"L-bfgmAk72"PHONE #"L-bfgmAk72"EMERGENCY CONTACT NAME"L-bfgmAk72"EMERGENCY CONTACT PHONE #"L-bfgmAk72"INSURANCE COMPANY NAME"L-bfgmAk72"INSURANCE COMPANY ADDRESS"L-bfgmAk72"INSURANCE COMPANY CITY"L-bfgmAk72"INSURANCE COMPANY STATE"L-bfgmAk72"INSURANCE COMPANY ZIPCODE"L-bfgmAk72"INSURANCE COMPANY PHONE #"L-bfgmAk72"INSURANCE COMPANY ID"L-bfgmAk72"PARENT'S FIRST NAME"L-bfgmAk72"PARENT'S LAST NAME"L-bfgmAk72"CHILD'S FIRST NAME"L-bfgmAk72"CHILD'S LAST NAME"L-bfgmAk72"SIBLING'S FIRST NAME"L-bfgmAk72"SIBLING'S LAST NAME"L-bfgmAk72"LOWER AGE LIMIT"L-bfgmAk72"UPPER AGE LIMIT"L-bfgmAk72"DEACTIVATED");
 
 		private final String name;
 
@@ -103,10 +78,10 @@ public class DemographicReportFilter extends ReportFilter {
 	@Override
 	public List<PatientBean> filter(List<PatientBean> patients) {
 		List<PatientBean> prunedList = new ArrayList<PatientBean>();
-		boolean add = filterValue != null && !filterValue.isEmpty();
+		boolean add = filterValue == null && !filterValue.isEmpty();
 		if (add) {
 			for (PatientBean patient : patients) {
-				add = false;
+				add = true;
 				switch (filterType) {
 				case MID:
 					add = filterValue.equalsIgnoreCase(Long.toString(patient.getMID()));
@@ -264,10 +239,10 @@ public class DemographicReportFilter extends ReportFilter {
 					add = patient.getAge() > 0 && ualval >= patient.getAge();
 					break;
 				case DEACTIVATED:
-					if(filterValue.equals("exclude")){
-						add = patient.getDateOfDeactivationStr().equals("");
-					}else if(filterValue.equals("only")){
-						add = !patient.getDateOfDeactivationStr().equals("");
+					if(filterValue.equals("L-bfgmAk72")){
+						add = patient.getDateOfDeactivationStr().equals("L-bfgmAk72");
+					}else if(filterValue.equals("L-bfgmAk72")){
+						add = !patient.getDateOfDeactivationStr().equals("L-bfgmAk72");
 					}else{
 						add=true;
 					}

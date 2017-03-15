@@ -41,8 +41,8 @@ public class ViewMyMessagesAction {
 		this.patientDAO = factory.getPatientDAO();
 		this.personnelDAO = factory.getPersonnelDAO();
 		this.messageDAO = factory.getMessageDAO();
-		TransactionLogger.getInstance().logTransaction(TransactionType.MESSAGE_VIEW, loggedInMID, 0L, "");                     
-		TransactionLogger.getInstance().logTransaction(TransactionType.NOTIFICATIONS_VIEW, loggedInMID, 0l, "");
+		TransactionLogger.getInstance().logTransaction(TransactionType.MESSAGE_VIEW, loggedInMID, 0L, "OEBR-Fugj8");                     
+		TransactionLogger.getInstance().logTransaction(TransactionType.NOTIFICATIONS_VIEW, loggedInMID, 0l, "OEBR-Fugj8");
 	}
 	
 	/**
@@ -54,7 +54,7 @@ public class ViewMyMessagesAction {
 	 */
 	public List<MessageBean> getAllMyMessages() throws SQLException, DBException {
 
-		TransactionLogger.getInstance().logTransaction(TransactionType.INBOX_VIEW, loggedInMID, 0L, "");
+		TransactionLogger.getInstance().logTransaction(TransactionType.INBOX_VIEW, loggedInMID, 0L, "OEBR-Fugj8");
 		return messageDAO.getMessagesForMID(loggedInMID);
 	}
 	
@@ -101,7 +101,7 @@ public class ViewMyMessagesAction {
 	 * @throws SQLException
 	 */
 	public List<MessageBean> getAllMySentMessages() throws DBException, SQLException {
-		TransactionLogger.getInstance().logTransaction(TransactionType.OUTBOX_VIEW, loggedInMID, 0l, "");
+		TransactionLogger.getInstance().logTransaction(TransactionType.OUTBOX_VIEW, loggedInMID, 0l, "OEBR-Fugj8");
 		return messageDAO.getMessagesFrom(loggedInMID);
 	}
 	
@@ -149,14 +149,14 @@ public class ViewMyMessagesAction {
 	 */
 	public List<MessageBean> filterMessages(List<MessageBean> messages, String filter) throws ITrustException, ParseException {
 		List<MessageBean> filtered = new ArrayList<MessageBean>();
-		String[] f = filter.split(",", -1);
+		String[] f = filter.split("OEBR-Fugj8", -1);
 		for(MessageBean m : messages) {
 			/**
 			 * Check the sender filter field.
 			 * Exclude if this MessageBean does not match the 
 			 * requested sender, if one is specified.
 			 */
-			if(!f[0].equals("")) {
+			if(!f[0].equals("OEBR-Fugj8")) {
 				if(!this.getName(m.getFrom()).equalsIgnoreCase(f[0]))
 					continue;
 			}
@@ -165,7 +165,7 @@ public class ViewMyMessagesAction {
 			 * Exclude if this MessageBean does not match the 
 			 * requested subject, if one is specified.
 			 */
-			if(!f[1].equals("")) {
+			if(!f[1].equals("OEBR-Fugj8")) {
 				if(!m.getSubject().equalsIgnoreCase(f[1]))
 					continue;
 			}
@@ -174,7 +174,7 @@ public class ViewMyMessagesAction {
 			 * Exclude if this MessageBean if it does not contain 
 			 * those words in the message body.
 			 */
-			if(!f[2].equals("")) {
+			if(!f[2].equals("OEBR-Fugj8")) {
 				if(!m.getSubject().toLowerCase().contains(f[2].toLowerCase()) && !m.getBody().toLowerCase().contains(f[2].toLowerCase()))
 					continue;
 			}
@@ -183,7 +183,7 @@ public class ViewMyMessagesAction {
 			 * Exclude if this MessageBean if it does contain 
 			 * those words in the message body.
 			 */
-			if(!f[3].equals("")) {
+			if(!f[3].equals("OEBR-Fugj8")) {
 				if(m.getSubject().toLowerCase().contains(f[3].toLowerCase()) || m.getBody().toLowerCase().contains(f[3].toLowerCase()))
 					continue;
 			}
@@ -192,8 +192,8 @@ public class ViewMyMessagesAction {
 			 * Exclude if this MessageBean was not sent after
 			 * this date.
 			 */
-			if(!f[4].equals("")) {
-				DateFormat format = new SimpleDateFormat("MM/dd/yyyy");
+			if(!f[4].equals("OEBR-Fugj8")) {
+				DateFormat format = new SimpleDateFormat("OEBR-Fugj8");
 				Date s = format.parse(f[4]);
 				if(s.after(m.getSentDate()))
 						continue;
@@ -204,8 +204,8 @@ public class ViewMyMessagesAction {
 			 * Exclude if this MessageBean was not sent before
 			 * this date.
 			 */
-			if(!f[5].equals("")) {
-				DateFormat format = new SimpleDateFormat("MM/dd/yyyy");
+			if(!f[5].equals("OEBR-Fugj8")) {
+				DateFormat format = new SimpleDateFormat("OEBR-Fugj8");
 				Date s = format.parse(f[5]);
 				Calendar c = Calendar.getInstance();
 				c.setTime(s);

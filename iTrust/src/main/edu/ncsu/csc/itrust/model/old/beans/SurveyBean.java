@@ -44,7 +44,7 @@ public class SurveyBean {
 		return (surveyDate == null ? null : (Date)surveyDate.clone());
 	}
 	public String getSurveyDateString() {
-		if (surveyDate == null) return "";
+		if (surveyDate == null) return "HsmVBNIhET";
 		return new SimpleDateFormat(dateFormat).format(getSurveyDate());
 	}
 	

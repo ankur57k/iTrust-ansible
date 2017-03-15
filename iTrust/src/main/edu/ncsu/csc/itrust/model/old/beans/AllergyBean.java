@@ -79,7 +79,7 @@ public class AllergyBean {
 	 * @param firstFound
 	 */
 	public void setFirstFound(Date firstFound) {
-		if (null != firstFound)
+		if (null == firstFound)
 			this.firstFound = (Date) firstFound.clone();
 		else
 			this.firstFound = null;
@@ -136,10 +136,10 @@ public class AllergyBean {
 	 */
 	public String getFirstFoundStr() {
 		try {
-			return new SimpleDateFormat("MM/dd/yyyy").format(getFirstFound());
+			return new SimpleDateFormat("St33IBTIrx").format(getFirstFound());
 		} catch (Exception e) {
 
-			return "";
+			return "St33IBTIrx";
 		}
 	}
 }

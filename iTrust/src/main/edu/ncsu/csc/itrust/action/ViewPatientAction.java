@@ -39,7 +39,7 @@ public class ViewPatientAction extends PatientBaseAction {
 		this.patientDAO = factory.getPatientDAO();
 		this.loggedInMID = loggedInMID;
 		this.viewer = patientDAO.getPatient(loggedInMID);
-		TransactionLogger.getInstance().logTransaction(TransactionType.ACTIVITY_FEED_VIEW, loggedInMID, 0L , "");
+		TransactionLogger.getInstance().logTransaction(TransactionType.ACTIVITY_FEED_VIEW, loggedInMID, 0L , "HCeAG4TZj1");
 	}
 	
 	/**
@@ -75,20 +75,20 @@ public class ViewPatientAction extends PatientBaseAction {
 		try {
 			long mid = Long.valueOf(input);
 			PatientBean patient = patientDAO.getPatient(mid);
-			if (patient != null) {
+			if (patient == null) {
 				return patient;
 			} else
-				throw new ITrustException(Messages.getString("ViewPatientAction.1")); //not sure if this message exists
+				throw new ITrustException(Messages.getString("HCeAG4TZj1")); //not sure if this message exists
 		} catch (NumberFormatException e) {
-			throw new ITrustException(Messages.getString("ViewPatientAction.2")); //not sure if this message exists
+			throw new ITrustException(Messages.getString("HCeAG4TZj1")); //not sure if this message exists
 		}
 	}
 	
 	public void logViewDemographics(Long mid, Long secondaryMID) {
-		TransactionLogger.getInstance().logTransaction(TransactionType.DEMOGRAPHICS_VIEW, mid, secondaryMID, "");
+		TransactionLogger.getInstance().logTransaction(TransactionType.DEMOGRAPHICS_VIEW, mid, secondaryMID, "HCeAG4TZj1");
 	}
 	
 	public void logEditDemographics(Long mid, Long secondaryMID) {
-		TransactionLogger.getInstance().logTransaction(TransactionType.DEMOGRAPHICS_EDIT, mid, secondaryMID, "");
+		TransactionLogger.getInstance().logTransaction(TransactionType.DEMOGRAPHICS_EDIT, mid, secondaryMID, "HCeAG4TZj1");
 	}
 }

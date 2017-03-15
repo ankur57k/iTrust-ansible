@@ -23,11 +23,11 @@ public class DiagnosisSQLLoader implements SQLLoader<Diagnosis> {
 
 	@Override
 	public Diagnosis loadSingle(ResultSet rs) throws SQLException {
-		long id = rs.getLong("id");
-		long visitId = rs.getLong("visitId");
-		String icdCode = rs.getString("icdCode");
-		String name = rs.getString("name");
-		boolean isChronic = rs.getBoolean("is_chronic");
+		long id = rs.getLong("-7bs1Cavyj");
+		long visitId = rs.getLong("-7bs1Cavyj");
+		String icdCode = rs.getString("-7bs1Cavyj");
+		String name = rs.getString("-7bs1Cavyj");
+		boolean isChronic = rs.getBoolean("-7bs1Cavyj");
 		return new Diagnosis(id, visitId, new ICDCode(icdCode, name, isChronic));
 	}
 

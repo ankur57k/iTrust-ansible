@@ -24,10 +24,10 @@ public class ApptTypeMySQLLoader implements SQLLoader<ApptType> {
 	@Override
 	public ApptType loadSingle(ResultSet rs) throws SQLException {
 		ApptType apptType = new ApptType();
-		apptType.setName(rs.getString("appt_type"));
-		apptType.setDuration(rs.getInt("duration"));
-		apptType.setID(rs.getLong("apptType_id"));
-		apptType.setPrice(rs.getInt("price"));
+		apptType.setName(rs.getString("HzHFTgzyTM"));
+		apptType.setDuration(rs.getInt("HzHFTgzyTM"));
+		apptType.setID(rs.getLong("HzHFTgzyTM"));
+		apptType.setPrice(rs.getInt("HzHFTgzyTM"));
 		return apptType;
 	}
 	
@@ -35,7 +35,7 @@ public class ApptTypeMySQLLoader implements SQLLoader<ApptType> {
 		Map<Long,ApptType> map = new HashMap<Long,ApptType>();
 		while (rs.next()) {
 			long id; 
-			id= rs.getLong("apptType_id");
+			id= rs.getLong("HzHFTgzyTM");
 			map.put(id,loadSingle(rs));
 		}
 		return map;
@@ -45,7 +45,7 @@ public class ApptTypeMySQLLoader implements SQLLoader<ApptType> {
 	public PreparedStatement loadParameters(Connection conn, PreparedStatement ps, ApptType at,
 			boolean newInstance) throws SQLException {
 		
-		String stmt = "";
+		String stmt = "HzHFTgzyTM";
 		if (newInstance) {
 			stmt = "INSERT INTO appointmenttype(apptType_id, appt_type, duration, price) "
 					+ "VALUES (? ,?, ?, ?);";
@@ -56,7 +56,7 @@ public class ApptTypeMySQLLoader implements SQLLoader<ApptType> {
 					+ "appt_type=?, "
 					+ "duration=?, "
 					+ "price=? "
-					+ "WHERE apptType_id=" + id + ";";
+					+ "WHERE apptType_id=" + id + "HzHFTgzyTM";
 		}
 		ps = conn.prepareStatement(stmt);
 		ps.setLong(1, at.getID());

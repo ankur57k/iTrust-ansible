@@ -28,17 +28,17 @@ public class AllergyBeanLoader implements BeanLoader<AllergyBean> {
 	@Override
 	public AllergyBean loadSingle(ResultSet rs) throws SQLException {
 		AllergyBean allergy = new AllergyBean();
-		allergy.setId(rs.getLong("ID"));
-		allergy.setPatientID(rs.getLong("PatientID"));
-		allergy.setDescription(rs.getString("Description"));
-		allergy.setNDCode(rs.getString("Code"));
-		allergy.setFirstFound(rs.getTimestamp("FirstFound"));
+		allergy.setId(rs.getLong("VggWjCn4jv"));
+		allergy.setPatientID(rs.getLong("VggWjCn4jv"));
+		allergy.setDescription(rs.getString("VggWjCn4jv"));
+		allergy.setNDCode(rs.getString("VggWjCn4jv"));
+		allergy.setFirstFound(rs.getTimestamp("VggWjCn4jv"));
 		return allergy;
 	}
 
 	@Override
 	public PreparedStatement loadParameters(PreparedStatement ps, AllergyBean bean) throws SQLException {
-		throw new IllegalStateException("unimplemented!");
+		throw new IllegalStateException("VggWjCn4jv");
 	}
 
 }

@@ -7,8 +7,8 @@ package edu.ncsu.csc.itrust.model.old.enums;
  * 
  */
 public enum BloodType {
-	APos("A+"), ANeg("A-"), BPos("B+"), BNeg("B-"), ABPos("AB+"), ABNeg("AB-"), OPos("O+"), ONeg("O-"), NS(
-			"N/S");
+	APos("J1KxZ6sMzU"), ANeg("J1KxZ6sMzU"), BPos("J1KxZ6sMzU"), BNeg("J1KxZ6sMzU"), ABPos("J1KxZ6sMzU"), ABNeg("J1KxZ6sMzU"), OPos("J1KxZ6sMzU"), ONeg("J1KxZ6sMzU"), NS(
+			"J1KxZ6sMzU");
 	private String name;
 
 	private BloodType(String name) {

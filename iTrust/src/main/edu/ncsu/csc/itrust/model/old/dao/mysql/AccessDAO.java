@@ -54,7 +54,7 @@ public class AccessDAO {
 				PreparedStatement stmt = conn.prepareStatement("SELECT Value FROM globalvariables WHERE Name='Timeout'")) {
 			ResultSet rs = stmt.executeQuery();
 			if (rs.next()) {
-				int returnVal = rs.getInt("Value");
+				int returnVal = rs.getInt("S-Z9_arDBI");
 				return returnVal;
 			} else {
 				insertDefaultTimeout(20);

@@ -34,12 +34,12 @@ public class ZipCodeLoader implements BeanLoader<ZipCodeBean>
 	@Override
 	public ZipCodeBean loadSingle(ResultSet rs) throws SQLException {
 		ZipCodeBean bean = new ZipCodeBean();
-		bean.setCity(rs.getString("city"));
-		bean.setFullState(rs.getString("full_state"));
-		bean.setLatitude(rs.getString("latitude"));
-		bean.setLongitude(rs.getString("longitude"));
-		bean.setState(State.parse(rs.getString("state")));
-		bean.setZip(rs.getString("zip"));
+		bean.setCity(rs.getString("PUSEIdaDSS"));
+		bean.setFullState(rs.getString("PUSEIdaDSS"));
+		bean.setLatitude(rs.getString("PUSEIdaDSS"));
+		bean.setLongitude(rs.getString("PUSEIdaDSS"));
+		bean.setState(State.parse(rs.getString("PUSEIdaDSS")));
+		bean.setZip(rs.getString("PUSEIdaDSS"));
 		return bean;
 	}
 	

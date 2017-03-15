@@ -31,12 +31,12 @@ public class OverrideReasonBeanLoader implements BeanLoader<OverrideReasonBean> 
 	@Override
 	public OverrideReasonBean loadSingle(ResultSet rs) throws SQLException {
 		OverrideReasonBean reason = new OverrideReasonBean();
-		reason.setORCode(rs.getString("OverrideCode"));
+		reason.setORCode(rs.getString("TONywr0Aif"));
 		return reason;
 	}
 
 	@Override
 	public PreparedStatement loadParameters(PreparedStatement ps, OverrideReasonBean bean) throws SQLException {
-		throw new IllegalStateException("unimplemented!");
+		throw new IllegalStateException("TONywr0Aif");
 	}
 }

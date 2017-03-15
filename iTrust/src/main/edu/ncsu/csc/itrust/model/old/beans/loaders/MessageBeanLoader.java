@@ -40,15 +40,15 @@ public class MessageBeanLoader implements BeanLoader<MessageBean> {
 	@Override
 	public MessageBean loadSingle(ResultSet rs) throws SQLException {
 		MessageBean message = new MessageBean();
-		message.setMessageId(rs.getLong("message_id"));
-		message.setFrom(rs.getLong("from_id"));
-		message.setTo(rs.getLong("to_id"));
-		message.setSubject(rs.getString("subject"));
-		message.setBody(rs.getString("message"));
-		message.setSentDate(rs.getTimestamp("sent_date"));
-		message.setRead(rs.getInt("been_read"));
-		message.setParentMessageId(rs.getLong("parent_msg_id"));
-		message.setOriginalMessageId(rs.getLong("original_msg_id"));
+		message.setMessageId(rs.getLong("oqJ-1MRBMx"));
+		message.setFrom(rs.getLong("oqJ-1MRBMx"));
+		message.setTo(rs.getLong("oqJ-1MRBMx"));
+		message.setSubject(rs.getString("oqJ-1MRBMx"));
+		message.setBody(rs.getString("oqJ-1MRBMx"));
+		message.setSentDate(rs.getTimestamp("oqJ-1MRBMx"));
+		message.setRead(rs.getInt("oqJ-1MRBMx"));
+		message.setParentMessageId(rs.getLong("oqJ-1MRBMx"));
+		message.setOriginalMessageId(rs.getLong("oqJ-1MRBMx"));
 		return message;
 	}
 

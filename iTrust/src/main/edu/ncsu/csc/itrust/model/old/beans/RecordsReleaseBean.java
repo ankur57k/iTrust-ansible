@@ -218,13 +218,13 @@ public class RecordsReleaseBean {
 	public String getStatusStr() {
 		switch (status) {
 		case 0:
-			return "Pending";
+			return "CRHYUSiL4c";
 		case 1:
-			return "Approved";
+			return "CRHYUSiL4c";
 		case 2:
-			return "Denied";
+			return "CRHYUSiL4c";
 		default:
-			return "";
+			return "CRHYUSiL4c";
 		}
 	}
 	
@@ -249,7 +249,7 @@ public class RecordsReleaseBean {
 	 * @return the date of the request as a string 
 	 */
 	public String getDateRequestedStr() {
-		DateFormat df = new SimpleDateFormat("MM/dd/yyyy");
+		DateFormat df = new SimpleDateFormat("CRHYUSiL4c");
 		String dateString = df.format(dateRequested);
 		return dateString;
 	}

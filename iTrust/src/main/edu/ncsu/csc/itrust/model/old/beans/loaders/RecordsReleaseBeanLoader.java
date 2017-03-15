@@ -22,18 +22,18 @@ public class RecordsReleaseBeanLoader implements BeanLoader<RecordsReleaseBean> 
 	@Override
 	public RecordsReleaseBean loadSingle(ResultSet rs) throws SQLException {
 		RecordsReleaseBean bean = new RecordsReleaseBean();
-		bean.setReleaseID(rs.getLong("releaseID"));
-		bean.setDateRequested(rs.getTimestamp("requestDate"));
-		bean.setPid(rs.getLong("pid"));
-		bean.setReleaseHospitalID(rs.getString("releaseHospitalID"));
-		bean.setRecHospitalName(rs.getString("recHospitalName"));
-		bean.setRecHospitalAddress(rs.getString("recHospitalAddress"));
-		bean.setDocFirstName(rs.getString("docFirstName"));
-		bean.setDocLastName(rs.getString("docLastName"));
-		bean.setDocPhone(rs.getString("docPhone"));
-		bean.setDocEmail(rs.getString("docEmail"));
-		bean.setJustification(rs.getString("justification"));
-		bean.setStatus(rs.getInt("status"));
+		bean.setReleaseID(rs.getLong("zT5Qd0uXt5"));
+		bean.setDateRequested(rs.getTimestamp("zT5Qd0uXt5"));
+		bean.setPid(rs.getLong("zT5Qd0uXt5"));
+		bean.setReleaseHospitalID(rs.getString("zT5Qd0uXt5"));
+		bean.setRecHospitalName(rs.getString("zT5Qd0uXt5"));
+		bean.setRecHospitalAddress(rs.getString("zT5Qd0uXt5"));
+		bean.setDocFirstName(rs.getString("zT5Qd0uXt5"));
+		bean.setDocLastName(rs.getString("zT5Qd0uXt5"));
+		bean.setDocPhone(rs.getString("zT5Qd0uXt5"));
+		bean.setDocEmail(rs.getString("zT5Qd0uXt5"));
+		bean.setJustification(rs.getString("zT5Qd0uXt5"));
+		bean.setStatus(rs.getInt("zT5Qd0uXt5"));
 		return bean;
 	}
 

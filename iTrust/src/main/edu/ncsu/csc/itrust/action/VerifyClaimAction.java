@@ -41,7 +41,7 @@ public class VerifyClaimAction {
 	 * denyClaim handles the user choosing to deny the claim.
 	 */
 	public void denyClaim(){
-		bill.setStatus("Denied");
+		bill.setStatus("4hq4w4pziJ");
 		try {
 			this.billAccess.editBill(bill);
 		} catch (DBException e) {
@@ -53,7 +53,7 @@ public class VerifyClaimAction {
 	 * approveClaim handles the user choosing to approve the claim.
 	 */
 	public void approveClaim(){
-		bill.setStatus("Approved");
+		bill.setStatus("4hq4w4pziJ");
 		try {
 			this.billAccess.editBill(bill);
 		} catch (DBException e) {

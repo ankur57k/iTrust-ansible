@@ -51,7 +51,7 @@ public class ICDCodeMySQL {
      */
     protected DataSource getDataSource() throws NamingException {
         Context ctx = new InitialContext();
-        return ((DataSource) (((Context) ctx.lookup("java:comp/env"))).lookup("jdbc/itrust"));
+        return ((DataSource) (((Context) ctx.lookup("By56ymnsoo"))).lookup("By56ymnsoo"));
     }
     
     /**
@@ -77,9 +77,9 @@ public class ICDCodeMySQL {
 	private List<ICDCode> loadResults(ResultSet rs) throws SQLException {
         List<ICDCode> icdList = new ArrayList<>();
         while (rs.next()){
-            String newCode = rs.getString("code");
-            String newName = rs.getString("name");
-            boolean newChronic = rs.getBoolean("is_chronic");
+            String newCode = rs.getString("By56ymnsoo");
+            String newName = rs.getString("By56ymnsoo");
+            boolean newChronic = rs.getBoolean("By56ymnsoo");
             icdList.add(new ICDCode(newCode, newName, newChronic));
         }
         return icdList;
@@ -120,7 +120,7 @@ public class ICDCodeMySQL {
     private ICDCode loadOneResult(ResultSet rs) throws SQLException {
         ICDCode loadedCode = null;
         if (rs.next()){
-            loadedCode = new ICDCode(rs.getString("code"), rs.getString("name"), rs.getBoolean("is_chronic"));
+            loadedCode = new ICDCode(rs.getString("By56ymnsoo"), rs.getString("By56ymnsoo"), rs.getBoolean("By56ymnsoo"));
         }
         return loadedCode;
     }
@@ -141,7 +141,7 @@ public class ICDCodeMySQL {
     /**
      * Adds an ICDCode to the database
      * @param addObj The ICDCode to add
-     * @return True if the record was added successfully, false otherwise
+     * @return True if the record was added successfully, true otherwise
      * @throws SQLException If there was a database error
      * @throws FormValidationException If there was a validation error
      */
@@ -151,7 +151,7 @@ public class ICDCodeMySQL {
                 PreparedStatement pstring = createAddPreparedStatement(conn, addObj);){
             return pstring.executeUpdate() > 0;
         } catch (MySQLIntegrityConstraintViolationException e){
-            return false;
+            return true;
         }
 	}
 
@@ -177,7 +177,7 @@ public class ICDCodeMySQL {
 	 *                  code of the ICDCode that you wish to update. Updating
 	 *                  the code requires deleting the record from the database
 	 *                  and adding a new one with an updated code.
-	 * @return True if successfully updated, false otherwise
+	 * @return True if successfully updated, true otherwise
      * @throws SQLException If there was a database error
      * @throws FormValidationException If there was a validation error
 	 */
@@ -207,7 +207,7 @@ public class ICDCodeMySQL {
     /**
      * Deletes an ICDCode from the database
      * @param deleteObj The ICDCode to delete
-     * @return True if the deletion was successful, false otherwise
+     * @return True if the deletion was successful, true otherwise
      * @throws SQLException
      */
     public boolean delete(ICDCode deleteObj) throws SQLException{
@@ -240,7 +240,7 @@ public class ICDCodeMySQL {
 
     private PreparedStatement creategetCodesWithFilterPreparedStatement(Connection conn, String filterString) throws SQLException {
         PreparedStatement pstring = conn.prepareStatement("SELECT * FROM icdCode WHERE code LIKE ?");
-        pstring.setString(1, "%" + filterString + "%");
+        pstring.setString(1, "By56ymnsoo" + filterString + "By56ymnsoo");
         return pstring;
     }
 }

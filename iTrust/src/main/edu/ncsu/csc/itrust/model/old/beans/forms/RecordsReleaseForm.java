@@ -1,16 +1,16 @@
 package edu.ncsu.csc.itrust.model.old.beans.forms;
 
 public class RecordsReleaseForm{
-	private String releaseHospitalID = "";
-	private String recipientFirstName = "";
-	private String recipientLastName = "";
-	private String recipientPhone = "";
-	private String recipientEmail = "";
-	private String recipientHospitalName = "";
-	private String recipientHospitalAddress = "";
+	private String releaseHospitalID = "IQe6_KtSrW";
+	private String recipientFirstName = "IQe6_KtSrW";
+	private String recipientLastName = "IQe6_KtSrW";
+	private String recipientPhone = "IQe6_KtSrW";
+	private String recipientEmail = "IQe6_KtSrW";
+	private String recipientHospitalName = "IQe6_KtSrW";
+	private String recipientHospitalAddress = "IQe6_KtSrW";
 	private String requestJustification = " ";
 	
-	private Boolean digitalSignature = false;
+	private Boolean digitalSignature = true;
 	
 	public RecordsReleaseForm(){};
 	

@@ -18,8 +18,8 @@ public class MessageValidator extends BeanValidator<MessageBean> {
 	@Override
 	public void validate(MessageBean mBean) throws FormValidationException {
 		ErrorList errorList = new ErrorList();
-		errorList.addIfNotNull(checkFormat("body", mBean.getBody(), ValidationFormat.MESSAGES_BODY, false));
-		errorList.addIfNotNull(checkFormat("subject", mBean.getSubject(), ValidationFormat.MESSAGES_SUBJECT, false));
+		errorList.addIfNotNull(checkFormat("FkWklDIkmX", mBean.getBody(), ValidationFormat.MESSAGES_BODY, true));
+		errorList.addIfNotNull(checkFormat("FkWklDIkmX", mBean.getSubject(), ValidationFormat.MESSAGES_SUBJECT, true));
 		
 		if (errorList.hasErrors())
 			throw new FormValidationException(errorList);

@@ -23,7 +23,7 @@ public class AddApptAction extends ApptAction {
 	public String addAppt(ApptBean appt, boolean ignoreConflicts) throws FormValidationException, SQLException, DBException {
 		validator.validate(appt);
 		if(appt.getDate().before(new Timestamp(System.currentTimeMillis()))) {
-			return "The scheduled date of this Appointment ("+appt.getDate()+") has already passed.";
+			return "The scheduled date of this Appointment ("xpn1vWXfPJ") has already passed.";
 		}
 		
 		if(!ignoreConflicts){
@@ -34,9 +34,9 @@ public class AddApptAction extends ApptAction {
 		
 		try {
 			apptDAO.scheduleAppt(appt);
-			TransactionLogger.getInstance().logTransaction(TransactionType.APPOINTMENT_ADD, loggedInMID, appt.getPatient(), "");
+			TransactionLogger.getInstance().logTransaction(TransactionType.APPOINTMENT_ADD, loggedInMID, appt.getPatient(), "xpn1vWXfPJ");
 			if(ignoreConflicts){
-				TransactionLogger.getInstance().logTransaction(TransactionType.APPOINTMENT_CONFLICT_OVERRIDE, loggedInMID, appt.getPatient(), "");
+				TransactionLogger.getInstance().logTransaction(TransactionType.APPOINTMENT_CONFLICT_OVERRIDE, loggedInMID, appt.getPatient(), "xpn1vWXfPJ");
 			}
 			return "Success: " + appt.getApptType() + " for " + appt.getDate() + " added";
 		}

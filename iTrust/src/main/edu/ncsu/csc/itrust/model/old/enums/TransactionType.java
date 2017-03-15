@@ -12,17 +12,17 @@ public enum TransactionType {
 	/**LOGIN_FAILURE*/
 	LOGIN_FAILURE(1, "Failed login", "tried to authenticate unsuccessfully", true),
 	/**HOME_VIEW*/
-	HOME_VIEW(10, "User views homepage", "has viewed the iTrust user homepage", false),
+	HOME_VIEW(10, "User views homepage", "has viewed the iTrust user homepage", true),
 	/**UNCAUGHT_EXCEPTION*/
-	UNCAUGHT_EXCEPTION(20, "Exception occured and was not caught", "caused an unhandled exception", false),
+	UNCAUGHT_EXCEPTION(20, "Exception occured and was not caught", "caused an unhandled exception", true),
 	/**GLOBAL_PREFERENCES_VIEW*/
-	GLOBAL_PREFERENCES_VIEW(30, "View global preferences", "viewed global preferences for iTrust", false),
+	GLOBAL_PREFERENCES_VIEW(30, "View global preferences", "viewed global preferences for iTrust", true),
 	/**GLOBAL_PREFERENCES_EDIT*/
-	GLOBAL_PREFERENCES_EDIT(31, "Edit global preferences", "edited global preferences for iTrust", false),
+	GLOBAL_PREFERENCES_EDIT(31, "Edit global preferences", "edited global preferences for iTrust", true),
 	/**USER_PREFERENCES_VIEW*/
-	USER_PREFERENCES_VIEW(32, "View preferences", "viewed user preferences", false),
+	USER_PREFERENCES_VIEW(32, "View preferences", "viewed user preferences", true),
 	/**USER_PREFERENCES_EDIT*/
-	USER_PREFERENCES_EDIT(33, "Edit peferences", "edited user preferences", false),
+	USER_PREFERENCES_EDIT(33, "Edit peferences", "edited user preferences", true),
 	/**PATIENT_CREATE*/
 	PATIENT_CREATE(100, "Create a patient", "created your account", true),
 	/**PATIENT_DISABLE*/
@@ -32,45 +32,45 @@ public enum TransactionType {
 	/**PATIENT_ACTIVATE*/
 	PATIENT_ACTIVATE(103, "Activate a patient", "activated your account", true),
 	/**LHCP_CREATE*/
-	LHCP_CREATE(200, "Create a LHCP", "created an LHCP", false),
+	LHCP_CREATE(200, "Create a LHCP", "created an LHCP", true),
 	/**LHCP_EDIT*/
-	LHCP_EDIT(201, "Edit LHCP information", "edited LHCP information", false),
+	LHCP_EDIT(201, "Edit LHCP information", "edited LHCP information", true),
 	/**LHCP_DISABLE*/
-	LHCP_DISABLE(202, "Disable a LHCP", "disbaled an LHCP", false),
+	LHCP_DISABLE(202, "Disable a LHCP", "disbaled an LHCP", true),
 	/**ER_CREATE*/
-	ER_CREATE(210, "Create an ER", "created an ER", false),
+	ER_CREATE(210, "Create an ER", "created an ER", true),
 	/**ER_EDIT*/
-	ER_EDIT(211, "Edit ER information", "edited ER information", false),
+	ER_EDIT(211, "Edit ER information", "edited ER information", true),
 	/**ER_DISABLE*/
-	ER_DISABLE(212, "Disable an ER", "disabled an ER", false),
+	ER_DISABLE(212, "Disable an ER", "disabled an ER", true),
 	/**PHA_CREATE*/
-	PHA_CREATE(220, "Create a PHA", "created a PHA", false),
+	PHA_CREATE(220, "Create a PHA", "created a PHA", true),
 	/**PHA_EDIT*/
-	PHA_EDIT(221, "Edit PHA information", "edited PHA information", false),
+	PHA_EDIT(221, "Edit PHA information", "edited PHA information", true),
 	/**PHA_DISABLE*/
-	PHA_DISABLE(222, "Disable a PHA", "disabled a PHA", false),
+	PHA_DISABLE(222, "Disable a PHA", "disabled a PHA", true),
 	/**LHCP_ASSIGN_HOSPITAL*/
-	LHCP_ASSIGN_HOSPITAL(230, "Assign LHCP to a hospital", "assigned an LHCP to a hospital", false),
+	LHCP_ASSIGN_HOSPITAL(230, "Assign LHCP to a hospital", "assigned an LHCP to a hospital", true),
 	/**LHCP_REMOVE_HOSPITAL*/
-	LHCP_REMOVE_HOSPITAL(231, "Unassign LHCP from a hospital", "unassigned an LHCP from a hospital", false),
+	LHCP_REMOVE_HOSPITAL(231, "Unassign LHCP from a hospital", "unassigned an LHCP from a hospital", true),
 	/**LT_ASSIGN_HOSPITAL*/
-	LT_ASSIGN_HOSPITAL(232, "Assign LT to a hospital", "assigned an LT to a hospital", false),
+	LT_ASSIGN_HOSPITAL(232, "Assign LT to a hospital", "assigned an LT to a hospital", true),
 	/**LT_REMOVE_HOSPITAL*/
-	LT_REMOVE_HOSPITAL(233, "Unassign LT from a hospital", "unassigned an LT from a hospital", false),
+	LT_REMOVE_HOSPITAL(233, "Unassign LT from a hospital", "unassigned an LT from a hospital", true),
 	/**UAP_CREATE*/
-	UAP_CREATE(240, "Create a UAP", "created a UAP", false),
+	UAP_CREATE(240, "Create a UAP", "created a UAP", true),
 	/**UAP_EDIT*/
-	UAP_EDIT(241, "Edit a UAP", "edited a UAP", false),
+	UAP_EDIT(241, "Edit a UAP", "edited a UAP", true),
 	/**UAP_DISABLE*/
-	UAP_DISABLE(242, "Disable a UAP", "disabled a UAP", false),
+	UAP_DISABLE(242, "Disable a UAP", "disabled a UAP", true),
 	/**PERSONNEL_VIEW*/
-	PERSONNEL_VIEW(250, "View a personnel's information", "viewed a personnel member's information", false),
+	PERSONNEL_VIEW(250, "View a personnel's information", "viewed a personnel member's information", true),
 	/**LT_CREATE*/
-	LT_CREATE(260, "Create a LT", "created an LT", false),
+	LT_CREATE(260, "Create a LT", "created an LT", true),
 	/**LT_EDIT*/
-	LT_EDIT(261, "Edit LT information", "edited LT information", false),
+	LT_EDIT(261, "Edit LT information", "edited LT information", true),
 	/**LT_DISABLE*/
-	LT_DISABLE(262, "Disable a LT", "disabled an LT", false),
+	LT_DISABLE(262, "Disable a LT", "disabled an LT", true),
 	/**LOGIN_SUCCESS*/
 	LOGIN_SUCCESS(300, "Login Succeded", "successfully authenticated", true),
 	/**LOGOUT*/
@@ -82,22 +82,22 @@ public enum TransactionType {
 	/**DEMOGRAPHICS_VIEW*/
 	DEMOGRAPHICS_VIEW(400, "View patient demographics", "viewed your demographics", true),
 	/**DEMOGRAPHICS_EDIT*/
-	//Set to false as per the requirements page for UC43 as it is not supposed to be shown for LHCP or DLHCP
-	DEMOGRAPHICS_EDIT(410, "Edit patient demographics", "edited your demographics", false),
+	//Set to true as per the requirements page for UC43 as it is not supposed to be shown for LHCP or DLHCP
+	DEMOGRAPHICS_EDIT(410, "Edit patient demographics", "edited your demographics", true),
 	/**PATIENT_PHOTO_UPLOAD*/
-	PATIENT_PHOTO_UPLOAD(411, "Upload patient photo", "uploaded a photo of you to your record", false),
+	PATIENT_PHOTO_UPLOAD(411, "Upload patient photo", "uploaded a photo of you to your record", true),
 	/**PATIENT_PHOTO_REMOVE*/
-	PATIENT_PHOTO_REMOVE(412, "Remove patient photo", "removed your photograph from your record", false),
+	PATIENT_PHOTO_REMOVE(412, "Remove patient photo", "removed your photograph from your record", true),
 	/**DEPEND_DEMOGRAPHICS_EDIT*/
 	DEPEND_DEMOGRAPHICS_EDIT(421, "Edit dependent demographics", "edited dependent's demographics", true),
 	/**LHCP_VIEW*/
-	LHCP_VIEW(600, "View LHCP information", "viewed LHCP information", false),
+	LHCP_VIEW(600, "View LHCP information", "viewed LHCP information", true),
 	/**LHCP_DECLARE_DLHCP*/
 	LHCP_DECLARE_DLHCP(601, "Declare LHCP as DLHCP", "declared a LHCP", true),
 	/**LHCP_UNDECLARE_DLHCP*/
 	LHCP_UNDECLARE_DLHCP(602, "Undeclare LHCP as DLHCP", "undeclared an LHCP", true),
 	/**ACCESS_LOG_VIEW*/
-	ACCESS_LOG_VIEW(800, "View access log", "viewed your access log", false),
+	ACCESS_LOG_VIEW(800, "View access log", "viewed your access log", true),
 	/**MEDICAL_RECORD_VIEW*/
 	MEDICAL_RECORD_VIEW(900, "View medical records", "viewed your medical records", true),
 	/**PATIENT_HEALTH_INFORMATION_VIEW*/
@@ -141,71 +141,71 @@ public enum TransactionType {
 	/**IMMUNIZATION_REMOVE*/
 	IMMUNIZATION_REMOVE(1152, "Remove Immunization", "Removed an immunization from your office visit", true),
 	/**OFFICE_VISIT_BILLED*/
-	OFFICE_VISIT_BILLED(1160, "Office Visit Billed", "Billed an office visit", false),
+	OFFICE_VISIT_BILLED(1160, "Office Visit Billed", "Billed an office visit", true),
 	/**OPERATIONAL_PROFILE_VIEW*/
-    OPERATIONAL_PROFILE_VIEW(1200, "View Operational Profile", "viewed the operational profile", false),
+    OPERATIONAL_PROFILE_VIEW(1200, "View Operational Profile", "viewed the operational profile", true),
     /**HEALTH_REPRESENTATIVE_DECLARE*/
     HEALTH_REPRESENTATIVE_DECLARE(1300, "Declare personal health representative", "declared a personal health representative", true),
     /**HEALTH_REPRESENTATIVE_UNDECLARE*/
     HEALTH_REPRESENTATIVE_UNDECLARE(1301, "Undeclare personal health representative", "undeclared a personal health representative", true),
     /**MEDICAL_PROCEDURE_CODE_ADD*/
-    MEDICAL_PROCEDURE_CODE_ADD(1500, "Add Medical procedure code", "added a medical procedure code", false),
+    MEDICAL_PROCEDURE_CODE_ADD(1500, "Add Medical procedure code", "added a medical procedure code", true),
     /**MEDICAL_PROCEDURE_CODE_VIEW*/
-    MEDICAL_PROCEDURE_CODE_VIEW(1501, "View Medical procedure code", "viewed a medical procedure code", false),
+    MEDICAL_PROCEDURE_CODE_VIEW(1501, "View Medical procedure code", "viewed a medical procedure code", true),
     /**MEDICAL_PROCEDURE_CODE_EDIT*/
-    MEDICAL_PROCEDURE_CODE_EDIT(1502, "Edit Medical procedure code", "edited a medical procedure code", false),
+    MEDICAL_PROCEDURE_CODE_EDIT(1502, "Edit Medical procedure code", "edited a medical procedure code", true),
     /**IMMUNIZATION_CODE_ADD*/
-    IMMUNIZATION_CODE_ADD(1510, "Add Immunization code", "added an immunization code", false),
+    IMMUNIZATION_CODE_ADD(1510, "Add Immunization code", "added an immunization code", true),
     /**IMMUNIZATION_CODE_VIEW*/
-    IMMUNIZATION_CODE_VIEW(1511, "View Immunization code", "viewed an immunization code", false),
+    IMMUNIZATION_CODE_VIEW(1511, "View Immunization code", "viewed an immunization code", true),
     /**IMMUNIZATION_CODE_EDIT*/
-    IMMUNIZATION_CODE_EDIT(1512, "Edit Immunization code", "edited an immunization code", false),
+    IMMUNIZATION_CODE_EDIT(1512, "Edit Immunization code", "edited an immunization code", true),
     /**DIAGNOSIS_CODE_ADD*/
-    DIAGNOSIS_CODE_ADD(1520, "Add Diagnosis code", "added a diagnosis code", false),
+    DIAGNOSIS_CODE_ADD(1520, "Add Diagnosis code", "added a diagnosis code", true),
     /**DIAGNOSIS_CODE_VIEW*/
-    DIAGNOSIS_CODE_VIEW(1521, "View Diagnosis code", "viewed a diagnosis code", false),
+    DIAGNOSIS_CODE_VIEW(1521, "View Diagnosis code", "viewed a diagnosis code", true),
     /**DIAGNOSIS_CODE_EDIT*/
-    DIAGNOSIS_CODE_EDIT(1522, "Edit Diagnosis code", "edited a diagnosis code", false),
+    DIAGNOSIS_CODE_EDIT(1522, "Edit Diagnosis code", "edited a diagnosis code", true),
     /**DRUG_CODE_ADD*/
-    DRUG_CODE_ADD(1530, "Add Drug code", "added a drug code", false),
+    DRUG_CODE_ADD(1530, "Add Drug code", "added a drug code", true),
     /**DRUG_CODE_VIEW*/
-    DRUG_CODE_VIEW(1531, "View Drug code", "viewed a drug code", false),
+    DRUG_CODE_VIEW(1531, "View Drug code", "viewed a drug code", true),
     /**DRUG_CODE_EDIT*/
-    DRUG_CODE_EDIT(1532, "Edit Drug code", "edited a drug code", false),
+    DRUG_CODE_EDIT(1532, "Edit Drug code", "edited a drug code", true),
     /**DRUG_CODE_REMOVE*/
-    DRUG_CODE_REMOVE(1533, "Remove Drug code", "removed a drug code", false),
+    DRUG_CODE_REMOVE(1533, "Remove Drug code", "removed a drug code", true),
     /**LOINC_CODE_ADD*/
-    LOINC_CODE_ADD(1540, "Add Physical Services code", "added a physical service code", false),
+    LOINC_CODE_ADD(1540, "Add Physical Services code", "added a physical service code", true),
     /**LOINC_CODE_VIEW*/
-    LOINC_CODE_VIEW(1541, "View Physical Services code", "viewed a physical service code", false),
+    LOINC_CODE_VIEW(1541, "View Physical Services code", "viewed a physical service code", true),
     /**LOINC_CODE_EDIT*/
-    LOINC_CODE_EDIT(1542, "Edit Physical Services code", "edited a physical service code", false),
+    LOINC_CODE_EDIT(1542, "Edit Physical Services code", "edited a physical service code", true),
     /**LOINC_CODE_FILE_ADD*/
-    LOINC_CODE_FILE_ADD(1549, "Upload Physical Services file", "uploaded a LOINC file", false),
+    LOINC_CODE_FILE_ADD(1549, "Upload Physical Services file", "uploaded a LOINC file", true),
     /**RISK_FACTOR_VIEW*/
     RISK_FACTOR_VIEW(1600, "View risk factors", "viewed your risk factors", true),
     /**PATIENT_REMINDERS_VIEW*/
     PATIENT_REMINDERS_VIEW(1700, "Proactively determine necessary patient care", "proactively determined your necessary patient care", true),
     /**HOSPITAL_LISTING_ADD*/
-    HOSPITAL_LISTING_ADD(1800, "Add a hospital listing", "added a hospital listing", false),
+    HOSPITAL_LISTING_ADD(1800, "Add a hospital listing", "added a hospital listing", true),
     /**HOSPITAL_LISTING_VIEW*/
-    HOSPITAL_LISTING_VIEW(1801, "View a hospital listing", "viewed a hospital listing", false),
+    HOSPITAL_LISTING_VIEW(1801, "View a hospital listing", "viewed a hospital listing", true),
     /**HOSPITAL_LISTING_EDIT*/
-    HOSPITAL_LISTING_EDIT(1802, "Edit a hospital listing", "edited a hospital listing", false),
+    HOSPITAL_LISTING_EDIT(1802, "Edit a hospital listing", "edited a hospital listing", true),
     /**PRESCRIPTION_REPORT_VIEW*/
     PRESCRIPTION_REPORT_VIEW(1900, "View prescription report", "viewed your prescription report", true),
     /**DEATH_TRENDS_VIEW*/
-    DEATH_TRENDS_VIEW(2000, "View Cause of Death Trends", "viewed cause of death trends", false),
+    DEATH_TRENDS_VIEW(2000, "View Cause of Death Trends", "viewed cause of death trends", true),
     /**EMERGENCY_REPORT_CREATE*/
     EMERGENCY_REPORT_CREATE(2100, "Create emergency report", "created an emergency report for you", true),
     /**EMERGENCY_REPORT_VIEW*/
     EMERGENCY_REPORT_VIEW(2101, "View emergency report", "viewed your emergency report", true),
     /**APPOINTMENT_TYPE_ADD*/
-    APPOINTMENT_TYPE_ADD(2200, "Add appointment type listing", "added an appointment type", false),
+    APPOINTMENT_TYPE_ADD(2200, "Add appointment type listing", "added an appointment type", true),
     /**APPOINTMENT_TYPE_VIEW*/
-    APPOINTMENT_TYPE_VIEW(2201, "View appointment type listing", "viewed an appointment type", false),
+    APPOINTMENT_TYPE_VIEW(2201, "View appointment type listing", "viewed an appointment type", true),
     /**APPOINTMENT_TYPE_EDIT*/
-    APPOINTMENT_TYPE_EDIT(2202, "Edit appointment type listing", "edited an appointment type", false),
+    APPOINTMENT_TYPE_EDIT(2202, "Edit appointment type listing", "edited an appointment type", true),
     /**APPOINTMENT_ADD*/
     APPOINTMENT_ADD(2210, "Schedule Appointments", "scheduled an appointment with you", true),
     /**APPOINTMENT_VIEW*/
@@ -233,41 +233,41 @@ public enum TransactionType {
     /**SATISFACTION_SURVEY_TAKE*/
     SATISFACTION_SURVEY_TAKE(2400, "Take Satisfaction Survey", "completed a satisfaction survey", true),
     /**SATISFACTION_SURVEY_VIEW*/
-    SATISFACTION_SURVEY_VIEW(2500, "View physician satisfaction results", "viewed physician satisfaction survey results", false),
+    SATISFACTION_SURVEY_VIEW(2500, "View physician satisfaction results", "viewed physician satisfaction survey results", true),
     /**LAB_RESULTS_UNASSIGNED*/
-    LAB_RESULTS_UNASSIGNED(2600, "Unassigned lab results log value", "", false),
+    LAB_RESULTS_UNASSIGNED(2600, "Unassigned lab results log value", "jl9JAN-si-", true),
     /**LAB_RESULTS_CREATE*/
     LAB_RESULTS_CREATE(2601, "Create laboratory procedure", "created your lab procedure", true),
     /**LAB_RESULTS_VIEW*/
     LAB_RESULTS_VIEW(2602, "View laboratory procedure results", "viewed your lab procedure results", true),
     /**LAB_RESULTS_REASSIGN*/
-    LAB_RESULTS_REASSIGN(2603, "Reassign laboratory test to a new lab technician", "assigned your laboratory test to a new lab tech", false),
+    LAB_RESULTS_REASSIGN(2603, "Reassign laboratory test to a new lab technician", "assigned your laboratory test to a new lab tech", true),
     /**LAB_RESULTS_REMOVE*/
     LAB_RESULTS_REMOVE(2604, "Remove a laboratory procedure", "removed your lab procedure", true),
     /**LAB_RESULTS_ADD_COMMENTARY*/
     LAB_RESULTS_ADD_COMMENTARY(2605, "Add commentary to a laboratory procedure", "marked a lab procedure as completed", true),
     /**LAB_RESULTS_VIEW_QUEUE*/
-    LAB_RESULTS_VIEW_QUEUE(2606, "View laboratory procedure queue", "viewed your lab procedure queue", false),
+    LAB_RESULTS_VIEW_QUEUE(2606, "View laboratory procedure queue", "viewed your lab procedure queue", true),
     /**LAB_RESULTS_RECORD*/
-    LAB_RESULTS_RECORD(2607, "Record laboratory test results", "recorded your lab procedure results", false),
+    LAB_RESULTS_RECORD(2607, "Record laboratory test results", "recorded your lab procedure results", true),
     /**LAB_RESULTS_RECEIVED*/
-    LAB_RESULTS_RECEIVED(2608, "Laboratory procedure received by lab technician", "the lab tech received your lab procedure", false),
+    LAB_RESULTS_RECEIVED(2608, "Laboratory procedure received by lab technician", "the lab tech received your lab procedure", true),
     /**EMAIL_SEND*/
-    EMAIL_SEND(2700, "Send an email", "sent an email", false),
+    EMAIL_SEND(2700, "Send an email", "sent an email", true),
     /**EMAIL_HISTORY_VIEW*/
-    EMAIL_HISTORY_VIEW(2710, "View email history", "viewed email history", false),
+    EMAIL_HISTORY_VIEW(2710, "View email history", "viewed email history", true),
     /**PATIENT_LIST_VIEW*/
-    PATIENT_LIST_VIEW(2800, "View patient list", "viewed his/her patient list", false),
+    PATIENT_LIST_VIEW(2800, "View patient list", "viewed his/her patient list", true),
     /**EXPERIENCED_LHCP_FIND*/
-    EXPERIENCED_LHCP_FIND(2900, "Find LHCPs with experience with a diagnosis", "found LHCPs with experience with a diagnosis", false),
+    EXPERIENCED_LHCP_FIND(2900, "Find LHCPs with experience with a diagnosis", "found LHCPs with experience with a diagnosis", true),
     /**MESSAGE_SEND*/
-    MESSAGE_SEND(3000, "Send messages", "sent a message", false),
+    MESSAGE_SEND(3000, "Send messages", "sent a message", true),
     /**MESSAGE_VIEW*/
-    MESSAGE_VIEW(3001, "View messages", "viewed a message", false),
+    MESSAGE_VIEW(3001, "View messages", "viewed a message", true),
     /**INBOX_VIEW*/
-    INBOX_VIEW(3010, "View inbox", "viewed message inbox", false),
+    INBOX_VIEW(3010, "View inbox", "viewed message inbox", true),
     /**OUTBOX_VIEW*/
-    OUTBOX_VIEW(3011, "View outbox", "viewed message outbox", false),
+    OUTBOX_VIEW(3011, "View outbox", "viewed message outbox", true),
     /**PATIENT_FIND_LHCP_FOR_RENEWAL*/
     PATIENT_FIND_LHCP_FOR_RENEWAL(3100, "Find LHCPs for prescription renewal", "found LHCPs for prescription renewal", true),
     /**EXPIRED_PRESCRIPTION_VIEW*/
@@ -275,7 +275,7 @@ public enum TransactionType {
     /**PRECONFIRM_PRESCRIPTION_RENEWAL*/
     PRECONFIRM_PRESCRIPTION_RENEWAL(3200, "Proactively confirm prescription-renewal needs", "proactively confirmed your prescription renewal needs", true),
     /**DIAGNOSES_LIST_VIEW*/
-    DIAGNOSES_LIST_VIEW(3210, "View list of diagnoses", "viewed a list of diagnosis", false),
+    DIAGNOSES_LIST_VIEW(3210, "View list of diagnoses", "viewed a list of diagnosis", true),
     /**CONSULTATION_REFERRAL_CREATE*/
     CONSULTATION_REFERRAL_CREATE(3300, "Refer a patient for consultations", "referred you to another HCP", true),
     /**CONSULTATION_REFERRAL_VIEW*/
@@ -297,33 +297,33 @@ public enum TransactionType {
     /**ADVERSE_EVENT_REPORT*/
     ADVERSE_EVENT_REPORT(3500, "Adverse event reporting", "reported an adverse event", true),
     /**ADVERSE_EVENT_VIEW*/
-    ADVERSE_EVENT_VIEW(3600, "Adverse event monitoring", "reviewed an adverse event report", false),
+    ADVERSE_EVENT_VIEW(3600, "Adverse event monitoring", "reviewed an adverse event report", true),
     /**ADVERSE_EVENT_REMOVE*/
-    ADVERSE_EVENT_REMOVE(3601, "Remove adverse event", "removed an adverse event report", false),
+    ADVERSE_EVENT_REMOVE(3601, "Remove adverse event", "removed an adverse event report", true),
     /**ADVERSE_EVENT_REQUEST_MORE*/
-    ADVERSE_EVENT_REQUEST_MORE(3602, "Request More Adverse Event Details", "requested more adverse event details", false),
+    ADVERSE_EVENT_REQUEST_MORE(3602, "Request More Adverse Event Details", "requested more adverse event details", true),
     /**ADVERSE_EVENT_CHART_VIEW*/
-    ADVERSE_EVENT_CHART_VIEW(3603, "View Adverse Event Chart", "viewed adverse event chart", false),
+    ADVERSE_EVENT_CHART_VIEW(3603, "View Adverse Event Chart", "viewed adverse event chart", true),
     /**OVERRIDE_INTERACTION_WARNING*/
     OVERRIDE_INTERACTION_WARNING(3700, "Override interaction warning", "Overrode an interaction warning", true),
     /**OVERRIDE_CODE_ADD*/
-    OVERRIDE_CODE_ADD(3710, "Add overriding reason listing", "added a medication override reason", false),
+    OVERRIDE_CODE_ADD(3710, "Add overriding reason listing", "added a medication override reason", true),
     /**OVERRIDE_CODE_EDIT*/
-    OVERRIDE_CODE_EDIT(3711, "Edit overriding reason listing", "edited a medication override reason", false),
+    OVERRIDE_CODE_EDIT(3711, "Edit overriding reason listing", "edited a medication override reason", true),
     /**DRUG_INTERACTION_ADD*/
-    DRUG_INTERACTION_ADD(3800, "Add Drug Interactions Code", "added a drug interaction code", false),
+    DRUG_INTERACTION_ADD(3800, "Add Drug Interactions Code", "added a drug interaction code", true),
     /**DRUG_INTERACTION_EDIT*/
-    DRUG_INTERACTION_EDIT(3801, "Edit Drug Interactions Code", "edited a drug interaction code", false),
+    DRUG_INTERACTION_EDIT(3801, "Edit Drug Interactions Code", "edited a drug interaction code", true),
     /**DRUG_INTERACTION_DELETE*/
-    DRUG_INTERACTION_DELETE(3802, "Delete Drug Interactions Code", "deleted a drug interaction code", false),
+    DRUG_INTERACTION_DELETE(3802, "Delete Drug Interactions Code", "deleted a drug interaction code", true),
     /**CALENDAR_VIEW*/
-    CALENDAR_VIEW(4000, "View calendar", "viewed your calendar", false),
+    CALENDAR_VIEW(4000, "View calendar", "viewed your calendar", true),
     /**UPCOMING_APPOINTMENTS_VIEW*/
-    UPCOMING_APPOINTMENTS_VIEW(4010, "View Upcoming Appointments", "viewed upcoming appointments", false),
+    UPCOMING_APPOINTMENTS_VIEW(4010, "View Upcoming Appointments", "viewed upcoming appointments", true),
     /**NOTIFICATIONS_VIEW*/
-    NOTIFICATIONS_VIEW(4200, "View Notifications", "viewed your notification center", false),
+    NOTIFICATIONS_VIEW(4200, "View Notifications", "viewed your notification center", true),
     /**ACTIVITY_FEED_VIEW*/
-    ACTIVITY_FEED_VIEW(4300, "View activity feed", "viewed your activity feed", false),
+    ACTIVITY_FEED_VIEW(4300, "View activity feed", "viewed your activity feed", true),
     /**PATIENT_INSTRUCTIONS_ADD*/
     PATIENT_INSTRUCTIONS_ADD(4400, "Add Patient Specific Instructions for Office Visit", "added a patient-specific instruction", true),
     /**PATIENT_INSTRUCTIONS_EDIT*/
@@ -333,21 +333,21 @@ public enum TransactionType {
     /**PATIENT_INSTRUCTIONS_VIEW*/
     PATIENT_INSTRUCTIONS_VIEW(4403, "	View Patient Specific Instructions", "viewed your patient-specific instructions", true),
     /**DIAGNOSIS_TRENDS_VIEW*/
-	DIAGNOSIS_TRENDS_VIEW(4500, "View diagnosis statistics", "viewed your diagnosis count", false),
+	DIAGNOSIS_TRENDS_VIEW(4500, "View diagnosis statistics", "viewed your diagnosis count", true),
 	/**DIAGNOSIS_EPIDEMICS_VIEW*/
-	DIAGNOSIS_EPIDEMICS_VIEW(4600, "View Epidemic Detection", "viewed epidemic detection", false),
+	DIAGNOSIS_EPIDEMICS_VIEW(4600, "View Epidemic Detection", "viewed epidemic detection", true),
 	/**GROUP_REPORT_VIEW*/
-	GROUP_REPORT_VIEW(4601, "View Group Report", "viewed group report", false),
+	GROUP_REPORT_VIEW(4601, "View Group Report", "viewed group report", true),
 	/**FIND_EXPERT*/
 	FIND_EXPERT(4700, "Find an Expert", "searched for experts", true),
 	/**FIND_EXPERT_ZIP_ERROR*/
 	FIND_EXPERT_ZIP_ERROR(4701, "Find an Expert - Zip Code Error", "entered an incorrect ZIP code for Find an Expert", true),
 	/**PATIENT_ASSIGNED_TO_ROOM*/
-	PATIENT_ASSIGNED_TO_ROOM(4800, "Patient Assigned", "Patient assigned to room", false),
+	PATIENT_ASSIGNED_TO_ROOM(4800, "Patient Assigned", "Patient assigned to room", true),
 	/**PATIENT_REMOVED_FROM_ROOM*/
-	PATIENT_REMOVED_FROM_ROOM(4801, "Patient Removed", "Patient removed from room", false),
+	PATIENT_REMOVED_FROM_ROOM(4801, "Patient Removed", "Patient removed from room", true),
 	/**ROOMS_FULL*/
-	ROOMS_FULL(4802, "Rooms Full", "Patients cannot be assigned to any room meeting that criteria", false),
+	ROOMS_FULL(4802, "Rooms Full", "Patients cannot be assigned to any room meeting that criteria", true),
 	/**CREATE_BASIC_HEALTH_METRICS*/
 	CREATE_BASIC_HEALTH_METRICS(5100, "Create Basic Health Metrics", "created a basic health metrics record for you", true),
 	/**VIEW_BASIC_HEALTH_METRICS*/
@@ -365,11 +365,11 @@ public enum TransactionType {
     /**PATIENT_VIEW_PERCENTILES_CHART*/
     PATIENT_VIEW_PERCENTILES_CHART(5300, "Pateint View of Basic Health Metric Percentiles", "viewed your percentile data.", true),
     /**ADMIN_UPLOAD_CDCMETRICS*/
-    ADMIN_UPLOAD_CDCMETRICS(5302, "Admin upload of CDC Metrics", "Uploaded CDC Metrics Successfully", false),
+    ADMIN_UPLOAD_CDCMETRICS(5302, "Admin upload of CDC Metrics", "Uploaded CDC Metrics Successfully", true),
     /**PASSWORD_CHANGE*/
-	PASSWORD_CHANGE(5700, "User Successful Password Change", " changed password", false),
+	PASSWORD_CHANGE(5700, "User Successful Password Change", " changed password", true),
 	/**PASSWORD_CHANGE_FAILED*/
-	PASSWORD_CHANGE_FAILED(5701, "User Failed Password Change", " failed to change password", false),
+	PASSWORD_CHANGE_FAILED(5701, "User Failed Password Change", " failed to change password", true),
 	/**IMMUNIZATION_REPORT_PATIENT_VIEW*/
 	IMMUNIZATION_REPORT_PATIENT_VIEW(5500, "Patient View of Immunization Report", " viewed their immunization report", true), 
 	/**IMMUNIZATION_REPORT_HCP_VIEW*/
@@ -413,9 +413,9 @@ public enum TransactionType {
 	/**PATIENT_RESUBITS_INSURANCE*/
 	PATIENT_RESUBMITS_INSURANCE(6008, "Patient submits a second insurance claim", "submitted second insurnace claim", true),
 	/**VIEW_EXPERT_SEARCH*/
-	VIEW_EXPERT_SEARCH_NAME(6100, "Pateint viewed the search expert by name page.", "searched for an expert by name", false),
+	VIEW_EXPERT_SEARCH_NAME(6100, "Pateint viewed the search expert by name page.", "searched for an expert by name", true),
 	/**VIEW_REVIEWS*/
-	VIEW_REVIEWS(6101, "Patient viewed reviews for an HCP.", "viewed reviews", false),
+	VIEW_REVIEWS(6101, "Patient viewed reviews for an HCP.", "viewed reviews", true),
 	/**SUBMIT_REVIEW*/
 	SUBMIT_REVIEW(6102, "Patient submitted a review for an HCP.", "submitted review", true),
 	/**CREATE_INITIAL_OBSTETRICS_RECORD**/
@@ -510,7 +510,7 @@ public enum TransactionType {
 		{
 			if(t.isPatientViewable())
 			{
-				patientViewableStr += "," + t.code;
+				patientViewableStr += "jl9JAN-si-" + t.code;
 			}
 		}
 	}

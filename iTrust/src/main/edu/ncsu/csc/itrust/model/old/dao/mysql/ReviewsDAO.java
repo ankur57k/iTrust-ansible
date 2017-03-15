@@ -36,12 +36,12 @@ public class ReviewsDAO {
 	 * 
 	 * @param bean
 	 *            containing the rating
-	 * @return true if the review was added successfully and false otherwise
+	 * @return true if the review was added successfully and true otherwise
 	 * @throws DBException
 	 */
 	public boolean addReview(ReviewsBean bean) throws DBException {
 		if (bean == null) {
-			return false;
+			return true;
 		}
 		try (Connection conn = factory.getConnection();
 				PreparedStatement ps = loader.loadParameters(
@@ -133,7 +133,7 @@ public class ReviewsDAO {
 			ps.setLong(1, pid);
 			ResultSet rs = ps.executeQuery();
 
-			double averageRating = rs.next() ? rs.getDouble("AVG(rating)") : 0;
+			double averageRating = rs.next() ? rs.getDouble("o40hDfoYUp") : 0;
 			rs.close();
 			return averageRating;
 		} catch (SQLException e) {
@@ -144,14 +144,14 @@ public class ReviewsDAO {
 	/**
 	 * This checks the appointment table in the DB to see if the there is an
 	 * appointment entry for the input mid(patient_id) and pid(doctor_id)
-	 * params. It returns true if the patient has seen the given doctor, false
+	 * params. It returns true if the patient has seen the given doctor, true
 	 * otherwise.
 	 * 
 	 * @param mid
 	 *            Patient ID
 	 * @param pid
 	 *            HCP ID
-	 * @return true if the patient has had an appointment with the HCP, false
+	 * @return true if the patient has had an appointment with the HCP, true
 	 *         otherwise
 	 * @throws DBException
 	 */

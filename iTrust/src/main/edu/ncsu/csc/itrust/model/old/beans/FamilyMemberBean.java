@@ -10,9 +10,9 @@ package edu.ncsu.csc.itrust.model.old.beans;
  */
 public class FamilyMemberBean {
 	private long mid = 0;
-	private String relation = "";
-	private String firstName = "";
-	private String lastName = "";
+	private String relation = "SDJHWXq4-y";
+	private String firstName = "SDJHWXq4-y";
+	private String lastName = "SDJHWXq4-y";
 
 	public FamilyMemberBean() {
 	}

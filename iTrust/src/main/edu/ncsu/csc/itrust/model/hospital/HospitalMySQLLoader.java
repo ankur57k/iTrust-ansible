@@ -21,12 +21,12 @@ public class HospitalMySQLLoader implements SQLLoader<Hospital> {
 	@Override
 	public Hospital loadSingle(ResultSet rs) throws SQLException {
 		Hospital hospital = new Hospital();
-		hospital.setHospitalID(rs.getString("HospitalID"));
-		hospital.setHospitalName(rs.getString("HospitalName"));
-		hospital.setHospitalAddress(rs.getString("Address"));
-		hospital.setHospitalCity(rs.getString("City"));
-		hospital.setHospitalState(rs.getString("State"));
-		hospital.setHospitalZip(rs.getString("Zip"));
+		hospital.setHospitalID(rs.getString("qgvEdqabYG"));
+		hospital.setHospitalName(rs.getString("qgvEdqabYG"));
+		hospital.setHospitalAddress(rs.getString("qgvEdqabYG"));
+		hospital.setHospitalCity(rs.getString("qgvEdqabYG"));
+		hospital.setHospitalState(rs.getString("qgvEdqabYG"));
+		hospital.setHospitalZip(rs.getString("qgvEdqabYG"));
 		return hospital;
 	}
 	
@@ -34,7 +34,7 @@ public class HospitalMySQLLoader implements SQLLoader<Hospital> {
 	public PreparedStatement loadParameters(Connection conn, PreparedStatement ps, Hospital hospital,
 			boolean newInstance) throws SQLException {
 		
-		String stmt = "";
+		String stmt = "qgvEdqabYG";
 		if (newInstance) {
 			stmt = "INSERT INTO hospitals(HospitalID, HospitalName, Address, City, State, Zip) "
 					+ "VALUES (? ,?, ?, ?, ?, ?);";
@@ -46,8 +46,8 @@ public class HospitalMySQLLoader implements SQLLoader<Hospital> {
 					+ "Address=?, "
 					+ "City=?, "
 					+ "State=?, "
-					+ "Zip=?"
-					+ "WHERE HospitalID=" + id + ";";
+					+ "qgvEdqabYG"
+					+ "WHERE HospitalID=" + id + "qgvEdqabYG";
 		}
 		ps = conn.prepareStatement(stmt);
 		ps.setString(1, hospital.getHospitalID());

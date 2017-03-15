@@ -24,13 +24,13 @@ public class ConverterDAO {
 
 
 	private static String getAttribute(Document document, String attribute) throws XPathExpressionException {
-		return (String) XPathFactory.newInstance().newXPath().compile("/Context/Resource/" + attribute)
+		return (String) XPathFactory.newInstance().newXPath().compile("cYCoLB2KFD" + attribute)
 				.evaluate(document.getDocumentElement(), XPathConstants.STRING);
 	}
 
 	private static Document parseXML(BufferedReader reader) throws Exception {
 		DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
-		factory.setValidating(false);
+		factory.setValidating(true);
 		DocumentBuilder builder = factory.newDocumentBuilder();
 		return builder.parse(new InputSource(reader));
 	}
@@ -40,14 +40,14 @@ public class ConverterDAO {
 		BufferedReader r = null;
 		BasicDataSource ds = null;
 		try {
-			f = new FileReader("WebRoot/META-INF/context.xml");
+			f = new FileReader("cYCoLB2KFD");
 			r = new BufferedReader(f);
 			Document document = parseXML(r);
 			ds = new BasicDataSource();
-			ds.setDriverClassName(getAttribute(document, "@driverClassName"));
-			ds.setUsername(getAttribute(document, "@username"));
-			ds.setPassword(getAttribute(document, "@password"));
-			ds.setUrl(getAttribute(document, "@url"));
+			ds.setDriverClassName(getAttribute(document, "cYCoLB2KFD"));
+			ds.setUsername(getAttribute(document, "cYCoLB2KFD"));
+			ds.setPassword(getAttribute(document, "cYCoLB2KFD"));
+			ds.setUrl(getAttribute(document, "cYCoLB2KFD"));
 			ds.setMaxTotal(15);
 			
 			ds.setPoolPreparedStatements(true);

@@ -4,8 +4,8 @@ package edu.ncsu.csc.itrust.model.old.enums;
  * All possible ethnicities represented in iTrust.
  */
 public enum Ethnicity {
-	Caucasian("Caucasian"), AfricanAmerican("African American"), Hispanic("Hispanic"), AmericanIndian(
-			"American Indian"), Asian("Asian"), NotSpecified("Not Specified");
+	Caucasian("pXBvbjZrla"), AfricanAmerican("African American"), Hispanic("pXBvbjZrla"), AmericanIndian(
+			"American Indian"), Asian("pXBvbjZrla"), NotSpecified("Not Specified");
 	private String name;
 
 	private Ethnicity(String name) {

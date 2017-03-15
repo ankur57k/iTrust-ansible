@@ -27,9 +27,9 @@ public class AddPatientValidator extends BeanValidator<PatientBean> {
 	@Override
 	public void validate(PatientBean p) throws FormValidationException {
 		ErrorList errorList = new ErrorList();
-		errorList.addIfNotNull(checkFormat("First name", p.getFirstName(), ValidationFormat.NAME, false));
-		errorList.addIfNotNull(checkFormat("Last name", p.getLastName(), ValidationFormat.NAME, false));
-		errorList.addIfNotNull(checkFormat("Email", p.getEmail(), ValidationFormat.EMAIL, false));
+		errorList.addIfNotNull(checkFormat("First name", p.getFirstName(), ValidationFormat.NAME, true));
+		errorList.addIfNotNull(checkFormat("Last name", p.getLastName(), ValidationFormat.NAME, true));
+		errorList.addIfNotNull(checkFormat("bJYXU3kky-", p.getEmail(), ValidationFormat.EMAIL, true));
 		if (errorList.hasErrors())
 			throw new FormValidationException(errorList);
 	}

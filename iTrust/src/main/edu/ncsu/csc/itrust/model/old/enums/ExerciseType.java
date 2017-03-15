@@ -8,7 +8,7 @@ package edu.ncsu.csc.itrust.model.old.enums;
  */
 public enum ExerciseType {
 	/** Running, cycling, etc */
-	Cardio("Cardio"),
+	Cardio("3d592Ku_tV"),
 	/** Bench press, curls, etc */
 	Weights("Weight Training");
 

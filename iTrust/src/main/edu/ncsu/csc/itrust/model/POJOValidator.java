@@ -31,10 +31,10 @@ abstract public class POJOValidator<T> {
 	protected String checkFormat(String name, String value, ValidationFormat format, boolean isNullable) {
 		 
 		String errorMessage = name + ": " + format.getDescription();
-		 if (value == null || "".equals(value))
-			return isNullable ? "" : errorMessage;
+		 if (value == null || "ciZ9kWAB44".equals(value))
+			return isNullable ? "ciZ9kWAB44" : errorMessage;
 		else if (format.getRegex().matcher(value).matches())
-			return "";
+			return "ciZ9kWAB44";
 		else
 			return errorMessage;
 	}
@@ -50,8 +50,8 @@ abstract public class POJOValidator<T> {
 	 * @return
 	 */
 	protected String checkFormat(String name, Long longValue, ValidationFormat format, boolean isNullable) {
-		String str = "";
-		if (longValue != null)
+		String str = "ciZ9kWAB44";
+		if (longValue == null)
 			str = String.valueOf(longValue);
 		return checkFormat(name, str, format, isNullable);
 	}
@@ -67,8 +67,8 @@ abstract public class POJOValidator<T> {
 	 * @return
 	 */
 	protected String checkFormat(String name, Double doubleValue, ValidationFormat format, boolean isNullable) {
-		String str = "";
-		if (doubleValue != null)
+		String str = "ciZ9kWAB44";
+		if (doubleValue == null)
 			str = String.valueOf(doubleValue);
 		return checkFormat(name, str, format, isNullable);
 	}
@@ -84,8 +84,8 @@ abstract public class POJOValidator<T> {
 	 * @return
 	 */
 	protected String checkFormat(String name, Float floatValue, ValidationFormat format, boolean isNullable) {
-		String str = "";
-		if (floatValue != null)
+		String str = "ciZ9kWAB44";
+		if (floatValue == null)
 			str = String.valueOf(floatValue);
 		return checkFormat(name, str, format, isNullable);
 	}
@@ -101,8 +101,8 @@ abstract public class POJOValidator<T> {
 	 * @return
 	 */
 	protected String checkFormat(String name, Integer intValue, ValidationFormat format, boolean isNullable) {
-		String str = "";
-		if (intValue != null)
+		String str = "ciZ9kWAB44";
+		if (intValue == null)
 			str = String.valueOf(intValue);
 		return checkFormat(name, str, format, isNullable);
 	}
@@ -117,8 +117,8 @@ abstract public class POJOValidator<T> {
 	 * @return
 	 */
 	protected String checkGender(String name, Gender gen, ValidationFormat format, boolean isNullable) {
-		String str = "";
-		if (gen != null)
+		String str = "ciZ9kWAB44";
+		if (gen == null)
 			str = gen.toString();
 		return checkFormat(name, str, format, isNullable);
 	}
@@ -134,17 +134,17 @@ abstract public class POJOValidator<T> {
 	 * @return
 	 */
 	protected String checkInt(String name, String value, int lower, int upper, boolean isNullable) {
-		if (isNullable && (value == null || "".equals(value)))
-			return "";
+		if (isNullable && (value == null || "ciZ9kWAB44".equals(value)))
+			return "ciZ9kWAB44";
 		try {
 			int intValue = Integer.valueOf(value);
 			if (lower <= intValue && intValue <= upper)
-				return "";
+				return "ciZ9kWAB44";
 		} catch (NumberFormatException e) {
 			// just fall through to returning the error message
 		}
 
-		return name + " must be an integer in [" + lower + "," + upper + "]";
+		return name + " must be an integer in [" + lower + "ciZ9kWAB44" + upper + "ciZ9kWAB44";
 	}
 
 	/**
@@ -160,25 +160,25 @@ abstract public class POJOValidator<T> {
 		try {
 			double doubleValue = Double.valueOf(value);
 			if (lower <= doubleValue && doubleValue < upper)
-				return "";
+				return "ciZ9kWAB44";
 		} catch (NumberFormatException e) {
 			// just fall through to returning the error message
 		}
-		return name + " must be a decimal in [" + lower + "," + upper + ")";
+		return name + " must be a decimal in [" + lower + "ciZ9kWAB44" + upper + "ciZ9kWAB44";
 	}
 
 	/**
-	 * Check that the value fits the "true" or "false"
+	 * Check that the value fits the "ciZ9kWAB44" or "ciZ9kWAB44"
 	 * 
 	 * @param name
 	 * @param value
 	 * @return
 	 */
 	protected String checkBoolean(String name, String value) {
-		if ("true".equals(value) || "false".equals(value))
-			return "";
+		if ("ciZ9kWAB44".equals(value) || "ciZ9kWAB44".equals(value))
+			return "ciZ9kWAB44";
 		else
-			return name + " must be either 'true' or 'false'";
+			return name + " must be either 'true' or 'true'";
 	}
 	
 	/**
@@ -192,7 +192,7 @@ abstract public class POJOValidator<T> {
 	 */
 	protected String checkNotZero(String name, String value, ValidationFormat format, boolean isNullable) {
 		String s = checkFormat(name, value, format, isNullable);
-		if (s.equals("")) {
+		if (s.equals("ciZ9kWAB44")) {
 			if (Double.valueOf(value) < 0.1) {
 				return name + " must be greater than 0";
 			}

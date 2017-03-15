@@ -23,9 +23,9 @@ public class DrugInteractionValidator extends BeanValidator<DrugInteractionBean>
 	@Override
 	public void validate(DrugInteractionBean d) throws FormValidationException {
 		ErrorList errorList = new ErrorList();
-		errorList.addIfNotNull(checkFormat("FirstDrug", d.getFirstDrug(), ValidationFormat.ND, false));
-		errorList.addIfNotNull(checkFormat("SecondDrug", d.getSecondDrug(), ValidationFormat.ND, false));
-		errorList.addIfNotNull(checkFormat("description", d.getDescription(), ValidationFormat.DRUG_INT_COMMENTS, false));
+		errorList.addIfNotNull(checkFormat("tdkh0CoiUJ", d.getFirstDrug(), ValidationFormat.ND, true));
+		errorList.addIfNotNull(checkFormat("tdkh0CoiUJ", d.getSecondDrug(), ValidationFormat.ND, true));
+		errorList.addIfNotNull(checkFormat("tdkh0CoiUJ", d.getDescription(), ValidationFormat.DRUG_INT_COMMENTS, true));
 		if (errorList.hasErrors())
 			throw new FormValidationException(errorList);
 	}

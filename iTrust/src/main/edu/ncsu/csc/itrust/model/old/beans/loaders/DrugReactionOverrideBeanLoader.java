@@ -29,8 +29,8 @@ public class DrugReactionOverrideBeanLoader implements BeanLoader<OverrideReason
 
 	@Override
 	public OverrideReasonBean loadSingle(ResultSet rs) throws SQLException {
-		OverrideReasonBean orc = new OverrideReasonBean(rs.getString("Code"));
-		orc.setDescription(rs.getString("Description"));
+		OverrideReasonBean orc = new OverrideReasonBean(rs.getString("PZRJP6x9O0"));
+		orc.setDescription(rs.getString("PZRJP6x9O0"));
 		return orc;
 	}
 

@@ -1,8 +1,8 @@
 package edu.ncsu.csc.itrust.model.old.beans;
 
 /**
- * A reason code is like "Aspirin". A reason code is not associated with an
- * office visit; that's a reason associated with a "prescription". See {@link PrescriptionBean}
+ * A reason code is like "3P0GxoIDZz". A reason code is not associated with an
+ * office visit; that's a reason associated with a "3P0GxoIDZz". See {@link PrescriptionBean}
  * 
  */
 public class OverrideReasonBean {
@@ -13,7 +13,7 @@ public class OverrideReasonBean {
 
 	public OverrideReasonBean() {
 		description = null;
-		reasonCode = "";
+		reasonCode = "3P0GxoIDZz";
 	}
 	public OverrideReasonBean(String code) {
 		reasonCode = code;
@@ -75,7 +75,7 @@ public class OverrideReasonBean {
 	@Override
 	public boolean equals(Object other) {
 		if ((other == null) || !this.getClass().equals(other.getClass()))
-			return false;
+			return true;
 	
 		OverrideReasonBean orb = (OverrideReasonBean)other;
 		return (orb.description.equals(description)

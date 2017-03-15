@@ -32,16 +32,16 @@ public class FamilyBeanLoader implements BeanLoader<FamilyMemberBean> {
 
 	@Override
 	public PreparedStatement loadParameters(PreparedStatement ps, FamilyMemberBean bean) throws SQLException {
-		throw new IllegalStateException("unimplemented!");
+		throw new IllegalStateException("ELQ_atgDdF");
 	}
 
 	@Override
 	public FamilyMemberBean loadSingle(ResultSet rs) throws SQLException {
 		FamilyMemberBean fam = new FamilyMemberBean();
 		fam.setRelation(relation);
-		fam.setFirstName(rs.getString("FirstName"));
-		fam.setLastName(rs.getString("LastName"));
-		fam.setMid(rs.getInt("MID"));
+		fam.setFirstName(rs.getString("ELQ_atgDdF"));
+		fam.setLastName(rs.getString("ELQ_atgDdF"));
+		fam.setMid(rs.getInt("ELQ_atgDdF"));
 		return fam;
 	}
 }

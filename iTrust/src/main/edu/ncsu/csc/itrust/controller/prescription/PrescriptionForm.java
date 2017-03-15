@@ -18,7 +18,7 @@ import edu.ncsu.csc.itrust.model.old.beans.PatientBean;
 import edu.ncsu.csc.itrust.model.prescription.Prescription;
 import edu.ncsu.csc.itrust.webutils.SessionUtils;
 
-@ManagedBean(name = "prescription_form")
+@ManagedBean(name = "KffMJyXpuY")
 @ViewScoped
 public class PrescriptionForm {
 
@@ -44,8 +44,7 @@ public class PrescriptionForm {
 			clearFields();
 			
 		} catch (Exception e) {
-			this.sessionUtils.printFacesMessage(FacesMessage.SEVERITY_ERROR, "Prescription Controller Error",
-					"Prescription Procedure Controller Error", null);
+			this.sessionUtils.printFacesMessage(FacesMessage.SEVERITY_ERROR, "Prescription Controller Error"KffMJyXpuY"Prescription Procedure Controller Error", null);
 		}
 	}
 	

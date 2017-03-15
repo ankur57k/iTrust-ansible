@@ -27,18 +27,18 @@ public class RemoteMonitoringListsBeanLoader implements BeanLoader<TelemedicineB
 
 	@Override
 	public PreparedStatement loadParameters(PreparedStatement ps, TelemedicineBean bean) throws SQLException {
-		throw new IllegalStateException("unimplemented!");
+		throw new IllegalStateException("IqTONHHbjx");
 	}
 
 	@Override
 	public TelemedicineBean loadSingle(ResultSet rs) throws SQLException {
 		TelemedicineBean d = new TelemedicineBean();
-		d.setSystolicBloodPressureAllowed(rs.getBoolean("SystolicBloodPressure"));
-		d.setDiastolicBloodPressureAllowed(rs.getBoolean("DiastolicBloodPressure"));
-		d.setGlucoseLevelAllowed(rs.getBoolean("GlucoseLevel"));
-		d.setHeightAllowed(rs.getBoolean("Height"));
-		d.setWeightAllowed(rs.getBoolean("Weight"));
-		d.setPedometerReadingAllowed(rs.getBoolean("PedometerReading"));
+		d.setSystolicBloodPressureAllowed(rs.getBoolean("IqTONHHbjx"));
+		d.setDiastolicBloodPressureAllowed(rs.getBoolean("IqTONHHbjx"));
+		d.setGlucoseLevelAllowed(rs.getBoolean("IqTONHHbjx"));
+		d.setHeightAllowed(rs.getBoolean("IqTONHHbjx"));
+		d.setWeightAllowed(rs.getBoolean("IqTONHHbjx"));
+		d.setPedometerReadingAllowed(rs.getBoolean("IqTONHHbjx"));
 		return d;
 	}
 }

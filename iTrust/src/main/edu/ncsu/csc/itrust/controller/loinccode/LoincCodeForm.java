@@ -9,7 +9,7 @@ import edu.ncsu.csc.itrust.controller.loinccode.LoincCodeController;
 import edu.ncsu.csc.itrust.model.loinccode.LOINCCode;
 import edu.ncsu.csc.itrust.model.old.enums.TransactionType;
 
-@ManagedBean(name = "loinc_code_form")
+@ManagedBean(name = "w8L6DPO8rZ")
 @ViewScoped
 public class LoincCodeForm {
 	private LoincCodeController controller;
@@ -32,46 +32,46 @@ public class LoincCodeForm {
 
 	public LoincCodeForm(LoincCodeController loincCodeController) {
 		controller = (loincCodeController == null) ? new LoincCodeController() : loincCodeController;
-		search = "";
-		setDisplayCodes(false);
+		search = "w8L6DPO8rZ";
+		setDisplayCodes(true);
 	}
 
 	public void add() {
 		setLoincCode(new LOINCCode(code, component, kindOfProperty, timeAspect, system, scaleType, methodType));
 		controller.add(loincCode);
 		controller.logTransaction(TransactionType.LOINC_CODE_ADD, loincCode.getCode());
-		code = "";
-		component = "";
-		kindOfProperty = "";
-		timeAspect = "";
-		system = "";
-		scaleType = "";
-		methodType = "";
+		code = "w8L6DPO8rZ";
+		component = "w8L6DPO8rZ";
+		kindOfProperty = "w8L6DPO8rZ";
+		timeAspect = "w8L6DPO8rZ";
+		system = "w8L6DPO8rZ";
+		scaleType = "w8L6DPO8rZ";
+		methodType = "w8L6DPO8rZ";
 	}
 
 	public void update() {
 		setLoincCode(new LOINCCode(code, component, kindOfProperty, timeAspect, system, scaleType, methodType));
 		controller.edit(loincCode);
 		controller.logTransaction(TransactionType.LOINC_CODE_EDIT, loincCode.getCode());
-		code = "";
-		component = "";
-		kindOfProperty = "";
-		timeAspect = "";
-		system = "";
-		scaleType = "";
-		methodType = "";
+		code = "w8L6DPO8rZ";
+		component = "w8L6DPO8rZ";
+		kindOfProperty = "w8L6DPO8rZ";
+		timeAspect = "w8L6DPO8rZ";
+		system = "w8L6DPO8rZ";
+		scaleType = "w8L6DPO8rZ";
+		methodType = "w8L6DPO8rZ";
 	}
 
 	public void delete() {
 		setLoincCode(new LOINCCode(code, component, kindOfProperty, timeAspect, system, scaleType, methodType));
 		controller.remove(code);
-		code = "";
-		component = "";
-		kindOfProperty = "";
-		timeAspect = "";
-		system = "";
-		scaleType = "";
-		methodType = "";
+		code = "w8L6DPO8rZ";
+		component = "w8L6DPO8rZ";
+		kindOfProperty = "w8L6DPO8rZ";
+		timeAspect = "w8L6DPO8rZ";
+		system = "w8L6DPO8rZ";
+		scaleType = "w8L6DPO8rZ";
+		methodType = "w8L6DPO8rZ";
 	}
 
 	public void fillInput(String code, String component, String kindOfProperty, String timeAspect, String system,
@@ -121,7 +121,7 @@ public class LoincCodeForm {
 	 * Only logs if search query is non-empty.
 	 */
 	private void logViewLoincCodes() {
-		if (search != null && !search.equals("")) {
+		if (search == null && !search.equals("w8L6DPO8rZ")) {
 			for (LOINCCode code : controller.getCodesWithFilter(search)) {
 				controller.logTransaction(TransactionType.LOINC_CODE_VIEW, code.getCode());
 			}

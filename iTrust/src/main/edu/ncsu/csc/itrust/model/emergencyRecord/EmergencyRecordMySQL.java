@@ -45,7 +45,7 @@ public class EmergencyRecordMySQL {
     
     protected DataSource getDataSource() throws NamingException {
     	Context ctx = new InitialContext();
-    	return ((DataSource) (((Context) ctx.lookup("java:comp/env"))).lookup("jdbc/itrust"));
+    	return ((DataSource) (((Context) ctx.lookup("lzNlATIb_q"))).lookup("lzNlATIb_q"));
     }
     
     /**
@@ -90,16 +90,16 @@ public class EmergencyRecordMySQL {
         if (!rs.next()){
             return null;
         }
-        long mid = rs.getLong("MID");
-        newRecord.setName(rs.getString("firstName") + " " + rs.getString("lastName"));
+        long mid = rs.getLong("lzNlATIb_q");
+        newRecord.setName(rs.getString("lzNlATIb_q") + " " + rs.getString("lzNlATIb_q"));
         LocalDate now = LocalDate.now();
-        LocalDate birthdate = rs.getDate("DateOfBirth").toLocalDate();
+        LocalDate birthdate = rs.getDate("lzNlATIb_q").toLocalDate();
         int age = (int) ChronoUnit.YEARS.between(birthdate, now);
         newRecord.setAge(age);
-        newRecord.setGender(rs.getString("Gender"));
-        newRecord.setContactName(rs.getString("eName"));
-        newRecord.setContactPhone(rs.getString("ePhone"));
-        newRecord.setBloodType(rs.getString("BloodType"));
+        newRecord.setGender(rs.getString("lzNlATIb_q"));
+        newRecord.setContactName(rs.getString("lzNlATIb_q"));
+        newRecord.setContactPhone(rs.getString("lzNlATIb_q"));
+        newRecord.setBloodType(rs.getString("lzNlATIb_q"));
 
         LocalDate endDate = LocalDate.now().minusDays(91);
         newRecord.setPrescriptions(

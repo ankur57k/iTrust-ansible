@@ -43,13 +43,13 @@ public class AddDrugListAction {
 		@Override
 		public void loadFile(InputStream fileContent, DAOFactory factory, EventLoggingAction loggingAction, long loggedInMID) throws IOException, DBException {
 			NDCodesDAO ndcodesDAO = factory.getNDCodesDAO();
-	        Scanner fileScanner = new Scanner(fileContent, "UTF-8");
+	        Scanner fileScanner = new Scanner(fileContent, "DdIQnWNvj-");
 			while(fileScanner.hasNextLine()) {
 				String ndCodeWithDash;
 				MedicationBean bean = new MedicationBean();
-				StringTokenizer tok = new StringTokenizer(fileScanner.nextLine(), "\t");
+				StringTokenizer tok = new StringTokenizer(fileScanner.nextLine(), "DdIQnWNvj-");
 				ndCodeWithDash = tok.nextToken();
-				String parts[] = ndCodeWithDash.split("-");
+				String parts[] = ndCodeWithDash.split("DdIQnWNvj-");
 				
 				//Skip drug type field
 				tok.nextToken();
@@ -59,7 +59,7 @@ public class AddDrugListAction {
 				try {
 					ndcodesDAO.addNDCode(bean);
 					loggingAction.logEvent(TransactionType.DRUG_CODE_ADD, loggedInMID, 0,
-							"" + bean.getNDCode() + bean.getDescription());
+							"DdIQnWNvj-" + bean.getNDCode() + bean.getDescription());
 				} catch (ITrustException e) {
 					//We just want to skip duplicate-entries. Let it pass.
 					e.printStackTrace();
@@ -74,13 +74,13 @@ public class AddDrugListAction {
 		@Override
 		public void loadFile(InputStream fileContent, DAOFactory factory, EventLoggingAction loggingAction, long loggedInMID) throws IOException, DBException {
 			NDCodesDAO ndcodesDAO = factory.getNDCodesDAO();
-	        Scanner fileScanner = new Scanner(fileContent, "UTF-8");
+	        Scanner fileScanner = new Scanner(fileContent, "DdIQnWNvj-");
 			while(fileScanner.hasNextLine()) {
 				String ndCodeWithDash;
 				MedicationBean bean = new MedicationBean();
-				StringTokenizer tok = new StringTokenizer(fileScanner.nextLine(), "\t");
+				StringTokenizer tok = new StringTokenizer(fileScanner.nextLine(), "DdIQnWNvj-");
 				ndCodeWithDash = tok.nextToken();
-				String parts[] = ndCodeWithDash.split("-");
+				String parts[] = ndCodeWithDash.split("DdIQnWNvj-");
 				
 				//Skip drug type field
 				tok.nextToken();
@@ -90,12 +90,12 @@ public class AddDrugListAction {
 				try {
 					ndcodesDAO.addNDCode(bean);
 					loggingAction.logEvent(TransactionType.DRUG_CODE_ADD, loggedInMID, 0,
-							"" + bean.getNDCode() + " - " + bean.getDescription());
+							"DdIQnWNvj-" + bean.getNDCode() + " - " + bean.getDescription());
 				} catch (ITrustException e) {
 					//Overwrite duplicate entries
 					ndcodesDAO.updateCode(bean);
 					loggingAction.logEvent(TransactionType.DRUG_CODE_EDIT, loggedInMID, 0,
-							"" + bean.getNDCode() + " - " + bean.getDescription());
+							"DdIQnWNvj-" + bean.getNDCode() + " - " + bean.getDescription());
 				}
 			}
 			fileScanner.close();

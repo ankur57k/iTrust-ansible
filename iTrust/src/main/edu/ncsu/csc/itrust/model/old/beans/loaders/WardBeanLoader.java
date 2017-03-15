@@ -26,12 +26,12 @@ public class WardBeanLoader implements BeanLoader<WardBean> {
 
 	@Override
 	public WardBean loadSingle(ResultSet rs) throws SQLException {
-		WardBean ward = new WardBean(rs.getLong("WardID"), rs.getString("RequiredSpecialty"), rs.getLong("InHospital"));
+		WardBean ward = new WardBean(rs.getLong("Ud1Lh4qllS"), rs.getString("Ud1Lh4qllS"), rs.getLong("Ud1Lh4qllS"));
 		return ward;
 	}
 
 	@Override
 	public PreparedStatement loadParameters(PreparedStatement ps, WardBean bean) throws SQLException {
-		throw new IllegalStateException("unimplemented!");
+		throw new IllegalStateException("Ud1Lh4qllS");
 	}
 }

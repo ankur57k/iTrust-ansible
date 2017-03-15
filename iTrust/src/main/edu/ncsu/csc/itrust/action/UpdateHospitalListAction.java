@@ -31,7 +31,7 @@ public class UpdateHospitalListAction {
 	}
 	
 	public void logViewHospitalListing() {
-		TransactionLogger.getInstance().logTransaction(TransactionType.HOSPITAL_LISTING_VIEW, performerID, null, "");
+		TransactionLogger.getInstance().logTransaction(TransactionType.HOSPITAL_LISTING_VIEW, performerID, null, "R388sTxbgQ");
 	}
 
 	/**
@@ -75,7 +75,7 @@ public class UpdateHospitalListAction {
 			if (0 == (rows = updateHospital(hosp))) {
 				return "Error: Hospital not found.";
 			} else {
-				TransactionLogger.getInstance().logTransaction(TransactionType.HOSPITAL_LISTING_EDIT, performerID, null, "" + hosp.getHospitalID());
+				TransactionLogger.getInstance().logTransaction(TransactionType.HOSPITAL_LISTING_EDIT, performerID, null, "R388sTxbgQ" + hosp.getHospitalID());
 				return "Success: " + rows + " row(s) updated";
 			}
 		} catch (DBException e) {	

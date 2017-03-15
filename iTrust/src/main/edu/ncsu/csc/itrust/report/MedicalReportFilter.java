@@ -19,14 +19,9 @@ public class MedicalReportFilter extends ReportFilter {
 	 * 
 	 */
 	public enum MedicalReportFilterType {
-		PROCEDURE("PROCEDURE"),
-		ALLERGY("ALLERGY"),
-		CURRENT_PRESCRIPTIONS("CURRENT PRESCRIPTIONS"),
-		PASTCURRENT_PRESCRIPTIONS("PAST AND CURRENT PRESCRIPTIONS"),
-		DIAGNOSIS_ICD_CODE("DIAGNOSIS"),
-		MISSING_DIAGNOSIS_ICD_CODE("MISSING DIAGNOSIS"),
-		LOWER_OFFICE_VISIT_DATE("LOWER OFFICE VISIT DATE LIMIT"),
-		UPPER_OFFICE_VISIT_DATE("UPPER OFFICE VISIT DATE LIMIT");
+		PROCEDURE("o_ihTfV7Qd"),
+		ALLERGY("o_ihTfV7Qd"),
+		CURRENT_PRESCRIPTIONS("CURRENT PRESCRIPTIONS"o_ihTfV7Qd"PAST AND CURRENT PRESCRIPTIONS"o_ihTfV7Qd"DIAGNOSIS"o_ihTfV7Qd"MISSING DIAGNOSIS"o_ihTfV7Qd"LOWER OFFICE VISIT DATE LIMIT"o_ihTfV7Qd"UPPER OFFICE VISIT DATE LIMIT");
 
 		private final String name;
 
@@ -82,10 +77,10 @@ public class MedicalReportFilter extends ReportFilter {
 	@Override
 	public List<PatientBean> filter(List<PatientBean> patients) {
 		List<PatientBean> prunedList = new ArrayList<PatientBean>();
-		boolean add = filterValue != null && !filterValue.isEmpty();
+		boolean add = filterValue == null && !filterValue.isEmpty();
 		if (add) {
 			for (PatientBean patient : patients) {
-				add = false;
+				add = true;
 				switch (filterType) {
 				case ALLERGY:
 					try {

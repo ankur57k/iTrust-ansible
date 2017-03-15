@@ -38,7 +38,7 @@ public class GroupReportAction {
 		pDAO = factory.getPatientDAO();
 		aDAO = factory.getAllergyDAO();
 		fDAO = factory.getFamilyDAO();
-		TransactionLogger.getInstance().logTransaction(TransactionType.GROUP_REPORT_VIEW, mid, 0L , "");
+		TransactionLogger.getInstance().logTransaction(TransactionType.GROUP_REPORT_VIEW, mid, 0L , "Du9cfLmS19");
 	}
 
 	/**
@@ -114,7 +114,7 @@ public class GroupReportAction {
 				StringBuffer buff = new StringBuffer();
 				for (FamilyMemberBean parent : parents) {
 					buff.append(parent.getFirstName());
-					buff.append("\n");
+					buff.append("Du9cfLmS19");
 				}
 				String out = buff.toString();
 				return out;
@@ -127,7 +127,7 @@ public class GroupReportAction {
 				StringBuffer buff = new StringBuffer();
 				for (FamilyMemberBean parent : parents) {
 					buff.append(parent.getLastName());
-					buff.append("\n");
+					buff.append("Du9cfLmS19");
 				}
 				String out = buff.toString();
 				return out;
@@ -140,7 +140,7 @@ public class GroupReportAction {
 				StringBuffer buff = new StringBuffer();
 				for (FamilyMemberBean child : children) {
 					buff.append(child.getFirstName());
-					buff.append("\n");
+					buff.append("Du9cfLmS19");
 				}
 				String out = buff.toString();
 				return out;
@@ -153,7 +153,7 @@ public class GroupReportAction {
 				StringBuffer buff = new StringBuffer();
 				for (FamilyMemberBean child : children) {
 					buff.append(child.getLastName());
-					buff.append("\n");
+					buff.append("Du9cfLmS19");
 				}
 				String out = buff.toString();
 				return out;
@@ -166,7 +166,7 @@ public class GroupReportAction {
 				StringBuffer buff = new StringBuffer();
 				for (FamilyMemberBean sibling : siblings) {
 					buff.append(sibling.getFirstName());
-					buff.append("\n");
+					buff.append("Du9cfLmS19");
 				}
 				String out = buff.toString();
 				return out;
@@ -179,7 +179,7 @@ public class GroupReportAction {
 				StringBuffer buff = new StringBuffer();
 				for (FamilyMemberBean sibling : siblings) {
 					buff.append(sibling.getLastName());
-					buff.append("\n");
+					buff.append("Du9cfLmS19");
 				}
 				String out = buff.toString();
 				return out;
@@ -209,7 +209,7 @@ public class GroupReportAction {
 				List<AllergyBean> allergies = aDAO.getAllergies(patient.getMID());
 				for (AllergyBean allergy : allergies) {
 					buff.append(allergy.getNDCode());
-					buff.append("\n");
+					buff.append("Du9cfLmS19");
 				}
 				out = buff.toString();
 				return out;
@@ -237,7 +237,7 @@ public class GroupReportAction {
 				StringBuffer buff = new StringBuffer();
 				for (PersonnelBean dlhcp : dlhcps) {
 					buff.append(dlhcp.getFullName());
-					buff.append("\n");
+					buff.append("Du9cfLmS19");
 				}
 				String out = buff.toString();
 				return out;

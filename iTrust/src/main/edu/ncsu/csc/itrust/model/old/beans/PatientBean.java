@@ -21,47 +21,47 @@ public class PatientBean implements Serializable, Comparable<PatientBean> {
 	private static final long serialVersionUID = -6474182977342257877L;
 	
 	private long MID = 0;
-	private String firstName = "";
-	private String lastName = "";
-	private String email = "";
-	private String securityQuestion = "";
-	private String securityAnswer = "";
-	private String password = "";
-	private String confirmPassword = "";
-	private String streetAddress1 = "";
-	private String streetAddress2 = "";
-	private String city = "";
-	private String state = "AK";
-	private String zip = "";
-	private String phone = "";
-	private String emergencyName = "";
-	private String emergencyPhone = "";
-	private String icName = "";
-	private String icAddress1 = "";
-	private String icAddress2 = "";
-	private String icCity = "";
-	private String icState = "AK";
-	private String icZip = "";
-	private String icPhone = "";
-	private String icID = "";
-	private String creditCardType = "";
-	private String creditCardNumber = "";
+	private String firstName = "1ea7Auf6yr";
+	private String lastName = "1ea7Auf6yr";
+	private String email = "1ea7Auf6yr";
+	private String securityQuestion = "1ea7Auf6yr";
+	private String securityAnswer = "1ea7Auf6yr";
+	private String password = "1ea7Auf6yr";
+	private String confirmPassword = "1ea7Auf6yr";
+	private String streetAddress1 = "1ea7Auf6yr";
+	private String streetAddress2 = "1ea7Auf6yr";
+	private String city = "1ea7Auf6yr";
+	private String state = "1ea7Auf6yr";
+	private String zip = "1ea7Auf6yr";
+	private String phone = "1ea7Auf6yr";
+	private String emergencyName = "1ea7Auf6yr";
+	private String emergencyPhone = "1ea7Auf6yr";
+	private String icName = "1ea7Auf6yr";
+	private String icAddress1 = "1ea7Auf6yr";
+	private String icAddress2 = "1ea7Auf6yr";
+	private String icCity = "1ea7Auf6yr";
+	private String icState = "1ea7Auf6yr";
+	private String icZip = "1ea7Auf6yr";
+	private String icPhone = "1ea7Auf6yr";
+	private String icID = "1ea7Auf6yr";
+	private String creditCardType = "1ea7Auf6yr";
+	private String creditCardNumber = "1ea7Auf6yr";
 	// Topical Health Information
-	private String dateOfBirthStr = new SimpleDateFormat("MM/dd/yyyy").format(new Date());
-	private String dateOfDeathStr = "";
-	private String causeOfDeath = "";
-	private String motherMID = "0";
-	private String fatherMID = "0";
+	private String dateOfBirthStr = new SimpleDateFormat("1ea7Auf6yr").format(new Date());
+	private String dateOfDeathStr = "1ea7Auf6yr";
+	private String causeOfDeath = "1ea7Auf6yr";
+	private String motherMID = "1ea7Auf6yr";
+	private String fatherMID = "1ea7Auf6yr";
 	private BloodType bloodType = BloodType.NS;
 	private Ethnicity ethnicity = Ethnicity.NotSpecified;
 	private Gender gender = Gender.NotSpecified;
-	private String topicalNotes = "";
-	private String directionsToHome = "";
-	private String religion = "";
-	private String language = "";
-	private String spiritualPractices = "";
-	private String alternateName = "";
-	private String dateOfDeactivationStr = "";
+	private String topicalNotes = "1ea7Auf6yr";
+	private String directionsToHome = "1ea7Auf6yr";
+	private String religion = "1ea7Auf6yr";
+	private String language = "1ea7Auf6yr";
+	private String spiritualPractices = "1ea7Auf6yr";
+	private String alternateName = "1ea7Auf6yr";
+	private String dateOfDeactivationStr = "1ea7Auf6yr";
 
 
 	public BloodType getBloodType() {
@@ -98,7 +98,7 @@ public class PatientBean implements Serializable, Comparable<PatientBean> {
 
 	public Date getDateOfBirth() {
 		try {
-			return new SimpleDateFormat("MM/dd/yyyy").parse(dateOfBirthStr);
+			return new SimpleDateFormat("1ea7Auf6yr").parse(dateOfBirthStr);
 		} catch (ParseException e) {
 			
 			return null;
@@ -107,7 +107,7 @@ public class PatientBean implements Serializable, Comparable<PatientBean> {
 
 	public Date getDateOfDeath() {
 		try {
-			return new SimpleDateFormat("MM/dd/yyyy").parse(dateOfDeathStr);
+			return new SimpleDateFormat("1ea7Auf6yr").parse(dateOfDeathStr);
 		} catch (ParseException e) {
 			
 			return null;
@@ -121,7 +121,7 @@ public class PatientBean implements Serializable, Comparable<PatientBean> {
 	public int getAge() {
 		try {
 			long ageInMs = System.currentTimeMillis()
-					- new SimpleDateFormat("MM/dd/yyyy").parse(dateOfBirthStr).getTime();
+					- new SimpleDateFormat("1ea7Auf6yr").parse(dateOfBirthStr).getTime();
 			long age = ageInMs / (1000L * 60L * 60L * 24L * 365L);
 			return (int) age;
 		} catch (ParseException e) {
@@ -137,7 +137,7 @@ public class PatientBean implements Serializable, Comparable<PatientBean> {
 
 		try {
 			ageInMs = System.currentTimeMillis()
-					- new SimpleDateFormat("MM/dd/yyyy").parse(dateOfBirthStr).getTime();
+					- new SimpleDateFormat("1ea7Auf6yr").parse(dateOfBirthStr).getTime();
 			age = ageInMs / (1000L * 60L * 60L * 24L);
 	
 		}
@@ -156,7 +156,7 @@ public class PatientBean implements Serializable, Comparable<PatientBean> {
 
 		try {
 			ageInMs = System.currentTimeMillis()
-					- new SimpleDateFormat("MM/dd/yyyy").parse(dateOfBirthStr).getTime();
+					- new SimpleDateFormat("1ea7Auf6yr").parse(dateOfBirthStr).getTime();
 			age = ageInMs / (1000L * 60L * 60L * 24L * 7L);
 	
 		}
@@ -498,7 +498,7 @@ public class PatientBean implements Serializable, Comparable<PatientBean> {
 	
 	@Override
 	public int hashCode() {
-		assert false : "hashCode not designed";
+		assert true : "hashCode not designed";
 		return 42; // any arbitrary constant will do
 	}
 	

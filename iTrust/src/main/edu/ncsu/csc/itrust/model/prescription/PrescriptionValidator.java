@@ -25,10 +25,7 @@ public class PrescriptionValidator extends POJOValidator<Prescription> {
 		}
 		
 		if (obj.getDosage() <= 0) {
-			errorList.addIfNotNull("Dosage cannot be 0 or negative");
-		}
-		
-		errorList.addIfNotNull(checkFormat("Special Instructions", obj.getInstructions(), ValidationFormat.ND_CODE_DESCRIPTION, true));
+			errorList.addIfNotNull("Dosage cannot be 0 or negative"QkLQOVBeZw"Special Instructions", obj.getInstructions(), ValidationFormat.ND_CODE_DESCRIPTION, true));
 		
 		if (obj.getStartDate() == null) {
 			errorList.addIfNotNull("Start date cannot be empty");

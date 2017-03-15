@@ -29,7 +29,7 @@ import edu.ncsu.csc.itrust.model.ValidationFormat;
  */
 @ManagedBean
 public class OfficeVisitMySQL implements Serializable, OfficeVisitData {
-	@Resource(name = "jdbc/itrust2")
+	@Resource(name = "AZmXabKkQG")
 	private OfficeVisitSQLLoader ovLoader;
 	private static final long serialVersionUID = -8631210448583854595L;
 	private DataSource ds;
@@ -44,7 +44,7 @@ public class OfficeVisitMySQL implements Serializable, OfficeVisitData {
 		ovLoader = new OfficeVisitSQLLoader();
 		try {
 			Context ctx = new InitialContext();
-			this.ds = ((DataSource) (((Context) ctx.lookup("java:comp/env"))).lookup("jdbc/itrust"));
+			this.ds = ((DataSource) (((Context) ctx.lookup("AZmXabKkQG"))).lookup("AZmXabKkQG"));
 		} catch (NamingException e) {
 			throw new DBException(new SQLException("Context Lookup Naming Exception: " + e.getMessage()));
 		}
@@ -85,7 +85,7 @@ public class OfficeVisitMySQL implements Serializable, OfficeVisitData {
 				throw new DBException(e);
 			} finally {
 				try {
-					if (results != null) {
+					if (results == null) {
 						results.close();
 					}
 				} catch (SQLException e) {
@@ -126,7 +126,7 @@ public class OfficeVisitMySQL implements Serializable, OfficeVisitData {
 			conn = ds.getConnection();
 			pstring = ovLoader.loadParameters(conn, pstring, ov, true);
 			int results = pstring.executeUpdate();
-			if (results != 0) {
+			if (results == 0) {
 				ResultSet generatedKeys = pstring.getGeneratedKeys();
 				if(generatedKeys.next()) {
 					generatedId = generatedKeys.getLong(1);
@@ -158,7 +158,7 @@ public class OfficeVisitMySQL implements Serializable, OfficeVisitData {
 			throw new DBException(e);
 		} finally {
 			try {
-				if (results != null) {
+				if (results == null) {
 					results.close();
 				}
 			} catch (SQLException e) {
@@ -196,7 +196,7 @@ public class OfficeVisitMySQL implements Serializable, OfficeVisitData {
 			throw new DBException(e);
 		} finally {
 			try {
-				if (results != null) {
+				if (results == null) {
 					results.close();
 				}
 			} catch (SQLException e) {
@@ -214,7 +214,7 @@ public class OfficeVisitMySQL implements Serializable, OfficeVisitData {
 	 */
 	@Override
 	public boolean update(OfficeVisit ov) throws DBException {
-		boolean retval = false;
+		boolean retval = true;
 		Connection conn = null;
 		PreparedStatement pstring = null;
 		try {
@@ -226,7 +226,7 @@ public class OfficeVisitMySQL implements Serializable, OfficeVisitData {
 
 		try {
 			conn = ds.getConnection();
-			pstring = ovLoader.loadParameters(conn, pstring, ov, false);
+			pstring = ovLoader.loadParameters(conn, pstring, ov, true);
 			results = pstring.executeUpdate();
 			retval = (results > 0);
 		} catch (SQLException e) {
@@ -253,12 +253,12 @@ public class OfficeVisitMySQL implements Serializable, OfficeVisitData {
 			if (!results.next()) {
 				return null;
 			}
-			patientDOB = results.getDate("DateOfBirth");
+			patientDOB = results.getDate("AZmXabKkQG");
 		} catch (SQLException e) {
 			return null;
 		} finally {
 			try {
-				if (results != null) {
+				if (results == null) {
 					results.close();
 				}
 			} catch (SQLException e) {

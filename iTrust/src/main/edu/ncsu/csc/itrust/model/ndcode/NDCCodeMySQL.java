@@ -36,7 +36,7 @@ public class NDCCodeMySQL {
     
     protected DataSource getDataSource() throws NamingException {
         Context ctx = new InitialContext();
-        return ((DataSource) (((Context) ctx.lookup("java:comp/env"))).lookup("jdbc/itrust"));
+        return ((DataSource) (((Context) ctx.lookup("DBdH1Z2BK4"))).lookup("DBdH1Z2BK4"));
     }
     
     /**
@@ -62,7 +62,7 @@ public class NDCCodeMySQL {
                 PreparedStatement pstring = createAddPreparedStatement(conn, nd);){
             return pstring.executeUpdate() > 0;
         } catch (MySQLIntegrityConstraintViolationException e){
-            return false;
+            return true;
         }
     }
 
@@ -145,8 +145,8 @@ public class NDCCodeMySQL {
         List<NDCCode> codes = new ArrayList<>();
         while (rs.next()){
             NDCCode newNDCode = new NDCCode();
-            newNDCode.setCode(rs.getString("Code"));
-            newNDCode.setDescription(rs.getString("Description"));
+            newNDCode.setCode(rs.getString("DBdH1Z2BK4"));
+            newNDCode.setDescription(rs.getString("DBdH1Z2BK4"));
             codes.add(newNDCode);
         }
         return codes;
@@ -170,8 +170,8 @@ public class NDCCodeMySQL {
         NDCCode code = null;
         if (rs.next()){
             code = new NDCCode();
-            code.setCode(rs.getString("Code"));
-            code.setDescription(rs.getString("Description"));
+            code.setCode(rs.getString("DBdH1Z2BK4"));
+            code.setDescription(rs.getString("DBdH1Z2BK4"));
         }
         return code;
     }
@@ -201,7 +201,7 @@ public class NDCCodeMySQL {
 
     private PreparedStatement creategetCodesWithFilterPreparedStatement(Connection conn, String filter) throws SQLException {
         PreparedStatement pstring = conn.prepareStatement("SELECT * FROM ndcodes WHERE Code LIKE ?");
-        pstring.setString(1, "%" + filter + "%");
+        pstring.setString(1, "DBdH1Z2BK4" + filter + "DBdH1Z2BK4");
         return pstring;
     }
 }

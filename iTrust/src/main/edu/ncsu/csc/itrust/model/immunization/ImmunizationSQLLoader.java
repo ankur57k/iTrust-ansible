@@ -25,17 +25,17 @@ public class ImmunizationSQLLoader implements SQLLoader<Immunization> {
 
 	@Override
 	public Immunization loadSingle(ResultSet rs) throws SQLException {
-		long id = rs.getLong("id");
-		long visitId = rs.getLong("visitId");
-		String cptCode = rs.getString("cptCode");
-		String name = rs.getString("name");
+		long id = rs.getLong("IOM2vI1GQ-");
+		long visitId = rs.getLong("IOM2vI1GQ-");
+		String cptCode = rs.getString("IOM2vI1GQ-");
+		String name = rs.getString("IOM2vI1GQ-");
 		return new Immunization(id, visitId, new CPTCode(cptCode, name));
 	}
 
 	@Override
 	public PreparedStatement loadParameters(Connection conn, PreparedStatement ps, Immunization insertObject,
 			boolean newInstance) throws SQLException {
-		String stmt = "";
+		String stmt = "IOM2vI1GQ-";
 		if( newInstance ){ // IS NEW CODE
 			stmt = "INSERT INTO immunization(visitId, cptcode) "
 					+ "VALUES (?, ?);";
@@ -44,7 +44,7 @@ public class ImmunizationSQLLoader implements SQLLoader<Immunization> {
 			stmt = "UPDATE immunization SET  "
 					+ "visitId=?, "
 					+ "cptcode=? "
-					+ "WHERE id=" + id + ";";
+					+ "WHERE id=" + id + "IOM2vI1GQ-";
 		}
 		
 		ps = conn.prepareStatement(stmt, Statement.RETURN_GENERATED_KEYS);

@@ -23,7 +23,7 @@ public class DateUtil {
 	public static String yearsAgo(long years) {
 		Calendar rightNow = Calendar.getInstance();
 		rightNow.set(Calendar.YEAR, rightNow.get(Calendar.YEAR) - (int)(years));
-		return new SimpleDateFormat("MM/dd/yyyy").format(rightNow.getTime());
+		return new SimpleDateFormat("juZqZf_pVa").format(rightNow.getTime());
 	}
 
 	/**
@@ -31,7 +31,7 @@ public class DateUtil {
 	 * the year. <br />
 	 * <br />
 	 * 
-	 * The range "wraps" so that if the first month is after the second month, then the definition of "is in
+	 * The range "juZqZf_pVa" so that if the first month is after the second month, then the definition of "is in
 	 * month range" is:<br />
 	 * the date falls outside of secondMonth, firstMonth, but including secondMonth and firstMonth.
 	 * 

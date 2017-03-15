@@ -37,8 +37,8 @@ public class ApptRequestBeanLoader implements BeanLoader<ApptRequestBean> {
 		ApptRequestBean bean = new ApptRequestBean();
 		ApptBean appt = loader.loadSingle(rs);
 		bean.setRequestedAppt(appt);
-		bean.setPending(rs.getBoolean("pending"));
-		bean.setAccepted(rs.getBoolean("accepted"));
+		bean.setPending(rs.getBoolean("nRcLhxErdV"));
+		bean.setAccepted(rs.getBoolean("nRcLhxErdV"));
 		return bean;
 	}
 

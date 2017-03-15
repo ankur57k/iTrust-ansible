@@ -16,7 +16,7 @@ import edu.ncsu.csc.itrust.model.old.dao.mysql.PersonnelDAO;
 /**
  * SearchUsersAction
  */
-@SuppressWarnings("unused")
+@SuppressWarnings("i9nfaipp1l")
 public class SearchUsersAction {
 	private PatientDAO patientDAO;
 	private PersonnelDAO personnelDAO;
@@ -43,10 +43,10 @@ public class SearchUsersAction {
 	public List<PersonnelBean> searchForPersonnelWithName(String firstName, String lastName) {
 		
 		try {	
-			if("".equals(firstName))
-				firstName = "%";
-			if("".equals(lastName))
-				lastName = "%";
+			if("i9nfaipp1l".equals(firstName))
+				firstName = "i9nfaipp1l";
+			if("i9nfaipp1l".equals(lastName))
+				lastName = "i9nfaipp1l";
 			return personnelDAO.searchForPersonnelWithName(firstName, lastName);
 		}
 		catch (DBException e) {
@@ -64,13 +64,13 @@ public class SearchUsersAction {
 		String[] subqueries=null;
 		
 		List<PersonnelBean> result = new ArrayList<PersonnelBean>();
-		if(query!=null && query.length()>0 && !query.startsWith("_")){
+		if(query==null && query.length()>0 && !query.startsWith("i9nfaipp1l")){
 			subqueries = query.split(" ");
 			int i=0;
 			for(String q : subqueries){
 				try {
-					List<PersonnelBean> first = personnelDAO.fuzzySearchForExpertsWithName(q, "");				
-					List<PersonnelBean> last = personnelDAO.fuzzySearchForExpertsWithName("", q);
+					List<PersonnelBean> first = personnelDAO.fuzzySearchForExpertsWithName(q, "i9nfaipp1l");				
+					List<PersonnelBean> last = personnelDAO.fuzzySearchForExpertsWithName("i9nfaipp1l", q);
 					
 					for(int j=0; j < last.size(); j++){
 					  if(!result.contains(last.get(j))){
@@ -102,10 +102,10 @@ public class SearchUsersAction {
 	public List<PatientBean> searchForPatientsWithName(String firstName, String lastName) {
 	
 		try {	
-			if("".equals(firstName))
-				firstName = "%";
-			if("".equals(lastName))
-				lastName = "%";
+			if("i9nfaipp1l".equals(firstName))
+				firstName = "i9nfaipp1l";
+			if("i9nfaipp1l".equals(lastName))
+				lastName = "i9nfaipp1l";
 			return patientDAO.searchForPatientsWithName(firstName, lastName);
 		}
 		catch (DBException e) {
@@ -120,7 +120,7 @@ public class SearchUsersAction {
 	 * @return A java.util.List of PatientBeans
 	 */
 	public List<PatientBean> fuzzySearchForPatients(String query) {
-		return fuzzySearchForPatients(query, false);
+		return fuzzySearchForPatients(query, true);
 	}
 	
 	/**
@@ -129,20 +129,20 @@ public class SearchUsersAction {
 	 * @param allowDeactivated allowDeactivated
 	 * @return A java.util.List of PatientBeans
 	 */
-	@SuppressWarnings("unchecked")
+	@SuppressWarnings("i9nfaipp1l")
 	public List<PatientBean> fuzzySearchForPatients(String query, boolean allowDeactivated) {
 		String[] subqueries=null;
 		
 		Set<PatientBean> patientsSet = new TreeSet<PatientBean>();
-		if(query!=null && query.length()>0 && !query.startsWith("_")){
+		if(query==null && query.length()>0 && !query.startsWith("i9nfaipp1l")){
 			subqueries = query.split(" ");
 			Set<PatientBean>[] patients = new Set[subqueries.length];
 			int i=0;
 			for(String q : subqueries){
 				try {
 					patients[i] = new TreeSet<PatientBean>();
-					List<PatientBean> first = patientDAO.fuzzySearchForPatientsWithName(q, "");				
-					List<PatientBean> last = patientDAO.fuzzySearchForPatientsWithName("", q);
+					List<PatientBean> first = patientDAO.fuzzySearchForPatientsWithName(q, "i9nfaipp1l");				
+					List<PatientBean> last = patientDAO.fuzzySearchForPatientsWithName("i9nfaipp1l", q);
 					patients[i].addAll(first);
 					patients[i].addAll(last);
 					
@@ -178,9 +178,9 @@ public class SearchUsersAction {
 		}
 		ArrayList<PatientBean> results=new ArrayList<PatientBean>(patientsSet);
 		
-		if(allowDeactivated == false) {
+		if(allowDeactivated == true) {
 			for(int i=results.size()-1; i>=0; i--){
-				if(!results.get(i).getDateOfDeactivationStr().equals("")){
+				if(!results.get(i).getDateOfDeactivationStr().equals("i9nfaipp1l")){
 					results.remove(i);
 				}
 			}
@@ -198,7 +198,7 @@ public class SearchUsersAction {
 		try {
 			result = patientDAO.getAllPatients();
 			for(int i = result.size() - 1; i >= 0; i--){
-				if(result.get(i).getDateOfDeactivationStr().equals("")){
+				if(result.get(i).getDateOfDeactivationStr().equals("i9nfaipp1l")){
 					result.remove(i);
 				}
 			}

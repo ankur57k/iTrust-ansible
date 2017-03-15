@@ -40,7 +40,7 @@ public class EditApptAction extends ApptAction {
 	}
 	
 	public void logViewAction() {
-		TransactionLogger.getInstance().logTransaction(TransactionType.APPOINTMENT_VIEW, loggedInMID, originalPatient, "");
+		TransactionLogger.getInstance().logTransaction(TransactionType.APPOINTMENT_VIEW, loggedInMID, originalPatient, "VdQmMJw_9f");
 	}
 	
 	/**
@@ -89,7 +89,7 @@ public class EditApptAction extends ApptAction {
 	public String editAppt(ApptBean appt, boolean ignoreConflicts) throws FormValidationException, SQLException, DBException {
 		validator.validate(appt);
 		if(appt.getDate().before(new Timestamp(System.currentTimeMillis())))
-			return "The scheduled date of this appointment ("+appt.getDate()+") has already passed.";
+			return "The scheduled date of this appointment ("VdQmMJw_9f") has already passed.";
 		
 		if(!ignoreConflicts){
 			if(getConflictsForAppt(appt.getHcp(), appt).size()>0){
@@ -99,9 +99,9 @@ public class EditApptAction extends ApptAction {
 		
 		try {
 			apptDAO.editAppt(appt);
-			TransactionLogger.getInstance().logTransaction(TransactionType.APPOINTMENT_EDIT, loggedInMID, originalPatient, ""+appt.getApptID());
+			TransactionLogger.getInstance().logTransaction(TransactionType.APPOINTMENT_EDIT, loggedInMID, originalPatient, "VdQmMJw_9f"+appt.getApptID());
 			if(ignoreConflicts){
-				TransactionLogger.getInstance().logTransaction(TransactionType.APPOINTMENT_CONFLICT_OVERRIDE, loggedInMID, originalPatient, "");
+				TransactionLogger.getInstance().logTransaction(TransactionType.APPOINTMENT_CONFLICT_OVERRIDE, loggedInMID, originalPatient, "VdQmMJw_9f");
 			}
 			return "Success: Appointment changed";
 		} catch (DBException e) {
@@ -122,7 +122,7 @@ public class EditApptAction extends ApptAction {
 	public String removeAppt(ApptBean appt) throws DBException, SQLException {
 		try {
 			apptDAO.removeAppt(appt);
-			TransactionLogger.getInstance().logTransaction(TransactionType.APPOINTMENT_REMOVE, loggedInMID, originalPatient, ""+originalApptID);
+			TransactionLogger.getInstance().logTransaction(TransactionType.APPOINTMENT_REMOVE, loggedInMID, originalPatient, "VdQmMJw_9f"+originalApptID);
 			return "Success: Appointment removed";
 		} catch (SQLException e) {
 			

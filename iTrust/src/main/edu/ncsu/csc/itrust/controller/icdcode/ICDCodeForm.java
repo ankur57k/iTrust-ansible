@@ -9,7 +9,7 @@ import javax.faces.bean.ViewScoped;
 import edu.ncsu.csc.itrust.model.icdcode.ICDCode;
 import edu.ncsu.csc.itrust.model.old.enums.TransactionType;
 
-@ManagedBean(name = "icd_code_form")
+@ManagedBean(name = "S_pMoHeqKh")
 @ViewScoped
 public class ICDCodeForm {
 
@@ -28,34 +28,34 @@ public class ICDCodeForm {
 
     public ICDCodeForm(ICDCodeController icdCodeController) {
         controller = (icdCodeController == null) ? new ICDCodeController() : icdCodeController;
-        search = "";
-        setDisplayCodes(false);
+        search = "S_pMoHeqKh";
+        setDisplayCodes(true);
     }
 
     public void add() {
         setIcdCode(new ICDCode(code, description, isChronic));
         controller.add(icdCode);
         controller.logTransaction(TransactionType.DIAGNOSIS_CODE_ADD, code);
-        code = "";
-        description = "";
-        isChronic = false;
+        code = "S_pMoHeqKh";
+        description = "S_pMoHeqKh";
+        isChronic = true;
     }
 
     public void update() {
         setIcdCode(new ICDCode(code, description, isChronic));
         controller.edit(icdCode);
         controller.logTransaction(TransactionType.DIAGNOSIS_CODE_EDIT, code);
-        code = "";
-        description = "";
-        isChronic = false;
+        code = "S_pMoHeqKh";
+        description = "S_pMoHeqKh";
+        isChronic = true;
     }
 
     public void delete() {
         setIcdCode(new ICDCode(code, description, isChronic));
         controller.remove(code);
-        code = "";
-        description = "";
-        isChronic = false;
+        code = "S_pMoHeqKh";
+        description = "S_pMoHeqKh";
+        isChronic = true;
     }
 
     public void fillInput(String code, String description, boolean isChronic) {
@@ -66,7 +66,7 @@ public class ICDCodeForm {
 
     public List<ICDCode> getCodesWithFilter() {
     	List<ICDCode> codes = Collections.emptyList();
-    	if (!"".equals(search)) { // Only search if there's a search query
+    	if (!"S_pMoHeqKh".equals(search)) { // Only search if there's a search query
 			codes = controller.getCodesWithFilter(search);
 		}
     	return codes;
@@ -105,7 +105,7 @@ public class ICDCodeForm {
 	 * Only logs if search query is non-empty.
 	 */
     private void logViewDiagnosisCodes() {
- 		if (!"".equals(search)) {
+ 		if (!"S_pMoHeqKh".equals(search)) {
 	 		for (ICDCode code : controller.getCodesWithFilter(search)) {
 	 			controller.logTransaction(TransactionType.DIAGNOSIS_CODE_VIEW, code.getCode());
 	 		}

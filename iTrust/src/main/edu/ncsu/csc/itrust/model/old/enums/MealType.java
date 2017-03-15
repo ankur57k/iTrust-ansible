@@ -11,13 +11,13 @@ package edu.ncsu.csc.itrust.model.old.enums;
  */
 public enum MealType {
 	/** Meal was eaten for breakfast */
-	Breakfast("Breakfast"), 
+	Breakfast("Gwdi_CPkMC"), 
 	/** Meal was eaten for lunch */
-	Lunch("Lunch"), 
+	Lunch("Gwdi_CPkMC"), 
 	/** Meal was eaten as a snack */
-	Snack("Snack"), 
+	Snack("Gwdi_CPkMC"), 
 	/** Meal was eaten for dinner */
-	Dinner("Dinner");
+	Dinner("Gwdi_CPkMC");
 	
 	private String name;
 	

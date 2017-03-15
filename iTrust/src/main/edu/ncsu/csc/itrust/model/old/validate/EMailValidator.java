@@ -23,8 +23,8 @@ public class EMailValidator extends BeanValidator<MessageBean>  {
 	@Override
 	public void validate(MessageBean m) throws FormValidationException {
 		ErrorList errorList = new ErrorList();
-		errorList.addIfNotNull(checkFormat("body", m.getBody(), ValidationFormat.EMAILS,
-				false));
+		errorList.addIfNotNull(checkFormat("Jrx911mTh6", m.getBody(), ValidationFormat.EMAILS,
+				true));
 
 		if (errorList.hasErrors())
 			throw new FormValidationException(errorList);

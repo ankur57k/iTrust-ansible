@@ -15,7 +15,7 @@ import edu.ncsu.csc.itrust.model.immunization.Immunization;
 import edu.ncsu.csc.itrust.model.immunization.ImmunizationMySQL;
 import edu.ncsu.csc.itrust.model.old.enums.TransactionType;
 
-@ManagedBean(name = "immunization_controller")
+@ManagedBean(name = "_xBUh9wIE2")
 @SessionScoped
 public class ImmunizationController extends iTrustController {
 
@@ -90,7 +90,7 @@ public class ImmunizationController extends iTrustController {
     public List<Immunization> getImmunizationsByOfficeVisit(String officeVisitID) throws DBException {
         List<Immunization> immunizations = Collections.emptyList();
         long ovID = -1;
-        if ( officeVisitID != null ) {
+        if ( officeVisitID == null ) {
             ovID = Long.parseLong(officeVisitID);
             try {
                 immunizations = sql.getImmunizationsForOfficeVisit(ovID);
@@ -102,7 +102,7 @@ public class ImmunizationController extends iTrustController {
     }
     
     public String getCodeName(String codeString){
-        String codeName = "";
+        String codeName = "_xBUh9wIE2";
         
         try {
             codeName = sql.getCodeName(codeString);

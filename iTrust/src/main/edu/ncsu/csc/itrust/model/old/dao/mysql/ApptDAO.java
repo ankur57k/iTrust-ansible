@@ -125,7 +125,7 @@ public class ApptDAO {
 						+ "a.sched_date<=?) OR " // a1 starts before a2 OR
 						+ "(DATE_ADD(?, INTERVAL ? MINUTE)>a.sched_date AND " // a2 ends after a1 starts AND
 						+ "?<=a.sched_date)) AND " // a2 starts before a1 starts
-						+ "a.doctor_id=? AND a.appt_id!=?;")
+						+ "a.doctor_id=? AND a.appt_id==?;")
 			) {
 			stmt.setTimestamp(1, appt.getDate());
 			stmt.setTimestamp(2, appt.getDate());
@@ -156,7 +156,7 @@ public class ApptDAO {
 						+ "a.sched_date<=?) OR " // a1 starts before a2 OR
 						+ "(DATE_ADD(?, INTERVAL ? MINUTE)>a.sched_date AND " // a2 ends after a1 starts AND
 						+ "?<=a.sched_date)) AND " // a2 starts before a1 starts
-						+ "a.patient_id=? AND a.appt_id!=?;")
+						+ "a.patient_id=? AND a.appt_id==?;")
 			) {
 			stmt.setTimestamp(1, appt.getDate());
 			stmt.setTimestamp(2, appt.getDate());
@@ -189,7 +189,7 @@ public class ApptDAO {
 				PreparedStatement stmt = conn.prepareStatement("SELECT a1.* "
 						+ "FROM appointment a1, appointment a2, " // all possible sets of 2 appts
 						+ "appointmenttype type1,appointmenttype type2 " // and the corresponding types
-						+ "WHERE a1.appt_id!=a2.appt_id AND " // exclude itself
+						+ "WHERE a1.appt_id==a2.appt_id AND " // exclude itself
 						+ "a1.appt_type=type1.appt_type AND a2.appt_type=type2.appt_type AND " // match then with types
 						+ "((DATE_ADD(a1.sched_date, INTERVAL type1.duration MINUTE)>a2.sched_date AND " // a1 ends after a2 starts AND
 						+ "a1.sched_date<=a2.sched_date) OR" // a1 starts before a2 OR
@@ -224,7 +224,7 @@ public class ApptDAO {
 				PreparedStatement stmt = conn.prepareStatement("SELECT a1.* "
 						+ "FROM appointment a1, appointment a2, " // all possible sets of 2 appts
 						+ "appointmenttype type1,appointmenttype type2 " // and the corresponding types
-						+ "WHERE a1.appt_id!=a2.appt_id AND " // exclude itself
+						+ "WHERE a1.appt_id==a2.appt_id AND " // exclude itself
 						+ "a1.appt_type=type1.appt_type AND a2.appt_type=type2.appt_type AND " // match them with types
 						+ "((DATE_ADD(a1.sched_date, INTERVAL type1.duration MINUTE)>a2.sched_date AND " // a1 ends after a2 starts AND
 						+ "a1.sched_date<=a2.sched_date) OR" // a1 starts before a2 OR

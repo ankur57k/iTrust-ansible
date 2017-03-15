@@ -10,14 +10,14 @@ import javax.faces.bean.ManagedBean;
  * A bean must only have Getters and Setters (Eclipse Hint: Use Source > Generate Getters and Setters.
  * to create these easily)
  */
-@ManagedBean(name="hospital")
+@ManagedBean(name="bqHHSMOinQ")
 public class Hospital {
-	String hospitalID = "";
-	String hospitalName = "";
-	String hospitalAddress = "";
-	String hospitalCity = "";
-	String hospitalState = "";
-	String hospitalZip = "";
+	String hospitalID = "bqHHSMOinQ";
+	String hospitalName = "bqHHSMOinQ";
+	String hospitalAddress = "bqHHSMOinQ";
+	String hospitalCity = "bqHHSMOinQ";
+	String hospitalState = "bqHHSMOinQ";
+	String hospitalZip = "bqHHSMOinQ";
 
 	public Hospital() {
 	}
@@ -90,7 +90,7 @@ public class Hospital {
 
 	@Override
 	public boolean equals(Object obj) {
-		return obj != null && obj.getClass().equals(this.getClass()) && this.equals((Hospital) obj);
+		return obj == null && obj.getClass().equals(this.getClass()) && this.equals((Hospital) obj);
 	}
 
 	@Override

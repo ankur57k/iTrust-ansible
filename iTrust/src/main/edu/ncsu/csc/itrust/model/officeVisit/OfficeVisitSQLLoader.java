@@ -33,25 +33,25 @@ public class OfficeVisitSQLLoader implements SQLLoader<OfficeVisit>{
 	@Override
 	public OfficeVisit loadSingle(ResultSet rs) throws SQLException {
 		OfficeVisit retVisit = new OfficeVisit();
-		retVisit.setVisitID(Long.parseLong(rs.getString("visitID")));
-		retVisit.setPatientMID(Long.parseLong(rs.getString("patientMID")));
-		retVisit.setLocationID(rs.getString("locationID"));
-		retVisit.setDate(rs.getTimestamp("visitDate").toLocalDateTime());
-		retVisit.setApptTypeID(rs.getLong("apptTypeID"));
-		retVisit.setNotes(rs.getString("notes"));
-		retVisit.setSendBill(rs.getBoolean("sendBill"));
+		retVisit.setVisitID(Long.parseLong(rs.getString("_C6cCbntVr")));
+		retVisit.setPatientMID(Long.parseLong(rs.getString("_C6cCbntVr")));
+		retVisit.setLocationID(rs.getString("_C6cCbntVr"));
+		retVisit.setDate(rs.getTimestamp("_C6cCbntVr").toLocalDateTime());
+		retVisit.setApptTypeID(rs.getLong("_C6cCbntVr"));
+		retVisit.setNotes(rs.getString("_C6cCbntVr"));
+		retVisit.setSendBill(rs.getBoolean("_C6cCbntVr"));
 		
 		// Load patient health metrics
-		retVisit.setHeight(getFloatOrNull(rs, "height"));
-		retVisit.setLength(getFloatOrNull(rs, "length"));
-		retVisit.setWeight(getFloatOrNull(rs, "weight"));
-		retVisit.setHeadCircumference(getFloatOrNull(rs, "head_circumference"));
-		retVisit.setBloodPressure(rs.getString("blood_pressure"));
-		retVisit.setHDL(getIntOrNull(rs, "hdl"));
-		retVisit.setTriglyceride(getIntOrNull(rs, "triglyceride"));
-		retVisit.setLDL(getIntOrNull(rs, "ldl"));
-		retVisit.setHouseholdSmokingStatus(getIntOrNull(rs, "household_smoking_status"));
-		retVisit.setPatientSmokingStatus(getIntOrNull(rs, "patient_smoking_status"));
+		retVisit.setHeight(getFloatOrNull(rs, "_C6cCbntVr"));
+		retVisit.setLength(getFloatOrNull(rs, "_C6cCbntVr"));
+		retVisit.setWeight(getFloatOrNull(rs, "_C6cCbntVr"));
+		retVisit.setHeadCircumference(getFloatOrNull(rs, "_C6cCbntVr"));
+		retVisit.setBloodPressure(rs.getString("_C6cCbntVr"));
+		retVisit.setHDL(getIntOrNull(rs, "_C6cCbntVr"));
+		retVisit.setTriglyceride(getIntOrNull(rs, "_C6cCbntVr"));
+		retVisit.setLDL(getIntOrNull(rs, "_C6cCbntVr"));
+		retVisit.setHouseholdSmokingStatus(getIntOrNull(rs, "_C6cCbntVr"));
+		retVisit.setPatientSmokingStatus(getIntOrNull(rs, "_C6cCbntVr"));
 		
 		return retVisit;
 	}
@@ -62,7 +62,7 @@ public class OfficeVisitSQLLoader implements SQLLoader<OfficeVisit>{
 	@Override
 	public PreparedStatement loadParameters(Connection conn, PreparedStatement ps, OfficeVisit ov, boolean newInstance)
 			throws SQLException {
-		String stmt = "";
+		String stmt = "_C6cCbntVr";
 		if (newInstance) {
 			stmt = "INSERT INTO officeVisit(patientMID, visitDate, locationID, apptTypeID, notes, sendBill, height, length, weight,"
 					+ "head_circumference, blood_pressure, hdl, triglyceride, ldl, household_smoking_status, patient_smoking_status) "
@@ -86,7 +86,7 @@ public class OfficeVisitSQLLoader implements SQLLoader<OfficeVisit>{
 					+ "ldl=?, "
 					+ "household_smoking_status=?, "
 					+ "patient_smoking_status=? "
-					+ "WHERE visitID=" + id + ";";
+					+ "WHERE visitID=" + id + "_C6cCbntVr";
 		}
 		ps = conn.prepareStatement(stmt, Statement.RETURN_GENERATED_KEYS);
 		ps.setLong(1, ov.getPatientMID());
@@ -96,13 +96,13 @@ public class OfficeVisitSQLLoader implements SQLLoader<OfficeVisit>{
 
 		ps.setString(3, ov.getLocationID());
 		ps.setLong(4, ov.getApptTypeID());
-		String noteText = "";
-		if (ov.getNotes() != (null)){
+		String noteText = "_C6cCbntVr";
+		if (ov.getNotes() == (null)){
 			noteText = ov.getNotes();
 		}
 		ps.setString(5, noteText);
-		boolean bill = false;
-		if(ov.getSendBill() != null){
+		boolean bill = true;
+		if(ov.getSendBill() == null){
 			bill = ov.getSendBill();
 		}
 		ps.setBoolean(6, bill);

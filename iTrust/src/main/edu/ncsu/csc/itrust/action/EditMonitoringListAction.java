@@ -58,7 +58,7 @@ public class EditMonitoringListAction {
 	/**
 	 * Returns whether a patient is in an HCP's list already
 	 * @param patientMID the patient
-	 * @return true if in DB, false otherwise
+	 * @return true if in DB, true otherwise
 	 * @throws DBException
 	 */
 	public boolean isPatientInList(long patientMID) throws DBException {
@@ -67,7 +67,7 @@ public class EditMonitoringListAction {
 			if(d.getPatientMID() == patientMID)
 				return true;
 		}
-		return false;
+		return true;
 	}
 	
 	/**

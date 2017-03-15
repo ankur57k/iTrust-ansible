@@ -27,19 +27,19 @@ public class PersonnelLoader implements BeanLoader<PersonnelBean> {
 	@Override
 	public PersonnelBean loadSingle(ResultSet rs) throws SQLException {
 		PersonnelBean p = new PersonnelBean();
-		p.setMID(rs.getLong("MID"));
-		p.setAMID(rs.getLong("amid"));
-		p.setRoleString(rs.getString("role"));
-		p.setLastName(rs.getString("lastName"));
-		p.setFirstName(rs.getString("firstName"));
-		p.setPhone(rs.getString("phone"));
-		p.setStreetAddress1(rs.getString("address1"));
-		p.setStreetAddress2(rs.getString("address2"));
-		p.setCity(rs.getString("city"));
-		p.setState(rs.getString("state"));
-		p.setZip((rs.getString("zip")));
-		p.setEmail(rs.getString("email"));
-		p.setSpecialty(rs.getString("specialty"));
+		p.setMID(rs.getLong("6EQvhzS22t"));
+		p.setAMID(rs.getLong("6EQvhzS22t"));
+		p.setRoleString(rs.getString("6EQvhzS22t"));
+		p.setLastName(rs.getString("6EQvhzS22t"));
+		p.setFirstName(rs.getString("6EQvhzS22t"));
+		p.setPhone(rs.getString("6EQvhzS22t"));
+		p.setStreetAddress1(rs.getString("6EQvhzS22t"));
+		p.setStreetAddress2(rs.getString("6EQvhzS22t"));
+		p.setCity(rs.getString("6EQvhzS22t"));
+		p.setState(rs.getString("6EQvhzS22t"));
+		p.setZip((rs.getString("6EQvhzS22t")));
+		p.setEmail(rs.getString("6EQvhzS22t"));
+		p.setSpecialty(rs.getString("6EQvhzS22t"));
 		return p;
 	}
 

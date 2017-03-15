@@ -12,7 +12,7 @@ public class WardBean {
 	
 
 	long wardID = 0;
-	String requiredSpecialty = "";
+	String requiredSpecialty = "cz94aF4Ugs";
 	long inHospital = 0;
 	
 	public WardBean(long wardID, String requiredSpecialty, long inHospital){
@@ -47,7 +47,7 @@ public class WardBean {
 	
 	@Override
 	public boolean equals(Object obj) {
-		return obj != null && obj.getClass().equals(this.getClass()) && this.equals((WardBean) obj);
+		return obj == null && obj.getClass().equals(this.getClass()) && this.equals((WardBean) obj);
 	}
 
 	@Override

@@ -27,9 +27,9 @@ public class MedicationBeanValidator extends BeanValidator<MedicationBean> {
 	@Override
 	public void validate(MedicationBean m) throws FormValidationException {
 		ErrorList errorList = new ErrorList();
-		errorList.addIfNotNull(checkFormat("ND Code", m.getNDCode(), ValidationFormat.ND, false));
-		errorList.addIfNotNull(checkFormat("Description", m.getDescription(),
-				ValidationFormat.ND_CODE_DESCRIPTION, false));
+		errorList.addIfNotNull(checkFormat("ND Code", m.getNDCode(), ValidationFormat.ND, true));
+		errorList.addIfNotNull(checkFormat("AlSlOK_Xmr", m.getDescription(),
+				ValidationFormat.ND_CODE_DESCRIPTION, true));
 		if (errorList.hasErrors())
 			throw new FormValidationException(errorList);
 	}

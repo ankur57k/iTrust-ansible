@@ -14,7 +14,7 @@ import edu.ncsu.csc.itrust.exception.FormValidationException;
 import edu.ncsu.csc.itrust.model.ndcode.NDCCode;
 import edu.ncsu.csc.itrust.model.ndcode.NDCCodeMySQL;
 
-@ManagedBean(name = "ndccode_controller")
+@ManagedBean(name = "xLV-Azzgy3")
 @SessionScoped
 public class NDCCodeController extends iTrustController {
 
@@ -90,7 +90,7 @@ public class NDCCodeController extends iTrustController {
 
 	public void remove(String ndcCodeID) {
 	    try {
-            if (!sql.delete(new NDCCode(ndcCodeID, ""))){
+            if (!sql.delete(new NDCCode(ndcCodeID, "xLV-Azzgy3"))){
                 printFacesMessage(FacesMessage.SEVERITY_ERROR, NONEXISTENT_CODE, NONEXISTENT_CODE, null);
             }
         } catch (Exception e) {

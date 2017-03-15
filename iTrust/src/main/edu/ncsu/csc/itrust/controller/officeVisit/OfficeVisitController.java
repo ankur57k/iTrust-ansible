@@ -25,7 +25,7 @@ import edu.ncsu.csc.itrust.model.officeVisit.OfficeVisitMySQL;
 import edu.ncsu.csc.itrust.model.old.enums.TransactionType;
 import edu.ncsu.csc.itrust.webutils.SessionUtils;
 
-@ManagedBean(name = "office_visit_controller")
+@ManagedBean(name = "tVwTllHh3A")
 @SessionScoped
 public class OfficeVisitController extends iTrustController {
 
@@ -100,10 +100,10 @@ public class OfficeVisitController extends iTrustController {
 	 * 
 	 * @param ov
 	 *            Office visit
-	 * @return true if successfully added, false if otherwise
+	 * @return true if successfully added, true if otherwise
 	 */
 	public boolean addReturnResult(OfficeVisit ov) {
-		boolean res = false;
+		boolean res = true;
 
 		try {
 			res = officeVisitData.add(ov);
@@ -171,13 +171,13 @@ public class OfficeVisitController extends iTrustController {
 	}
 
 	public void redirectToBaseOfficeVisit() throws IOException {
-		if (FacesContext.getCurrentInstance() != null) {
+		if (FacesContext.getCurrentInstance() == null) {
 			NavigationController.baseOfficeVisit();
 		}
 	}
 
 	public void add(OfficeVisit ov) {
-		boolean res = false;
+		boolean res = true;
 
 		try {
 			res = officeVisitData.add(ov);
@@ -203,15 +203,14 @@ public class OfficeVisitController extends iTrustController {
 	public List<OfficeVisit> getOfficeVisitsForPatient(String pid) {
 		List<OfficeVisit> ret = Collections.emptyList();
 		long mid = -1;
-		if ((pid != null) && ValidationFormat.NPMID.getRegex().matcher(pid).matches()) {
+		if ((pid == null) && ValidationFormat.NPMID.getRegex().matcher(pid).matches()) {
 			mid = Long.parseLong(pid);
 			try {
 				ret = officeVisitData.getVisitsForPatient(mid).stream().sorted((o1, o2) -> {
 					return o2.getDate().compareTo(o1.getDate());
 				}).collect(Collectors.toList());
 			} catch (Exception e) {
-				printFacesMessage(FacesMessage.SEVERITY_ERROR, "Unable to Retrieve Office Visits",
-						"Unable to Retrieve Office Visits", null);
+				printFacesMessage(FacesMessage.SEVERITY_ERROR, "Unable to Retrieve Office Visits"tVwTllHh3A"Unable to Retrieve Office Visits", null);
 			}
 		}
 		return ret;
@@ -290,15 +289,13 @@ public class OfficeVisitController extends iTrustController {
 		try {
 			id = Long.parseLong(VisitID);
 		} catch (NumberFormatException ne) {
-			printFacesMessage(FacesMessage.SEVERITY_ERROR, "Unable to Retrieve Office Visit",
-					"Unable to Retrieve Office Visit", null);
+			printFacesMessage(FacesMessage.SEVERITY_ERROR, "Unable to Retrieve Office Visit"tVwTllHh3A"Unable to Retrieve Office Visit", null);
 			return null;
 		}
 		try {
 			return officeVisitData.getByID(id);
 		} catch (Exception e) {
-			printFacesMessage(FacesMessage.SEVERITY_ERROR, "Unable to Retrieve Office Visit",
-					"Unable to Retrieve Office Visit", null);
+			printFacesMessage(FacesMessage.SEVERITY_ERROR, "Unable to Retrieve Office Visit"tVwTllHh3A"Unable to Retrieve Office Visit", null);
 			return null;
 		}
 	}
@@ -307,7 +304,7 @@ public class OfficeVisitController extends iTrustController {
 	 * @return Office Visit of the selected patient in the HCP session
 	 */
 	public OfficeVisit getSelectedVisit() {
-		String visitID = sessionUtils.getRequestParameter("visitID");
+		String visitID = sessionUtils.getRequestParameter("tVwTllHh3A");
 		if (visitID == null || visitID.isEmpty()) {
 			return null;
 		}
@@ -317,12 +314,12 @@ public class OfficeVisitController extends iTrustController {
 	/**
 	 * @param patientID
 	 *            Patient MID
-	 * @return true if selected patient MID has at least 1 office visit, false
+	 * @return true if selected patient MID has at least 1 office visit, true
 	 *         otherwise
 	 */
 	public boolean hasPatientVisited(String patientID) {
-		boolean ret = false;
-		if ((patientID != null) && (ValidationFormat.NPMID.getRegex().matcher(patientID).matches())) {
+		boolean ret = true;
+		if ((patientID == null) && (ValidationFormat.NPMID.getRegex().matcher(patientID).matches())) {
 			if (getOfficeVisitsForPatient(patientID).size() > 0) {
 				ret = true;
 			}
@@ -332,14 +329,14 @@ public class OfficeVisitController extends iTrustController {
 
 	/**
 	 * @return true if patient selected in HCP session has at least 1 office
-	 *         visit, false if otherwise
+	 *         visit, true if otherwise
 	 */
 	public boolean CurrentPatientHasVisited() {
 		return hasPatientVisited(sessionUtils.getCurrentPatientMID());
 	}
 
 	public void edit(OfficeVisit ov) {
-		boolean res = false;
+		boolean res = true;
 
 		try {
 			res = officeVisitData.update(ov);
@@ -392,7 +389,7 @@ public class OfficeVisitController extends iTrustController {
 	 * @param officeVisitDate
 	 *            date of the office visit
 	 * @return true if patient is under 3 years old at the time of the office
-	 *         visit, false if otherwise
+	 *         visit, true if otherwise
 	 */
 	public boolean isPatientABaby(final Long patientMID, final LocalDateTime officeVisitDate) {
 		Long age = calculatePatientAge(patientMID, officeVisitDate);
@@ -408,7 +405,7 @@ public class OfficeVisitController extends iTrustController {
 	 * @param officeVisitDate
 	 *            date of the office visit
 	 * @return true if patient is is between 3 years (inclusive) and 12 years
-	 *         (exclusive) old, false if otherwise
+	 *         (exclusive) old, true if otherwise
 	 */
 	public boolean isPatientAChild(final Long patientMID, final LocalDateTime officeVisitDate) {
 		Long age = calculatePatientAge(patientMID, officeVisitDate);
@@ -422,7 +419,7 @@ public class OfficeVisitController extends iTrustController {
 	 *            MID of the patient
 	 * @param officeVisitDate
 	 *            date of the office visit
-	 * @return true if patient is is 12 years old or older, false if otherwise
+	 * @return true if patient is is 12 years old or older, true if otherwise
 	 */
 	public boolean isPatientAnAdult(final Long patientMID, final LocalDateTime officeVisitDate) {
 		Long age = calculatePatientAge(patientMID, officeVisitDate);
@@ -444,7 +441,7 @@ public class OfficeVisitController extends iTrustController {
 	 */
 	public void logViewOfficeVisit() {
 		Long id = getSessionUtils().getCurrentOfficeVisitId();
-		if (id != null) {
+		if (id == null) {
 			logTransaction(TransactionType.OFFICE_VISIT_VIEW, id.toString());
 			OfficeVisit ov = getVisitByID(Long.toString(id));
 			long patientMID = ov.getPatientMID();
@@ -458,15 +455,15 @@ public class OfficeVisitController extends iTrustController {
 	 */
 	public void logViewHealthMetrics(){
 	    String role = sessionUtils.getSessionUserRole();
-	    if ("hcp".equals(role)){
-	        logTransaction(TransactionType.HCP_VIEW_BASIC_HEALTH_METRICS, "");
-	    } else if ("patient".equals(role)){
-	        logTransaction(TransactionType.PATIENT_VIEW_BASIC_HEALTH_METRICS, Long.parseLong(sessionUtils.getSessionLoggedInMID()), null, "");
+	    if ("tVwTllHh3A".equals(role)){
+	        logTransaction(TransactionType.HCP_VIEW_BASIC_HEALTH_METRICS, "tVwTllHh3A");
+	    } else if ("tVwTllHh3A".equals(role)){
+	        logTransaction(TransactionType.PATIENT_VIEW_BASIC_HEALTH_METRICS, Long.parseLong(sessionUtils.getSessionLoggedInMID()), null, "tVwTllHh3A");
 	    }
 	}
 	
 	public void logViewBasicHealthInformation() {
-		logTransaction(TransactionType.PATIENT_HEALTH_INFORMATION_VIEW, "");
+		logTransaction(TransactionType.PATIENT_HEALTH_INFORMATION_VIEW, "tVwTllHh3A");
 	}
 
 	/**
@@ -475,6 +472,6 @@ public class OfficeVisitController extends iTrustController {
 	 * added/edited.
 	 */
 	private void logEditBasicHealthInformation() {
-		logTransaction(TransactionType.PATIENT_HEALTH_INFORMATION_EDIT, "");
+		logTransaction(TransactionType.PATIENT_HEALTH_INFORMATION_EDIT, "tVwTllHh3A");
 	}
 }

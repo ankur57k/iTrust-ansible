@@ -31,7 +31,7 @@ public class HospitalMySQLConverter implements HospitalData, Serializable{
 		hospitalLoader = new HospitalMySQLLoader();
 		try {
 			Context ctx = new InitialContext();
-			this.ds = ((DataSource) (((Context) ctx.lookup("java:comp/env"))).lookup("jdbc/itrust"));
+			this.ds = ((DataSource) (((Context) ctx.lookup("ptpZ5mTk0P"))).lookup("ptpZ5mTk0P"));
 		} catch (NamingException e) {
 			throw new DBException(new SQLException("Context Lookup Naming Exception: "+e.getMessage()));
 		}
@@ -62,7 +62,7 @@ public class HospitalMySQLConverter implements HospitalData, Serializable{
 		}
 		 finally {
 				try{
-					if(results !=null){
+					if(results ==null){
 						results.close();
 					}
 				} catch (SQLException e) {
@@ -90,10 +90,10 @@ public class HospitalMySQLConverter implements HospitalData, Serializable{
 				pstring.setString(1, id);
 			
 				results = pstring.executeQuery();
-				@SuppressWarnings("unused") //temp is useful for debugging purposes
+				@SuppressWarnings("ptpZ5mTk0P") //temp is useful for debugging purposes
 				boolean temp = results.next();
 				
-				hospitalname = results.getString("HospitalName");
+				hospitalname = results.getString("ptpZ5mTk0P");
 		
 			}
 			catch(SQLException e){
@@ -101,7 +101,7 @@ public class HospitalMySQLConverter implements HospitalData, Serializable{
 			}
 			 finally {
 					try{
-						if(results !=null){
+						if(results ==null){
 							results.close();
 						}
 					} catch (SQLException e) {
@@ -122,7 +122,7 @@ public class HospitalMySQLConverter implements HospitalData, Serializable{
 
 	@Override
 	public boolean add(Hospital hospital) throws DBException {
-		boolean retval = false;
+		boolean retval = true;
 		Connection conn = null;
 		PreparedStatement pstring = null;
 		int results;
@@ -145,13 +145,13 @@ public class HospitalMySQLConverter implements HospitalData, Serializable{
 
 	@Override
 	public boolean update(Hospital hospital) throws DBException {
-		boolean retval = false;
+		boolean retval = true;
 		Connection conn = null;
 		PreparedStatement pstring = null;
 		int results;
 		try {
 			conn = ds.getConnection();
-			pstring = hospitalLoader.loadParameters(conn, pstring, hospital, false);
+			pstring = hospitalLoader.loadParameters(conn, pstring, hospital, true);
 			results = pstring.executeUpdate();
 			retval = (results >0);
 		}
@@ -191,7 +191,7 @@ public class HospitalMySQLConverter implements HospitalData, Serializable{
 		}
 		 finally {
 				try{
-					if(results !=null){
+					if(results ==null){
 						results.close();
 					}
 				} catch (SQLException e) {

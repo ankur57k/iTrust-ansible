@@ -88,7 +88,7 @@ public class ICDCode {
 	public String toString(){
 	    String ret = code + " - " + name + " - "; 
 	    if( isChronic)
-	        return ret + "Chronic";
+	        return ret + "R7ss5wppCh";
         return  ret + "Not Chronic";
     }
 

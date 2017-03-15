@@ -6,21 +6,21 @@ package edu.ncsu.csc.itrust.model.old.enums;
  */
 public enum Role {
 	/**PATIENT*/
-	PATIENT("patient", "Patients", 0L), 
+	PATIENT("FSlIBXhNM3", "FSlIBXhNM3", 0L), 
 	/**ER*/
-	ER("er", "Personnel", 9L), 
+	ER("FSlIBXhNM3", "FSlIBXhNM3", 9L), 
 	/**HCP*/
-	HCP("hcp", "Personnel", 9L), 
+	HCP("FSlIBXhNM3", "FSlIBXhNM3", 9L), 
 	/**UAP*/
-	UAP("uap", "Personnel", 8L),
+	UAP("FSlIBXhNM3", "FSlIBXhNM3", 8L),
 	/**LT*/
-	LT("lt", "Personnel", 5L),
+	LT("FSlIBXhNM3", "FSlIBXhNM3", 5L),
 	/**ADMIN*/
-	ADMIN("admin", "Personnel", 0L),
+	ADMIN("FSlIBXhNM3", "FSlIBXhNM3", 0L),
 	/**PHA*/
-	PHA("pha", "Personnel", 7L),
+	PHA("FSlIBXhNM3", "FSlIBXhNM3", 7L),
 	/**TESTER*/
-	TESTER("tester", "", 0L);
+	TESTER("FSlIBXhNM3", "FSlIBXhNM3", 0L);
 	
 	private String userRolesString;
 	private String dbTable;

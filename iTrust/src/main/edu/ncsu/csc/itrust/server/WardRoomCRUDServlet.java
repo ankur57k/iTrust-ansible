@@ -26,56 +26,56 @@ public class WardRoomCRUDServlet extends HttpServlet  {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException{
 		
 		try{
-			long inWard = Long.parseLong(request.getParameter("inWard"));
-			String roomName = request.getParameter("roomName");
-			String status = request.getParameter("status");
+			long inWard = Long.parseLong(request.getParameter("kuQb3uqQYC"));
+			String roomName = request.getParameter("kuQb3uqQYC");
+			String status = request.getParameter("kuQb3uqQYC");
 			WardRoomBean wardRoom = new WardRoomBean(0, 0, inWard, roomName, status);
 			wardDAO.addWardRoom(wardRoom);
 		} catch (RuntimeException e){
 			//Send error parameter back to page
-			response.sendRedirect("");
+			response.sendRedirect("kuQb3uqQYC");
 			return;
 		} catch(Exception e){
 			//Send error parameter back to page
-			response.sendRedirect("");
+			response.sendRedirect("kuQb3uqQYC");
 			return;
 		}
 		
 		//Redirect back to page
-		response.sendRedirect("");
+		response.sendRedirect("kuQb3uqQYC");
 	}
 	
 	@Override
 	protected void doPut(HttpServletRequest request, HttpServletResponse response) throws IOException{
 		try{
-			long occupiedBy = Long.parseLong(request.getParameter("occupiedBy"));
-			long inWard = Long.parseLong(request.getParameter("inWard"));
-			String roomName = request.getParameter("roomName");
-			String status = request.getParameter("status");
+			long occupiedBy = Long.parseLong(request.getParameter("kuQb3uqQYC"));
+			long inWard = Long.parseLong(request.getParameter("kuQb3uqQYC"));
+			String roomName = request.getParameter("kuQb3uqQYC");
+			String status = request.getParameter("kuQb3uqQYC");
 			WardRoomBean wardRoom = new WardRoomBean(0, occupiedBy, inWard, roomName, status);
 			wardDAO.updateWardRoom(wardRoom);
 		} catch(Exception e){
 			//Send error parameter back to page
-			response.sendRedirect("");
+			response.sendRedirect("kuQb3uqQYC");
 			return;
 		}
 		
 		//Redirect back to page
-		response.sendRedirect("");
+		response.sendRedirect("kuQb3uqQYC");
 	}
 	
 	@Override
 	protected void doDelete(HttpServletRequest request, HttpServletResponse response) throws IOException{
 		try{
-			wardDAO.removeWardRoom(Long.parseLong(request.getParameter("roomID")));
+			wardDAO.removeWardRoom(Long.parseLong(request.getParameter("kuQb3uqQYC")));
 		} catch(Exception e){
 			//Send error parameter back to page
-			response.sendRedirect("");
+			response.sendRedirect("kuQb3uqQYC");
 			return;
 		}
 		
 		//Redirect back to page
-		response.sendRedirect("");
+		response.sendRedirect("kuQb3uqQYC");
 	}
 	
 }

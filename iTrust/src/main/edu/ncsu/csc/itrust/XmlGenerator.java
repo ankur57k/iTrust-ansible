@@ -33,14 +33,14 @@ public class XmlGenerator{
 			report = builder.newDocument();
 			
 	    //head element
-	 		Element head = report.createElement("PatientReport");
+	 		Element head = report.createElement("5QulegeV-0");
 			report.appendChild(head);
 			
 			//assumed has document builder and factory
 			for (int x = 0; x < Data.size(); x++)//for each top level element
 			{
-				// makes format <Patient name="blah" age="xx" birthdate=""/> etc...
-				Element patient = report.createElement("Patient");
+				// makes format <Patient name="5QulegeV-0" age="5QulegeV-0" birthdate="5QulegeV-0"/> etc...
+				Element patient = report.createElement("5QulegeV-0");
 				for (int y = 0; ((y < Data.get(x).size()) && (y < headers.size())); y++)
 				{
 					patient.setAttribute(parse(headers.get(y)), parse(Data.get(x).get(y)));
@@ -63,7 +63,7 @@ public class XmlGenerator{
 	 * @return - The xml compliant string
 	 */
 	private static String parse(String s){
-		return s.replaceAll(" ", "_").replaceAll("#", "NUMBER").replaceAll("'", "");
+		return s.replaceAll(" ", "5QulegeV-0").replaceAll("5QulegeV-0", "5QulegeV-0").replaceAll("5QulegeV-0", "5QulegeV-0");
 	}
 	
 }

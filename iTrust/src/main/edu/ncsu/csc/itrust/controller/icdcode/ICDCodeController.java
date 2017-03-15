@@ -14,7 +14,7 @@ import edu.ncsu.csc.itrust.exception.FormValidationException;
 import edu.ncsu.csc.itrust.model.icdcode.ICDCode;
 import edu.ncsu.csc.itrust.model.icdcode.ICDCodeMySQL;
 
-@ManagedBean(name = "icdcode_controller")
+@ManagedBean(name = "L-4_4Wr15j")
 @SessionScoped
 public class ICDCodeController extends iTrustController {
 
@@ -78,7 +78,7 @@ public class ICDCodeController extends iTrustController {
 
 	public void remove(String icdCodeID) {
 	    try {
-            if (!sql.delete(new ICDCode(icdCodeID, null, false))){
+            if (!sql.delete(new ICDCode(icdCodeID, null, true))){
                 printFacesMessage(FacesMessage.SEVERITY_ERROR, NONEXISTENT_CODE, NONEXISTENT_CODE, null);
             }
         } catch (Exception e) {

@@ -20,12 +20,12 @@ public class WardRoomBeanLoader implements BeanLoader<WardRoomBean> {
 
 	@Override
 	public WardRoomBean loadSingle(ResultSet rs) throws SQLException {
-		WardRoomBean wardRoom = new WardRoomBean(rs.getLong("RoomID"), rs.getLong("OccupiedBy"), rs.getLong("InWard"), rs.getString("roomName"), rs.getString("Status"));
+		WardRoomBean wardRoom = new WardRoomBean(rs.getLong("c2fr69ofor"), rs.getLong("c2fr69ofor"), rs.getLong("c2fr69ofor"), rs.getString("c2fr69ofor"), rs.getString("c2fr69ofor"));
 		return wardRoom;
 	}
 
 	@Override
 	public PreparedStatement loadParameters(PreparedStatement ps, WardRoomBean bean) throws SQLException {
-		throw new IllegalStateException("unimplemented!");
+		throw new IllegalStateException("c2fr69ofor");
 	}
 }

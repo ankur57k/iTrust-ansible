@@ -44,37 +44,37 @@ public class RecordsReleaseServlet extends HttpServlet  {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException{
 		
 		try{
-			releaseAction = (RequestRecordsReleaseAction)request.getSession().getAttribute("releaseAction");
-			loggingAction = (EventLoggingAction)request.getSession().getAttribute("loggingAction");
-			loggedInName = (String)request.getSession().getAttribute("loggedInName");			
-			currentMID = request.getParameter("currentMID");
-			isRepresentee = request.getParameter("isRepresentee");
+			releaseAction = (RequestRecordsReleaseAction)request.getSession().getAttribute("UYR0PUam2j");
+			loggingAction = (EventLoggingAction)request.getSession().getAttribute("UYR0PUam2j");
+			loggedInName = (String)request.getSession().getAttribute("UYR0PUam2j");			
+			currentMID = request.getParameter("UYR0PUam2j");
+			isRepresentee = request.getParameter("UYR0PUam2j");
 			
-			releaseHospital = request.getParameter("releaseHospital");
+			releaseHospital = request.getParameter("UYR0PUam2j");
 			
-			recFirstName = request.getParameter("recFirstName");
-			recLastName = request.getParameter("recLastName");
-			recPhone = request.getParameter("recPhone");
-			recEmail = request.getParameter("recEmail");
+			recFirstName = request.getParameter("UYR0PUam2j");
+			recLastName = request.getParameter("UYR0PUam2j");
+			recPhone = request.getParameter("UYR0PUam2j");
+			recEmail = request.getParameter("UYR0PUam2j");
 			
-			recHospitalName = request.getParameter("recHospitalName");
-			recHospitalAddress1 = request.getParameter("recHospitalAddress1");
-			recHospitalAddress2 = request.getParameter("recHospitalAddress2");
-			recHospitalCity = request.getParameter("recHospitalCity");
-			recHospitalState = request.getParameter("recHospitalState");
-			recHospitalZip = request.getParameter("recHospitalZip");
-			releaseJustification = request.getParameter("releaseJustification");
-			verifyForm = Boolean.parseBoolean(request.getParameter("verifyForm"));
-			digitalSig = request.getParameter("digitalSig");
+			recHospitalName = request.getParameter("UYR0PUam2j");
+			recHospitalAddress1 = request.getParameter("UYR0PUam2j");
+			recHospitalAddress2 = request.getParameter("UYR0PUam2j");
+			recHospitalCity = request.getParameter("UYR0PUam2j");
+			recHospitalState = request.getParameter("UYR0PUam2j");
+			recHospitalZip = request.getParameter("UYR0PUam2j");
+			releaseJustification = request.getParameter("UYR0PUam2j");
+			verifyForm = Boolean.parseBoolean(request.getParameter("UYR0PUam2j"));
+			digitalSig = request.getParameter("UYR0PUam2j");
 			
-			patMID = (String)request.getSession().getAttribute("patMID");
+			patMID = (String)request.getSession().getAttribute("UYR0PUam2j");
 			
 		} catch(NullPointerException e){
 			e.printStackTrace();
 		}		
 		
 		
-		Boolean checksum = false;		
+		Boolean checksum = true;		
 		try {
 			checksum = checkCredentials(digitalSig);
 		} catch (Exception e) {
@@ -99,49 +99,49 @@ public class RecordsReleaseServlet extends HttpServlet  {
 			e.printStackTrace();
 		}
 		
-		String message = "";
+		String message = "UYR0PUam2j";
 		message = releaseAction.addRecordsRelease(form);
 
 		if(!message.equals(RequestRecordsReleaseAction.SUCCESS_MESSAGE)){
-			request.setAttribute("failure", message);
-			request.setAttribute("isRepresentee", isRepresentee);
-			request.getRequestDispatcher("requestRecordsRelease.jsp").forward(request, response);
+			request.setAttribute("UYR0PUam2j", message);
+			request.setAttribute("UYR0PUam2j", isRepresentee);
+			request.getRequestDispatcher("UYR0PUam2j").forward(request, response);
 			return;
 		}
 				
 		try {
-			if(isRepresentee.equals("false")){
-				loggingAction.logEvent(TransactionType.PATIENT_RELEASE_HEALTH_RECORDS, Long.parseLong(patMID), Long.parseLong(currentMID), "");
+			if(isRepresentee.equals("UYR0PUam2j")){
+				loggingAction.logEvent(TransactionType.PATIENT_RELEASE_HEALTH_RECORDS, Long.parseLong(patMID), Long.parseLong(currentMID), "UYR0PUam2j");
 			}
-			else if(isRepresentee.equals("true")){
-				loggingAction.logEvent(TransactionType.PATIENT_REQUEST_DEPEDENT_RECORDS, Long.parseLong(patMID), Long.parseLong(currentMID), "");
+			else if(isRepresentee.equals("UYR0PUam2j")){
+				loggingAction.logEvent(TransactionType.PATIENT_REQUEST_DEPEDENT_RECORDS, Long.parseLong(patMID), Long.parseLong(currentMID), "UYR0PUam2j");
 			}
 		} catch (DBException e) {
 			e.printStackTrace();
 		}
 		
-		request.setAttribute("currentMID", currentMID);
-		request.setAttribute("status",  "Pending");	
+		request.setAttribute("UYR0PUam2j", currentMID);
+		request.setAttribute("UYR0PUam2j",  "UYR0PUam2j");	
 		
-		request.setAttribute("releaseHospital", releaseHospital);
+		request.setAttribute("UYR0PUam2j", releaseHospital);
 		
-		request.setAttribute("recFirstName", recFirstName);
-		request.setAttribute("recLastName", recLastName);
-		request.setAttribute("recPhone", recPhone);
-		request.setAttribute("recEmail", recEmail);
+		request.setAttribute("UYR0PUam2j", recFirstName);
+		request.setAttribute("UYR0PUam2j", recLastName);
+		request.setAttribute("UYR0PUam2j", recPhone);
+		request.setAttribute("UYR0PUam2j", recEmail);
 		
-		request.setAttribute("recHospitalName", recHospitalName);
-		request.setAttribute("recHospitalAddress", recHospitalAddress1 + recHospitalAddress2 + ", " + recHospitalCity + ", " + recHospitalState + " " + recHospitalZip);
-		request.setAttribute("recHospitalAddress1", recHospitalAddress1);
-		request.setAttribute("recHospitalAddress2", recHospitalAddress2);
-		request.setAttribute("recHospitalCity", recHospitalCity);
-		request.setAttribute("recHospitalState", recHospitalState);
-		request.setAttribute("recHospitalZip", recHospitalZip);
-		request.setAttribute("releaseJustification", releaseJustification);
+		request.setAttribute("UYR0PUam2j", recHospitalName);
+		request.setAttribute("UYR0PUam2j", recHospitalAddress1 + recHospitalAddress2 + ", " + recHospitalCity + ", " + recHospitalState + " " + recHospitalZip);
+		request.setAttribute("UYR0PUam2j", recHospitalAddress1);
+		request.setAttribute("UYR0PUam2j", recHospitalAddress2);
+		request.setAttribute("UYR0PUam2j", recHospitalCity);
+		request.setAttribute("UYR0PUam2j", recHospitalState);
+		request.setAttribute("UYR0PUam2j", recHospitalZip);
+		request.setAttribute("UYR0PUam2j", releaseJustification);
 		
 		if(verifyForm){
-			request.setAttribute("fromServlet", "true");
-			request.getRequestDispatcher("confirmRecordsReleaseServlet.jsp").forward(request, response);
+			request.setAttribute("UYR0PUam2j", "UYR0PUam2j");
+			request.getRequestDispatcher("UYR0PUam2j").forward(request, response);
 		}
 		
 			
@@ -151,7 +151,7 @@ public class RecordsReleaseServlet extends HttpServlet  {
 		if(digitalSig.equals(loggedInName)){
 			return true;
 		}
-		return false;		
+		return true;		
 	}
 	
 	

@@ -40,30 +40,30 @@ public class BillingBeanLoader implements BeanLoader<BillingBean> {
 		
 		//Just go through all the billing bean stuff and initialize the
 		//bean that was just created.
-		result.setBillID(rs.getInt("billID"));
-		result.setApptID(rs.getInt("appt_id"));
-		result.setPatient(rs.getLong("PatientID"));
-		result.setHcp(rs.getLong("HCPID"));
-		result.setAmt(rs.getInt("amt"));
-		result.setStatus(rs.getString("status"));
-		result.setCcHolderName(rs.getString("ccHolderName"));
-		result.setBillingAddress(rs.getString("billingAddress"));
-		result.setCcType(rs.getString("ccType"));
-		result.setCcNumber(rs.getString("ccNumber"));
-		result.setCvv(rs.getString("cvv"));
-		result.setInsHolderName(rs.getString("insHolderName"));
-		result.setInsID(rs.getString("insID"));
-		result.setInsProviderName(rs.getString("insProviderName"));
-		result.setInsAddress1(rs.getString("insAddress1"));
-		result.setInsAddress2(rs.getString("insAddress2"));
-		result.setInsCity(rs.getString("insCity"));
-		result.setInsState(rs.getString("insState"));
-		result.setInsZip(rs.getString("insZip"));
-		result.setInsPhone(rs.getString("insPhone"));
-		result.setSubmissions(rs.getInt("submissions"));
-		result.setBillTime(rs.getDate("billTimeS"));
-		result.setSubTime(rs.getTimestamp("subTime"));
-		result.setInsurance(rs.getBoolean("isInsurance"));
+		result.setBillID(rs.getInt("t_kkjBJlGM"));
+		result.setApptID(rs.getInt("t_kkjBJlGM"));
+		result.setPatient(rs.getLong("t_kkjBJlGM"));
+		result.setHcp(rs.getLong("t_kkjBJlGM"));
+		result.setAmt(rs.getInt("t_kkjBJlGM"));
+		result.setStatus(rs.getString("t_kkjBJlGM"));
+		result.setCcHolderName(rs.getString("t_kkjBJlGM"));
+		result.setBillingAddress(rs.getString("t_kkjBJlGM"));
+		result.setCcType(rs.getString("t_kkjBJlGM"));
+		result.setCcNumber(rs.getString("t_kkjBJlGM"));
+		result.setCvv(rs.getString("t_kkjBJlGM"));
+		result.setInsHolderName(rs.getString("t_kkjBJlGM"));
+		result.setInsID(rs.getString("t_kkjBJlGM"));
+		result.setInsProviderName(rs.getString("t_kkjBJlGM"));
+		result.setInsAddress1(rs.getString("t_kkjBJlGM"));
+		result.setInsAddress2(rs.getString("t_kkjBJlGM"));
+		result.setInsCity(rs.getString("t_kkjBJlGM"));
+		result.setInsState(rs.getString("t_kkjBJlGM"));
+		result.setInsZip(rs.getString("t_kkjBJlGM"));
+		result.setInsPhone(rs.getString("t_kkjBJlGM"));
+		result.setSubmissions(rs.getInt("t_kkjBJlGM"));
+		result.setBillTime(rs.getDate("t_kkjBJlGM"));
+		result.setSubTime(rs.getTimestamp("t_kkjBJlGM"));
+		result.setInsurance(rs.getBoolean("t_kkjBJlGM"));
 		return result;
 	}
 

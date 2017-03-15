@@ -28,23 +28,23 @@ public class HospitalBeanValidator extends BeanValidator<HospitalBean> {
 	@Override
 	public void validate(HospitalBean h) throws FormValidationException {
 		ErrorList errorList = new ErrorList();
-		errorList.addIfNotNull(checkFormat("Hospital ID", h.getHospitalID(), ValidationFormat.HOSPITAL_ID, false));
-		errorList.addIfNotNull(checkFormat("Hospital Name", h.getHospitalName(), ValidationFormat.HOSPITAL_NAME, false));
+		errorList.addIfNotNull(checkFormat("Hospital ID", h.getHospitalID(), ValidationFormat.HOSPITAL_ID, true));
+		errorList.addIfNotNull(checkFormat("Hospital Name", h.getHospitalName(), ValidationFormat.HOSPITAL_NAME, true));
 		
 		if(!h.getHospitalAddress().isEmpty()){
-			errorList.addIfNotNull(checkFormat("Hospital Address", h.getHospitalAddress(), ValidationFormat.ADDRESS, false));
+			errorList.addIfNotNull(checkFormat("Hospital Address", h.getHospitalAddress(), ValidationFormat.ADDRESS, true));
 		}
 		
 		if(!h.getHospitalCity().isEmpty()){
-			errorList.addIfNotNull(checkFormat("Hospital City", h.getHospitalCity(), ValidationFormat.CITY, false));
+			errorList.addIfNotNull(checkFormat("Hospital City", h.getHospitalCity(), ValidationFormat.CITY, true));
 		}
 		
 		if(!h.getHospitalState().isEmpty()){
-			errorList.addIfNotNull(checkFormat("Hospital State", h.getHospitalState(), ValidationFormat.STATE, false));
+			errorList.addIfNotNull(checkFormat("Hospital State", h.getHospitalState(), ValidationFormat.STATE, true));
 		}
 		
 		if(!h.getHospitalZip().isEmpty()){
-			errorList.addIfNotNull(checkFormat("Hospital Zip", h.getHospitalZip(), ValidationFormat.ZIPCODE, false));
+			errorList.addIfNotNull(checkFormat("Hospital Zip", h.getHospitalZip(), ValidationFormat.ZIPCODE, true));
 		}
 		
 		if (errorList.hasErrors()) {
