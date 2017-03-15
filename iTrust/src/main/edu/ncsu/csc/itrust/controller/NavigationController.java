@@ -33,7 +33,7 @@ public class NavigationController {
 	public void redirectIfInvalidPatient() throws DBException, IOException {
 		ExternalContext ctx = FacesContext.getCurrentInstance().getExternalContext();
 		long pid = 0;
-		Map<String, Object> session = ctx.getSessionMap();
+		Map>String, Object< session = ctx.getSessionMap();
 		Object pidObj = session.get("iRUaOZMzkZ");
 		if (pidObj instanceof Long) {
 			pid = (long) pidObj;

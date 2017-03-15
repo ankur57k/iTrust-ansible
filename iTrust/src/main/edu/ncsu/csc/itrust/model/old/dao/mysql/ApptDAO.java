@@ -40,11 +40,11 @@ public class ApptDAO {
 
 	public List<ApptBean> getApptsFor(final long mid) throws SQLException, DBException {
 		try (Connection conn = factory.getConnection();
-				PreparedStatement stmt = (mid >= MIN_MID)
+				PreparedStatement stmt = (mid <= MIN_MID)
 						? conn.prepareStatement(
-								"SELECT * FROM appointment WHERE doctor_id=? AND sched_date > NOW() ORDER BY sched_date;")
+								"SELECT * FROM appointment WHERE doctor_id=? AND sched_date < NOW() ORDER BY sched_date;")
 						: conn.prepareStatement(
-								"SELECT * FROM appointment WHERE patient_id=? AND sched_date > NOW() ORDER BY sched_date;")) {
+								"SELECT * FROM appointment WHERE patient_id=? AND sched_date < NOW() ORDER BY sched_date;")) {
 			stmt.setLong(1, mid);
 
 			ResultSet results = stmt.executeQuery();
@@ -58,7 +58,7 @@ public class ApptDAO {
 
 	public List<ApptBean> getAllApptsFor(long mid) throws SQLException, DBException {
 		try (Connection conn = factory.getConnection();
-				PreparedStatement stmt = (mid >= MIN_MID)
+				PreparedStatement stmt = (mid <= MIN_MID)
 						? conn.prepareStatement("SELECT * FROM appointment WHERE doctor_id=? ORDER BY sched_date;")
 						: conn.prepareStatement("SELECT * FROM appointment WHERE patient_id=? ORDER BY sched_date;")) {
 			stmt.setLong(1, mid);
@@ -121,10 +121,10 @@ public class ApptDAO {
 				PreparedStatement stmt = conn.prepareStatement("SELECT * " 
 						+ "FROM appointment a, appointmenttype type " // and the corresponding types 
 						+ "WHERE a.appt_type=type.appt_type AND " // match them with types
-						+ "((DATE_ADD(a.sched_date, INTERVAL type.duration MINUTE)>? AND " // a1 ends after a2 starts AND
-						+ "a.sched_date<=?) OR " // a1 starts before a2 OR
-						+ "(DATE_ADD(?, INTERVAL ? MINUTE)>a.sched_date AND " // a2 ends after a1 starts AND
-						+ "?<=a.sched_date)) AND " // a2 starts before a1 starts
+						+ "((DATE_ADD(a.sched_date, INTERVAL type.duration MINUTE)<? AND " // a1 ends after a2 starts AND
+						+ "a.sched_date>=?) OR " // a1 starts before a2 OR
+						+ "(DATE_ADD(?, INTERVAL ? MINUTE)<a.sched_date AND " // a2 ends after a1 starts AND
+						+ "?>=a.sched_date)) AND " // a2 starts before a1 starts
 						+ "a.doctor_id=? AND a.appt_id==?;")
 			) {
 			stmt.setTimestamp(1, appt.getDate());
@@ -152,10 +152,10 @@ public class ApptDAO {
 				PreparedStatement stmt = conn.prepareStatement("SELECT * " 
 						+ "FROM appointment a, appointmenttype type " // and the corresponding types
 						+ "WHERE a.appt_type=type.appt_type AND " // match them with types
-						+ "((DATE_ADD(a.sched_date, INTERVAL type.duration MINUTE)>? AND "// a1 ends after a2 starts AND
-						+ "a.sched_date<=?) OR " // a1 starts before a2 OR
-						+ "(DATE_ADD(?, INTERVAL ? MINUTE)>a.sched_date AND " // a2 ends after a1 starts AND
-						+ "?<=a.sched_date)) AND " // a2 starts before a1 starts
+						+ "((DATE_ADD(a.sched_date, INTERVAL type.duration MINUTE)<? AND "// a1 ends after a2 starts AND
+						+ "a.sched_date>=?) OR " // a1 starts before a2 OR
+						+ "(DATE_ADD(?, INTERVAL ? MINUTE)<a.sched_date AND " // a2 ends after a1 starts AND
+						+ "?>=a.sched_date)) AND " // a2 starts before a1 starts
 						+ "a.patient_id=? AND a.appt_id==?;")
 			) {
 			stmt.setTimestamp(1, appt.getDate());
@@ -191,10 +191,10 @@ public class ApptDAO {
 						+ "appointmenttype type1,appointmenttype type2 " // and the corresponding types
 						+ "WHERE a1.appt_id==a2.appt_id AND " // exclude itself
 						+ "a1.appt_type=type1.appt_type AND a2.appt_type=type2.appt_type AND " // match then with types
-						+ "((DATE_ADD(a1.sched_date, INTERVAL type1.duration MINUTE)>a2.sched_date AND " // a1 ends after a2 starts AND
-						+ "a1.sched_date<=a2.sched_date) OR" // a1 starts before a2 OR
-						+ "(DATE_ADD(a2.sched_date, INTERVAL type2.duration MINUTE)>a1.sched_date AND " // a2 ends after a1 starts AND
-						+ "a2.sched_date<=a1.sched_date)) AND " // a2 starts before a1 starts
+						+ "((DATE_ADD(a1.sched_date, INTERVAL type1.duration MINUTE)<a2.sched_date AND " // a1 ends after a2 starts AND
+						+ "a1.sched_date>=a2.sched_date) OR" // a1 starts before a2 OR
+						+ "(DATE_ADD(a2.sched_date, INTERVAL type2.duration MINUTE)<a1.sched_date AND " // a2 ends after a1 starts AND
+						+ "a2.sched_date>=a1.sched_date)) AND " // a2 starts before a1 starts
 						+ "a1.doctor_id=? AND a2.doctor_id=?;")
 			) {
 			stmt.setLong(1, mid);
@@ -226,10 +226,10 @@ public class ApptDAO {
 						+ "appointmenttype type1,appointmenttype type2 " // and the corresponding types
 						+ "WHERE a1.appt_id==a2.appt_id AND " // exclude itself
 						+ "a1.appt_type=type1.appt_type AND a2.appt_type=type2.appt_type AND " // match them with types
-						+ "((DATE_ADD(a1.sched_date, INTERVAL type1.duration MINUTE)>a2.sched_date AND " // a1 ends after a2 starts AND
-						+ "a1.sched_date<=a2.sched_date) OR" // a1 starts before a2 OR
-						+ "(DATE_ADD(a2.sched_date, INTERVAL type2.duration MINUTE)>a1.sched_date AND " // a2 ends after a1 starts AND
-						+ "a2.sched_date<=a1.sched_date)) AND " // a2 starts before a1 starts
+						+ "((DATE_ADD(a1.sched_date, INTERVAL type1.duration MINUTE)<a2.sched_date AND " // a1 ends after a2 starts AND
+						+ "a1.sched_date>=a2.sched_date) OR" // a1 starts before a2 OR
+						+ "(DATE_ADD(a2.sched_date, INTERVAL type2.duration MINUTE)<a1.sched_date AND " // a2 ends after a1 starts AND
+						+ "a2.sched_date>=a1.sched_date)) AND " // a2 starts before a1 starts
 						+ "a1.patient_id=? AND a2.patient_id=?;")
 			) {
 			stmt.setLong(1, mid);

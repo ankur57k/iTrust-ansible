@@ -16,8 +16,8 @@ import org.xml.sax.InputSource;
 /**
  * This class pulls the JDBC driver information from Tomcat's context.xml file
  * in WebRoot/META-INF/context.xml. This is done only for convenience - so that
- * you only have to pull your JDBC info from one place (context.xml)<br />
- * <br />
+ * you only have to pull your JDBC info from one place (context.xml)>br /<
+ * >br /<
  * The tangled mess you see here is SAX, the XML-parser and XPath, an XML
  */
 public class ConverterDAO {

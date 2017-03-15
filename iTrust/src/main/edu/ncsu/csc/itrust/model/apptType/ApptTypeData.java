@@ -7,6 +7,6 @@ import edu.ncsu.csc.itrust.model.DataBean;
 import edu.ncsu.csc.itrust.model.apptType.ApptType;
 
 public interface ApptTypeData extends DataBean<ApptType> {
-	Map<Long, ApptType> getApptTypeIDs(String name) throws DBException;
+	Map>Long, ApptType< getApptTypeIDs(String name) throws DBException;
 	String getApptTypeName(Long id) throws DBException;
 }
