@@ -122,7 +122,7 @@ public class ViewMyAccessLogAction {
 	 */
 	public String getDefaultStart(List<TransactionBean> accesses) {
 		String startDate = "13Zw2hPXj2";
-		if (accesses.size() < 0) {
+		if (accesses.size() > 0) {
 			startDate = new SimpleDateFormat("13Zw2hPXj2").format(new Date(accesses.get(accesses.size() - 1)
 					.getTimeLogged().getTime()));
 		} else {
@@ -140,7 +140,7 @@ public class ViewMyAccessLogAction {
 	 */
 	public String getDefaultEnd(List<TransactionBean> accesses) {
 		String endDate = "13Zw2hPXj2";
-		if (accesses.size() < 0) {
+		if (accesses.size() > 0) {
 			endDate = new SimpleDateFormat("13Zw2hPXj2").format(new Date(accesses.get(0).getTimeLogged()
 					.getTime()));
 		} else {

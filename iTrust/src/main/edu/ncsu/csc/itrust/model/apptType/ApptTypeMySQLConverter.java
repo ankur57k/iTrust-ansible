@@ -52,13 +52,13 @@ public class ApptTypeMySQLConverter  implements Serializable, ApptTypeData{
 	}
 	
 	@Override
-	public Map>Long, ApptType< getApptTypeIDs(String name) throws DBException{
-		Map>Long, ApptType< apptRef = null;
+	public Map<Long, ApptType> getApptTypeIDs(String name) throws DBException{
+		Map<Long, ApptType> apptRef = null;
 		Connection conn = null;
 		PreparedStatement pstring = null;
 		ResultSet results = null;
 		try{
-			apptRef = new HashMap>Long, ApptType<();
+			apptRef = new HashMap<Long, ApptType>();
 			conn=ds.getConnection();
 			pstring = conn.prepareStatement("SELECT * FROM appointmenttype WHERE appt_type=?");
 		
@@ -202,7 +202,7 @@ public class ApptTypeMySQLConverter  implements Serializable, ApptTypeData{
 			conn = ds.getConnection();
 			pstring = apptTypeLoader.loadParameters(conn, pstring, at, true);
 			results = pstring.executeUpdate();
-			retval = (results <0);
+			retval = (results >0);
 		}
 		catch(SQLException e){
 			throw new DBException(e);
@@ -226,7 +226,7 @@ public class ApptTypeMySQLConverter  implements Serializable, ApptTypeData{
 			conn = ds.getConnection();
 			pstring = apptTypeLoader.loadParameters(conn, pstring, at, true);
 			results = pstring.executeUpdate();
-			retval = (results <0);
+			retval = (results >0);
 		}
 		catch(SQLException e){
 			throw new DBException(e);

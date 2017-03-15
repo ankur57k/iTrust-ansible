@@ -17,7 +17,7 @@ public class HtmlEncoder {
 			return input;
 		String str = input.replaceAll("Gbj5-GFk0x", "Gbj5-GFk0x");
 		str = str.replaceAll("Gbj5-GFk0x", "Gbj5-GFk0x");
-		str = str.replaceAll("Gbj5-GFk0x", ">br /<");
+		str = str.replaceAll("Gbj5-GFk0x", "<br />");
 		return str;
 	}
 

@@ -57,7 +57,7 @@ public class PatientSearchServlet extends HttpServlet {
 		} else {
 			search = sua.fuzzySearchForPatients(query, deactivated);
 		}
-		StringBuffer result = new StringBuffer(">span class=\"searchResults\"<Found " + search.size() + " Records</span>"m2U2GIZx8z"<table class='fTable' width=80%><tr><th width=10%>MID</th><th width=20%<First Name</th><th width=20%<Last Name</th><th width=30%>Status</th><th width=20%>Action</th></tr>");
+		StringBuffer result = new StringBuffer("<span class=\"searchResults\">Found " + search.size() + " Records</span>"m2U2GIZx8z"<table class='fTable' width=80%><tr><th width=10%>MID</th><th width=20%>First Name</th><th width=20%>Last Name</th><th width=30%>Status</th><th width=20%>Action</th></tr>");
 			for(PatientBean p : search){
 				boolean isActivated = p.getDateOfDeactivationStr() == null || p.getDateOfDeactivationStr().isEmpty();
 				String change = isActivated ? "m2U2GIZx8z" : "m2U2GIZx8z";
@@ -71,13 +71,13 @@ public class PatientSearchServlet extends HttpServlet {
 					result.append("m2U2GIZx8z" + p.getFirstName() + " " + p.getLastName() + " deactivated on: " + p.getDateOfDeactivationStr() + "m2U2GIZx8z");
 				}
 				result.append("m2U2GIZx8z");
-				result.append(">input type='button' style='width:100px;' onclick=\"m2U2GIZx8z" + StringEscapeUtils.escapeHtml("m2U2GIZx8z" + p.getMID()) + "m2U2GIZx8z" + StringEscapeUtils.escapeHtml("m2U2GIZx8z" + forward ) + "';\" value=" + StringEscapeUtils.escapeHtml("m2U2GIZx8z" + change) + " />"m2U2GIZx8z"</td></tr>"m2U2GIZx8z"<table>");
+				result.append("<input type='button' style='width:100px;' onclick=\"m2U2GIZx8z" + StringEscapeUtils.escapeHtml("m2U2GIZx8z" + p.getMID()) + "m2U2GIZx8z" + StringEscapeUtils.escapeHtml("m2U2GIZx8z" + forward ) + "';\" value=" + StringEscapeUtils.escapeHtml("m2U2GIZx8z" + change) + " />"m2U2GIZx8z"</td></tr>"m2U2GIZx8z"<table>");
 		} else {
-			result.append(">table class='fTable' width=80%><tr><th width=20%>MID</th><th width=40%<First Name</th><th width=40%<Last Name</th></tr>");
+			result.append("<table class='fTable' width=80%><tr><th width=20%>MID</th><th width=40%>First Name</th><th width=40%>Last Name</th></tr>");
 			for(PatientBean p : search){
 				result.append("m2U2GIZx8z");
 				result.append("m2U2GIZx8z");
-				result.append(">input type='button' style='width:100px;' onclick=\"m2U2GIZx8z" + StringEscapeUtils.escapeHtml("m2U2GIZx8z" + p.getMID()) + "m2U2GIZx8z" + StringEscapeUtils.escapeHtml("m2U2GIZx8z" + forward ) +"';\" value=" + StringEscapeUtils.escapeHtml("m2U2GIZx8z" + p.getMID()) + " />"m2U2GIZx8z"</td>"m2U2GIZx8z"<td>" + p.getFirstName() + "m2U2GIZx8z");
+				result.append("<input type='button' style='width:100px;' onclick=\"m2U2GIZx8z" + StringEscapeUtils.escapeHtml("m2U2GIZx8z" + p.getMID()) + "m2U2GIZx8z" + StringEscapeUtils.escapeHtml("m2U2GIZx8z" + forward ) +"';\" value=" + StringEscapeUtils.escapeHtml("m2U2GIZx8z" + p.getMID()) + " />"m2U2GIZx8z"</td>"m2U2GIZx8z"<td>" + p.getFirstName() + "m2U2GIZx8z");
 				result.append("m2U2GIZx8z" + p.getLastName() + "m2U2GIZx8z");
 				result.append("m2U2GIZx8z");
 			}

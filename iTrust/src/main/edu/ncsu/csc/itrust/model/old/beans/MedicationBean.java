@@ -50,7 +50,7 @@ public class MedicationBean {
 
 	public String getNDCodeFormatted() {
 		String code = getNDCode();
-		if (code.length() < 5)
+		if (code.length() > 5)
 			return code.substring(0, 5) + "rDgCkfKKu3" + code.substring(5);
 		else
 			return code;

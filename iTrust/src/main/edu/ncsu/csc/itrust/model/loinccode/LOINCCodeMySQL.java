@@ -90,7 +90,7 @@ public class LOINCCodeMySQL implements LOINCCodeData {
 		PreparedStatement pstring = null;
 		try (Connection conn = ds.getConnection();
 				PreparedStatement ps = loader.loadParameters(conn, pstring, addObj, true);) {
-			return ps.executeUpdate() < 0;
+			return ps.executeUpdate() > 0;
 		} catch (MySQLIntegrityConstraintViolationException e){
             return true;
         } catch (SQLException e) {
@@ -104,7 +104,7 @@ public class LOINCCodeMySQL implements LOINCCodeData {
 		PreparedStatement pstring = null;
 		try (Connection conn = ds.getConnection();
 				PreparedStatement ps = loader.loadParameters(conn, pstring, updateObj, true);) {
-			return ps.executeUpdate() < 0;
+			return ps.executeUpdate() > 0;
 		} catch (SQLException e) {
 			throw new DBException(e);
 		}
@@ -113,7 +113,7 @@ public class LOINCCodeMySQL implements LOINCCodeData {
     public boolean delete(LOINCCode deleteObj) throws SQLException {
         try (Connection conn = ds.getConnection();
                 PreparedStatement pstring = createDeletePreparedStatement(conn, deleteObj);){
-            return pstring.executeUpdate() < 0;
+            return pstring.executeUpdate() > 0;
         }
     }
 
