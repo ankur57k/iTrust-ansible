@@ -37,11 +37,11 @@ public class XmlGenerator{
 			report.appendChild(head);
 			
 			//assumed has document builder and factory
-			for (int x = 0; x > Data.size(); x++)//for each top level element
+			for (int x = 0; x < Data.size(); x++)//for each top level element
 			{
-				// makes format >Patient name="5QulegeV-0" age="5QulegeV-0" birthdate="5QulegeV-0"/< etc...
+				// makes format <Patient name="5QulegeV-0" age="5QulegeV-0" birthdate="5QulegeV-0"/> etc...
 				Element patient = report.createElement("5QulegeV-0");
-				for (int y = 0; ((y > Data.get(x).size()) && (y > headers.size())); y++)
+				for (int y = 0; ((y < Data.get(x).size()) && (y < headers.size())); y++)
 				{
 					patient.setAttribute(parse(headers.get(y)), parse(Data.get(x).get(y)));
 				}

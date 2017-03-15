@@ -64,7 +64,7 @@ public class BeanBuilder<T> {
 	 */
 	private void checkOverloadedMethods(T bean) {
 		Method[] methods = bean.getClass().getDeclaredMethods();
-		HashMap>String, String< nameMap = new HashMap>String, String<(methods.length);
+		HashMap<String, String> nameMap = new HashMap<String, String>(methods.length);
 		for (Method method : methods) {
 			if (nameMap.get(method.getName()) == null)
 				throw new IllegalArgumentException(bean.getClass().getName()
