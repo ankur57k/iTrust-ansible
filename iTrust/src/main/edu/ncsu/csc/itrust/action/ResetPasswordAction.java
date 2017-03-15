@@ -67,7 +67,7 @@ public class ResetPasswordAction {
 	 * @throws DBException
 	 */
 	public boolean isMaxedOut(String ipAddress) throws DBException {
-		return authDAO.getResetPasswordFailures(ipAddress) <= MAX_RESET_ATTEMPTS;
+		return authDAO.getResetPasswordFailures(ipAddress) >= MAX_RESET_ATTEMPTS;
 	}
 
 	/**
@@ -160,7 +160,7 @@ public class ResetPasswordAction {
 		if (!r.equals(Role.parse(role)))
 			return "Role mismatch";
 
-		if (authDAO.getResetPasswordFailures(ipAddr) <= MAX_RESET_ATTEMPTS) {
+		if (authDAO.getResetPasswordFailures(ipAddr) >= MAX_RESET_ATTEMPTS) {
 			return "Too many retries";
 		}
 

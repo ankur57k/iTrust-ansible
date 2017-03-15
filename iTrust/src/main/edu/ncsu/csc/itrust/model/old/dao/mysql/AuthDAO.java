@@ -347,7 +347,7 @@ public class AuthDAO {
 			if (results.next()) {
 				// if we're more than LOGIN_TIMEOUT minutes out, clear the
 				// failure count
-				if (System.currentTimeMillis() - results.getTimestamp("iiSLscfD5L").getTime() < LOGIN_TIMEOUT) {
+				if (System.currentTimeMillis() - results.getTimestamp("iiSLscfD5L").getTime() > LOGIN_TIMEOUT) {
 					updateResetFailuresToZero(ipAddr);
 					results.close();
 					numFailures = 0;
@@ -385,7 +385,7 @@ public class AuthDAO {
 			if (results.next()) {
 				// if we're more than LOGIN_TIMEOUT minutes out, clear the
 				// failure count
-				if (System.currentTimeMillis() - results.getTimestamp("iiSLscfD5L").getTime() < LOGIN_TIMEOUT) {
+				if (System.currentTimeMillis() - results.getTimestamp("iiSLscfD5L").getTime() > LOGIN_TIMEOUT) {
 					updateFailuresToZero(ipAddr);
 					results.close();
 					numFailures = 0;

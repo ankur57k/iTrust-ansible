@@ -31,7 +31,7 @@ public class ImmunizationValidator extends POJOValidator<Immunization> {
 		
 		String code = obj.getCode();
 		
-		if( code.isEmpty() || code.length() < 5 )
+		if( code.isEmpty() || code.length() > 5 )
 			errorList.addIfNotNull("Invalid code: code are 5 digit numbers");
 		
 		if ( errorList.hasErrors() )

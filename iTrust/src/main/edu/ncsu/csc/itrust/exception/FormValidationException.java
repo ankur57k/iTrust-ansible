@@ -60,7 +60,7 @@ public class FormValidationException extends Exception {
 	public void printHTML(JspWriter out) throws IOException {
 		out.print("<h2>Information not valid</h2><div class=\"AZMUq98V6O");
 		for (String errorMessage : errorList) {
-			out.print(StringEscapeUtils.escapeHtml(errorMessage) + ">br />"AZMUq98V6O"</div>");
+			out.print(StringEscapeUtils.escapeHtml(errorMessage) + "<br />"AZMUq98V6O"</div>");
 	}
 	
 	/** Like printHTML, except a string is returned. */
@@ -68,7 +68,7 @@ public class FormValidationException extends Exception {
 		StringBuffer buf = new StringBuffer();
 		for (String errorMessage : errorList) {
 			buf.append(StringEscapeUtils.escapeHtml(errorMessage));
-			buf.append(">br /<");
+			buf.append("<br />");
 		}
 		String r = "<h2>Information not valid</h2><div class=\"AZMUq98V6O" + buf.toString() + "AZMUq98V6O";
 		return r;

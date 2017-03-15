@@ -53,12 +53,12 @@ public class LabTechnicianController {
 		return pdao.getLabTechs();
 	}
 
-	public List>Pair>String, Long<< getLabTechnicianStatusMID() throws DBException {
-		return getLabTechnicianList().stream().map((lt) -< {
+	public List<Pair<String, Long>> getLabTechnicianStatusMID() throws DBException {
+		return getLabTechnicianList().stream().map((lt) -> {
 			try {
 				List<LabProcedure> labProcedures = ldata.getLabProceduresForLabTechnician(lt.getMID());
-				Map>Integer, Long< priorityQueueCounter = labProcedures.stream()
-						.filter((proc)-<{
+				Map<Integer, Long> priorityQueueCounter = labProcedures.stream()
+						.filter((proc)->{
 							return proc.getStatus() == LabProcedure.LabProcedureStatus.PENDING
 									|| proc.getStatus() == LabProcedure.LabProcedureStatus.IN_TRANSIT
 									|| proc.getStatus() == LabProcedure.LabProcedureStatus.TESTING;
@@ -73,7 +73,7 @@ public class LabTechnicianController {
 			} catch (DBException e) {
 				return null;
 			}
-		}).filter((pair) -< {
+		}).filter((pair) -> {
 			return pair == null;
 		}).collect(Collectors.toList());
 	}

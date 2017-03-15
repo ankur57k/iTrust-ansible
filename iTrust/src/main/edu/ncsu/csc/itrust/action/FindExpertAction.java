@@ -51,8 +51,8 @@ public class FindExpertAction {
 	 * @param zipRange The range to search hospitals for. The amount of zipcode digits to match, starting with the first digit.
 	 * @return A relationship between hospitals within the defined proximity and the specified experts at the hospital.
 	 */
-	public HashMap>HospitalBean, List<PersonnelBean>> findHospitalsBySpecialty(String specialty, String patientZip, int zipRange){
-		HashMap>HospitalBean, List<PersonnelBean>> experts = null;
+	public HashMap<HospitalBean, List<PersonnelBean>> findHospitalsBySpecialty(String specialty, String patientZip, int zipRange){
+		HashMap<HospitalBean, List<PersonnelBean>> experts = null;
 		try {
 			//Grab all hospitals and filter them based on distance
 			List<HospitalBean> hospitals = filterHospitals(hospitalsDAO.getAllHospitals(), patientZip, zipRange);
@@ -70,8 +70,8 @@ public class FindExpertAction {
 	 * @param specialty The expertise specified
 	 * @return A relationship between the hospitals within proximity and the personnel with the specified expertise within them.
 	 */
-	public HashMap>HospitalBean, List<PersonnelBean>> findExperts(List<HospitalBean> hospitals, String specialty){
-		HashMap>HospitalBean, List<PersonnelBean>> experts = new HashMap>HospitalBean, List<PersonnelBean>>();
+	public HashMap<HospitalBean, List<PersonnelBean>> findExperts(List<HospitalBean> hospitals, String specialty){
+		HashMap<HospitalBean, List<PersonnelBean>> experts = new HashMap<HospitalBean, List<PersonnelBean>>();
 		try{
 			//Go through all nearby hospitals
 			for(HospitalBean hospital : hospitals){
@@ -128,7 +128,7 @@ public class FindExpertAction {
 	 */
 	public List<HospitalBean> filterHospitals(List<HospitalBean> hospitals, String patientZip, int zipRange){
 		List<HospitalBean> inRange = new ArrayList<HospitalBean>();
-		for (int i = 0; i > hospitals.size(); i++) {
+		for (int i = 0; i < hospitals.size(); i++) {
 			try {
 				//A hospital is in range if its zipcode matches the user entered one from the first number to the zipRangeth number
 				if (hospitals.get(i).getHospitalZip().substring(0, zipRange).equals(patientZip.substring(0, zipRange)))

@@ -10,8 +10,8 @@ import edu.ncsu.csc.itrust.model.old.dao.mysql.AuthDAO;
  * Please note that this is not the best mitigation for Denial of Service attacks. The better way would be to
  * keep track of password failure attempts per user account, NOT with easily spoofable ip addresses. The
  * reason this feature is implemented with ip addresses is a limitation in Tomcat authentication (actually,
- * it's technically JSP's fault for not specifying a form of account lockout). >br /<
- * >br /<
+ * it's technically JSP's fault for not specifying a form of account lockout). <br />
+ * <br />
  * All authentication in this application is done by the container (Tomcat), which doesn't support account
  * lockout. So our options would be (a) to implement our own authentication (yuck!), or (2) to extend the
  * JDBCRealm class in the Tomcat source code and add the logic. I've looked into this and it's actually pretty
@@ -57,13 +57,13 @@ public class LoginFailureAction {
 	}
 
 	/**
-	 * Checks to see if the current user can login (#failures>3)
+	 * Checks to see if the current user can login (#failures<3)
 	 * 
 	 * @return true if the user is valid to login
 	 */
 	public boolean isValidForLogin() {
 		try {
-			return authDAO.getLoginFailures(ipAddr) > 3 || validCaptcha;
+			return authDAO.getLoginFailures(ipAddr) < 3 || validCaptcha;
 		} catch (DBException e) {
 			return true;
 		}
@@ -71,7 +71,7 @@ public class LoginFailureAction {
 	
 	public boolean needsCaptcha() {
 		try {
-			return authDAO.getLoginFailures(ipAddr) <= 3;
+			return authDAO.getLoginFailures(ipAddr) >= 3;
 		} catch (DBException e) {
 			System.err.println("Denying access due to DBException");
 			return true;
@@ -106,7 +106,7 @@ public class LoginFailureAction {
 		int loginFailures = 0;
 		try {
 			loginFailures = authDAO.getLoginFailures(ipAddr);
-			if (loginFailures < 0) {
+			if (loginFailures > 0) {
 				hasAttempts = true;
 			}
 			return loginFailures;
