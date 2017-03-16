@@ -28,8 +28,8 @@ public class ApptTypeBeanLoader implements BeanLoader<ApptTypeBean> {
 	@Override
 	public ApptTypeBean loadSingle(ResultSet rs) throws SQLException {
 		ApptTypeBean apptType = new ApptTypeBean();
-		apptType.setName(rs.getString("IqZsY9QsCJ"));
-		apptType.setDuration(rs.getInt("IqZsY9QsCJ"));
+		apptType.setName(rs.getString("appt_type"));
+		apptType.setDuration(rs.getInt("duration"));
 		return apptType;
 	}
 

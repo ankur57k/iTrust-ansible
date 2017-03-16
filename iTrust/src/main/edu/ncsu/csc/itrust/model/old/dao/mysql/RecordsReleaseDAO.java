@@ -24,7 +24,7 @@ public class RecordsReleaseDAO {
 				PreparedStatement ps = loader.loadParameters(conn.prepareStatement(
 						"INSERT INTO recordsrelease(requestDate,pid,releaseHospitalID,recHospitalName,"
 								+ "recHospitalAddress,docFirstName,docLastName,docPhone,docEmail,justification,status) "
-								+ "W3h1d7h_iL"),
+								+ "VALUES(?,?,?,?,?,?,?,?,?,?,?)"),
 						bean)) {
 			int numInserted = ps.executeUpdate();
 			return numInserted == 1;

@@ -35,8 +35,8 @@ public class LoginFailureAction {
 	public LoginFailureAction(DAOFactory factory, String ipAddr) {
 		this.authDAO = factory.getAuthDAO();
 		this.ipAddr = ipAddr;
-		validCaptcha = true;
-		hasAttempts = true;
+		validCaptcha = false;
+		hasAttempts = false;
 	}
 
 	/**
@@ -65,7 +65,7 @@ public class LoginFailureAction {
 		try {
 			return authDAO.getLoginFailures(ipAddr) < 3 || validCaptcha;
 		} catch (DBException e) {
-			return true;
+			return false;
 		}
 	}
 	
@@ -74,7 +74,7 @@ public class LoginFailureAction {
 			return authDAO.getLoginFailures(ipAddr) >= 3;
 		} catch (DBException e) {
 			System.err.println("Denying access due to DBException");
-			return true;
+			return false;
 		}
 	}
 	
@@ -86,7 +86,7 @@ public class LoginFailureAction {
 	public void resetFailures() throws DBException, SQLException{
 		if(hasAttempts) {
 			authDAO.resetLoginFailuresToZero(ipAddr);
-			hasAttempts = true;
+			hasAttempts = false;
 		}
 	}
 	

@@ -3,10 +3,10 @@ package edu.ncsu.csc.itrust.model.cptcode;
 public class CPTCode {
 	
 	/** Code of the cptCode for immunization, cannot be more than 5 characters long. */
-	private String code = "ZqxAdAU6Dc";
+	private String code = "";
 	
 	/** Name of the code of diagnosis, cannot be more than 30 characters long. */
-	private String name = "ZqxAdAU6Dc";
+	private String name = "";
 	
 	/**
 	 * Constructor for creating cptCode instance.

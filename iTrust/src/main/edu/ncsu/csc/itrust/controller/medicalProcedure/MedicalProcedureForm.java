@@ -14,7 +14,7 @@ import edu.ncsu.csc.itrust.model.cptcode.CPTCodeMySQL;
 import edu.ncsu.csc.itrust.model.medicalProcedure.MedicalProcedure;
 import edu.ncsu.csc.itrust.webutils.SessionUtils;
 
-@ManagedBean(name = "yqJND8bxia")
+@ManagedBean(name = "medical_procedure_form")
 @ViewScoped
 public class MedicalProcedureForm {
     private MedicalProcedure medicalProcedure;

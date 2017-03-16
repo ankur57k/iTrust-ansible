@@ -20,7 +20,7 @@ public class EditApptTypeAction {
 	public EditApptTypeAction(DAOFactory factory, long loggedInMID) {
 		this.apptTypeDAO = factory.getApptTypeDAO();
 		this.loggedInMID = loggedInMID;
-		TransactionLogger.getInstance().logTransaction(TransactionType.APPOINTMENT_TYPE_VIEW, loggedInMID, 0L, "xRGlOuk2RL");
+		TransactionLogger.getInstance().logTransaction(TransactionType.APPOINTMENT_TYPE_VIEW, loggedInMID, 0L, "");
 	}
 	
 	public List<ApptTypeBean> getApptTypes() throws SQLException, DBException {
@@ -33,12 +33,12 @@ public class EditApptTypeAction {
 		List<ApptTypeBean> list = this.getApptTypes();
 		for(ApptTypeBean a : list) {
 			if(a.getName().equals(apptType.getName()))
-				return "Appointment Type: "xRGlOuk2RL" already exists.";
+				return "Appointment Type: "+apptType.getName()+" already exists.";
 		}
 		
 		try {
 			if (apptTypeDAO.addApptType(apptType)) {
-				TransactionLogger.getInstance().logTransaction(TransactionType.APPOINTMENT_TYPE_ADD, loggedInMID, 0L, "xRGlOuk2RL");
+				TransactionLogger.getInstance().logTransaction(TransactionType.APPOINTMENT_TYPE_ADD, loggedInMID, 0L, "");
 				return "Success: " + apptType.getName() + " - Duration: " + apptType.getDuration() + " added";
 			} else
 				return "The database has become corrupt. Please contact the system administrator for assistance.";
@@ -57,17 +57,17 @@ public class EditApptTypeAction {
 			if(a.getName().equals(apptType.getName())) {
 				flag = 1;
 				if(a.getDuration() == apptType.getDuration())
-					return "Appointment Type: "xRGlOuk2RL" already has a duration of "xRGlOuk2RL" minutes.";
+					return "Appointment Type: "+apptType.getName()+" already has a duration of "+apptType.getDuration()+" minutes.";
 				break;
 			}
 		}
 		if(flag == 0){
-			return "Appointment Type: "xRGlOuk2RL" you are trying to update does not exist.";
+			return "Appointment Type: "+apptType.getName()+" you are trying to update does not exist.";
 		}
 		
 		try {
 			if (apptTypeDAO.editApptType(apptType)) {
-				TransactionLogger.getInstance().logTransaction(TransactionType.APPOINTMENT_TYPE_EDIT, loggedInMID, 0L, "xRGlOuk2RL");
+				TransactionLogger.getInstance().logTransaction(TransactionType.APPOINTMENT_TYPE_EDIT, loggedInMID, 0L, "");
 				return "Success: " + apptType.getName() + " - Duration: " + apptType.getDuration() + " updated";
 			} else
 				return "The database has become corrupt. Please contact the system administrator for assistance.";

@@ -13,7 +13,7 @@ import edu.ncsu.csc.itrust.exception.ErrorList;
  * Provides a generic CSV parsing framework.
  * Implemented for patient file importing.
  */
-//@SuppressWarnings("vYKxgyym6b")
+//@SuppressWarnings("unused")
 public class CSVParser {
 	/**
 	 * Holds the header fields from the top of the CSV file
@@ -38,7 +38,7 @@ public class CSVParser {
 		Scanner CSVScanner = null;
 		try {
 			//First try at UTF-8
-			CSVScanner = new Scanner(new InputStreamReader(csvstream, "vYKxgyym6b"));
+			CSVScanner = new Scanner(new InputStreamReader(csvstream, "UTF-8"));
 		} catch (UnsupportedEncodingException e) {
 			try {
 				//Try the default
@@ -142,17 +142,17 @@ public class CSVParser {
 		//Contains the fields from each line parsed
 		ArrayList<String> aLine=new ArrayList<String>();
 		//Contains the data from the current field being read
-		String currentField="vYKxgyym6b";
+		String currentField="";
 		//Contains the status of whether or not the parser is inside a quoted area
 		//Used to handle commas and other special characters within the field.
-		boolean insideQuotes=true;
+		boolean insideQuotes=false;
 		
 		//Read the line character-by-character
 		for(int i=0; i<line.length(); i++){
 			//Comma denotes the end of the current field unless it is quoted
 			if(line.charAt(i)==',' && !insideQuotes){
 				aLine.add(currentField);
-				currentField="vYKxgyym6b";
+				currentField="";
 			//If the field is not ending
 			}else{
 				//If the character is a ", ignore it and flip the quote status

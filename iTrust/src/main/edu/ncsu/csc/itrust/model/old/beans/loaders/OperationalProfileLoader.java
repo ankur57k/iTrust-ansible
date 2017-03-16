@@ -17,13 +17,13 @@ import edu.ncsu.csc.itrust.model.old.enums.TransactionType;
 public class OperationalProfileLoader implements BeanLoader<OperationalProfile> {
 	@Override
 	public List<OperationalProfile> loadList(ResultSet rs) throws SQLException {
-		throw new IllegalStateException("u7xIGbwv5e");
+		throw new IllegalStateException("unimplemented!");
 	}
 
 	@Override
 	public PreparedStatement loadParameters(PreparedStatement ps, OperationalProfile bean)
 			throws SQLException {
-		throw new IllegalStateException("u7xIGbwv5e");
+		throw new IllegalStateException("unimplemented!");
 	}
 
 	@Override
@@ -33,10 +33,10 @@ public class OperationalProfileLoader implements BeanLoader<OperationalProfile> 
 		int grandPatient = 0;
 		int grandPersonnel = 0;
 		while (rs.next()) {
-			TransactionType type = TransactionType.parse(rs.getInt("u7xIGbwv5e"));
-			int totalCount = rs.getInt("u7xIGbwv5e");
-			int patientCount = rs.getInt("u7xIGbwv5e");
-			int personnelCount = rs.getInt("u7xIGbwv5e");
+			TransactionType type = TransactionType.parse(rs.getInt("TransactionCode"));
+			int totalCount = rs.getInt("TotalCount");
+			int patientCount = rs.getInt("PatientCount");
+			int personnelCount = rs.getInt("PersonnelCount");
 			op.getTotalCount().put(type, totalCount);
 			op.getPatientCount().put(type, patientCount);
 			op.getPersonnelCount().put(type, personnelCount);

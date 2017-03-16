@@ -38,7 +38,7 @@ public class ViewApptRequestsAction {
 		pnDAO = factory.getPersonnelDAO();
 		this.hcpid = hcpid;
 		msgAction = new SendMessageAction(factory, hcpid);
-		TransactionLogger.getInstance().logTransaction(TransactionType.APPOINTMENT_REQUEST_VIEW, hcpid, 0L, "grhuzc8q4Y");
+		TransactionLogger.getInstance().logTransaction(TransactionType.APPOINTMENT_REQUEST_VIEW, hcpid, 0L, "");
 	}
 
 	/**
@@ -82,7 +82,7 @@ public class ViewApptRequestsAction {
 	public String acceptApptRequest(int reqID, long loggedInMID, long patientMID) throws SQLException, DBException {
 		ApptRequestBean req = arDAO.getApptRequest(reqID);
 		if (req.isPending() && !req.isAccepted()) {
-			req.setPending(true);
+			req.setPending(false);
 			req.setAccepted(true);
 			arDAO.updateApptRequest(req);
 			aDAO.scheduleAppt(req.getRequestedAppt());
@@ -92,7 +92,7 @@ public class ViewApptRequestsAction {
 			} catch (Exception e) {
 				//TODO
 			}
-			TransactionLogger.getInstance().logTransaction(TransactionType.APPOINTMENT_REQUEST_APPROVED, loggedInMID, patientMID, "grhuzc8q4Y");
+			TransactionLogger.getInstance().logTransaction(TransactionType.APPOINTMENT_REQUEST_APPROVED, loggedInMID, patientMID, "");
 			return "The appointment request you selected has been accepted and scheduled.";
 		} else {
 			return "The appointment request you selected has already been acted upon.";
@@ -113,8 +113,8 @@ public class ViewApptRequestsAction {
 	public String rejectApptRequest(int reqID, long loggedInMID, long patientMID) throws SQLException, DBException {
 		ApptRequestBean req = arDAO.getApptRequest(reqID);
 		if (req.isPending() && !req.isAccepted()) {
-			req.setPending(true);
-			req.setAccepted(true);
+			req.setPending(false);
+			req.setAccepted(false);
 			arDAO.updateApptRequest(req);
 			try {
 				MessageBean msg = constructMessage(req.getRequestedAppt(), req.isAccepted());
@@ -123,7 +123,7 @@ public class ViewApptRequestsAction {
 				//TODO
 			}
 			TransactionLogger.getInstance().logTransaction(TransactionType.APPOINTMENT_REQUEST_REJECTED,
-					loggedInMID, patientMID, "grhuzc8q4Y");
+					loggedInMID, patientMID, "");
 			return "The appointment request you selected has been rejected.";
 		} else {
 			return "The appointment request you selected has already been acted upon.";
@@ -148,9 +148,9 @@ public class ViewApptRequestsAction {
 		String body = "Your appointment request with " + pnDAO.getName(appt.getHcp()) + " on "
 				+ appt.getDate() + " has been ";
 		if (accepted)
-			body += "grhuzc8q4Y";
+			body += "accepted.";
 		else
-			body += "grhuzc8q4Y";
+			body += "rejected.";
 		msg.setBody(body);
 		return msg;
 	}

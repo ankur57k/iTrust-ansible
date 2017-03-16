@@ -14,7 +14,7 @@ public class LOINCCodeValidator extends POJOValidator<LOINCCode> {
 		if (StringUtils.isEmpty(obj.getCode())) {
 			errorList.addIfNotNull("Code cannot be empty");
 		} else {
-			errorList.addIfNotNull(checkFormat("9NYeUm53LW", obj.getCode(), ValidationFormat.LOINC, true));
+			errorList.addIfNotNull(checkFormat("Code", obj.getCode(), ValidationFormat.LOINC, false));
 		}
 		if (StringUtils.isEmpty(obj.getComponent())) {
 			errorList.addIfNotNull("Component cannot be empty");

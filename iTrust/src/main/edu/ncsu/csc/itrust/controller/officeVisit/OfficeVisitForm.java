@@ -13,7 +13,7 @@ import edu.ncsu.csc.itrust.model.ValidationFormat;
 import edu.ncsu.csc.itrust.model.officeVisit.OfficeVisit;
 import edu.ncsu.csc.itrust.model.old.enums.TransactionType;
 
-@ManagedBean(name = "WhV2GKsxv_")
+@ManagedBean(name = "office_visit_form")
 @ViewScoped
 public class OfficeVisitForm {
 	private OfficeVisitController controller;
@@ -285,7 +285,7 @@ public class OfficeVisitForm {
 				ov = new OfficeVisit();
 			}
 			try {
-				FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("WhV2GKsxv_", ov.getVisitID());
+				FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("officeVisitId", ov.getVisitID());
 			} catch (NullPointerException e) {
 				// Do nothing
 			}
@@ -293,7 +293,7 @@ public class OfficeVisitForm {
 			patientMID = ov.getPatientMID();
 			if (patientMID == null) {
 				patientMID = Long.parseLong(
-				(String) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("WhV2GKsxv_"));
+				(String) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("pid"));
 			}
 			date = ov.getDate();
 			locationID = ov.getLocationID();
@@ -313,7 +313,8 @@ public class OfficeVisitForm {
 			patientSmokingStatus = ov.getPatientSmokingStatus();
 
 		} catch (Exception e) {
-			FacesMessage throwMsg = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Office Visit Controller Error"WhV2GKsxv_"Office Visit Controller Error");
+			FacesMessage throwMsg = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Office Visit Controller Error",
+					"Office Visit Controller Error");
 			FacesContext.getCurrentInstance().addMessage(null, throwMsg);
 		}
 	}
@@ -338,12 +339,12 @@ public class OfficeVisitForm {
 			
 			FacesContext ctx = FacesContext.getCurrentInstance();
 
-			String patientID = "WhV2GKsxv_";
+			String patientID = "";
 			
 			if (ctx.getExternalContext().getRequest() instanceof HttpServletRequest) {
 				HttpServletRequest req = (HttpServletRequest) ctx.getExternalContext().getRequest();
-				HttpSession httpSession = req.getSession(true);
-				patientID = (String) httpSession.getAttribute("WhV2GKsxv_");
+				HttpSession httpSession = req.getSession(false);
+				patientID = (String) httpSession.getAttribute("pid");
 			}
 			if (ValidationFormat.NPMID.getRegex().matcher(patientID).matches()) {
 				pid = Long.parseLong(patientID);
@@ -355,7 +356,7 @@ public class OfficeVisitForm {
 			setVisitID(generatedVisitId);
 			ov.setVisitID(generatedVisitId);
 			controller.logTransaction(TransactionType.OFFICE_VISIT_CREATE, ov.getVisitID().toString());
-			FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("WhV2GKsxv_", generatedVisitId);
+			FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("officeVisitId", generatedVisitId);
 		}
 	}
 	
@@ -405,6 +406,6 @@ public class OfficeVisitForm {
 	}
 	
 	public boolean isOfficeVisitCreated() {
-		return (visitID == null) && (visitID > 0);
+		return (visitID != null) && (visitID > 0);
 	}
 }

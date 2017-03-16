@@ -19,12 +19,12 @@ public class ReportRequestBean {
 	private long patientMID = 0L;
 	private Date requestedDate;
 	private Date viewedDate;
-	private String status = "sh3XA4eTzA"; //$NON-NLS-1$
+	private String status = ""; //$NON-NLS-1$
 
 	public final static String dateFormat = "MM/dd/yyyy HH:mm"; //$NON-NLS-1$
 
-	public final static String Requested = Messages.getString("sh3XA4eTzA"); //$NON-NLS-1$
-	public final static String Viewed = Messages.getString("sh3XA4eTzA"); //$NON-NLS-1$
+	public final static String Requested = Messages.getString("ReportRequestBean.requested"); //$NON-NLS-1$
+	public final static String Viewed = Messages.getString("ReportRequestBean.viewed"); //$NON-NLS-1$
 
 	public ReportRequestBean() {
 	}
@@ -71,7 +71,7 @@ public class ReportRequestBean {
 
 	public String getRequestedDateString() {
 		if (requestedDate == null)
-			return "sh3XA4eTzA"; //$NON-NLS-1$
+			return ""; //$NON-NLS-1$
 		return new SimpleDateFormat(dateFormat).format(requestedDate);
 	}
 
@@ -93,7 +93,7 @@ public class ReportRequestBean {
 
 	public String getViewedDateString() {
 		if (viewedDate == null)
-			return "sh3XA4eTzA"; //$NON-NLS-1$
+			return ""; //$NON-NLS-1$
 		return new SimpleDateFormat(dateFormat).format(viewedDate);
 	}
 

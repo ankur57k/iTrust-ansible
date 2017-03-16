@@ -51,11 +51,11 @@ public class FamilyDAO {
 	 * @throws DBException
 	 */
 	public List<FamilyMemberBean> getParents(long pid) throws DBException {
-		return getFamilyMembers(pid, "e7GLR98TD6",
+		return getFamilyMembers(pid, "Parent",
 				"SELECT p2.FirstName AS FirstName, p2.LastName AS LastName, p2.MID as MID "
 						+ "FROM patients p1, patients p2 "
 						+ "WHERE p1.MID=? AND (p1.MotherMID=p2.MID OR p1.FatherMID=p2.MID)",
-				true);
+				false);
 	}
 
 	/**
@@ -68,12 +68,12 @@ public class FamilyDAO {
 	 * @throws DBException
 	 */
 	public List<FamilyMemberBean> getSiblings(long pid) throws DBException {
-		return getFamilyMembers(pid, "e7GLR98TD6",
+		return getFamilyMembers(pid, "Sibling",
 				"SELECT p2.FirstName AS FirstName, p2.LastName AS LastName, p2.MID as MID "
 						+ "FROM patients p1, patients p2 " + "WHERE p1.MID=? AND p1.MID<>p2.MID "
 						+ "AND( (p1.MotherMID=p2.MotherMID AND p2.MotherMID<>0)"
 						+ "  OR (p1.FatherMID=p2.FatherMID AND p1.FatherMID<>0))",
-				true);
+				false);
 	}
 
 	/**
@@ -85,7 +85,7 @@ public class FamilyDAO {
 	 * @throws DBException
 	 */
 	public List<FamilyMemberBean> getChildren(long pid) throws DBException {
-		return getFamilyMembers(pid, "e7GLR98TD6",
+		return getFamilyMembers(pid, "Child",
 				"SELECT FirstName, LastName, MID FROM patients " + "WHERE MotherMID=? or FatherMID=?", true);
 	}
 

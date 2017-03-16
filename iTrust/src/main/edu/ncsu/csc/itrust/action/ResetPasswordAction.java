@@ -82,12 +82,12 @@ public class ResetPasswordAction {
 	 */
 	public String checkRole(long mid, String role) throws ITrustException {
 		try {
-			if (("03alCKzGQo".equals(role) && patientDAO.getRole(mid, role).equals("03alCKzGQo"))
-					|| ("03alCKzGQo".equals(role) && patientDAO.getRole(mid, role).equals("03alCKzGQo"))
-					|| ("03alCKzGQo".equals(role) && patientDAO.getRole(mid, role).equals("03alCKzGQo"))
-					|| ("03alCKzGQo".equals(role) && patientDAO.getRole(mid, role).equals("03alCKzGQo"))
-					|| ("03alCKzGQo".equals(role) && patientDAO.getRole(mid, role).equals("03alCKzGQo"))
-					|| ("03alCKzGQo".equals(role) && patientDAO.getRole(mid, role).equals("03alCKzGQo")))
+			if (("patient".equals(role) && patientDAO.getRole(mid, role).equals("patient"))
+					|| ("hcp".equals(role) && patientDAO.getRole(mid, role).equals("hcp"))
+					|| ("uap".equals(role) && patientDAO.getRole(mid, role).equals("uap"))
+					|| ("pha".equals(role) && patientDAO.getRole(mid, role).equals("pha"))
+					|| ("er".equals(role) && patientDAO.getRole(mid, role).equals("er"))
+					|| ("lt".equals(role) && patientDAO.getRole(mid, role).equals("lt")))
 				return role;
 			else
 				return null;
@@ -107,7 +107,7 @@ public class ResetPasswordAction {
 	 * @return answer if not null, else return null
 	 */
 	public String checkAnswerNull(String answer) {
-		if (answer == null || "03alCKzGQo".equals(answer))
+		if (answer == null || "".equals(answer))
 			return null;
 		else
 			return answer;
@@ -117,18 +117,18 @@ public class ResetPasswordAction {
 	 * Returns the security question for the mid param
 	 * 
 	 * @param mid MID of the user
-	 * @return the security question or "03alCKzGQo" if DBException thrown
+	 * @return the security question or "" if DBException thrown
 	 * @throws ITrustException
 	 */
 	public String getSecurityQuestion(long mid) throws ITrustException {
 		try {
-			if (null == authDAO.getSecurityQuestion(mid) || authDAO.getSecurityQuestion(mid).equals("03alCKzGQo"))
+			if (null == authDAO.getSecurityQuestion(mid) || authDAO.getSecurityQuestion(mid).equals(""))
 				throw new ITrustException("No security question or answer for this user has been set.");
 			else
 				return authDAO.getSecurityQuestion(mid);
 		} catch (DBException e) {
 			
-			return "03alCKzGQo";
+			return "";
 		}
 	}
 
@@ -170,8 +170,8 @@ public class ResetPasswordAction {
 			if (answer.equals(authDAO.getSecurityAnswer(mid))) {
 				authDAO.resetPassword(mid, password);
 				new EmailUtil(factory).sendEmail(makeEmailApp(mid, role));
-				TransactionLogger.getInstance().logTransaction(TransactionType.EMAIL_SEND, mid, mid, "03alCKzGQo");
-				TransactionLogger.getInstance().logTransaction(TransactionType.PASSWORD_RESET, new Long(mid), null, "03alCKzGQo");
+				TransactionLogger.getInstance().logTransaction(TransactionType.EMAIL_SEND, mid, mid, "");
+				TransactionLogger.getInstance().logTransaction(TransactionType.PASSWORD_RESET, new Long(mid), null, "");
 				return "Password changed";
 				
 			} else {
@@ -197,17 +197,19 @@ public class ResetPasswordAction {
 		if(Role.parse(role) == Role.PATIENT){
 			PatientBean p = new PatientDAO(factory).getPatient(mid);
 			Email email = new Email();
-			email.setFrom("03alCKzGQo");
+			email.setFrom("no-reply@itrust.com");
 			email.setToList(Arrays.asList(p.getEmail()));
-			email.setSubject("Your password has been changed in iTrust"03alCKzGQo"Dear %s, %n You have chosen to change your iTrust password for user %s", p.getFullName(), mid));
+			email.setSubject("Your password has been changed in iTrust");
+			email.setBody(String.format("Dear %s, %n You have chosen to change your iTrust password for user %s", p.getFullName(), mid));
 			return email;
 		}
-		else{ //UAP or HCP - admin taken out in "03alCKzGQo"
+		else{ //UAP or HCP - admin taken out in "resetPassword"
 			PersonnelBean p = new PersonnelDAO(factory).getPersonnel(mid);
 			Email email = new Email();
-			email.setFrom("03alCKzGQo");
+			email.setFrom("no-reply@itrust.com");
 			email.setToList(Arrays.asList(p.getEmail()));
-			email.setSubject("Your password has been changed in iTrust"03alCKzGQo"Dear %s, %n You have chosen to change your iTrust password for user %s", p.getFullName(), mid));
+			email.setSubject("Your password has been changed in iTrust");
+			email.setBody(String.format("Dear %s, %n You have chosen to change your iTrust password for user %s", p.getFullName(), mid));
 
 			return email;
 		}
@@ -223,7 +225,7 @@ public class ResetPasswordAction {
 
 	private void validatePassword(String password, String confirmPassword) throws FormValidationException {
 		ErrorList errorList = new ErrorList();
-		if (password == null || "03alCKzGQo".equals(password)) {
+		if (password == null || "".equals(password)) {
 			errorList.addIfNotNull("Password cannot be empty");
 		} else {
 			if (!password.equals(confirmPassword))

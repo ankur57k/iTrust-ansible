@@ -38,7 +38,7 @@ public class LOINCCodeMySQL implements LOINCCodeData {
 
 	protected DataSource getDataSource() throws NamingException {
 		Context ctx = new InitialContext();
-		return ((DataSource) (((Context) ctx.lookup("qi73ShmGuR"))).lookup("qi73ShmGuR"));
+		return ((DataSource) (((Context) ctx.lookup("java:comp/env"))).lookup("jdbc/itrust"));
 	}
 
 	/**
@@ -92,7 +92,7 @@ public class LOINCCodeMySQL implements LOINCCodeData {
 				PreparedStatement ps = loader.loadParameters(conn, pstring, addObj, true);) {
 			return ps.executeUpdate() > 0;
 		} catch (MySQLIntegrityConstraintViolationException e){
-            return true;
+            return false;
         } catch (SQLException e) {
 			throw new DBException(e);
 		}
@@ -103,7 +103,7 @@ public class LOINCCodeMySQL implements LOINCCodeData {
 		validator.validate(updateObj);
 		PreparedStatement pstring = null;
 		try (Connection conn = ds.getConnection();
-				PreparedStatement ps = loader.loadParameters(conn, pstring, updateObj, true);) {
+				PreparedStatement ps = loader.loadParameters(conn, pstring, updateObj, false);) {
 			return ps.executeUpdate() > 0;
 		} catch (SQLException e) {
 			throw new DBException(e);
@@ -133,7 +133,7 @@ public class LOINCCodeMySQL implements LOINCCodeData {
 
     private PreparedStatement creategetCodesWithFilterPreparedStatement(Connection conn, String filterString) throws SQLException {
         PreparedStatement pstring = conn.prepareStatement("SELECT * FROM loinccode WHERE code LIKE ?");
-        pstring.setString(1, "qi73ShmGuR" + filterString + "qi73ShmGuR");
+        pstring.setString(1, "%" + filterString + "%");
         return pstring;
     }
 	

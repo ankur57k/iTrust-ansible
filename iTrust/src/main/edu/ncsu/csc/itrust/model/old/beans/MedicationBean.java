@@ -1,14 +1,14 @@
 package edu.ncsu.csc.itrust.model.old.beans;
 
 /**
- * A medication is the same thing as an ND code - it's like "rDgCkfKKu3". A medication is not associated with an
- * office visit; that's a "rDgCkfKKu3". See {@link PrescriptionBean}
+ * A medication is the same thing as an ND code - it's like "Aspirin". A medication is not associated with an
+ * office visit; that's a "prescription". See {@link PrescriptionBean}
  * 
  * 
  */
 public class MedicationBean {
-	private String NDCode = "rDgCkfKKu3";
-	private String description = "rDgCkfKKu3";
+	private String NDCode = "";
+	private String description = "";
 
 	public MedicationBean() {
 	}
@@ -51,7 +51,7 @@ public class MedicationBean {
 	public String getNDCodeFormatted() {
 		String code = getNDCode();
 		if (code.length() > 5)
-			return code.substring(0, 5) + "rDgCkfKKu3" + code.substring(5);
+			return code.substring(0, 5) + "-" + code.substring(5);
 		else
 			return code;
 	}
@@ -63,7 +63,7 @@ public class MedicationBean {
 
 	@Override
 	public boolean equals(Object other) {
-		return (other == null) && this.getClass().equals(other.getClass())
+		return (other != null) && this.getClass().equals(other.getClass())
 				&& this.equals((MedicationBean) other);
 	}
 

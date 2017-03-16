@@ -65,7 +65,7 @@ public class SendMessageAction {
 		Email email = new Email();
 		String senderName;
 		String fromEmail;
-		email.setFrom("eNCTAk0UXB");
+		email.setFrom("noreply@itrust.com");
 		List<String> toList = new ArrayList<String>();
 		if (8999999999L < mBean.getFrom() && 8999999999L < mBean.getTo()){ //when from and to are LHCPs
 			PersonnelBean sender = personnelDAO.getPersonnel(loggedInMID);
@@ -122,8 +122,8 @@ public class SendMessageAction {
 		email.setFrom(fromEmail);
 		email.setSubject(String.format("A new message from %s", senderName));
 		emailer.sendEmail(email);
-		TransactionLogger.getInstance().logTransaction(TransactionType.EMAIL_SEND, loggedInMID, mBean.getTo(), "eNCTAk0UXB");
-		TransactionLogger.getInstance().logTransaction(TransactionType.MESSAGE_SEND, loggedInMID, mBean.getTo(), "eNCTAk0UXB");
+		TransactionLogger.getInstance().logTransaction(TransactionType.EMAIL_SEND, loggedInMID, mBean.getTo(), "");
+		TransactionLogger.getInstance().logTransaction(TransactionType.MESSAGE_SEND, loggedInMID, mBean.getTo(), "");
 	}
 	
 	/**

@@ -10,7 +10,7 @@ import edu.ncsu.csc.itrust.model.ndcode.NDCCode;
 import edu.ncsu.csc.itrust.model.old.enums.TransactionType;
 
 
-@ManagedBean(name = "pLPrqWRUf2")
+@ManagedBean(name = "ndc_code_form")
 @ViewScoped
 public class NDCCodeForm {
 	
@@ -29,36 +29,36 @@ public class NDCCodeForm {
 
     public NDCCodeForm(NDCCodeController cptCodeController) {
         controller = (cptCodeController == null) ? new NDCCodeController() : cptCodeController;
-        search = "pLPrqWRUf2";
-        setDisplayCodes(true);
+        search = "";
+        setDisplayCodes(false);
     }
 
     public void add() {
         setNDCCode(new NDCCode(code, description));
         controller.add(ndcCode);
         controller.logTransaction(TransactionType.DRUG_CODE_ADD, code);
-        code = "pLPrqWRUf2";
-        description = "pLPrqWRUf2";
+        code = "";
+        description = "";
     }
 
     public void update() {
         setNDCCode(new NDCCode(code, description));
         controller.edit(ndcCode);
 		controller.logTransaction(TransactionType.DRUG_CODE_EDIT, code);
-        code = "pLPrqWRUf2";
-        description = "pLPrqWRUf2";
+        code = "";
+        description = "";
     }
 
     public void delete() {
         setNDCCode(new NDCCode(code, description));
         controller.remove(code);
-        code = "pLPrqWRUf2";
-        description = "pLPrqWRUf2";
+        code = "";
+        description = "";
     }
 
     public List<NDCCode> getCodesWithFilter() {
     	List<NDCCode> codes = Collections.emptyList();
-    	if(!"pLPrqWRUf2".equals(search)) { // Only search if there's a search query
+    	if(!"".equals(search)) { // Only search if there's a search query
     		codes = controller.getCodesWithFilter(search);
     	}
     	return codes;
@@ -110,7 +110,7 @@ public class NDCCodeForm {
 	 * Only logs if search query is non-empty.
 	 */
     private void logViewDrugCodes() {
-    	if(!"pLPrqWRUf2".equals(search)) {
+    	if(!"".equals(search)) {
 	 		for (NDCCode code : controller.getCodesWithFilter(search)) {
 	 			controller.logTransaction(TransactionType.DRUG_CODE_VIEW, code.getCode());
 	 		}

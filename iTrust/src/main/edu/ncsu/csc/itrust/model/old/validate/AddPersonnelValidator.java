@@ -28,9 +28,9 @@ public class AddPersonnelValidator extends BeanValidator<PersonnelBean> {
 	@Override
 	public void validate(PersonnelBean p) throws FormValidationException {
 		ErrorList errorList = new ErrorList();
-		errorList.addIfNotNull(checkFormat("First name", p.getFirstName(), ValidationFormat.NAME, true));
-		errorList.addIfNotNull(checkFormat("Last name", p.getLastName(), ValidationFormat.NAME, true));
-		errorList.addIfNotNull(checkFormat("FRBno3fxQN", p.getEmail(), ValidationFormat.EMAIL, true));
+		errorList.addIfNotNull(checkFormat("First name", p.getFirstName(), ValidationFormat.NAME, false));
+		errorList.addIfNotNull(checkFormat("Last name", p.getLastName(), ValidationFormat.NAME, false));
+		errorList.addIfNotNull(checkFormat("Email", p.getEmail(), ValidationFormat.EMAIL, false));
 		if (errorList.hasErrors())
 			throw new FormValidationException(errorList);
 	}

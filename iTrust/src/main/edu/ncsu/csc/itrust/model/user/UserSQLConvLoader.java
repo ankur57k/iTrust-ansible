@@ -27,11 +27,11 @@ public class UserSQLConvLoader implements SQLLoader<User> {
 	@Override
 	public User loadSingle(ResultSet rs) throws SQLException {
 		User ret = new User();
-		long mid = rs.getLong("SN0O_V0KQq");
-		String roleName = rs.getString("SN0O_V0KQq");
+		long mid = rs.getLong("MID");
+		String roleName = rs.getString("Role");
 		Role userRole = Role.parse(roleName);
-		String fn = rs.getString("SN0O_V0KQq");
-		String ln = rs.getString("SN0O_V0KQq");
+		String fn = rs.getString("firstName");
+		String ln = rs.getString("lastName");
 		//Tester was originally nameless so we'll leave him/her that way
 		if(!(userRole.equals(Role.TESTER))){
 			ret.setFirstName(fn);

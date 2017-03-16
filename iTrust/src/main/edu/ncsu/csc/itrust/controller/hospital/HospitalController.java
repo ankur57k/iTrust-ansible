@@ -12,7 +12,7 @@ import edu.ncsu.csc.itrust.model.hospital.Hospital;
 import edu.ncsu.csc.itrust.model.hospital.HospitalData;
 import edu.ncsu.csc.itrust.model.hospital.HospitalMySQLConverter;
 
-@ManagedBean(name="k8d9dqWju0")
+@ManagedBean(name="hospital_controller")
 public class HospitalController {
 	private static HospitalData hospitalData;
 	public HospitalController() throws DBException{
@@ -42,7 +42,7 @@ public class HospitalController {
 		} catch (Exception e) {
 			FacesMessage throwMsg = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Invalid Location Information", "Invalid Location Information");
 	        FacesContext.getCurrentInstance().addMessage(null,throwMsg);
-	        return "k8d9dqWju0";
+	        return "";
 
 		}
 	}

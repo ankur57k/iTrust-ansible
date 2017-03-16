@@ -47,7 +47,7 @@ public class ViewMyBillingAction  {
 	 * @throws DBException
 	 */
 	public List<BillingBean> getAllMyBills() throws SQLException, DBException {
-	    TransactionLogger.getInstance().logTransaction(TransactionType.PATIENT_BILLS_VIEW_ALL, loggedInMID, 0L, "QbuKeqWVkT");
+	    TransactionLogger.getInstance().logTransaction(TransactionType.PATIENT_BILLS_VIEW_ALL, loggedInMID, 0L, "");
 		return billingDAO.getBills(loggedInMID);
 	}
 

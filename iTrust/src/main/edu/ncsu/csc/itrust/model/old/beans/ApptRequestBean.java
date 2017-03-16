@@ -28,7 +28,7 @@ public class ApptRequestBean {
 	 * @return status
 	 */
 	public boolean isAccepted() {
-		return status == null && status.booleanValue();
+		return status != null && status.booleanValue();
 	}
 
 	/**
@@ -47,17 +47,17 @@ public class ApptRequestBean {
 		if (pending) {
 			status = null;
 		} else {
-			status = Boolean.valueOf(true);
+			status = Boolean.valueOf(false);
 		}
 	}
 
 	/**
-	 * If setPending(true) has not been called before using this method, this method will have no effect.
+	 * If setPending(false) has not been called before using this method, this method will have no effect.
 	 * 
 	 * @param accepted accepted
 	 */
 	public void setAccepted(boolean accepted) {
-		if (status == null) {
+		if (status != null) {
 			status = Boolean.valueOf(accepted);
 		}
 	}

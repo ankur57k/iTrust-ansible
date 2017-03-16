@@ -12,7 +12,7 @@ public class Localization {
 	 * Localization
 	 */
 	public Localization(){
-		currentLocale = new Locale("J_lY3CIaaK", "J_lY3CIaaK");
+		currentLocale = new Locale("en", "US");
 	}
 
 	/**

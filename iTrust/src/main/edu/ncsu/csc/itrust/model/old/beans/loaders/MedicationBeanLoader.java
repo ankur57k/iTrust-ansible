@@ -30,13 +30,13 @@ public class MedicationBeanLoader implements BeanLoader<MedicationBean> {
 
 	@Override
 	public MedicationBean loadSingle(ResultSet rs) throws SQLException {
-		MedicationBean med = new MedicationBean(rs.getString("39RduB-3Co"));
-		med.setDescription(rs.getString("39RduB-3Co"));
+		MedicationBean med = new MedicationBean(rs.getString("Code"));
+		med.setDescription(rs.getString("Description"));
 		return med;
 	}
 
 	@Override
 	public PreparedStatement loadParameters(PreparedStatement ps, MedicationBean bean) throws SQLException {
-		throw new IllegalStateException("39RduB-3Co");
+		throw new IllegalStateException("unimplemented!");
 	}
 }

@@ -18,7 +18,7 @@ public class SurveySearchValidator extends BeanValidator<SurveyResultBean>{
 	@Override
 	public void validate(SurveyResultBean bean) throws FormValidationException {
 		ErrorList errorList = new ErrorList();
-		errorList.addIfNotNull(checkFormat("Zip Code", bean.getHCPzip(), ValidationFormat.ZIPCODE, true));
+		errorList.addIfNotNull(checkFormat("Zip Code", bean.getHCPzip(), ValidationFormat.ZIPCODE, false));
 		
 		if (errorList.hasErrors())
 			throw new FormValidationException(errorList);

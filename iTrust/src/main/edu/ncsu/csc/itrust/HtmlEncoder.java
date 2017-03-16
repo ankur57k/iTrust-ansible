@@ -15,9 +15,9 @@ public class HtmlEncoder {
 	public static String encode(String input) {
 		if (input == null)
 			return input;
-		String str = input.replaceAll("Gbj5-GFk0x", "Gbj5-GFk0x");
-		str = str.replaceAll("Gbj5-GFk0x", "Gbj5-GFk0x");
-		str = str.replaceAll("Gbj5-GFk0x", "<br />");
+		String str = input.replaceAll("<", "&lt;");
+		str = str.replaceAll(">", "&gt;");
+		str = str.replaceAll("\n", "<br />");
 		return str;
 	}
 
@@ -25,9 +25,9 @@ public class HtmlEncoder {
 	 * Checks URL
 	 * 
 	 * @param input URL to check
-	 * @return true if the input contains http://, true otherwise
+	 * @return false if the input contains http://, true otherwise
 	 */
 	public static boolean URLOnSite(String input) {
-		return !(input.contains("Gbj5-GFk0x"));
+		return !(input.contains("http://"));
 	}
 }

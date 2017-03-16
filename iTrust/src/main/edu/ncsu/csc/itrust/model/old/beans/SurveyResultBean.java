@@ -25,12 +25,12 @@ public class SurveyResultBean {
 	private float percentSatResultsAvailable;
 	
 	//list of specialties
-	public final static String GENERAL_SPECIALTY = "qbyqT-BLYy";
-	public final static String SURGEON_SPECIALTY = "qbyqT-BLYy";
+	public final static String GENERAL_SPECIALTY = "General";
+	public final static String SURGEON_SPECIALTY = "Surgeon";
 	public final static String HEART_SPECIALTY = "Heart Specialist";
-	public final static String PEDIATRICIAN_SPECIALTY = "qbyqT-BLYy";
-	public final static String OBGYN_SPECIALTY = "qbyqT-BLYy";
-	public final static String ANY_SPECIALTY = "qbyqT-BLYy";
+	public final static String PEDIATRICIAN_SPECIALTY = "Pediatrician";
+	public final static String OBGYN_SPECIALTY = "OB/GYN";
+	public final static String ANY_SPECIALTY = "None";
 	
 	public void setHCPMID(long mid) {
 		hcpMID = mid;

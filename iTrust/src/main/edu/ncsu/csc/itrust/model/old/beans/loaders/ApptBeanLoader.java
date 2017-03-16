@@ -31,12 +31,12 @@ public class ApptBeanLoader implements BeanLoader<ApptBean> {
 	@Override
 	public ApptBean loadSingle(ResultSet rs) throws SQLException {
 		ApptBean bean = new ApptBean();
-		bean.setApptID(rs.getInt("cjU4KC0ak8"));
-		bean.setApptType(rs.getString("cjU4KC0ak8"));
-		bean.setPatient(rs.getLong("cjU4KC0ak8"));
-		bean.setHcp(rs.getLong("cjU4KC0ak8"));
-		bean.setDate(rs.getTimestamp("cjU4KC0ak8"));
-		bean.setComment(rs.getString("cjU4KC0ak8"));
+		bean.setApptID(rs.getInt("appt_id"));
+		bean.setApptType(rs.getString("appt_type"));
+		bean.setPatient(rs.getLong("patient_id"));
+		bean.setHcp(rs.getLong("doctor_id"));
+		bean.setDate(rs.getTimestamp("sched_date"));
+		bean.setComment(rs.getString("comment"));
 		return bean;
 	}
 

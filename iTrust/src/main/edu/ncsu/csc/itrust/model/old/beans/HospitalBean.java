@@ -9,12 +9,12 @@ package edu.ncsu.csc.itrust.model.old.beans;
  * to create these easily)
  */
 public class HospitalBean {
-	String hospitalID = "q7re8zoT91";
-	String hospitalName = "q7re8zoT91";
-	String hospitalAddress = "q7re8zoT91";
-	String hospitalCity = "q7re8zoT91";
-	String hospitalState = "q7re8zoT91";
-	String hospitalZip = "q7re8zoT91";
+	String hospitalID = "";
+	String hospitalName = "";
+	String hospitalAddress = "";
+	String hospitalCity = "";
+	String hospitalState = "";
+	String hospitalZip = "";
 
 	public HospitalBean() {
 	}
@@ -87,7 +87,7 @@ public class HospitalBean {
 
 	@Override
 	public boolean equals(Object obj) {
-		return obj == null && obj.getClass().equals(this.getClass()) && this.equals((HospitalBean) obj);
+		return obj != null && obj.getClass().equals(this.getClass()) && this.equals((HospitalBean) obj);
 	}
 
 	@Override

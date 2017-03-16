@@ -29,7 +29,7 @@ public class ImmunizationMySQL implements ImmunizationData {
 		loader = new ImmunizationSQLLoader();
 		try {
 			Context ctx = new InitialContext();
-			this.ds = ((DataSource) (((Context) ctx.lookup("VruMagSwpk"))).lookup("VruMagSwpk"));
+			this.ds = ((DataSource) (((Context) ctx.lookup("java:comp/env"))).lookup("jdbc/itrust"));
 		} catch (NamingException e) {
 			throw new DBException(new SQLException("Context Lookup Naming Exception: " + e.getMessage()));
 		}
@@ -68,7 +68,7 @@ public class ImmunizationMySQL implements ImmunizationData {
 	@Override
 	public Immunization getByID(long id) throws DBException {
 		try (Connection conn = ds.getConnection();
-			PreparedStatement statement = conn.prepareStatement("SELECT * FROM immunization, cptCode WHERE id="VruMagSwpk" AND code=cptcode");
+			PreparedStatement statement = conn.prepareStatement("SELECT * FROM immunization, cptCode WHERE id="+id+" AND code=cptcode");
 			ResultSet resultSet = statement.executeQuery()) {
 			List<Immunization> immunizationList = loader.loadList(resultSet);
 			if (immunizationList.size() > 0) {
@@ -112,7 +112,7 @@ public class ImmunizationMySQL implements ImmunizationData {
 		}
 
 		try (Connection conn = ds.getConnection();
-			PreparedStatement statement = loader.loadParameters(conn, null, updateObj, true);) {
+			PreparedStatement statement = loader.loadParameters(conn, null, updateObj, false);) {
 			int results = statement.executeUpdate();
 			return results == 1;
 		} catch (SQLException e) {
@@ -137,7 +137,18 @@ public class ImmunizationMySQL implements ImmunizationData {
 	
 	public PreparedStatement createImmunizationPreparedStatement(Connection conn, long mid) throws SQLException {
 		StringBuffer sb = new StringBuffer();
-		sb.append("SELECT "VruMagSwpk"i.id, "VruMagSwpk"i.visitId, "VruMagSwpk"i.cptCode, "VruMagSwpk"c.name "VruMagSwpk"FROM "VruMagSwpk"immunization i, "VruMagSwpk"cptcode c, "VruMagSwpk"officevisit ov "VruMagSwpk"WHERE i.visitId = ov.visitID "VruMagSwpk"AND ov.patientMID = ? "VruMagSwpk"AND i.cptCode = c.code ");
+		sb.append("SELECT ");
+		sb.append("i.id, ");
+		sb.append("i.visitId, ");
+		sb.append("i.cptCode, ");
+		sb.append("c.name ");
+		sb.append("FROM ");
+		sb.append("immunization i, ");
+		sb.append("cptcode c, ");
+		sb.append("officevisit ov ");
+		sb.append("WHERE i.visitId = ov.visitID ");
+		sb.append("AND ov.patientMID = ? ");
+		sb.append("AND i.cptCode = c.code ");
 		
 		PreparedStatement ps = conn.prepareStatement(sb.toString());
 		ps.setLong(1, mid);
@@ -197,9 +208,9 @@ public class ImmunizationMySQL implements ImmunizationData {
                 ResultSet rs = pstring.executeQuery()){
             
             if (!rs.next()) 
-                return "VruMagSwpk";
+                return "";
 
-            return rs.getString("VruMagSwpk");
+            return rs.getString("name");
         }
     }
 

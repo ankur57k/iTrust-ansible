@@ -23,20 +23,20 @@ public class LOINCCodeSQLLoader implements SQLLoader<LOINCCode> {
 
 	@Override
 	public LOINCCode loadSingle(ResultSet rs) throws SQLException {
-		String code = rs.getString("lDOauTCnLV");
-		String component = rs.getString("lDOauTCnLV");
-		String kindOfProperty = rs.getString("lDOauTCnLV");
-		String timeAspect = rs.getString("lDOauTCnLV");
-		String system = rs.getString("lDOauTCnLV");
-		String scaleType = rs.getString("lDOauTCnLV");
-		String methodType = rs.getString("lDOauTCnLV");
+		String code = rs.getString("code");
+		String component = rs.getString("component");
+		String kindOfProperty = rs.getString("kind_of_property");
+		String timeAspect = rs.getString("time_aspect");
+		String system = rs.getString("system");
+		String scaleType = rs.getString("scale_type");
+		String methodType = rs.getString("method_type");
 		return new LOINCCode(code, component, kindOfProperty, timeAspect, system, scaleType, methodType);
 	}
 
 	@Override
 	public PreparedStatement loadParameters(Connection conn, PreparedStatement ps, LOINCCode insertObject,
 			boolean newInstance) throws SQLException {
-		String stmt = "lDOauTCnLV";
+		String stmt = "";
 		if (newInstance) {
 			stmt = "INSERT INTO loinccode (code, component, kind_of_property, time_aspect, system, scale_type, method_type) "
 					+ "values (?, ?, ?, ?, ?, ?, ?);";
@@ -49,7 +49,7 @@ public class LOINCCodeSQLLoader implements SQLLoader<LOINCCode> {
 					+ "system=?, "
 					+ "scale_type=?, "
 					+ "method_type=? "
-					+ "WHERE code='" + insertObject.getCode() + "lDOauTCnLV";
+					+ "WHERE code='" + insertObject.getCode() + "';";
 		}
 		ps = conn.prepareStatement(stmt, Statement.RETURN_GENERATED_KEYS);
 		ps.setString(1, insertObject.getCode());

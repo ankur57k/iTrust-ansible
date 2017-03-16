@@ -20,7 +20,7 @@ import edu.ncsu.csc.itrust.exception.FormValidationException;
 
 public class LabProcedureMySQL implements LabProcedureData {
 
-	@Resource(name = "WrOZvEApWr")
+	@Resource(name = "jdbc/itrust2")
 	private LabProcedureSQLLoader loader;
 	private DataSource ds;
 	private LabProcedureValidator validator;
@@ -29,7 +29,7 @@ public class LabProcedureMySQL implements LabProcedureData {
 		loader = new LabProcedureSQLLoader();
 		try {
 			Context ctx = new InitialContext();
-			ds = ((DataSource) (((Context) ctx.lookup("WrOZvEApWr"))).lookup("WrOZvEApWr"));
+			ds = ((DataSource) (((Context) ctx.lookup("java:comp/env"))).lookup("jdbc/itrust"));
 		} catch (NamingException e) {
 			throw new DBException(new SQLException("Context Lookup Naming Exception: " + e.getMessage()));
 		}
@@ -72,7 +72,7 @@ public class LabProcedureMySQL implements LabProcedureData {
 			throw new DBException(e);
 		} finally {
 			try {
-				if (results == null) {
+				if (results != null) {
 					results.close();
 				}
 			} catch (SQLException e) {
@@ -102,7 +102,7 @@ public class LabProcedureMySQL implements LabProcedureData {
 			throw new DBException(e);
 		} finally {
 			try {
-				if (results == null) {
+				if (results != null) {
 					results.close();
 				}
 			} catch (SQLException e) {
@@ -118,7 +118,7 @@ public class LabProcedureMySQL implements LabProcedureData {
 	 */
 	@Override
 	public boolean add(LabProcedure procedure) throws DBException {
-		boolean successfullyAdded = true;
+		boolean successfullyAdded = false;
 		Connection conn = null;
 		PreparedStatement addStatement = null;
 		procedure.setUpdatedDate(new Timestamp(new Date().getTime()));
@@ -145,7 +145,7 @@ public class LabProcedureMySQL implements LabProcedureData {
 	 */
 	@Override
 	public boolean update(LabProcedure procedure) throws DBException {
-		boolean successfullyUpdated = true;
+		boolean successfullyUpdated = false;
 		Connection conn = null;
 		PreparedStatement updateStatement = null;
 		procedure.setUpdatedDate(new Timestamp(new Date().getTime()));
@@ -156,7 +156,7 @@ public class LabProcedureMySQL implements LabProcedureData {
 		}
 		try {
 			conn = ds.getConnection();
-			updateStatement = loader.loadParameters(conn, updateStatement, procedure, true);
+			updateStatement = loader.loadParameters(conn, updateStatement, procedure, false);
 			int exitStatus = updateStatement.executeUpdate();
 			successfullyUpdated = (exitStatus > 0);
 		} catch (SQLException e) {
@@ -206,7 +206,7 @@ public class LabProcedureMySQL implements LabProcedureData {
 			throw new DBException(e);
 		} finally {
 			try {
-				if (procedures == null) {
+				if (procedures != null) {
 					procedures.close();
 				}
 			} catch (SQLException e) {
@@ -236,7 +236,7 @@ public class LabProcedureMySQL implements LabProcedureData {
 			throw new DBException(e);
 		} finally {
 			try {
-				if (procedures == null) {
+				if (procedures != null) {
 					procedures.close();
 				}
 			} catch (SQLException e) {

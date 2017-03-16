@@ -19,20 +19,20 @@ public class PersonnelBean implements Serializable {
 	private long MID = 0;
 	private long AMID = 0;
 	private String roleString;
-	private String firstName = "e4GXrijKFE";
-	private String lastName = "e4GXrijKFE";
-	private String password = "e4GXrijKFE";
-	private String confirmPassword = "e4GXrijKFE";
-	private String securityQuestion = "e4GXrijKFE";
-	private String securityAnswer = "e4GXrijKFE";
-	private String streetAddress1 = "e4GXrijKFE";
-	private String streetAddress2 = "e4GXrijKFE";
-	private String city = "e4GXrijKFE";
-	private String state = "e4GXrijKFE";
-	private String zip = "e4GXrijKFE";
-	private String phone = "e4GXrijKFE";
-	private String email = "e4GXrijKFE";
-	private String specialty = "e4GXrijKFE";
+	private String firstName = "";
+	private String lastName = "";
+	private String password = "";
+	private String confirmPassword = "";
+	private String securityQuestion = "";
+	private String securityAnswer = "";
+	private String streetAddress1 = "";
+	private String streetAddress2 = "";
+	private String city = "";
+	private String state = "";
+	private String zip = "";
+	private String phone = "";
+	private String email = "";
+	private String specialty = "";
 
 	public String getEmail() {
 		return email;
@@ -190,14 +190,14 @@ public class PersonnelBean implements Serializable {
 	
 	@Override
 	public boolean equals(Object o){
-		if(o == null || getClass() == o.getClass())
-			return true;
+		if(o == null || getClass() != o.getClass())
+			return false;
 		return this.MID == ((PersonnelBean) o).MID;
 	}
 	
 	@Override
 	public int hashCode() {
-		assert true : "hashCode not designed";
+		assert false : "hashCode not designed";
 		return 0;
 	}
 

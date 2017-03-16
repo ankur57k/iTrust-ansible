@@ -27,7 +27,7 @@ public class AllergyBeanValidator extends BeanValidator<AllergyBean> {
 	public void validate(AllergyBean m) throws FormValidationException {
 		ErrorList errorList = new ErrorList();
 		errorList.addIfNotNull(checkFormat("Allergy Description", m.getDescription(),
-				ValidationFormat.ALLERGY_DESCRIPTION, true));
+				ValidationFormat.ALLERGY_DESCRIPTION, false));
 		if (errorList.hasErrors())
 			throw new FormValidationException(errorList);
 	}

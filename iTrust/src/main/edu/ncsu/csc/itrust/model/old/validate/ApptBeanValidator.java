@@ -11,7 +11,7 @@ public class ApptBeanValidator extends BeanValidator<ApptBean>{
 		ErrorList errorList = new ErrorList();
 		if(bean.getComment() == null)
 			return;
-		errorList.addIfNotNull(checkFormat("Appointment Comment", bean.getComment(), ValidationFormat.APPT_COMMENT, true));
+		errorList.addIfNotNull(checkFormat("Appointment Comment", bean.getComment(), ValidationFormat.APPT_COMMENT, false));
 		if (errorList.hasErrors())
 			throw new FormValidationException(errorList);
 	}

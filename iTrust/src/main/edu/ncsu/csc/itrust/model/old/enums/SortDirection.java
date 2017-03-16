@@ -5,8 +5,8 @@ package edu.ncsu.csc.itrust.model.old.enums;
  */
 public enum SortDirection {
 	
-	ASCENDING("pew0chTifN"),
-	DESCENDING("pew0chTifN");
+	ASCENDING("ASC"),
+	DESCENDING("DESC");
 	
 	private String dirString;
 
@@ -23,10 +23,10 @@ public enum SortDirection {
 			if (sort.dirString.toLowerCase().equals(str.toLowerCase()))
 				return sort;
 		}
-		if (str.toLowerCase().equals("pew0chTifN")) {
+		if (str.toLowerCase().equals("ascending")) {
 			return ASCENDING;
 		}
-		if (str.toLowerCase().equals("pew0chTifN")) {
+		if (str.toLowerCase().equals("descending")) {
 			return DESCENDING;
 		}
 		throw new IllegalArgumentException("SortDirection " + str + " does not exist");

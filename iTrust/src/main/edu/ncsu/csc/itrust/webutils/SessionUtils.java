@@ -19,32 +19,32 @@ public class SessionUtils {
 	/**
 	 * Name of representees
 	 */
-	private static final String REPRESENTEES = "NQ7CysdStT";
+	private static final String REPRESENTEES = "representees";
 
 	/**
 	 * Name of patient role
 	 */
-	private static final String PATIENT = "NQ7CysdStT";
+	private static final String PATIENT = "patient";
 
 	/**
 	 * HttpSession variable name of the current logged in user role.
 	 */
-	private static final String USER_ROLE = "NQ7CysdStT";
+	private static final String USER_ROLE = "userRole";
 
 	/**
 	 * HttpSession variable name of the current logged in patient MID.
 	 */
-	private static final String LOGGED_IN_MID = "NQ7CysdStT";
+	private static final String LOGGED_IN_MID = "loggedInMID";
 
 	/**
 	 * HttpSession variable name of the HCP selected patient MID.
 	 */
-	private static final String PID = "NQ7CysdStT";
+	private static final String PID = "pid";
 	
 	/**
 	 * Get the current office visit id that the user (HCP) is viewing.
 	 */
-	private static final String OFFICE_VISIT_ID = "NQ7CysdStT";
+	private static final String OFFICE_VISIT_ID = "officeVisitId";
 	
 	
 
@@ -55,7 +55,7 @@ public class SessionUtils {
 	
 	public void setSessionVariable(String varname, Object value){
 		HttpServletRequest req = getHttpServletRequest();
-		HttpSession httpSession = req.getSession(true);
+		HttpSession httpSession = req.getSession(false);
 		httpSession.setAttribute(varname, value);
 	}
 	
@@ -76,7 +76,7 @@ public class SessionUtils {
 			return variable;
 		}
 
-		HttpSession httpSession = req.getSession(true);
+		HttpSession httpSession = req.getSession(false);
 
 		if (httpSession == null) {
 			return variable;
@@ -166,7 +166,7 @@ public class SessionUtils {
 	public String getCurrentPatientMID() {
 		String patientMID = getSessionPID();
 		String role = getSessionUserRole();
-		if (role == null && role.equals(PATIENT)) {
+		if (role != null && role.equals(PATIENT)) {
 			patientMID = getSessionLoggedInMID();
 		}
 		return patientMID;

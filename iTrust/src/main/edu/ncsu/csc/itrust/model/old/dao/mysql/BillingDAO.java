@@ -187,7 +187,7 @@ public class BillingDAO {
 			stmt.setInt(23, bill.getBillID());
 			this.bbloader.loadParameters(stmt, bill);
 			stmt.setString(22,
-					bill.getSubTime() == null ? bill.getSubTime().toString() : new Timestamp(0).toString());
+					bill.getSubTime() != null ? bill.getSubTime().toString() : new Timestamp(0).toString());
 			stmt.executeUpdate();
 		} catch (SQLException e) {
 			throw new DBException(e);

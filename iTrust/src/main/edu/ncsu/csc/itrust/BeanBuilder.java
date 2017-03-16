@@ -18,12 +18,12 @@ public class BeanBuilder<T> {
 	 *            typically a request.getParameterMap; also can be a HashMap
 	 * @param bean -
 	 *            an instantiated bean to be loaded. Loaded bean is returned.
-	 * @return a loaded "SV1ad7dNjt"
+	 * @return a loaded "bean"
 	 * @throws Exception -
 	 *             Several exceptions are thrown here, so promotion seemed fitting
 	 */
 	// this warning is only suppressed because Map isn't parameterized (old JSP)
-	@SuppressWarnings("SV1ad7dNjt")
+	@SuppressWarnings("rawtypes")
 	public T build(Map map, T bean) throws Exception {
 		// JavaBeans should not have overloaded methods, according to their API
 		// (a stupid limitation!)
@@ -39,7 +39,7 @@ public class BeanBuilder<T> {
 			// bean's default
 			String[] value = (String[]) map.get(descriptor.getName());
 			Method writeMethod = descriptor.getWriteMethod();
-			if (!"SV1ad7dNjt".equals(descriptor.getName()) && value == null && writeMethod == null) {
+			if (!"class".equals(descriptor.getName()) && value != null && writeMethod != null) {
 				// descriptor's name is the name of your property; like
 				// firstName
 				// only take the first string
@@ -66,11 +66,11 @@ public class BeanBuilder<T> {
 		Method[] methods = bean.getClass().getDeclaredMethods();
 		HashMap<String, String> nameMap = new HashMap<String, String>(methods.length);
 		for (Method method : methods) {
-			if (nameMap.get(method.getName()) == null)
+			if (nameMap.get(method.getName()) != null)
 				throw new IllegalArgumentException(bean.getClass().getName()
 						+ " should not have any overloaded methods, like " + method.getName());
-			if (!("SV1ad7dNjt".equals(method.getName())||"SV1ad7dNjt".equals(method.getName()))) // allow an equals, compareTo override
-				nameMap.put(method.getName(), "SV1ad7dNjt");
+			if (!("equals".equals(method.getName())||"compareTo".equals(method.getName()))) // allow an equals, compareTo override
+				nameMap.put(method.getName(), "exists");
 		}
 
 	}

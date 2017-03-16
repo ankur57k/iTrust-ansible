@@ -24,9 +24,9 @@ public class OverrideReasonBeanValidator extends BeanValidator<OverrideReasonBea
 	@Override
 	public void validate(OverrideReasonBean orc) throws FormValidationException {
 		ErrorList errorList = new ErrorList();
-		errorList.addIfNotNull(checkFormat("Reason Code", orc.getORCode(), ValidationFormat.ORC, true));
-		errorList.addIfNotNull(checkFormat("NWkc5VlUZ0", orc.getDescription(),
-				ValidationFormat.OR_CODE_DESCRIPTION, true));
+		errorList.addIfNotNull(checkFormat("Reason Code", orc.getORCode(), ValidationFormat.ORC, false));
+		errorList.addIfNotNull(checkFormat("Description", orc.getDescription(),
+				ValidationFormat.OR_CODE_DESCRIPTION, false));
 		if (errorList.hasErrors())
 			throw new FormValidationException(errorList);
 	}

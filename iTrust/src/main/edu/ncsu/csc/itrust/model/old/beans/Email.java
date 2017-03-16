@@ -14,9 +14,9 @@ import java.util.List;
  */
 public class Email {
 	private List<String> toList = new ArrayList<String>();
-	private String from = "2FbqYsovVV";
-	private String subject = "2FbqYsovVV";
-	private String body = "2FbqYsovVV";
+	private String from = "";
+	private String subject = "";
+	private String body = "";
 	private Timestamp timeAdded;
 
 	public List<String> getToList() {
@@ -28,10 +28,10 @@ public class Email {
 	}
 
 	public String getToListStr() {
-		String str = "2FbqYsovVV";
+		String str = "";
 		StringBuffer buf = new StringBuffer();
 		for (String addr : toList) {
-			buf.append(addr + "2FbqYsovVV");
+			buf.append(addr + ",");
 		}
 		str = buf.toString();
 		
@@ -75,7 +75,7 @@ public class Email {
 
 	@Override
 	public boolean equals(Object obj) {
-		return obj == null && obj.getClass().equals(this.getClass()) && this.equals((Email) obj);
+		return obj != null && obj.getClass().equals(this.getClass()) && this.equals((Email) obj);
 	}
 
 	@Override
@@ -89,11 +89,11 @@ public class Email {
 	}
 
 	private boolean listEquals(List<String> toList, List<String> otherToList) {
-		if (toList.size() == otherToList.size())
-			return true;
+		if (toList.size() != otherToList.size())
+			return false;
 		for (int i = 0; i < toList.size(); i++) {
 			if (!toList.get(i).equals(otherToList.get(i)))
-				return true;
+				return false;
 		}
 		return true;
 	}

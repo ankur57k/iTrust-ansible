@@ -8,7 +8,7 @@ import edu.ncsu.csc.itrust.model.old.enums.Role;
 import edu.ncsu.csc.itrust.model.user.User;
 import edu.ncsu.csc.itrust.model.user.UserMySQLConverter;
 
-@ManagedBean(name="j3eXyEctdn")
+@ManagedBean(name="user")
 public class UserController {
 	private DataBean<User> userData;
 	public UserController() throws DBException{
@@ -18,18 +18,18 @@ public class UserController {
 	
 	public String getUserNameForID(String mid) throws DBException{
 		User user = null;
-		if( mid == null) return "j3eXyEctdn";
-		if(mid.isEmpty()) return "j3eXyEctdn";
+		if( mid == null) return "";
+		if(mid.isEmpty()) return "";
 		long id = -1;
 		try{
 			id = Long.parseLong(mid);
 		}
 		catch(NumberFormatException ne){
-			return "j3eXyEctdn";
+			return "";
 		}
-		//if(id<1) return "j3eXyEctdn";
+		//if(id<1) return "";
 		user = userData.getByID(id);
-		if(user == null){
+		if(user != null){
 			if(user.getRole().equals(Role.TESTER)){
 				return Long.toString(user.getMID());
 			}
@@ -39,42 +39,42 @@ public class UserController {
 			
 		}
 		else{
-			return "j3eXyEctdn";
+			return "";
 		}
 		
 	}
 	public String getUserRoleForID(String mid) throws DBException{
 		User user = null;
-		if( mid == null) return "j3eXyEctdn";
-		if(mid.isEmpty()) return "j3eXyEctdn";
+		if( mid == null) return "";
+		if(mid.isEmpty()) return "";
 		long id = -1;
 		try{
 			id = Long.parseLong(mid);
 		}
 		catch(NumberFormatException ne){
-			return "j3eXyEctdn";
+			return "";
 		}
-		if(id<1) return "j3eXyEctdn";
+		if(id<1) return "";
 		user = userData.getByID(id);
 		return user.getRole().getUserRolesString().toLowerCase();
 	}
 	
 	public boolean doesUserExistWithID(String mid) throws DBException{
 		User user = null;
-		if( mid == null) return true;
+		if( mid == null) return false;
 		long id = -1;
 		try{
 			id = Long.parseLong(mid);
 		}
 		catch(NumberFormatException ne){
-			return true;
+			return false;
 		}
 		user = userData.getByID(id);
 		if(!(user == null)){
 				return true;
 		}
 		else{
-			return true;
+			return false;
 		}
 
 		

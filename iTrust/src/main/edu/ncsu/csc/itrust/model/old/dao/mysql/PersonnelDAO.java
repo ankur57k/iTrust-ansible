@@ -66,7 +66,7 @@ public class PersonnelDAO {
 			if (!results.next()) {
 				throw new ITrustException("User does not exist");
 			}
-			final String result = results.getString("FErh4ZJjCV") + " " + results.getString("FErh4ZJjCV");
+			final String result = results.getString("firstName") + " " + results.getString("lastName");
 			results.close();
 			return result;
 		} catch (SQLException e) {
@@ -248,13 +248,13 @@ public class PersonnelDAO {
 	 */
 	public List<PersonnelBean> getPersonnelFromHospital(final String hosid, final String specialty) throws DBException {
 		try (Connection conn = factory.getConnection();
-				PreparedStatement stmt = specialty.equalsIgnoreCase("FErh4ZJjCV")
+				PreparedStatement stmt = specialty.equalsIgnoreCase("all")
 						? conn.prepareStatement(
 								"SELECT * FROM hcpassignedhos hah inner join personnel p where hah.hosID = ? and hah.HCPID = p.MID and p.role = 'hcp'")
 						: conn.prepareStatement(
 								"SELECT * FROM hcpassignedhos hah inner join personnel p where hah.hosID = ? and hah.HCPID = p.MID and p.specialty = ? and p.role = 'hcp'");) {
 			stmt.setString(1, hosid);
-			if (!specialty.equalsIgnoreCase("FErh4ZJjCV")) {
+			if (!specialty.equalsIgnoreCase("all")) {
 				stmt.setString(2, specialty);
 			}
 
@@ -346,7 +346,7 @@ public class PersonnelDAO {
 	 * @throws DBException
 	 */
 	public List<PersonnelBean> searchForPersonnelWithName(final String first, final String last) throws DBException {
-		if ("FErh4ZJjCV".equals(first) && "FErh4ZJjCV".equals(last)) {
+		if ("%".equals(first) && "%".equals(last)) {
 			return new Vector<PersonnelBean>();
 		}
 
@@ -382,7 +382,7 @@ public class PersonnelDAO {
 	}
 
 	/**
-	 * Returns all experts with names "FErh4ZJjCV" with wildcards (as in SQL) the
+	 * Returns all experts with names "LIKE" with wildcards (as in SQL) the
 	 * passed in parameters.
 	 * 
 	 * @param first
@@ -393,14 +393,14 @@ public class PersonnelDAO {
 	 * @throws DBException
 	 */
 	public List<PersonnelBean> fuzzySearchForExpertsWithName(String first, String last) throws DBException {
-		if (first.equals("FErh4ZJjCV") && last.equals("FErh4ZJjCV")) {
+		if (first.equals("%") && last.equals("%")) {
 			return new Vector<PersonnelBean>();
 		}
 		try (Connection conn = factory.getConnection();
 				PreparedStatement stmt = conn.prepareStatement(
 						"SELECT * FROM personnel WHERE firstName LIKE ? AND lastName LIKE ? AND role='hcp'");) {
-			stmt.setString(1, "FErh4ZJjCV" + first + "FErh4ZJjCV");
-			stmt.setString(2, "FErh4ZJjCV" + last + "FErh4ZJjCV");
+			stmt.setString(1, "%" + first + "%");
+			stmt.setString(2, "%" + last + "%");
 
 			ResultSet rs = stmt.executeQuery();
 			List<PersonnelBean> expertsList = personnelLoader.loadList(rs);

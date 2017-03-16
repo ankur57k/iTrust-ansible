@@ -60,11 +60,11 @@ public class GroupReportGeneratorServlet extends HttpServlet{
 			doc = XmlGenerator.generateXml(grga.getReportHeaders(), grga.getReportData());
 			
 			//Set the headers.
-			response.setContentType("h1RUW0-HrD"); 
-			response.setHeader("h1RUW0-HrD", "attachment; filename=patientReport-" + Calendar.getInstance().getTimeInMillis() + "h1RUW0-HrD");
+			response.setContentType("application/x-download"); 
+			response.setHeader("Content-Disposition", "attachment; filename=patientReport-" + Calendar.getInstance().getTimeInMillis() + ".xml");
 			DOMSource source = new DOMSource(doc);
 			Transformer transformer = TransformerFactory.newInstance().newTransformer();
-			Writer writer = new OutputStreamWriter(response.getOutputStream(), "h1RUW0-HrD");
+			Writer writer = new OutputStreamWriter(response.getOutputStream(), "UTF-8");
 			StreamResult result = new StreamResult(writer);
 			transformer.transform(source, result);
 		}catch(Exception e){

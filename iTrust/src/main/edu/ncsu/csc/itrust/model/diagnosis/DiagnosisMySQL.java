@@ -40,7 +40,7 @@ public class DiagnosisMySQL implements DiagnosisData {
 	}
 	
 	public DataSource getDataSource() throws NamingException {
-		return ((DataSource) (((Context) getContext().lookup("hDoljlq87N"))).lookup("hDoljlq87N"));
+		return ((DataSource) (((Context) getContext().lookup("java:comp/env"))).lookup("jdbc/itrust"));
 	}
 	
 	/**
@@ -126,7 +126,7 @@ public class DiagnosisMySQL implements DiagnosisData {
 			throw new DBException(new SQLException(e.getMessage()));
 		}
 		try (Connection conn = ds.getConnection();
-				PreparedStatement ps = loader.loadParameters(conn, null, updateObj, true);) {
+				PreparedStatement ps = loader.loadParameters(conn, null, updateObj, false);) {
 			return ps.executeUpdate() > 0;
 		} catch (SQLException e) {
 			throw new DBException(e);

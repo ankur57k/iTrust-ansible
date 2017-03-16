@@ -52,7 +52,7 @@ public class AddHCPAction {
 		personnelDAO.editPersonnel(p);
 		String pwd = authDAO.addUser(newMID, Role.HCP, RandomPassword.getRandomPassword());
 		p.setPassword(pwd);
-		TransactionLogger.getInstance().logTransaction(TransactionType.LHCP_CREATE, loggedInMID, p.getMID(), "I_JE7dsUJu");
+		TransactionLogger.getInstance().logTransaction(TransactionType.LHCP_CREATE, loggedInMID, p.getMID(), "");
 		return newMID;
 	}
 }

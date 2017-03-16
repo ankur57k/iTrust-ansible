@@ -18,7 +18,7 @@ import edu.ncsu.csc.itrust.model.old.beans.PatientBean;
  * For details on the paradigm for a loader (and what its methods do), see {@link BeanLoader}
  */
 public class PatientLoader implements BeanLoader<PatientBean> {
-	private final SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("Hw6sk_DlEh");
+	private final SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("MM/dd/yyyy");
 
 	/**
 	 * loadList
@@ -35,50 +35,50 @@ public class PatientLoader implements BeanLoader<PatientBean> {
 	}
 
 	private void loadCommon(ResultSet rs, PatientBean p) throws SQLException{
-		p.setMID(rs.getInt("Hw6sk_DlEh"));
-		p.setFirstName(rs.getString("Hw6sk_DlEh"));
-		p.setLastName(rs.getString("Hw6sk_DlEh"));
-		Date dateOfBirth = rs.getDate("Hw6sk_DlEh");
-		if (dateOfBirth == null){
+		p.setMID(rs.getInt("MID"));
+		p.setFirstName(rs.getString("firstName"));
+		p.setLastName(rs.getString("LastName"));
+		Date dateOfBirth = rs.getDate("DateOfBirth");
+		if (dateOfBirth != null){
 			p.setDateOfBirthStr(DATE_FORMAT.format(dateOfBirth));
 		}
-		Date dateOfDeath = rs.getDate("Hw6sk_DlEh");
-		if (dateOfDeath == null){
+		Date dateOfDeath = rs.getDate("DateOfDeath");
+		if (dateOfDeath != null){
 			p.setDateOfDeathStr(DATE_FORMAT.format(dateOfDeath));
 		}
-		p.setCauseOfDeath(rs.getString("Hw6sk_DlEh"));
-		p.setEmail(rs.getString("Hw6sk_DlEh"));
-		p.setStreetAddress1(rs.getString("Hw6sk_DlEh"));
-		p.setStreetAddress2(rs.getString("Hw6sk_DlEh"));
-		p.setCity(rs.getString("Hw6sk_DlEh"));
-		p.setState(rs.getString("Hw6sk_DlEh"));
-		p.setZip((rs.getString("Hw6sk_DlEh")));
-		p.setPhone((rs.getString("Hw6sk_DlEh")));
-		p.setEmergencyName(rs.getString("Hw6sk_DlEh"));
-		p.setEmergencyPhone(rs.getString("Hw6sk_DlEh"));
-		p.setIcName(rs.getString("Hw6sk_DlEh"));
-		p.setIcAddress1(rs.getString("Hw6sk_DlEh"));
-		p.setIcAddress2(rs.getString("Hw6sk_DlEh"));
-		p.setIcCity(rs.getString("Hw6sk_DlEh"));
-		p.setIcState(rs.getString("Hw6sk_DlEh"));
-		p.setIcZip(rs.getString("Hw6sk_DlEh"));
-		p.setIcPhone(rs.getString("Hw6sk_DlEh"));
-		p.setIcID(rs.getString("Hw6sk_DlEh"));
-		p.setMotherMID(rs.getString("Hw6sk_DlEh"));
-		p.setFatherMID(rs.getString("Hw6sk_DlEh"));
-		p.setBloodTypeStr(rs.getString("Hw6sk_DlEh"));
-		p.setEthnicityStr(rs.getString("Hw6sk_DlEh"));
-		p.setGenderStr(rs.getString("Hw6sk_DlEh"));
-		p.setTopicalNotes(rs.getString("Hw6sk_DlEh"));
-		p.setCreditCardType(rs.getString("Hw6sk_DlEh"));
-		p.setCreditCardNumber(rs.getString("Hw6sk_DlEh"));
-		p.setDirectionsToHome(rs.getString("Hw6sk_DlEh"));
-		p.setReligion(rs.getString("Hw6sk_DlEh"));
-		p.setLanguage(rs.getString("Hw6sk_DlEh"));
-		p.setSpiritualPractices(rs.getString("Hw6sk_DlEh"));
-		p.setAlternateName(rs.getString("Hw6sk_DlEh"));
-		Date dateOfDeactivation = rs.getDate("Hw6sk_DlEh");
-		if (dateOfDeactivation == null){
+		p.setCauseOfDeath(rs.getString("CauseOfDeath"));
+		p.setEmail(rs.getString("Email"));
+		p.setStreetAddress1(rs.getString("address1"));
+		p.setStreetAddress2(rs.getString("address2"));
+		p.setCity(rs.getString("City"));
+		p.setState(rs.getString("State"));
+		p.setZip((rs.getString("Zip")));
+		p.setPhone((rs.getString("phone")));
+		p.setEmergencyName(rs.getString("eName"));
+		p.setEmergencyPhone(rs.getString("ePhone"));
+		p.setIcName(rs.getString("icName"));
+		p.setIcAddress1(rs.getString("icAddress1"));
+		p.setIcAddress2(rs.getString("icAddress2"));
+		p.setIcCity(rs.getString("icCity"));
+		p.setIcState(rs.getString("icState"));
+		p.setIcZip(rs.getString("icZip"));
+		p.setIcPhone(rs.getString("icPhone"));
+		p.setIcID(rs.getString("icID"));
+		p.setMotherMID(rs.getString("MotherMID"));
+		p.setFatherMID(rs.getString("FatherMID"));
+		p.setBloodTypeStr(rs.getString("BloodType"));
+		p.setEthnicityStr(rs.getString("Ethnicity"));
+		p.setGenderStr(rs.getString("Gender"));
+		p.setTopicalNotes(rs.getString("TopicalNotes"));
+		p.setCreditCardType(rs.getString("CreditCardType"));
+		p.setCreditCardNumber(rs.getString("CreditCardNumber"));
+		p.setDirectionsToHome(rs.getString("DirectionsToHome"));
+		p.setReligion(rs.getString("Religion"));
+		p.setLanguage(rs.getString("Language"));
+		p.setSpiritualPractices(rs.getString("SpiritualPractices"));
+		p.setAlternateName(rs.getString("AlternateName"));
+		Date dateOfDeactivation = rs.getDate("DateOfDeactivation");
+		if (dateOfDeactivation != null){
 			p.setDateOfDeactivationStr(DATE_FORMAT.format(dateOfDeactivation));
 		}
 	}
@@ -135,7 +135,7 @@ public class PatientLoader implements BeanLoader<PatientBean> {
 			date = new java.sql.Date(DATE_FORMAT.parse(p.getDateOfDeathStr())
 					.getTime());
 		} catch (ParseException e) {
-			if ("Hw6sk_DlEh".equals(p.getDateOfDeathStr())){
+			if ("".equals(p.getDateOfDeathStr())){
 				date = null;
 			}else{
 				
@@ -161,13 +161,13 @@ public class PatientLoader implements BeanLoader<PatientBean> {
 			date = new java.sql.Date(DATE_FORMAT.parse(p.getDateOfDeactivationStr())
 					.getTime());
 		} catch (ParseException e) {
-			if ("Hw6sk_DlEh".equals(p.getDateOfDeactivationStr())){
+			if ("".equals(p.getDateOfDeactivationStr())){
 				date = null;
 			}else{
 				
 			}
 		}catch (NullPointerException e) {
-			if ("Hw6sk_DlEh".equals(p.getDateOfDeactivationStr())){
+			if ("".equals(p.getDateOfDeactivationStr())){
 				date = null;
 			}else{
 				

@@ -10,7 +10,7 @@ package edu.ncsu.csc.itrust.model.old.beans;
  */
 public class VisitFlag {
 
-	public static final String DIAGNOSED = "zlFBwURu39";
+	public static final String DIAGNOSED = "Diagnosed";
 	public static final String MISSED_MEDICATION = "Missed Medication";
 	public static final String MISSING_MEDICATION = "Currently Missing Medication";
 	public static final String LAST_VISIT = "Last Visit";

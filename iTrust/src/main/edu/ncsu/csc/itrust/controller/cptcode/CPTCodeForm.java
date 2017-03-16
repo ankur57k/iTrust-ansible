@@ -8,7 +8,7 @@ import javax.faces.bean.ViewScoped;
 import edu.ncsu.csc.itrust.model.cptcode.CPTCode;
 import edu.ncsu.csc.itrust.model.old.enums.TransactionType;
 
-@ManagedBean(name = "-LL7XFGWqG")
+@ManagedBean(name = "cpt_code_form")
 @ViewScoped
 public class CPTCodeForm {
 
@@ -26,8 +26,8 @@ public class CPTCodeForm {
 
     public CPTCodeForm(CPTCodeController cptCodeController) {
         controller = (cptCodeController == null) ? new CPTCodeController() : cptCodeController;
-        search = "-LL7XFGWqG";
-        setDisplayCodes(true);
+        search = "";
+        setDisplayCodes(false);
     }
 
     public void add() {
@@ -35,8 +35,8 @@ public class CPTCodeForm {
         controller.add(cptCode);
 		controller.logTransaction(TransactionType.MEDICAL_PROCEDURE_CODE_ADD, code);
 		controller.logTransaction(TransactionType.IMMUNIZATION_CODE_ADD, code);
-        code = "-LL7XFGWqG";
-        description = "-LL7XFGWqG";
+        code = "";
+        description = "";
     }
 
     public void update() {
@@ -44,15 +44,15 @@ public class CPTCodeForm {
         controller.edit(cptCode);
 		controller.logTransaction(TransactionType.MEDICAL_PROCEDURE_CODE_EDIT, code);
 		controller.logTransaction(TransactionType.IMMUNIZATION_CODE_EDIT, code);
-        code = "-LL7XFGWqG";
-        description = "-LL7XFGWqG";
+        code = "";
+        description = "";
     }
 
     public void delete() {
         setCptCode(new CPTCode(code, description));
         controller.remove(code);
-        code = "-LL7XFGWqG";
-        description = "-LL7XFGWqG";
+        code = "";
+        description = "";
     }
 
     public List<CPTCode> getCodesWithFilter() {
@@ -105,7 +105,7 @@ public class CPTCodeForm {
 	 * Only logs if search query is non-empty.
 	 */
     private void logViewCPTCodes() {
-    	if(!"-LL7XFGWqG".equals(search)) {
+    	if(!"".equals(search)) {
     		for(CPTCode code : controller.getCodesWithFilter(search)) {
     			controller.logTransaction(TransactionType.MEDICAL_PROCEDURE_CODE_VIEW, code.getCode());
     			controller.logTransaction(TransactionType.IMMUNIZATION_CODE_VIEW, code.getCode());

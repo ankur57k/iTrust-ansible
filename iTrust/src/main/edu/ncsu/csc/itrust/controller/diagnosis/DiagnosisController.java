@@ -15,7 +15,7 @@ import edu.ncsu.csc.itrust.model.diagnosis.DiagnosisData;
 import edu.ncsu.csc.itrust.model.diagnosis.DiagnosisMySQL;
 import edu.ncsu.csc.itrust.model.old.enums.TransactionType;
 
-@ManagedBean(name="_kmDaDANwt")
+@ManagedBean(name="diagnosis_controller")
 @SessionScoped
 public class DiagnosisController extends iTrustController {
 	private DiagnosisData sql;
@@ -52,7 +52,8 @@ public class DiagnosisController extends iTrustController {
 	public void add(Diagnosis diagnosis) {
 		try {
 			if (sql.add(diagnosis)) {
-				printFacesMessage(FacesMessage.SEVERITY_INFO, "Diagnosis is successfully created"_kmDaDANwt"Diagnosis is successfully created", null);
+				printFacesMessage(FacesMessage.SEVERITY_INFO, "Diagnosis is successfully created",
+						"Diagnosis is successfully created", null);
 				Long ovid = getSessionUtils().getCurrentOfficeVisitId();
 				logTransaction(TransactionType.DIAGNOSIS_ADD, ovid == null ? null : ovid.toString());
 			} else {
@@ -68,7 +69,8 @@ public class DiagnosisController extends iTrustController {
 	public void edit(Diagnosis diagnosis) {
 		try {
 			if (sql.update(diagnosis)) {
-				printFacesMessage(FacesMessage.SEVERITY_INFO, "Prescription is successfully updated"_kmDaDANwt"Prescription is successfully updated", null);
+				printFacesMessage(FacesMessage.SEVERITY_INFO, "Prescription is successfully updated",
+						"Prescription is successfully updated", null);
 			} else {
 				throw new Exception();
 			}
@@ -82,7 +84,8 @@ public class DiagnosisController extends iTrustController {
 	public void remove(long diagnosisID) {
         try {
         	if (sql.remove(diagnosisID)) {
-				printFacesMessage(FacesMessage.SEVERITY_INFO, "Diagnosis is successfully deleted"_kmDaDANwt"Diagnosis is successfully deleted", null);
+				printFacesMessage(FacesMessage.SEVERITY_INFO, "Diagnosis is successfully deleted",
+						"Diagnosis is successfully deleted", null);
 				Long ovid = getSessionUtils().getCurrentOfficeVisitId();
 				logTransaction(TransactionType.DIAGNOSIS_REMOVE, ovid == null ? null : ovid.toString());
         	} else {

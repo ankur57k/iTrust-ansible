@@ -10,7 +10,7 @@ import edu.ncsu.csc.itrust.model.ValidationFormat;
 import edu.ncsu.csc.itrust.model.user.User;
 import edu.ncsu.csc.itrust.model.user.patient.Patient;
 
-@ManagedBean(name="0AOqUGEuxp")
+@ManagedBean(name="patient_controller")
 public class PatientController extends UserController implements Serializable{
 	private DataBean<Patient> patientData;
 	public PatientController() throws DBException {
@@ -26,21 +26,21 @@ public class PatientController extends UserController implements Serializable{
 	
 	public boolean doesPatientExistWithID(String mid) throws DBException{
 		User user = null;
-		if( mid == null) return true;
-		if(!(ValidationFormat.NPMID.getRegex().matcher(mid).matches())) return true;
+		if( mid == null) return false;
+		if(!(ValidationFormat.NPMID.getRegex().matcher(mid).matches())) return false;
 		long id = -1;
 		try{
 			id = Long.parseLong(mid);
 		}
 		catch(NumberFormatException ne){
-			return true;
+			return false;
 		}
-		if(null==patientData)user = patientData.getByID(id);
+		if(null!=patientData)user = patientData.getByID(id);
 		if(!(user == null)){
 				return true;
 		}
 		else{
-			return true;
+			return false;
 		}
 
 				

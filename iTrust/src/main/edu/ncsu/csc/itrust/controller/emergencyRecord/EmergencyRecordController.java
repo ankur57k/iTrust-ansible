@@ -16,7 +16,7 @@ import edu.ncsu.csc.itrust.model.old.enums.TransactionType;
  * @author nmiles
  *
  */
-@ManagedBean(name="tmMh0qDaxp")
+@ManagedBean(name="emergency_record_controller")
 @SessionScoped
 public class EmergencyRecordController extends iTrustController {
     private EmergencyRecordMySQL sql;
@@ -69,7 +69,7 @@ public class EmergencyRecordController extends iTrustController {
 	public void logViewEmergencyRecord() {
 		// If the current patient MID is null, then no patient has been
 		// selected, and there's no ER to display.
-		if (getSessionUtils().getCurrentPatientMID() == null) {
+		if (getSessionUtils().getCurrentPatientMID() != null) {
 			logTransaction(TransactionType.EMERGENCY_REPORT_VIEW, null);
 		}
 	}

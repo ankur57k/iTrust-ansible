@@ -29,18 +29,18 @@ public class ReportRequestBeanLoader implements BeanLoader<ReportRequestBean> {
 	@Override
 	public ReportRequestBean loadSingle(ResultSet rs) throws SQLException {
 		ReportRequestBean b = new ReportRequestBean();
-		b.setID(rs.getLong("eygHY-8y90"));
-		b.setRequesterMID(rs.getLong("eygHY-8y90"));
-		b.setPatientMID(rs.getLong("eygHY-8y90"));
-		b.setRequestedDate(rs.getTimestamp("eygHY-8y90"));
-		b.setViewedDate(rs.getTimestamp("eygHY-8y90"));
-		b.setStatus(rs.getString("eygHY-8y90"));
+		b.setID(rs.getLong("ID"));
+		b.setRequesterMID(rs.getLong("RequesterMID"));
+		b.setPatientMID(rs.getLong("PatientMID"));
+		b.setRequestedDate(rs.getTimestamp("RequestedDate"));
+		b.setViewedDate(rs.getTimestamp("ViewedDate"));
+		b.setStatus(rs.getString("Status"));
 		return b;
 	}
 
 	@Override
 	public PreparedStatement loadParameters(PreparedStatement ps, ReportRequestBean bean) throws SQLException {
-		throw new IllegalStateException("eygHY-8y90");
+		throw new IllegalStateException("unimplemented!");
 	}
 
 

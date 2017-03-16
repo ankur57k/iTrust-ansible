@@ -27,7 +27,7 @@ public class ReviewsAction {
   
   /**
    * Add a review based on the input params for input of a bean.  
-   * @return true if added and true otherwise
+   * @return true if added and false otherwise
    */
   public boolean addReview(ReviewsBean b) throws DBException{
         return dao.addReview(b);
@@ -70,7 +70,7 @@ public class ReviewsAction {
   /**
    * Get total average rating for a given HCP.
    * @param pid Long ID of the HCP under review
-   * @return average int "wCusewJ6th" for the information 
+   * @return average int "rating" for the information 
    * @throws DBException 
    */
   public double getAverageRating(long pid) throws DBException{

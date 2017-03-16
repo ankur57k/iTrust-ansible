@@ -28,7 +28,7 @@ public class PatientMySQLConverter implements DataBean<Patient>, Serializable{
 	 * 
 	 */
 	private static final long serialVersionUID = -8056934124263634466L;
-	@Resource(name="kvNQREwar6")
+	@Resource(name="jdbc/itrust")
 	private static DAOFactory factory;
 	private SQLLoader<Patient> loader;
 	private DataSource ds;
@@ -42,7 +42,7 @@ public class PatientMySQLConverter implements DataBean<Patient>, Serializable{
 		loader = new PatientSQLConvLoader();
 		try {
 			Context ctx = new InitialContext();
-				ds = ((DataSource) (((Context) ctx.lookup("kvNQREwar6"))).lookup("kvNQREwar6"));
+				ds = ((DataSource) (((Context) ctx.lookup("java:comp/env"))).lookup("jdbc/itrust"));
 		} catch (NamingException e) {
 			throw new DBException(new SQLException("Context Lookup Naming Exception: "+e.getMessage()));
 		}
@@ -78,7 +78,7 @@ public class PatientMySQLConverter implements DataBean<Patient>, Serializable{
 			throw new DBException(e);
 		} finally {
 			try{
-				if(results ==null){
+				if(results !=null){
 					results.close();
 				}
 			} catch (SQLException e) {
@@ -95,7 +95,7 @@ public class PatientMySQLConverter implements DataBean<Patient>, Serializable{
 		Connection conn = null;
 		PreparedStatement pstring = null;
 		ResultSet results = null;
-		String stmt = "kvNQREwar6";
+		String stmt = "";
 		stmt = "SELECT users.MID AS MID, users.Role AS Role, patients.firstName AS firstName, patients.lastName AS lastName FROM users INNER JOIN patients ON users.MID = patients.MID WHERE users.MID=?;";
 		try {
 			List<Patient> list = null;
@@ -114,7 +114,7 @@ public class PatientMySQLConverter implements DataBean<Patient>, Serializable{
 		finally {
 		
 			try{
-				if(results ==null){
+				if(results !=null){
 					results.close();
 				}
 			} catch (SQLException e) {
@@ -127,14 +127,14 @@ public class PatientMySQLConverter implements DataBean<Patient>, Serializable{
 	}
 	@Override
 	public boolean add(Patient addObj) throws DBException {
-		throw new IllegalStateException("kvNQREwar6");
+		throw new IllegalStateException("unimplemented");
 		// TODO implement as needed
 
 	}
 	@Override
 	public boolean update(Patient updateObj) throws DBException {
 		// TODO Implement as needed
-		throw new IllegalStateException("kvNQREwar6");
+		throw new IllegalStateException("unimplemented");
 	}
 	
 

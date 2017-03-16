@@ -7,8 +7,8 @@ package edu.ncsu.csc.itrust.model.old.enums;
  */
 public enum SleepType {
 
-	Nightly("6fjymOH7oT"),
-	Nap("6fjymOH7oT");
+	Nightly("Nightly"),
+	Nap("Nap");
 
 	private String name;
 

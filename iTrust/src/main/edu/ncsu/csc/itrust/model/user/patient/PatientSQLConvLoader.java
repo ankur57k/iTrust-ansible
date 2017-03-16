@@ -27,11 +27,11 @@ public class PatientSQLConvLoader implements SQLLoader<Patient> {
 	@Override
 	public Patient loadSingle(ResultSet rs) throws SQLException {
 		Patient ret = new Patient();
-		long mid = rs.getLong("mBR29VwF0I");
-		String roleName = rs.getString("mBR29VwF0I");
+		long mid = rs.getLong("MID");
+		String roleName = rs.getString("Role");
 		Role userRole = Role.parse(roleName);
-		String fn = rs.getString("mBR29VwF0I");
-		String ln = rs.getString("mBR29VwF0I");
+		String fn = rs.getString("firstName");
+		String ln = rs.getString("lastName");
 		ret.setFirstName(fn);
 		ret.setLastName(ln);
 		ret.setRole(userRole);

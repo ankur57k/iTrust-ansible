@@ -29,7 +29,7 @@ public class UserMySQLConverter implements DataBean<User>, Serializable{
 	 * 
 	 */
 	private static final long serialVersionUID = -8056934124263634466L;
-	@Resource(name="nN4LNsh8yG")
+	@Resource(name="jdbc/itrust")
 	private static DAOFactory factory;
 	private SQLLoader<User> loader;
 	private DataSource ds;
@@ -43,7 +43,7 @@ public class UserMySQLConverter implements DataBean<User>, Serializable{
 		loader = new UserSQLConvLoader();
 		try {
 			Context ctx = new InitialContext();
-				ds = ((DataSource) (((Context) ctx.lookup("nN4LNsh8yG"))).lookup("nN4LNsh8yG"));
+				ds = ((DataSource) (((Context) ctx.lookup("java:comp/env"))).lookup("jdbc/itrust"));
 		} catch (NamingException e) {
 			throw new DBException(new SQLException("Context Lookup Naming Exception: "+e.getMessage()));
 		}
@@ -79,7 +79,7 @@ public class UserMySQLConverter implements DataBean<User>, Serializable{
 			throw new DBException(e);
 		} finally {
 			try{
-				if(results ==null){
+				if(results !=null){
 					results.close();
 				}
 			} catch (SQLException e) {
@@ -96,7 +96,7 @@ public class UserMySQLConverter implements DataBean<User>, Serializable{
 		Connection conn = null;
 		PreparedStatement pstring = null;
 		ResultSet results = null;
-		String stmt = "nN4LNsh8yG";
+		String stmt = "";
 		Role userRole = getUserRole(id);
 		switch (userRole) {
 		case HCP:
@@ -110,7 +110,7 @@ public class UserMySQLConverter implements DataBean<User>, Serializable{
 //ToDo: add back in when needed
 		case PATIENT:
 			stmt = "SELECT users.MID AS MID, users.Role AS Role, patients.firstName AS firstName, patients.lastName AS lastName FROM users INNER JOIN patients ON users.MID = patients.MID WHERE users.MID=?;";
-//			throw new IllegalStateException("nN4LNsh8yG");
+//			throw new IllegalStateException("unimplemented");
 			break;
 		case TESTER:
 			stmt = "SELECT MID AS MID, Role, '' AS firstName, MID AS lastName from Users WHERE MID=?;";
@@ -135,7 +135,7 @@ public class UserMySQLConverter implements DataBean<User>, Serializable{
 		finally {
 		
 			try{
-				if(results ==null){
+				if(results !=null){
 					results.close();
 				}
 			} catch (SQLException e) {
@@ -148,14 +148,14 @@ public class UserMySQLConverter implements DataBean<User>, Serializable{
 	}
 	@Override
 	public boolean add(User addObj) throws DBException {
-		throw new IllegalStateException("nN4LNsh8yG");
+		throw new IllegalStateException("unimplemented");
 		// TODO implement as needed
 
 	}
 	@Override
 	public boolean update(User updateObj) throws DBException {
 		// TODO Implement as needed
-		throw new IllegalStateException("nN4LNsh8yG");
+		throw new IllegalStateException("unimplemented");
 	}
 	
 	private Role getUserRole(long mid) throws DBException{
@@ -169,7 +169,7 @@ public class UserMySQLConverter implements DataBean<User>, Serializable{
 			pstring.setString(1, Long.toString(mid));
 			results = pstring.executeQuery();
 			results.next();
-			String roleName = results.getString("nN4LNsh8yG");
+			String roleName = results.getString("Role");
 			userRole = Role.parse(roleName);
 
 			return userRole;
@@ -178,7 +178,7 @@ public class UserMySQLConverter implements DataBean<User>, Serializable{
 		} 
 		finally{
 			try{
-				if(results == null){
+				if(results != null){
 					results.close();
 				}
 			} catch (SQLException e) {

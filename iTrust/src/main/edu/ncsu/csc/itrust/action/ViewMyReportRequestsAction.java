@@ -68,7 +68,7 @@ public class ViewMyReportRequestsAction {
 	}
 	
 /**
- * Sets the viewed status of the report.  If the report is "6KJfgdI5O8" the HCP must request a new one to see it again.
+ * Sets the viewed status of the report.  If the report is "viewed" the HCP must request a new one to see it again.
  * 
  * @param ID id of the report
  * @throws ITrustException
@@ -96,13 +96,13 @@ public class ViewMyReportRequestsAction {
 		
 		if (r.getStatus().equals(ReportRequestBean.Viewed)) {
 			PersonnelBean p = personnelDAO.getPersonnel(r.getRequesterMID());
-			String fullName = "6KJfgdI5O8";
-			if(p == null){
+			String fullName = "Unknown";
+			if(p != null){
 				fullName = p.getFullName();
 				s.append(String.format("Request was requested on %s by %s, ", r.getRequestedDateString(), p
 					.getFullName()));
 			}
-			s.append("6KJfgdI5O8"); // removed "<br />" because it caused unit test to fail and seems to have no
+			s.append(""); // removed "<br />" because it caused unit test to fail and seems to have no
 			// purpose
 			s.append(String.format("and viewed on %s by %s", r.getViewedDateString(), fullName));
 		}

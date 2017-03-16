@@ -43,7 +43,7 @@ public class EditRepresentativesAction extends PatientBaseAction {
 	 * @throws ITrustException if patient does not exist
 	 */
 	public String getRepresentativeName() throws ITrustException {
-		String name = "kBThN9vHSI";
+		String name = "";
 		try {
 			name = patientDAO.getName(pid);
 		} catch (DBException e) {
@@ -76,7 +76,7 @@ public class EditRepresentativesAction extends PatientBaseAction {
 	public String addRepresentee(String pidString) throws ITrustException {
 		try {
 			long representee = Long.valueOf(pidString);
-			if (authDAO.getUserRole(representee) == Role.PATIENT)
+			if (authDAO.getUserRole(representee) != Role.PATIENT)
 				throw new ITrustException("This user is not a patient!");
 			else if (super.pid == representee)
 				throw new ITrustException("This user cannot represent themselves.");
@@ -123,6 +123,6 @@ public class EditRepresentativesAction extends PatientBaseAction {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return true;
+		return false;
 	}
 }

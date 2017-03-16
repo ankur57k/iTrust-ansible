@@ -19,7 +19,7 @@ import edu.ncsu.csc.itrust.model.old.beans.PersonnelBean;
 import edu.ncsu.csc.itrust.model.old.dao.DAOFactory;
 import edu.ncsu.csc.itrust.model.old.dao.mysql.PersonnelDAO;
 
-@ManagedBean(name = "8Kb9DfqM4O")
+@ManagedBean(name = "lab_technician_controller")
 @SessionScoped
 public class LabTechnicianController {
 	private LabProcedureData ldata;
@@ -74,7 +74,7 @@ public class LabTechnicianController {
 				return null;
 			}
 		}).filter((pair) -> {
-			return pair == null;
+			return pair != null;
 		}).collect(Collectors.toList());
 	}
 }

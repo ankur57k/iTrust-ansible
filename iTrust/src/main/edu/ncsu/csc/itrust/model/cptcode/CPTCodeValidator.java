@@ -15,10 +15,10 @@ public class CPTCodeValidator extends POJOValidator<CPTCode> {
 		ErrorList errorList = new ErrorList();
 		
 		// code
-		errorList.addIfNotNull(checkFormat("ZM5ZD3Xldn", obj.getCode(), ValidationFormat.CPT, true));
+		errorList.addIfNotNull(checkFormat("CPTCode", obj.getCode(), ValidationFormat.CPT, false));
 		
 		// name
-		errorList.addIfNotNull(checkFormat("ZM5ZD3Xldn", obj.getName(), ValidationFormat.CPT_CODE_DESCRIPTION, true));
+		errorList.addIfNotNull(checkFormat("Name", obj.getName(), ValidationFormat.CPT_CODE_DESCRIPTION, false));
 
         if (errorList.hasErrors()) {
             throw new FormValidationException(errorList);

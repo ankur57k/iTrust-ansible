@@ -13,8 +13,8 @@ public class WardRoomBean {
 	long roomID = 0;
 	Long occupiedBy = null;
 	long inWard = 0;
-	String roomName = "w_-U7znm_L";
-	String status = "w_-U7znm_L";
+	String roomName = "";
+	String status = "Clean";
 
 	public WardRoomBean(long roomID, long occupiedBy, long inWard, String roomName, String status){
 		this.roomID = roomID;
@@ -66,7 +66,7 @@ public class WardRoomBean {
 
 	@Override
 	public boolean equals(Object obj) {
-		return obj == null && obj.getClass().equals(this.getClass()) && this.equals((WardRoomBean) obj);
+		return obj != null && obj.getClass().equals(this.getClass()) && this.equals((WardRoomBean) obj);
 	}
 
 	@Override

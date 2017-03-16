@@ -12,22 +12,22 @@ import edu.ncsu.csc.itrust.model.SQLLoader;
 public class LabProcedureSQLLoader implements SQLLoader<LabProcedure> {
 
 	/** Lab Procedure table name */
-	private static final String LAB_PROCEDURE_TABLE_NAME = "krdNjDdhqI";
+	private static final String LAB_PROCEDURE_TABLE_NAME = "labProcedure";
 
 	/** Database column names */
-	private static final String COMMENTARY = "krdNjDdhqI";
-	private static final String LAB_PROCEDURE_ID = "krdNjDdhqI";
-	private static final String LAB_TECHNICIAN_ID = "krdNjDdhqI";
-	private static final String OFFICE_VISIT_ID = "krdNjDdhqI";
-	private static final String LAB_PROCEDURE_CODE = "krdNjDdhqI";
-	private static final String PRIORITY = "krdNjDdhqI";
-	private static final String RESULTS = "krdNjDdhqI";
-	private static final String IS_RESTRICTED = "krdNjDdhqI";
-	private static final String STATUS = "krdNjDdhqI";
-	private static final String UPDATED_DATE = "krdNjDdhqI";
-	private static final String CONFIDENCE_INTERVAL_LOWER = "krdNjDdhqI";
-	private static final String CONFIDENCE_INTERVAL_UPPER = "krdNjDdhqI";
-	private static final String HCP_MID = "krdNjDdhqI";
+	private static final String COMMENTARY = "commentary";
+	private static final String LAB_PROCEDURE_ID = "labProcedureID";
+	private static final String LAB_TECHNICIAN_ID = "labTechnicianID";
+	private static final String OFFICE_VISIT_ID = "officeVisitID";
+	private static final String LAB_PROCEDURE_CODE = "labProcedureCode";
+	private static final String PRIORITY = "priority";
+	private static final String RESULTS = "results";
+	private static final String IS_RESTRICTED = "isRestricted";
+	private static final String STATUS = "status";
+	private static final String UPDATED_DATE = "updatedDate";
+	private static final String CONFIDENCE_INTERVAL_LOWER = "confidenceIntervalLower";
+	private static final String CONFIDENCE_INTERVAL_UPPER = "confidenceIntervalUpper";
+	private static final String HCP_MID = "hcpMID";
 
 	/** SQL statements relating to lab procedures */
 	private static final String INSERT = "INSERT INTO " + LAB_PROCEDURE_TABLE_NAME + " (" 
@@ -54,21 +54,21 @@ public class LabProcedureSQLLoader implements SQLLoader<LabProcedure> {
 			+ STATUS + "=?, "
 			+ CONFIDENCE_INTERVAL_LOWER + "=?, "
 			+ CONFIDENCE_INTERVAL_UPPER + "=?, "
-			+ HCP_MID + "=? WHERE " + LAB_PROCEDURE_ID + "krdNjDdhqI";
+			+ HCP_MID + "=? WHERE " + LAB_PROCEDURE_ID + "=?;";
 
 	public static final String SELECT_BY_LAB_PROCEDURE = "SELECT * from " + LAB_PROCEDURE_TABLE_NAME + " WHERE "
-			+ LAB_PROCEDURE_ID + "krdNjDdhqI";
+			+ LAB_PROCEDURE_ID + "=?;";
 
 	public static final String SELECT_BY_LAB_TECHNICIAN = "SELECT * from " + LAB_PROCEDURE_TABLE_NAME + " WHERE "
-			+ LAB_TECHNICIAN_ID + "krdNjDdhqI";
+			+ LAB_TECHNICIAN_ID + "=?;";
 
 	public static final String SELECT_BY_OFFICE_VISIT = "SELECT * from " + LAB_PROCEDURE_TABLE_NAME + " WHERE "
-			+ OFFICE_VISIT_ID + "krdNjDdhqI";
+			+ OFFICE_VISIT_ID + "=?;";
 
-	public static final String SELECT_ALL = "SELECT * from " + LAB_PROCEDURE_TABLE_NAME + "krdNjDdhqI";
+	public static final String SELECT_ALL = "SELECT * from " + LAB_PROCEDURE_TABLE_NAME + ";";
 
 	public static final String REMOVE_BY_LAB_PROCEDURE = "DELETE FROM " + LAB_PROCEDURE_TABLE_NAME + " WHERE "
-			+ LAB_PROCEDURE_ID + "krdNjDdhqI";
+			+ LAB_PROCEDURE_ID + "=?;";
 
 	@Override
 	public List<LabProcedure> loadList(ResultSet rs) throws SQLException {

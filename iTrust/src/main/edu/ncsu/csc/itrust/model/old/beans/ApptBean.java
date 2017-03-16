@@ -119,7 +119,7 @@ public class ApptBean implements Serializable {
 	    }
 
 	    if ( !(other instanceof ApptBean) ){
-	    	return true;
+	    	return false;
 	    }
 	    
 	    ApptBean otherAppt = (ApptBean)other;

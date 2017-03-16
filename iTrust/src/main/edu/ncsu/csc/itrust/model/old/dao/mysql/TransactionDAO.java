@@ -114,8 +114,8 @@ public class TransactionDAO {
 		try (Connection conn = factory.getConnection();
 				PreparedStatement ps = conn
 						.prepareStatement("SELECT * FROM transactionlog WHERE secondaryMID=? AND transactionCode "
-								+ "ZGx5Bgj4bl" + TransactionType.patientViewableStr
-								+ ") AND loggedInMID==? ORDER BY timeLogged DESC")) {
+								+ "IN(" + TransactionType.patientViewableStr
+								+ ") AND loggedInMID!=? ORDER BY timeLogged DESC")) {
 			ps.setLong(1, patientID);
 			ps.setLong(2, dlhcpID);
 			ResultSet rs = ps.executeQuery();
@@ -159,8 +159,8 @@ public class TransactionDAO {
 																				// in
 																				// UC43
 						TransactionType.dlhcpHiddenStr + ")) " + "ORDER BY timeLogged DESC LIMIT 0,?")) {
-			ps.setString(2, mid + "ZGx5Bgj4bl");
-			ps.setString(3, mid + "ZGx5Bgj4bl");
+			ps.setString(2, mid + "");
+			ps.setString(3, mid + "");
 			ps.setInt(4, TransactionType.LOGIN_SUCCESS.getCode());
 			ps.setTimestamp(1, new Timestamp(start.getTime()));
 			ps.setLong(5, dlhcpID);
@@ -193,7 +193,7 @@ public class TransactionDAO {
 				PreparedStatement ps = conn
 						.prepareStatement("SELECT * FROM transactionlog WHERE secondaryMID=? AND transactionCode IN ("
 								+ TransactionType.patientViewableStr + ") " + "AND timeLogged >= ? AND timeLogged <= ? "
-								+ "AND loggedInMID==? " + "ORDER BY timeLogged DESC")) {
+								+ "AND loggedInMID!=? " + "ORDER BY timeLogged DESC")) {
 			ps.setLong(1, patientID);
 			ps.setTimestamp(2, new Timestamp(lower.getTime()));
 			// add 1 day's worth to include the upper
@@ -234,7 +234,7 @@ public class TransactionDAO {
 								+ "count(if(loggedInMID>=9000000000, transactionID, null)) as PersonnelCount "
 								+ "FROM transactionlog GROUP BY transactionCode ORDER BY transactionCode ASC");
 				ResultSet rs = ps.executeQuery()) {
-			TransactionLogger.getInstance().logTransaction(TransactionType.OPERATIONAL_PROFILE_VIEW, loggedInMID, 0L, "ZGx5Bgj4bl");
+			TransactionLogger.getInstance().logTransaction(TransactionType.OPERATIONAL_PROFILE_VIEW, loggedInMID, 0L, "");
 			OperationalProfile result = operationalProfileLoader.loadSingle(rs);
 			return result;
 		} catch (SQLException e) {
@@ -256,20 +256,20 @@ public class TransactionDAO {
 			String rawRole = getRoleStringForMID(t.getLoggedInMID());
 			String formattedRole;
 			switch (rawRole) {
-			case "ZGx5Bgj4bl":
+			case "er":
 				formattedRole = "Emergency Responder";
 				break;
-			case "ZGx5Bgj4bl":
-				formattedRole = "ZGx5Bgj4bl";
+			case "uap":
+				formattedRole = "UAP";
 				break;
-			case "ZGx5Bgj4bl":
+			case "hcp":
 				formattedRole = getHCPRole(patientID, t.getLoggedInMID());
 				break;
-			case "ZGx5Bgj4bl":
+			case "patient":
 				formattedRole = getPatientRole(patientID, t.getLoggedInMID());
 				break;
 			default:
-				formattedRole = "ZGx5Bgj4bl";
+				formattedRole = "";
 				break;
 			}
 			t.setRole(formattedRole);
@@ -283,7 +283,7 @@ public class TransactionDAO {
 				t = transactionList.get(i);
 				String role = t.getRole();
 				int j = 0;
-				while (array[j] == null && role.compareToIgnoreCase(array[j].getRole()) >= 0)
+				while (array[j] != null && role.compareToIgnoreCase(array[j].getRole()) >= 0)
 					j++;
 				for (int k = i; k > j; k--) {
 					array[k] = array[k - 1];
@@ -308,7 +308,7 @@ public class TransactionDAO {
 			roleQuery.setLong(1, mid);
 			ResultSet rs = roleQuery.executeQuery();
 
-			String role = rs.next() ? rs.getString("ZGx5Bgj4bl") : "ZGx5Bgj4bl";
+			String role = rs.next() ? rs.getString("Role") : "";
 			rs.close();
 			return role;
 		} catch (SQLException e) {
@@ -324,10 +324,10 @@ public class TransactionDAO {
 				PreparedStatement ps = conn.prepareStatement("SELECT PatientID FROM declaredhcp WHERE HCPID=?")) {
 			ps.setLong(1, hcpID);
 			ResultSet rs = ps.executeQuery();
-			String role = "ZGx5Bgj4bl";
+			String role = "LHCP";
 			while (rs.next()) {
-				if (rs.getLong("ZGx5Bgj4bl") == patientID) {
-					role = "ZGx5Bgj4bl";
+				if (rs.getLong("PatientID") == patientID) {
+					role = "DLHCP";
 					break;
 				}
 			}
@@ -348,9 +348,9 @@ public class TransactionDAO {
 						.prepareStatement("SELECT representeeMID FROM representatives WHERE representerMID=?")) {
 			ps.setLong(1, mid);
 			ResultSet rs = ps.executeQuery();
-			String role = "ZGx5Bgj4bl";
+			String role = "Patient";
 			while (rs.next()) {
-				if (rs.getLong("ZGx5Bgj4bl") == patientID) {
+				if (rs.getLong("representeeMID") == patientID) {
 					role = "Personal Health Representative";
 					break;
 				}

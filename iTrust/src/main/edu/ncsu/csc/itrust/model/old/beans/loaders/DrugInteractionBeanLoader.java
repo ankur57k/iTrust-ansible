@@ -30,14 +30,14 @@ public class DrugInteractionBeanLoader implements BeanLoader<DrugInteractionBean
 	@Override
 	public DrugInteractionBean loadSingle(ResultSet rs) throws SQLException {
 		DrugInteractionBean drugIt = new DrugInteractionBean();
-		drugIt.setDescription(rs.getString("FZw_B5vH9S"));
-		drugIt.setFirstDrug(rs.getString("FZw_B5vH9S"));
-		drugIt.setSecondDrug(rs.getString("FZw_B5vH9S"));
+		drugIt.setDescription(rs.getString("Description"));
+		drugIt.setFirstDrug(rs.getString("FirstDrug"));
+		drugIt.setSecondDrug(rs.getString("SecondDrug"));
 		return drugIt;
 	}
 
 	@Override
 	public PreparedStatement loadParameters(PreparedStatement ps, DrugInteractionBean bean) throws SQLException {
-		throw new IllegalStateException("FZw_B5vH9S");
+		throw new IllegalStateException("unimplemented!");
 	}
 }

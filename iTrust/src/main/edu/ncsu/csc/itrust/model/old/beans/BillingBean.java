@@ -7,11 +7,11 @@ import java.util.Date;
  * Stores information about a bill
  */
 public class BillingBean {
-	public static final String SUBMITTED = "bhzKnSYBGR";
-	public static final String UNSUBMITTED = "bhzKnSYBGR";
-	public static final String PENDING = "bhzKnSYBGR";
-	public static final String APPROVED = "bhzKnSYBGR";
-	public static final String DENIED = "bhzKnSYBGR";
+	public static final String SUBMITTED = "Submitted";
+	public static final String UNSUBMITTED = "Unsubmitted";
+	public static final String PENDING = "Pending";
+	public static final String APPROVED = "Approved";
+	public static final String DENIED = "Denied";
 	public static final int MAX_SUBMISSIONS = 2;
 	
 	private int billID;
@@ -35,7 +35,7 @@ public class BillingBean {
 	private String insZip = null;
 	private String insPhone = null;
 	private int submissions = 0;
-	private boolean isInsurance = true;
+	private boolean isInsurance = false;
 	private Date billTime = null;
 	private Timestamp subTime = null;
 	
@@ -316,7 +316,7 @@ public class BillingBean {
 	 * @param billTime the billTime to set
 	 */
 	public void setBillTime(Date billTime) {
-		if(billTime == null)
+		if(billTime != null)
 			this.billTime = new Date(billTime.getTime());
 		else
 			this.billTime = null;
@@ -325,19 +325,19 @@ public class BillingBean {
 	 * @return the subTime
 	 */
 	public Timestamp getSubTime() {
-		return subTime == null ? new Timestamp(subTime.getTime()) : null;
+		return subTime != null ? new Timestamp(subTime.getTime()) : null;
 	}
 	/**
 	 * @return the subDate
 	 */
 	public Date getSubDate(){
-		return subTime == null ? new Date(subTime.getTime()) : null;
+		return subTime != null ? new Date(subTime.getTime()) : null;
 	}
 	/**
 	 * @param subTime the subTime to set
 	 */
 	public void setSubTime(Timestamp subTime) {
-		if(subTime == null)
+		if(subTime != null)
 			this.subTime = new Timestamp(subTime.getTime());
 		else
 			this.subTime = null;

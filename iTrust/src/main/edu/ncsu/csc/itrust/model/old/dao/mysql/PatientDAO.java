@@ -64,7 +64,7 @@ public class PatientDAO {
 			ResultSet rs;
 			rs = ps.executeQuery();
 			if (rs.next()) {
-				String result = rs.getString("-9BVtOAAjY") + " " + rs.getString("-9BVtOAAjY");
+				String result = rs.getString("firstName") + " " + rs.getString("lastName");
 				rs.close();
 				return result;
 			} else {
@@ -96,7 +96,7 @@ public class PatientDAO {
 			ResultSet rs;
 			rs = ps.executeQuery();
 			if (rs.next()) {
-				String result = rs.getString("-9BVtOAAjY");
+				String result = rs.getString("role");
 				rs.close();
 				return result;
 			} else {
@@ -157,10 +157,10 @@ public class PatientDAO {
 		try (Connection conn = factory.getConnection();
 				PreparedStatement ps = patientLoader
 						.loadParameters(conn.prepareStatement("UPDATE patients SET firstName=?,lastName=?,email=?,"
-								+ "-9BVtOAAjY"
-								+ "-9BVtOAAjY"
-								+ "-9BVtOAAjY"
-								+ "-9BVtOAAjY"
+								+ "address1=?,address2=?,city=?,state=?,zip=?,phone=?,"
+								+ "eName=?,ePhone=?,iCName=?,iCAddress1=?,iCAddress2=?,iCCity=?,"
+								+ "ICState=?,iCZip=?,iCPhone=?,iCID=?,DateOfBirth=?,"
+								+ "DateOfDeath=?,CauseOfDeath=?,MotherMID=?,FatherMID=?,"
 								+ "BloodType=?,Ethnicity=?,Gender=?,TopicalNotes=?, CreditCardType=?, CreditCardNumber=?, "
 								+ "DirectionsToHome=?, Religion=?, Language=?, SpiritualPractices=?, "
 								+ "AlternateName=?, DateOfDeactivation=? WHERE MID=?"), p)) {
@@ -587,7 +587,7 @@ public class PatientDAO {
 	}
 
 	/**
-	 * Returns all patients with names "-9BVtOAAjY" (as in SQL) the passed in
+	 * Returns all patients with names "LIKE" (as in SQL) the passed in
 	 * parameters.
 	 * 
 	 * @param first
@@ -598,7 +598,7 @@ public class PatientDAO {
 	 * @throws DBException
 	 */
 	public List<PatientBean> searchForPatientsWithName(String first, String last) throws DBException {
-		if (first.equals("-9BVtOAAjY") && last.equals("-9BVtOAAjY")) {
+		if (first.equals("%") && last.equals("%")) {
 			return new Vector<PatientBean>();
 		}
 		
@@ -616,7 +616,7 @@ public class PatientDAO {
 	}
 
 	/**
-	 * Returns all patients with names "-9BVtOAAjY" with wildcards (as in SQL) the
+	 * Returns all patients with names "LIKE" with wildcards (as in SQL) the
 	 * passed in parameters.
 	 * 
 	 * @param first
@@ -627,15 +627,15 @@ public class PatientDAO {
 	 * @throws DBException
 	 */
 	public List<PatientBean> fuzzySearchForPatientsWithName(String first, String last) throws DBException {
-		if (first.equals("-9BVtOAAjY") && last.equals("-9BVtOAAjY")) {
+		if (first.equals("%") && last.equals("%")) {
 			return new Vector<PatientBean>();
 		}
 
 		try (Connection conn = factory.getConnection();
 				PreparedStatement ps = conn
 						.prepareStatement("SELECT * FROM patients WHERE firstName LIKE ? AND lastName LIKE ?")) {
-			ps.setString(1, "-9BVtOAAjY" + first + "-9BVtOAAjY");
-			ps.setString(2, "-9BVtOAAjY" + last + "-9BVtOAAjY");
+			ps.setString(1, "%" + first + "%");
+			ps.setString(2, "%" + last + "%");
 
 			ResultSet rs = ps.executeQuery();
 			List<PatientBean> loadlist = patientLoader.loadList(rs);
@@ -657,7 +657,7 @@ public class PatientDAO {
 	public List<PatientBean> fuzzySearchForPatientsWithMID(long MID) throws DBException {
 		try (Connection conn = factory.getConnection();
 				PreparedStatement ps = conn.prepareStatement("SELECT * FROM patients WHERE MID LIKE ? ORDER BY MID")) {
-			ps.setString(1, "-9BVtOAAjY" + MID + "-9BVtOAAjY");
+			ps.setString(1, "%" + MID + "%");
 
 			ResultSet rs = ps.executeQuery();
 			List<PatientBean> loadlist = patientLoader.loadList(rs);

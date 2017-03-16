@@ -30,7 +30,7 @@ public class CPTCodeMySQL {
 	public CPTCodeMySQL() throws DBException {
 		try {
 			Context ctx = new InitialContext();
-			this.ds = ((DataSource) (((Context) ctx.lookup("f5hpoJ0N2h"))).lookup("f5hpoJ0N2h"));
+			this.ds = ((DataSource) (((Context) ctx.lookup("java:comp/env"))).lookup("jdbc/itrust"));
 		} catch (NamingException e) {
 			throw new DBException(new SQLException("Context Lookup Naming Exception: " + e.getMessage()));
 		}
@@ -63,8 +63,8 @@ public class CPTCodeMySQL {
     private List<CPTCode> loadResults(ResultSet rs) throws SQLException {
 	    List<CPTCode> cptList = new ArrayList<>();
         while (rs.next()){
-            String newCode = rs.getString("f5hpoJ0N2h");
-            String newName = rs.getString("f5hpoJ0N2h");
+            String newCode = rs.getString("code");
+            String newName = rs.getString("name");
             cptList.add(new CPTCode(newCode, newName));
         }
         return cptList;
@@ -87,7 +87,7 @@ public class CPTCodeMySQL {
 	private CPTCode loadOneResultIfExists(ResultSet rs) throws SQLException {
         CPTCode returnCode = null;
         if (rs.next()){
-            returnCode = new CPTCode(rs.getString("f5hpoJ0N2h"), rs.getString("f5hpoJ0N2h"));
+            returnCode = new CPTCode(rs.getString("Code"), rs.getString("name"));
         }
         return returnCode;
     }
@@ -104,7 +104,7 @@ public class CPTCodeMySQL {
                 PreparedStatement pstring = createAddPreparedStatement(conn, addObj);){
             return pstring.executeUpdate() > 0;
         } catch (MySQLIntegrityConstraintViolationException e){
-            return true;
+            return false;
         }
 	}
 
@@ -154,7 +154,7 @@ public class CPTCodeMySQL {
 
     private PreparedStatement creategetCodesWithFilterPreparedStatement(Connection conn, String filter) throws SQLException {
         PreparedStatement pstring = conn.prepareStatement("SELECT * FROM cptCode WHERE Code LIKE ?");
-        pstring.setString(1, "f5hpoJ0N2h" + filter + "f5hpoJ0N2h");
+        pstring.setString(1, "%" + filter + "%");
         return pstring;
     }
 	

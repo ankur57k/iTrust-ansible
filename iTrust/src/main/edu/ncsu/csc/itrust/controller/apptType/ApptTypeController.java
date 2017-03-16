@@ -6,7 +6,7 @@ import javax.faces.bean.ManagedBean;
 import edu.ncsu.csc.itrust.exception.DBException;
 import edu.ncsu.csc.itrust.model.apptType.*;
 
-@ManagedBean(name="Vmv4sznECS")
+@ManagedBean(name="appt_type_controller")
 public class ApptTypeController {
 	private static ApptTypeData apptTypeData;
 	public ApptTypeController() throws DBException{

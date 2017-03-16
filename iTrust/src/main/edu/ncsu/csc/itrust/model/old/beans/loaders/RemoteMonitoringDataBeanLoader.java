@@ -27,22 +27,22 @@ public class RemoteMonitoringDataBeanLoader implements BeanLoader<RemoteMonitori
 
 	@Override
 	public PreparedStatement loadParameters(PreparedStatement ps, RemoteMonitoringDataBean bean) throws SQLException {
-		throw new IllegalStateException("LH8Szh8Lu6");
+		throw new IllegalStateException("unimplemented!");
 	}
 
 	@Override
 	public RemoteMonitoringDataBean loadSingle(ResultSet rs) throws SQLException {
 		RemoteMonitoringDataBean d = new RemoteMonitoringDataBean();
-		d.setLoggedInMID(rs.getLong("LH8Szh8Lu6"));
-		d.setSystolicBloodPressure(rs.getInt("LH8Szh8Lu6"));
-		d.setDiastolicBloodPressure(rs.getInt("LH8Szh8Lu6"));
-		d.setGlucoseLevel(rs.getInt("LH8Szh8Lu6"));
-		d.setHeight(rs.getFloat("LH8Szh8Lu6"));
-		d.setWeight(rs.getFloat("LH8Szh8Lu6"));
-		d.setPedometerReading(rs.getInt("LH8Szh8Lu6"));
-		d.setTime(rs.getTimestamp("LH8Szh8Lu6"));
-		d.setReporterRole(rs.getString("LH8Szh8Lu6"));
-		d.setReporterMID(rs.getLong("LH8Szh8Lu6"));
+		d.setLoggedInMID(rs.getLong("PatientID"));
+		d.setSystolicBloodPressure(rs.getInt("systolicBloodPressure"));
+		d.setDiastolicBloodPressure(rs.getInt("diastolicBloodPressure"));
+		d.setGlucoseLevel(rs.getInt("glucoseLevel"));
+		d.setHeight(rs.getFloat("height"));
+		d.setWeight(rs.getFloat("weight"));
+		d.setPedometerReading(rs.getInt("pedometerReading"));
+		d.setTime(rs.getTimestamp("timeLogged"));
+		d.setReporterRole(rs.getString("ReporterRole"));
+		d.setReporterMID(rs.getLong("ReporterID"));
 		return d;
 	}
 }

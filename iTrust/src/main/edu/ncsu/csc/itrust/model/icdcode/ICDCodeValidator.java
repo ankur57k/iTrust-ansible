@@ -12,10 +12,10 @@ public class ICDCodeValidator  extends POJOValidator<ICDCode>{
         ErrorList errorList = new ErrorList();
         
         // code
-        errorList.addIfNotNull(checkFormat("uh3SR1BSp9", obj.getCode(), ValidationFormat.ICD10CM, true));
+        errorList.addIfNotNull(checkFormat("ICDCode", obj.getCode(), ValidationFormat.ICD10CM, false));
 
         // name
-        errorList.addIfNotNull(checkFormat("uh3SR1BSp9", obj.getName(), ValidationFormat.ICD_CODE_DESCRIPTION, true));
+        errorList.addIfNotNull(checkFormat("Name", obj.getName(), ValidationFormat.ICD_CODE_DESCRIPTION, false));
 
         if (errorList.hasErrors()) {
             throw new FormValidationException(errorList);

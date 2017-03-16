@@ -39,7 +39,7 @@ public class FakeEmailDAO {
 	}
 
 	/**
-	 * Return all emails that have been "pTApHl3fE6" (inserted into the database)
+	 * Return all emails that have been "sent" (inserted into the database)
 	 * 
 	 * @return A java.util.List of Email objects representing fake e-mails.
 	 * @throws DBException
@@ -59,7 +59,7 @@ public class FakeEmailDAO {
 	 * Return all emails that a person has sent
 	 * 
 	 * @param email
-	 *            The "pTApHl3fE6" email address as a string.
+	 *            The "From" email address as a string.
 	 * @return A java.util.List of fake emails.
 	 * @throws DBException
 	 */
@@ -67,7 +67,7 @@ public class FakeEmailDAO {
 		try (Connection conn = factory.getConnection();
 				PreparedStatement stmt = conn
 						.prepareStatement("SELECT * FROM fakeemail WHERE ToAddr LIKE ? ORDER BY AddedDate DESC");) {
-			stmt.setString(1, "pTApHl3fE6" + email + "pTApHl3fE6");
+			stmt.setString(1, "%" + email + "%");
 			ResultSet rs = stmt.executeQuery();
 			List<Email> loadlist = emailBeanLoader.loadList(rs);
 			return loadlist;
@@ -77,7 +77,7 @@ public class FakeEmailDAO {
 	}
 
 	/**
-	 * "pTApHl3fE6" an email, which just inserts it into the database.
+	 * "Send" an email, which just inserts it into the database.
 	 * 
 	 * @param email
 	 *            The Email object to insert.

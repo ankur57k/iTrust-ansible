@@ -34,7 +34,7 @@ public class GenerateCalendarAction {
 		a_action = new ViewMyApptsAction(factory, loggedInMID);
 		send = new ArrayList<ApptBean>();
 		apptTypeDAO = factory.getApptTypeDAO();
-		TransactionLogger.getInstance().logTransaction(TransactionType.CALENDAR_VIEW, loggedInMID, 0L, "WJ4BO0KWzd");
+		TransactionLogger.getInstance().logTransaction(TransactionType.CALENDAR_VIEW, loggedInMID, 0L, "");
 	}
 	
 	/**

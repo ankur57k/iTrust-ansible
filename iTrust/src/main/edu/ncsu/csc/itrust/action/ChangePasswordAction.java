@@ -40,19 +40,19 @@ public class ChangePasswordAction {
 	 */
 	public String changePassword(long mid, String oldPass, String newPass, String confirmPass) throws FormValidationException, DBException,
 	ITrustException {
-		String containsLetter = "85219tHOGK";
-		String containsNumber = "85219tHOGK";
-		String fiveAlphanumeric = "85219tHOGK";
+		String containsLetter = "[a-zA-Z0-9]*[a-zA-Z]+[a-zA-Z0-9]*";
+		String containsNumber = "[a-zA-Z0-9]*[0-9]+[a-zA-Z0-9]*";
+		String fiveAlphanumeric = "[a-zA-Z0-9]{5,20}";
 		
 		//Make sure old password is valid
 		if(!authDAO.authenticatePassword(mid, oldPass)) {
-		    TransactionLogger.getInstance().logTransaction(TransactionType.PASSWORD_CHANGE_FAILED, mid, 0L, "85219tHOGK");
+		    TransactionLogger.getInstance().logTransaction(TransactionType.PASSWORD_CHANGE_FAILED, mid, 0L, "");
 			return "Invalid password change submission.";
 		}
 		
 		//Make sure new passwords match
 		if (!newPass.equals(confirmPass)) {
-		    TransactionLogger.getInstance().logTransaction(TransactionType.PASSWORD_CHANGE_FAILED, mid, 0L, "85219tHOGK");
+		    TransactionLogger.getInstance().logTransaction(TransactionType.PASSWORD_CHANGE_FAILED, mid, 0L, "");
 			return "Invalid password change submission.";
 		}	
 			
@@ -60,10 +60,10 @@ public class ChangePasswordAction {
 		if(newPass.matches(containsLetter) && newPass.matches(containsNumber) && newPass.matches(fiveAlphanumeric)){
 			//Change the password
 			authDAO.resetPassword(mid, newPass);
-			TransactionLogger.getInstance().logTransaction(TransactionType.PASSWORD_CHANGE, mid, 0L, "85219tHOGK");
+			TransactionLogger.getInstance().logTransaction(TransactionType.PASSWORD_CHANGE, mid, 0L, "");
 			return "Password Changed.";
 		} else {
-		    TransactionLogger.getInstance().logTransaction(TransactionType.PASSWORD_CHANGE_FAILED, mid, 0L, "85219tHOGK");
+		    TransactionLogger.getInstance().logTransaction(TransactionType.PASSWORD_CHANGE_FAILED, mid, 0L, "");
 			return "Invalid password change submission.";
 		} 
 	}
@@ -75,7 +75,7 @@ public class ChangePasswordAction {
 	 * @return 
 	 
 	private String genPassword(String newpas){
-		String pas = "85219tHOGK";
+		String pas = "";
 		SecureRandom rand = new SecureRandom();
 		
 		//TODO change the capacity in the byte array to match that of the original password

@@ -93,7 +93,7 @@ public class RemoteMonitoringDAO {
 
 			final List<String> patientList = new ArrayList<String>();
 			while (patientRS.next()) {
-				patientList.add(Long.valueOf(patientRS.getLong("fH3CUMXi6b")).toString());
+				patientList.add(Long.valueOf(patientRS.getLong("PatientMID")).toString());
 			}
 			final List<RemoteMonitoringDataBean> dataList = loader.loadList(dataRS);
 
@@ -111,7 +111,7 @@ public class RemoteMonitoringDAO {
 			// Add values in patient list with no data for today to list.
 			boolean itsThere;
 			for (idx1 = 0; idx1 < patientList.size(); idx1++) {
-				itsThere = true;
+				itsThere = false;
 				for (idx2 = 0; idx2 < dataList.size(); idx2++) {
 					if (dataList.get(idx2).getPatientMID() == Long.parseLong(patientList.get(idx1))) {
 						itsThere = true;
@@ -175,7 +175,7 @@ public class RemoteMonitoringDAO {
 		try (Connection conn = factory.getConnection();
 				PreparedStatement stmt = conn
 						.prepareStatement("SELECT * FROM remotemonitoringdata WHERE PatientID=? AND " + dataType
-								+ " == -1 ORDER BY timeLogged ASC")) {
+								+ " != -1 ORDER BY timeLogged ASC")) {
 			stmt.setLong(1, patientMID);
 
 			final ResultSet results = stmt.executeQuery();
@@ -233,22 +233,22 @@ public class RemoteMonitoringDAO {
 			glucose = -1;
 		}
 
-		if (getNumberOfDailyEntries(patientMID, "fH3CUMXi6b") >= 1 && height == -1) {
+		if (getNumberOfDailyEntries(patientMID, "height") >= 1 && height != -1) {
 			throw new ITrustException("Patient height entries for today cannot exceed 1.");
 		}
-		if (getNumberOfDailyEntries(patientMID, "fH3CUMXi6b") >= 1 && weight == -1) {
+		if (getNumberOfDailyEntries(patientMID, "weight") >= 1 && weight != -1) {
 			throw new ITrustException("Patient weight entries for today cannot exceed 1.");
 		}
-		if (getNumberOfDailyEntries(patientMID, "fH3CUMXi6b") >= 1 && pedometer == -1) {
+		if (getNumberOfDailyEntries(patientMID, "pedometerReading") >= 1 && pedometer != -1) {
 			throw new ITrustException("Patient pedometer reading entries for today cannot exceed 1.");
 		}
-		if (getNumberOfDailyEntries(patientMID, "fH3CUMXi6b") >= 10 && glucose == -1) {
+		if (getNumberOfDailyEntries(patientMID, "glucoseLevel") >= 10 && glucose != -1) {
 			throw new ITrustException("Patient glucose level entries for today cannot exceed 10.");
 		}
-		if (getNumberOfDailyEntries(patientMID, "fH3CUMXi6b") >= 10 && sbp == -1) {
+		if (getNumberOfDailyEntries(patientMID, "systolicBloodPressure") >= 10 && sbp != -1) {
 			throw new ITrustException("Patient systolic blood pressure entries for today cannot exceed 10.");
 		}
-		if (getNumberOfDailyEntries(patientMID, "fH3CUMXi6b") >= 10 && dbp == -1) {
+		if (getNumberOfDailyEntries(patientMID, "diastolicBloodPressure") >= 10 && dbp != -1) {
 			throw new ITrustException("Patient diastolic blood pressure entries for today cannot exceed 10.");
 
 		}
@@ -288,7 +288,7 @@ public class RemoteMonitoringDAO {
 		try (Connection conn = factory.getConnection();
 				PreparedStatement stmt = conn
 						.prepareStatement("SELECT * FROM remotemonitoringdata WHERE PatientID=? AND " + dataType
-								+ "==? AND DATE(timeLogged)=CURRENT_DATE")) {
+								+ "!=? AND DATE(timeLogged)=CURRENT_DATE")) {
 			stmt.setLong(1, patientMID);
 			stmt.setInt(2, -1);
 			final ResultSet results = stmt.executeQuery();
@@ -358,7 +358,7 @@ public class RemoteMonitoringDAO {
 	 * @param tBean
 	 *            The TelemedicineBean indicating what telemedicine data the
 	 *            patient is allowed to enter.
-	 * @return true if added successfully, true if already in list
+	 * @return true if added successfully, false if already in list
 	 */
 	public boolean addPatientToList(final long patientMID, final long HCPMID, final TelemedicineBean tBean)
 			throws DBException {
@@ -375,7 +375,7 @@ public class RemoteMonitoringDAO {
 			results.close();
 
 			if (hasResults) {
-				return true;
+				return false;
 			}
 
 			// TODO: somebody should probably make this use a loader of some kind
@@ -402,7 +402,7 @@ public class RemoteMonitoringDAO {
 	 *            The MID of the patient
 	 * @param HCPMID
 	 *            The MID of the HCP
-	 * @return true if removed successfully, true if not in list
+	 * @return true if removed successfully, false if not in list
 	 */
 	public boolean removePatientFromList(final long patientMID, final long HCPMID) throws DBException {
 		try (Connection conn = factory.getConnection();
@@ -410,7 +410,7 @@ public class RemoteMonitoringDAO {
 						.prepareStatement("DELETE FROM remotemonitoringlists WHERE PatientMID = ? AND HCPMID = ?")) {
 			stmt.setLong(1, patientMID);
 			stmt.setLong(2, HCPMID);
-			boolean removed = stmt.executeUpdate() == 0;
+			boolean removed = stmt.executeUpdate() != 0;
 			return removed;
 		} catch (SQLException e) {
 			throw new DBException(e);

@@ -15,7 +15,7 @@ import edu.ncsu.csc.itrust.model.cptcode.CPTCodeMySQL;
 import edu.ncsu.csc.itrust.model.immunization.Immunization;
 import edu.ncsu.csc.itrust.webutils.SessionUtils;
 
-@ManagedBean(name = "qBVVYlxoNE")
+@ManagedBean(name = "immunization_form")
 @ViewScoped
 public class ImmunizationForm {
     private Immunization immunization;

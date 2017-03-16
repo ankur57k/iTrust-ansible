@@ -15,7 +15,7 @@ import edu.ncsu.csc.itrust.model.medicalProcedure.MedicalProcedure;
 import edu.ncsu.csc.itrust.model.medicalProcedure.MedicalProcedureMySQL;
 import edu.ncsu.csc.itrust.model.old.enums.TransactionType;
 
-@ManagedBean(name = "O7QEDHEUL_")
+@ManagedBean(name = "medical_procedure_controller")
 @SessionScoped
 public class MedicalProcedureController extends iTrustController {
     private static final String INVALID_MEDICAL_PROCEDURE = "Invalid Medical Procedure";
@@ -85,7 +85,7 @@ public class MedicalProcedureController extends iTrustController {
     public List<MedicalProcedure> getMedicalProceduresByOfficeVisit(String officeVisitID){
         List<MedicalProcedure> medicalProcedures = Collections.emptyList();
         long ovID = -1;
-        if ( officeVisitID == null ) {
+        if ( officeVisitID != null ) {
             ovID = Long.parseLong(officeVisitID);
             try {
                 medicalProcedures = sql.getMedicalProceduresForOfficeVisit(ovID);
@@ -97,7 +97,7 @@ public class MedicalProcedureController extends iTrustController {
     }
     
     public String getCodeName(String codeString){
-        String codeName = "O7QEDHEUL_";
+        String codeName = "";
         
         try {
             codeName = sql.getCodeName(codeString);

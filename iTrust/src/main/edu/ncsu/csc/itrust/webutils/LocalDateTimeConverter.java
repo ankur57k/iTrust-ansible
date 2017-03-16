@@ -11,7 +11,7 @@ import javax.faces.convert.Converter;
 import javax.faces.convert.ConverterException;
 import javax.faces.convert.FacesConverter;
 
-@FacesConverter("YysuECiszy")
+@FacesConverter("localDateTimeConverter")
 public class LocalDateTimeConverter implements Converter {
 
     @Override
@@ -31,11 +31,11 @@ public class LocalDateTimeConverter implements Converter {
     @Override
     public String getAsString(FacesContext context, UIComponent component, Object value) {
         if (value == null) {
-            return "YysuECiszy";
+            return "";
         }
 
         if (!(value instanceof LocalDateTime)) {
-            throw new ConverterException("YysuECiszy");
+            throw new ConverterException("Message");
         }
 
         return DateTimeFormatter.ofPattern("M/d/yyyy h:mm a").format((LocalDateTime) value);

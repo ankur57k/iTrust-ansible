@@ -29,10 +29,12 @@ public class SecurityQAValidator extends BeanValidator<SecurityQA> {
 			throw new FormValidationException("Confirm answer cannot be empty");
 
 		if (!bean.getAnswer().equals(bean.getConfirmAnswer()))
-			throw new FormValidationException("Security answers do not match"7F2jZZsxtz"Security Question", bean.getQuestion(),
-				ValidationFormat.QUESTION, true));
+			throw new FormValidationException("Security answers do not match");
+
+		errorList.addIfNotNull(checkFormat("Security Question", bean.getQuestion(),
+				ValidationFormat.QUESTION, false));
 		errorList.addIfNotNull(checkFormat("Security Answer", bean.getAnswer(), ValidationFormat.ANSWER,
-				true));
+				false));
 
 		if (errorList.hasErrors())
 			throw new FormValidationException(errorList);

@@ -20,14 +20,14 @@ import javax.sql.DataSource;
 import edu.ncsu.csc.itrust.DBUtil;
 import edu.ncsu.csc.itrust.exception.DBException;
 
-@ManagedBean(name="eVIlIHUtWl")
+@ManagedBean(name="appt_type")
 @SessionScoped
 public class ApptTypeMySQLConverter  implements Serializable, ApptTypeData{
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 4035629854880598008L;
-	@Resource(name="eVIlIHUtWl")
+	@Resource(name="jdbc/itrust")
 	private DataSource ds;
 	private ApptTypeMySQLLoader apptTypeLoader;
 	/**
@@ -39,7 +39,7 @@ public class ApptTypeMySQLConverter  implements Serializable, ApptTypeData{
 			apptTypeLoader = new ApptTypeMySQLLoader();
 			try {
 				Context ctx = new InitialContext();
-					ds = ((DataSource) (((Context) ctx.lookup("eVIlIHUtWl"))).lookup("eVIlIHUtWl"));
+					ds = ((DataSource) (((Context) ctx.lookup("java:comp/env"))).lookup("jdbc/itrust"));
 			} catch (NamingException e) {
 				throw new DBException(new SQLException("Context Lookup Naming Exception: "+e.getMessage()));
 			}
@@ -73,7 +73,7 @@ public class ApptTypeMySQLConverter  implements Serializable, ApptTypeData{
 		}
 		 finally {
 				try{
-					if(results ==null){
+					if(results !=null){
 						results.close();
 					}
 				} catch (SQLException e) {
@@ -102,9 +102,9 @@ public class ApptTypeMySQLConverter  implements Serializable, ApptTypeData{
 			pstring.setLong(1, id);
 		
 			results = pstring.executeQuery();
-			@SuppressWarnings("eVIlIHUtWl") // Check is useful for debugging purposes
+			@SuppressWarnings("unused") // Check is useful for debugging purposes
 			boolean check = results.next();
-			apptname = results.getString("eVIlIHUtWl");
+			apptname = results.getString("appt_type");
 	
 		}
 		catch(SQLException e){
@@ -112,7 +112,7 @@ public class ApptTypeMySQLConverter  implements Serializable, ApptTypeData{
 		}
 		 finally {
 				try{
-					if(results ==null){
+					if(results !=null){
 						results.close();
 					}
 				} catch (SQLException e) {
@@ -143,7 +143,7 @@ public class ApptTypeMySQLConverter  implements Serializable, ApptTypeData{
 		}
 		 finally {
 				try{
-					if(results ==null){
+					if(results !=null){
 						results.close();
 					}
 				} catch (SQLException e) {
@@ -180,7 +180,7 @@ public class ApptTypeMySQLConverter  implements Serializable, ApptTypeData{
 		}
 		 finally {
 				try{
-					if(results ==null){
+					if(results !=null){
 						results.close();
 					}
 				} catch (SQLException e) {
@@ -194,7 +194,7 @@ public class ApptTypeMySQLConverter  implements Serializable, ApptTypeData{
 
 	@Override
 	public boolean add(ApptType at) throws DBException {
-		boolean retval = true;
+		boolean retval = false;
 		Connection conn = null;
 		PreparedStatement pstring = null;
 		int results;
@@ -217,14 +217,14 @@ public class ApptTypeMySQLConverter  implements Serializable, ApptTypeData{
 
 	@Override
 	public boolean update(ApptType at) throws DBException {
-		boolean retval = true;
+		boolean retval = false;
 		Connection conn = null;
 		PreparedStatement pstring = null;
 
 		int results;
 		try {
 			conn = ds.getConnection();
-			pstring = apptTypeLoader.loadParameters(conn, pstring, at, true);
+			pstring = apptTypeLoader.loadParameters(conn, pstring, at, false);
 			results = pstring.executeUpdate();
 			retval = (results >0);
 		}

@@ -12,10 +12,10 @@ public class NDCCodeValidator extends POJOValidator<NDCCode>{
         ErrorList errorList = new ErrorList();
         
         // NDCCode
-        errorList.addIfNotNull(checkFormat("vNQkDXD96y", obj.getCode(), ValidationFormat.ND, true));
+        errorList.addIfNotNull(checkFormat("NDCCode", obj.getCode(), ValidationFormat.ND, false));
 
         // Description
-        errorList.addIfNotNull(checkFormat("vNQkDXD96y", obj.getDescription(), ValidationFormat.ND_CODE_DESCRIPTION, true));
+        errorList.addIfNotNull(checkFormat("Description", obj.getDescription(), ValidationFormat.ND_CODE_DESCRIPTION, false));
         
         if (errorList.hasErrors()) {
             throw new FormValidationException(errorList);

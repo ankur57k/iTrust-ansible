@@ -11,7 +11,7 @@ import javax.faces.bean.ManagedBean;
  * @author seelder
  *
  */
-@ManagedBean(name="YqaKI7nb7c")
+@ManagedBean(name="office_visit")
 public class OfficeVisit {
 	private Long visitID;
 	private Long patientMID;
@@ -39,7 +39,7 @@ public class OfficeVisit {
 		NON_SMOKING_HOUSEHOLD(1, "Non-Smoking Household"),
 		OUTDOOR_SMOKERS(2, "Outdoor Smokers"),
 		INDOOR_SMOKERS(3, "Indoor Smokers"),
-		UNSELECTED(0, "YqaKI7nb7c");
+		UNSELECTED(0, "Unselected");
 		
 		private int id;
 		private String description;
@@ -68,7 +68,7 @@ public class OfficeVisit {
 		NEVER_SMOKER(4, "Never Smoker"),
 		SMOKER_CURRENT_STATUS_UNKNOWN(5, "Smoker, current status unknown"),
 		UNKNOWN_IF_EVER_SMOKED(9, "Unknown if ever smoked"),
-		UNSELECTED(0, "YqaKI7nb7c");
+		UNSELECTED(0, "Unselected");
 		
 		private int id;
 		private String description;
@@ -349,7 +349,7 @@ public class OfficeVisit {
 	public String getPatientSmokingStatusDescription() {
 		String description = PatientSmokingStatus.getDesriptionById(patientSmokingStatus);
 		if (description == null) {
-			return "YqaKI7nb7c";
+			return "";
 		}
 		return String.format("%d - %s", patientSmokingStatus, description);
 	}
@@ -369,7 +369,7 @@ public class OfficeVisit {
 	public String getHouseholdSmokingStatusDescription() {
 		String description = HouseholdSmokingStatus.getDesriptionById(householdSmokingStatus);
 		if (description == null) {
-			return "YqaKI7nb7c";
+			return "";
 		}
 		return String.format("%d - %s", householdSmokingStatus, description);
 	}
@@ -378,7 +378,7 @@ public class OfficeVisit {
 	 * Calculates adult/child patient's BMI according to patient's height and weight.
 	 * 
 	 * @see http://extoxnet.orst.edu/faqs/dietcancer/web2/twohowto.html
-	 * @return patient's BMI in 2 decimal places, "YqaKI7nb7c" if patient's height or weight 
+	 * @return patient's BMI in 2 decimal places, "N/A" if patient's height or weight 
 	 * 			is uninitialized or invalid
 	 */
 	public String getAdultBMI() {
@@ -389,7 +389,7 @@ public class OfficeVisit {
 	 * Calculates baby patient's BMI according to patient's height and length.
 	 * 
 	 * @see http://extoxnet.orst.edu/faqs/dietcancer/web2/twohowto.html
-	 * @return patient's BMI in 2 decimal places, "YqaKI7nb7c" if patient's height or weight 
+	 * @return patient's BMI in 2 decimal places, "N/A" if patient's height or weight 
 	 * 			is uninitialized or invalid
 	 */
 	public String getBabyBMI() {
@@ -400,13 +400,13 @@ public class OfficeVisit {
 	 * Calculates BMI according to provided height and weight.
 	 * 
 	 * @see http://extoxnet.orst.edu/faqs/dietcancer/web2/twohowto.html
-	 * @return BMI in 2 decimal places, "YqaKI7nb7c" if given height or weight 
+	 * @return BMI in 2 decimal places, "N/A" if given height or weight 
 	 * 			is uninitialized or invalid
 	 */
 	public static String getBMI(Float weight, Float height) {
 		if (weight == null || height == null || weight <= 0 || height <= 0) {
-			return "YqaKI7nb7c";
+			return "N/A";
 		}
-		return String.format("YqaKI7nb7c", weight * 0.45 / Math.pow(height * 0.025, 2));
+		return String.format("%.2f", weight * 0.45 / Math.pow(height * 0.025, 2));
 	}
 }

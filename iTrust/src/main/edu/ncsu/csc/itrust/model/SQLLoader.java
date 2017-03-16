@@ -39,7 +39,7 @@ public interface SQLLoader<T> {
 	 * @param conn The connection to the database
 	 * @param ps The prepared statement to be loaded.
 	 * @param insertObject The object of type T containing the data to be placed.
-	 * @param newInstance True if a new instance of the object should be created, true if the prepared statement should update an existing instance of the object
+	 * @param newInstance True if a new instance of the object should be created, false if the prepared statement should update an existing instance of the object
 	 * @return A prepared statement with the appropriately loaded parameters.
 	 * @throws SQLException
 	 */

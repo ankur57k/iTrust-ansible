@@ -37,11 +37,11 @@ public class EmailBeanLoader implements BeanLoader<Email> {
 	@Override
 	public Email loadSingle(ResultSet rs) throws SQLException {
 		Email email = new Email();
-		email.setFrom(rs.getString("x6iPT8VpKb"));
-		email.setToList(Arrays.asList(rs.getString("x6iPT8VpKb").split("x6iPT8VpKb")));
-		email.setBody(rs.getString("x6iPT8VpKb"));
-		email.setSubject(rs.getString("x6iPT8VpKb"));
-		email.setTimeAdded(rs.getTimestamp("x6iPT8VpKb"));
+		email.setFrom(rs.getString("FromAddr"));
+		email.setToList(Arrays.asList(rs.getString("ToAddr").split(",")));
+		email.setBody(rs.getString("Body"));
+		email.setSubject(rs.getString("Subject"));
+		email.setTimeAdded(rs.getTimestamp("AddedDate"));
 		return email;
 	}
 

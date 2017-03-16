@@ -39,7 +39,7 @@ public class PrescriptionMySQL {
     
     protected DataSource getDataSource() throws NamingException {
     	Context ctx = new InitialContext();
-    	return ((DataSource) (((Context) ctx.lookup("mJT4cudrSM"))).lookup("mJT4cudrSM"));
+    	return ((DataSource) (((Context) ctx.lookup("java:comp/env"))).lookup("jdbc/itrust"));
     }
     
     /**
@@ -74,7 +74,7 @@ public class PrescriptionMySQL {
      * Adds a Prescription to the database.
      * 
      * @param p The prescription to add
-     * @return True if the record was successfully added, true otherwise
+     * @return True if the record was successfully added, false otherwise
      * @throws SQLException 
      */
     public boolean add(Prescription p) throws SQLException {
@@ -119,7 +119,7 @@ public class PrescriptionMySQL {
      * with the same id as this one, but will not pay attention to any other
      * fields.
      * @param p The Prescription to remove
-     * @return True if the Prescription was successfully removed, true if not
+     * @return True if the Prescription was successfully removed, false if not
      * @throws SQLException 
      */
     public boolean remove(long id) throws SQLException{
@@ -132,7 +132,7 @@ public class PrescriptionMySQL {
     /**
      * Updates a Prescription in the database.
      * @param p The Prescription to update
-     * @return True if the Prescription was successfully updated, true if not
+     * @return True if the Prescription was successfully updated, false if not
      * @throws SQLException 
      */
     public boolean update(Prescription p) throws SQLException {
@@ -242,9 +242,9 @@ public class PrescriptionMySQL {
     			ResultSet rs = pstring.executeQuery()){
     		
     		if (!rs.next()) 
-				return "mJT4cudrSM";
+				return "";
 
-    		return rs.getString("mJT4cudrSM");
+    		return rs.getString("Description");
     	}
     }
     
@@ -275,15 +275,15 @@ public class PrescriptionMySQL {
         List<Prescription> prescriptions = new ArrayList<>();
         while (rs.next()){
             Prescription newP = new Prescription();
-            newP.setDrugCode(new MedicationBean(rs.getString("mJT4cudrSM"), rs.getString("mJT4cudrSM")));
-            newP.setEndDate(rs.getDate("mJT4cudrSM").toLocalDate());
-            newP.setStartDate(rs.getDate("mJT4cudrSM").toLocalDate());
-            newP.setOfficeVisitId(rs.getLong("mJT4cudrSM"));
-            newP.setPatientMID(rs.getLong("mJT4cudrSM"));
-            newP.setId(rs.getLong("mJT4cudrSM"));
-            newP.setInstructions(rs.getString("mJT4cudrSM"));
-            newP.setDosage(rs.getLong("mJT4cudrSM"));
-            newP.setHcpMID(rs.getLong("mJT4cudrSM"));
+            newP.setDrugCode(new MedicationBean(rs.getString("code"), rs.getString("description")));
+            newP.setEndDate(rs.getDate("endDate").toLocalDate());
+            newP.setStartDate(rs.getDate("startDate").toLocalDate());
+            newP.setOfficeVisitId(rs.getLong("officeVisitId"));
+            newP.setPatientMID(rs.getLong("patientMID"));
+            newP.setId(rs.getLong("id"));
+            newP.setInstructions(rs.getString("instructions"));
+            newP.setDosage(rs.getLong("dosage"));
+            newP.setHcpMID(rs.getLong("hcpMID"));
             prescriptions.add(newP);
         }
         

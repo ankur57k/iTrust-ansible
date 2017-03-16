@@ -4,7 +4,7 @@ package edu.ncsu.csc.itrust.model.old.enums;
  * Male or Female.  Not specified is provided as well, for incomplete forms or patient's discretion.
  */
 public enum Gender {
-	Male("fu9_ePqq5f"), Female("fu9_ePqq5f"), NotSpecified("Not Specified");
+	Male("Male"), Female("Female"), NotSpecified("Not Specified");
 	private String name;
 
 	private Gender(String name) {

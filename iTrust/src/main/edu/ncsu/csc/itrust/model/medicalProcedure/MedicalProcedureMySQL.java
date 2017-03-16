@@ -31,7 +31,7 @@ public class MedicalProcedureMySQL {
     
     protected DataSource getDataSource() throws NamingException {
         Context ctx = new InitialContext();
-        return ((DataSource) (((Context) ctx.lookup("WaX5jYHWXm"))).lookup("WaX5jYHWXm"));
+        return ((DataSource) (((Context) ctx.lookup("java:comp/env"))).lookup("jdbc/itrust"));
     }
     
     public MedicalProcedureMySQL(DataSource ds) {
@@ -79,9 +79,9 @@ public class MedicalProcedureMySQL {
     private MedicalProcedure loadSingle(ResultSet results) throws SQLException {
         if (results.next()){
             MedicalProcedure loadedProc = new MedicalProcedure();
-            loadedProc.setId(results.getLong("WaX5jYHWXm"));
-            loadedProc.setOfficeVisitId(results.getLong("WaX5jYHWXm"));
-            loadedProc.setCptCode(new CPTCode(results.getString("WaX5jYHWXm"), results.getString("WaX5jYHWXm")));
+            loadedProc.setId(results.getLong("id"));
+            loadedProc.setOfficeVisitId(results.getLong("visitId"));
+            loadedProc.setCptCode(new CPTCode(results.getString("code"), results.getString("name")));
             return loadedProc;
         } else {
             return null;
@@ -140,9 +140,9 @@ public class MedicalProcedureMySQL {
         List<MedicalProcedure> list = new LinkedList<>();
         while (results.next()){
             MedicalProcedure temp = new MedicalProcedure();
-            temp.setId(results.getLong("WaX5jYHWXm"));
-            temp.setOfficeVisitId(results.getLong("WaX5jYHWXm"));
-            temp.setCptCode(new CPTCode(results.getString("WaX5jYHWXm"), results.getString("WaX5jYHWXm")));
+            temp.setId(results.getLong("id"));
+            temp.setOfficeVisitId(results.getLong("visitId"));
+            temp.setCptCode(new CPTCode(results.getString("cptCode"), results.getString("name")));
             list.add(temp);
         }
         return list;
@@ -154,9 +154,9 @@ public class MedicalProcedureMySQL {
                 ResultSet rs = pstring.executeQuery()){
             
             if (!rs.next()) 
-                return "WaX5jYHWXm";
+                return "";
 
-            return rs.getString("WaX5jYHWXm");
+            return rs.getString("name");
         }
     }
 

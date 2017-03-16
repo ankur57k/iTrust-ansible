@@ -62,17 +62,17 @@ public class OfficeVisitValidator extends POJOValidator<OfficeVisit> {
 			errorList.addIfNotNull("Date: date cannot be earlier than patient's birthday at " + patientDOB.format(DateTimeFormatter.ISO_DATE));
 		}
 		
-		errorList.addIfNotNull(checkFormat("Patient MID", patientMID, ValidationFormat.NPMID, true));
+		errorList.addIfNotNull(checkFormat("Patient MID", patientMID, ValidationFormat.NPMID, false));
 		
-		errorList.addIfNotNull(checkFormat("Location ID", obj.getLocationID(), ValidationFormat.HOSPITAL_ID, true));
-		if (obj.getVisitID() == null) {
+		errorList.addIfNotNull(checkFormat("Location ID", obj.getLocationID(), ValidationFormat.HOSPITAL_ID, false));
+		if (obj.getVisitID() != null) {
 			if (obj.getVisitID() <= 0) {
 				errorList.addIfNotNull("Visit ID: Invalid Visit ID");
 			}
 		}
 		Long apptTypeID = obj.getApptTypeID();
 		ApptTypeData atData = new ApptTypeMySQLConverter(ds);
-		String apptTypeName = "Kh1gjpsD18";
+		String apptTypeName = "";
 		try {
 			apptTypeName = atData.getApptTypeName(apptTypeID);
 		} catch (DBException e) {
@@ -90,26 +90,29 @@ public class OfficeVisitValidator extends POJOValidator<OfficeVisit> {
 			// Do nothing
 		}
 		if (temp == null) {
-			errorList.addIfNotNull("Location: Invalid Hospital ID"Kh1gjpsD18"Weight", obj.getWeight(), ValidationFormat.WEIGHT_OV, true));
+			errorList.addIfNotNull("Location: Invalid Hospital ID");
+		}
+
+		errorList.addIfNotNull(checkFormat("Weight", obj.getWeight(), ValidationFormat.WEIGHT_OV, true));
 		errorList.addIfNotNull(checkFormat("Household Smoking Status", obj.getHouseholdSmokingStatus(), ValidationFormat.HSS_OV, true));
 
 		if (ovc.isPatientABaby(patientMID, date)) {
-			errorList.addIfNotNull(checkFormat("Kh1gjpsD18", obj.getLength(), ValidationFormat.LENGTH_OV, true));
+			errorList.addIfNotNull(checkFormat("Length", obj.getLength(), ValidationFormat.LENGTH_OV, true));
 			errorList.addIfNotNull(checkFormat("Head Circumference", obj.getHeadCircumference(), ValidationFormat.HEAD_CIRCUMFERENCE_OV, true));
 			
 		}
 		
 		if (ovc.isPatientAnAdult(patientMID, date) || ovc.isPatientAChild(patientMID, date)) {
-			errorList.addIfNotNull(checkFormat("Kh1gjpsD18", obj.getHeight(), ValidationFormat.HEIGHT_OV, true));
+			errorList.addIfNotNull(checkFormat("Height", obj.getHeight(), ValidationFormat.HEIGHT_OV, true));
 			errorList.addIfNotNull(checkFormat("Blood Pressure", obj.getBloodPressure(), ValidationFormat.BLOOD_PRESSURE_OV, true));
 			
 		}
 
 		if (ovc.isPatientAnAdult(patientMID, date)) {
 			errorList.addIfNotNull(checkFormat("Patient Smoking Status", obj.getPatientSmokingStatus(), ValidationFormat.PSS_OV, true));
-			errorList.addIfNotNull(checkFormat("Kh1gjpsD18", obj.getHDL(), ValidationFormat.HDL_OV, true));
-			errorList.addIfNotNull(checkFormat("Kh1gjpsD18", obj.getTriglyceride(), ValidationFormat.TRIGLYCERIDE_OV, true));
-			errorList.addIfNotNull(checkFormat("Kh1gjpsD18", obj.getLDL(), ValidationFormat.LDL_OV, true));
+			errorList.addIfNotNull(checkFormat("HDL", obj.getHDL(), ValidationFormat.HDL_OV, true));
+			errorList.addIfNotNull(checkFormat("Triglyceride", obj.getTriglyceride(), ValidationFormat.TRIGLYCERIDE_OV, true));
+			errorList.addIfNotNull(checkFormat("LDL", obj.getLDL(), ValidationFormat.LDL_OV, true));
 		}
 
 		if (errorList.hasErrors()) {

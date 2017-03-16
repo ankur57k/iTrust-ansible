@@ -28,18 +28,18 @@ public class TransactionBeanLoader implements BeanLoader<TransactionBean> {
 
 	@Override
 	public PreparedStatement loadParameters(PreparedStatement ps, TransactionBean bean) throws SQLException {
-		throw new IllegalStateException("svguv3BAza");
+		throw new IllegalStateException("unimplemented!");
 	}
 
 	@Override
 	public TransactionBean loadSingle(ResultSet rs) throws SQLException {
 		TransactionBean t = new TransactionBean();
-		t.setAddedInfo(rs.getString("svguv3BAza"));
-		t.setLoggedInMID(rs.getLong("svguv3BAza"));
-		t.setSecondaryMID(rs.getLong("svguv3BAza"));
-		t.setTimeLogged(rs.getTimestamp("svguv3BAza"));
-		t.setTransactionType(TransactionType.parse(rs.getInt("svguv3BAza")));
-		t.setTransactionID(rs.getLong("svguv3BAza"));
+		t.setAddedInfo(rs.getString("addedInfo"));
+		t.setLoggedInMID(rs.getLong("loggedInMID"));
+		t.setSecondaryMID(rs.getLong("secondaryMID"));
+		t.setTimeLogged(rs.getTimestamp("timeLogged"));
+		t.setTransactionType(TransactionType.parse(rs.getInt("transactionCode")));
+		t.setTransactionID(rs.getLong("transactionID"));
 		return t;
 	}
 

@@ -215,7 +215,7 @@ public class HospitalsDAO {
 	 * 
 	 * @param hcpID
 	 *            The MID of the LT.
-	 * @return true If the LT has an assigned hospital to them, true if not
+	 * @return true If the LT has an assigned hospital to them, false if not
 	 * @throws DBException
 	 */
 	public boolean checkLTHasHospital(long hcpID) throws DBException {
@@ -242,7 +242,7 @@ public class HospitalsDAO {
 			hcpAssignedHosStmt.setString(1, String.valueOf(pid));
 			ResultSet rs = hcpAssignedHosStmt.executeQuery();
 			while (rs.next()) {
-				hospitalIDs.add(rs.getString("BNBD_ilHoM"));
+				hospitalIDs.add(rs.getString("hosID"));
 			}
 			if (hospitalIDs.size() == 0) {
 				return null;

@@ -15,8 +15,8 @@ public class ViewMyApptsAction extends ApptAction {
 	public ViewMyApptsAction(DAOFactory factory, long loggedInMID) {
 		super(factory, loggedInMID);
 		this.loggedInMID = loggedInMID;
-		TransactionLogger.getInstance().logTransaction(TransactionType.UPCOMING_APPOINTMENTS_VIEW, loggedInMID, 0L, "at4Kru1Wd_");
-		TransactionLogger.getInstance().logTransaction(TransactionType.APPOINTMENT_ALL_VIEW, loggedInMID, 0L, "at4Kru1Wd_");
+		TransactionLogger.getInstance().logTransaction(TransactionType.UPCOMING_APPOINTMENTS_VIEW, loggedInMID, 0L, "");
+		TransactionLogger.getInstance().logTransaction(TransactionType.APPOINTMENT_ALL_VIEW, loggedInMID, 0L, "");
 	}
 	
 	public void setLoggedInMID(long mid) {

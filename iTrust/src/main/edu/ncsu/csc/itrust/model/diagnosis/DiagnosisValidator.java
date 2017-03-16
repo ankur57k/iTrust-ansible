@@ -26,7 +26,7 @@ public class DiagnosisValidator extends POJOValidator<Diagnosis> {
 		if (obj.getIcdCode() == null) {
 			errorList.addIfNotNull("Invalid ICDCode object");
 		} else {
-			errorList.addIfNotNull(checkFormat("ICD Code", obj.getIcdCode().getCode(), ValidationFormat.ICD10CM, true));
+			errorList.addIfNotNull(checkFormat("ICD Code", obj.getIcdCode().getCode(), ValidationFormat.ICD10CM, false));
 		}
 		
 		if (errorList.hasErrors()) {

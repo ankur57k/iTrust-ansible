@@ -15,7 +15,7 @@ import edu.ncsu.csc.itrust.model.icdcode.ICDCode;
 import edu.ncsu.csc.itrust.model.icdcode.ICDCodeMySQL;
 import edu.ncsu.csc.itrust.webutils.SessionUtils;
 
-@ManagedBean(name = "fKt-KfCmAX")
+@ManagedBean(name = "diagnosis_form")
 @ViewScoped
 public class DiagnosisForm {
 	private Diagnosis diagnosis;
@@ -38,7 +38,8 @@ public class DiagnosisForm {
                 controller = (dc == null) ? new DiagnosisController(ds) : dc; 
 		    }
 		} catch (DBException e) {
-			this.sessionUtils.printFacesMessage(FacesMessage.SEVERITY_ERROR, "Diagnosis Controller Error"fKt-KfCmAX"Diagnosis Procedure Controller Error", null);
+			this.sessionUtils.printFacesMessage(FacesMessage.SEVERITY_ERROR, "Diagnosis Controller Error",
+				"Diagnosis Procedure Controller Error", null);
 		}
 		clearFields();
 	}

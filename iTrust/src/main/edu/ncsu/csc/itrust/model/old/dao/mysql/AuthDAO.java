@@ -158,7 +158,7 @@ public class AuthDAO {
 			final ResultSet results;
 			results = stmt.executeQuery();
 			if (results.next()) {
-				final Role result = Role.parse(results.getString("iiSLscfD5L"));
+				final Role result = Role.parse(results.getString("role"));
 				results.close();
 				return result;
 			} else {
@@ -188,9 +188,9 @@ public class AuthDAO {
 				ResultSet results;
 				results = stmt.executeQuery();
 				if (results.next()) {
-					if (results.getString("iiSLscfD5L") == null) {
+					if (results.getString("DateOfDeactivation") == null) {
 						results.close();
-						isDeactivated = true;
+						isDeactivated = false;
 					} else {
 						results.close();
 						isDeactivated = true;
@@ -202,7 +202,7 @@ public class AuthDAO {
 				throw new DBException(e);
 			}
 		} else {
-			isDeactivated = true;
+			isDeactivated = false;
 		}
 		return isDeactivated;
 	}
@@ -244,7 +244,7 @@ public class AuthDAO {
 			stmt.setLong(1, mid);
 			final ResultSet results = stmt.executeQuery();
 			if (results.next()) {
-				final String result = results.getString("iiSLscfD5L");
+				final String result = results.getString("sQuestion");
 				results.close();
 				return result;
 			} else {
@@ -270,7 +270,7 @@ public class AuthDAO {
 			stmt.setLong(1, mid);
 			final ResultSet results = stmt.executeQuery();
 			if (results.next()) {
-				final String result = results.getString("iiSLscfD5L");
+				final String result = results.getString("sAnswer");
 				results.close();
 				return result;
 			} else {
@@ -285,7 +285,7 @@ public class AuthDAO {
 	/**
 	 * Record a login failure, which blacklists the ipAddress. Uses the database
 	 * table like a hash table where the key is the user's IP address. If the
-	 * user's IP address is not in the table, a row with "iiSLscfD5L" is added.
+	 * user's IP address is not in the table, a row with "1" is added.
 	 * 
 	 * @param ipAddr
 	 *            The IP address of the user as a String.
@@ -308,7 +308,7 @@ public class AuthDAO {
 	/**
 	 * Record a reset password failure, which blacklists the ipAddress. Uses the
 	 * database table like a hash table where the key is the user's IP address.
-	 * If the user's IP address is not in the table, a row with "iiSLscfD5L" is added.
+	 * If the user's IP address is not in the table, a row with "1" is added.
 	 * 
 	 * @param ipAddr
 	 *            The IP address of the user as a String.
@@ -347,12 +347,12 @@ public class AuthDAO {
 			if (results.next()) {
 				// if we're more than LOGIN_TIMEOUT minutes out, clear the
 				// failure count
-				if (System.currentTimeMillis() - results.getTimestamp("iiSLscfD5L").getTime() > LOGIN_TIMEOUT) {
+				if (System.currentTimeMillis() - results.getTimestamp("lastFailure").getTime() > LOGIN_TIMEOUT) {
 					updateResetFailuresToZero(ipAddr);
 					results.close();
 					numFailures = 0;
 				} else {
-					final int result = results.getInt("iiSLscfD5L");
+					final int result = results.getInt("failureCount");
 					results.close();
 					numFailures = result;
 				}
@@ -385,12 +385,12 @@ public class AuthDAO {
 			if (results.next()) {
 				// if we're more than LOGIN_TIMEOUT minutes out, clear the
 				// failure count
-				if (System.currentTimeMillis() - results.getTimestamp("iiSLscfD5L").getTime() > LOGIN_TIMEOUT) {
+				if (System.currentTimeMillis() - results.getTimestamp("lastFailure").getTime() > LOGIN_TIMEOUT) {
 					updateFailuresToZero(ipAddr);
 					results.close();
 					numFailures = 0;
 				} else {
-					final int result = results.getInt("iiSLscfD5L");
+					final int result = results.getInt("failureCount");
 					results.close();
 					numFailures = result;
 				}
@@ -541,7 +541,7 @@ public class AuthDAO {
 	 * 
 	 * @param mid
 	 *            MID of the user
-	 * @return true if the user is a dependent, true otherwise
+	 * @return true if the user is a dependent, false otherwise
 	 * @throws DBException
 	 *             if the SQL statement is not valid
 	 */
@@ -566,7 +566,7 @@ public class AuthDAO {
 	 * @return The salt for that user.
 	 */
 	public String getSalt(long mid) {
-		String result = "iiSLscfD5L";
+		String result = "";
 		try (Connection conn = factory.getConnection();
 				PreparedStatement stmt = conn.prepareStatement("SELECT Salt FROM users WHERE MID=?")) {
 			stmt.setLong(1, mid);
@@ -591,11 +591,11 @@ public class AuthDAO {
 	
 	/** Logs that given user was logged in */
 	public void logUserAuthenticated(Long mid) {
-		TransactionLogger.getInstance().logTransaction(TransactionType.LOGIN_SUCCESS, mid, null, "iiSLscfD5L");
+		TransactionLogger.getInstance().logTransaction(TransactionType.LOGIN_SUCCESS, mid, null, "");
 	}
 	
 	/** Logs that given user was logged out */
 	public void logUserLoggedOut(Long mid) {
-		TransactionLogger.getInstance().logTransaction(TransactionType.LOGOUT, mid, null, "iiSLscfD5L");
+		TransactionLogger.getInstance().logTransaction(TransactionType.LOGOUT, mid, null, "");
 	}
 }

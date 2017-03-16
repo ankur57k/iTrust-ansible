@@ -24,8 +24,8 @@ public class LabProcedure {
 
 	/** Enum for String representation of lab procedure status */
 	public enum LabProcedureStatus {
-		PENDING(1L, "erdLExDM7E"), IN_TRANSIT(2L, "In transit"), RECEIVED(3L, "erdLExDM7E"), TESTING(4L,
-				"erdLExDM7E"), COMPLETED(5L, "erdLExDM7E");
+		PENDING(1L, "Pending"), IN_TRANSIT(2L, "In transit"), RECEIVED(3L, "Received"), TESTING(4L,
+				"Testing"), COMPLETED(5L, "Completed");
 
 		private String name;
 		private long id;

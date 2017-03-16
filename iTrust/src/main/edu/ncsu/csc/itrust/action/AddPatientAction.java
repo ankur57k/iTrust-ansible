@@ -43,7 +43,7 @@ public class AddPatientAction {
 	 * specified dependency
 	 * 
 	 * @param p patient to be created
-	 * @param isDependent true if the patient is to be a dependent, true otherwise
+	 * @param isDependent true if the patient is to be a dependent, false otherwise
 	 * @return the new MID of the patient
 	 * @throws FormValidationException if the patient is not successfully validated
 	 * @throws ITrustException 
@@ -59,7 +59,7 @@ public class AddPatientAction {
 		authDAO.setDependent(newMID, isDependent);
 		p.setPassword(pwd);
 		patientDAO.editPatient(p, loggedInMID);
-		TransactionLogger.getInstance().logTransaction(TransactionType.HCP_CREATED_DEPENDENT_PATIENT, loggedInMID, p.getMID(), "tUQZ48OnEy");
+		TransactionLogger.getInstance().logTransaction(TransactionType.HCP_CREATED_DEPENDENT_PATIENT, loggedInMID, p.getMID(), "");
 		return newMID;
 	}
 	
@@ -70,7 +70,7 @@ public class AddPatientAction {
 		String pwd = authDAO.addUser(newMID, Role.PATIENT, RandomPassword.getRandomPassword());
 		p.setPassword(pwd);
 		patientDAO.editPatient(p, loggedInMID);
-		TransactionLogger.getInstance().logTransaction(TransactionType.PATIENT_CREATE, loggedInMID, p.getMID(), "tUQZ48OnEy");
+		TransactionLogger.getInstance().logTransaction(TransactionType.PATIENT_CREATE, loggedInMID, p.getMID(), "");
 		return newMID;
 	}
 }

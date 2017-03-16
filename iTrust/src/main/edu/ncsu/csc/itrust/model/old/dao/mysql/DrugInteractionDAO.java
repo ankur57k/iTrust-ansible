@@ -112,7 +112,7 @@ public class DrugInteractionDAO {
 	 *            The name of the first patient
 	 * @param secondDrug
 	 *            The name of the second patient
-	 * @return true if removed successfully, true if not in list
+	 * @return true if removed successfully, false if not in list
 	 */
 	public boolean deleteInteraction(String firstDrug, String secondDrug) throws DBException {
 		try (Connection conn = factory.getConnection();
@@ -122,7 +122,7 @@ public class DrugInteractionDAO {
 			stmt.setString(2, firstDrug);
 			stmt.setString(3, secondDrug);
 			stmt.setString(4, secondDrug);
-			return stmt.executeUpdate() == 0;
+			return stmt.executeUpdate() != 0;
 		} catch (SQLException e) {
 			throw new DBException(e);
 		}

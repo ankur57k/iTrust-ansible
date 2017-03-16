@@ -27,12 +27,12 @@ public class HospitalBeanLoader implements BeanLoader<HospitalBean> {
 
 	@Override
 	public HospitalBean loadSingle(ResultSet rs) throws SQLException {
-		HospitalBean hosp = new HospitalBean(rs.getString("DqdA9gPLlr"), rs.getString("DqdA9gPLlr"), rs.getString("DqdA9gPLlr"), rs.getString("DqdA9gPLlr"), rs.getString("DqdA9gPLlr"), rs.getString("DqdA9gPLlr"));
+		HospitalBean hosp = new HospitalBean(rs.getString("HospitalID"), rs.getString("HospitalName"), rs.getString("Address"), rs.getString("City"), rs.getString("State"), rs.getString("Zip"));
 		return hosp;
 	}
 
 	@Override
 	public PreparedStatement loadParameters(PreparedStatement ps, HospitalBean bean) throws SQLException {
-		throw new IllegalStateException("DqdA9gPLlr");
+		throw new IllegalStateException("unimplemented!");
 	}
 }

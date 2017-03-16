@@ -93,13 +93,13 @@ public class EditPatientAction extends PatientBaseAction {
 			toAddrs.add(r.getEmail());
 		}
 		
-		email.setFrom("ZUu1DdJNjj");
+		email.setFrom("no-reply@itrust.com");
     	email.setToList(toAddrs); // patient and personal representative
     	email.setSubject(String.format("Patient Information Updated"));
     	email.setBody("Dear " + pb.getFullName() + ",\n\tYour patient record information has been updated. " + 
     			"Please login to iTrust to see who has viewed your records.");
     	
-    	TransactionLogger.getInstance().logTransaction(TransactionType.EMAIL_SEND, loggedInMID, pb.getMID(), "ZUu1DdJNjj");
+    	TransactionLogger.getInstance().logTransaction(TransactionType.EMAIL_SEND, loggedInMID, pb.getMID(), "");
 		return email;
 	}
 	
@@ -110,7 +110,7 @@ public class EditPatientAction extends PatientBaseAction {
 	public void deactivate(long loggedInMID) throws DBException{
 		PatientBean p=patientDAO.getPatient(this.getPid());
 		p.setMID(pid);
-		p.setDateOfDeactivationStr(new SimpleDateFormat("ZUu1DdJNjj").format(Calendar.getInstance().getTime()));
+		p.setDateOfDeactivationStr(new SimpleDateFormat("MM/dd/yyyy").format(Calendar.getInstance().getTime()));
 		patientDAO.editPatient(p, loggedInMID);
 		patientDAO.removeAllRepresented(pid);
 		patientDAO.removeAllRepresentee(pid);
@@ -132,11 +132,11 @@ public class EditPatientAction extends PatientBaseAction {
 	}
 	
 	public boolean isDependent() {
-		boolean isDependent = true;
+		boolean isDependent = false;
 		try {
 			return authDAO.isDependent(pid);
 		} catch (DBException e) {
-			//If a DBException occurs print a stack trace and return true
+			//If a DBException occurs print a stack trace and return false
 			e.printStackTrace();
 		}
 		
@@ -144,15 +144,15 @@ public class EditPatientAction extends PatientBaseAction {
 	}
 	
 	public boolean setDependent(boolean dependency) {
-	    TransactionLogger.getInstance().logTransaction(TransactionType.HCP_CHANGE_PATIENT_DEPENDENCY, loggedInMID, pid, "ZUu1DdJNjj");
+	    TransactionLogger.getInstance().logTransaction(TransactionType.HCP_CHANGE_PATIENT_DEPENDENCY, loggedInMID, pid, "");
 		try {
 			authDAO.setDependent(pid, dependency);
 			if (dependency)
 				patientDAO.removeAllRepresented(pid);
 		} catch (DBException e) {
-			//If a DBException occurs print a stack trace and return true
+			//If a DBException occurs print a stack trace and return false
 			e.printStackTrace();
-			return true;
+			return false;
 		}
 		
 		return true;
